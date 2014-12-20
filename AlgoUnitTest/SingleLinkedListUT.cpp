@@ -34,7 +34,7 @@ namespace AlgoUnitTest
                 list.insert(elt);
 
             int checkInd = a.size() - 1;
-            list.for_each([&](int elt)
+            list.forEach([&](int elt)
             {
                 Assert::AreEqual(a[checkInd], elt);
                 checkInd--;
@@ -56,7 +56,7 @@ namespace AlgoUnitTest
             list.insert(testElt);
             list.reverse();
             int totalElts = 0;
-            list.for_each([&](int elt)
+            list.forEach([&](int elt)
             {
                 totalElts++;
                 Assert::AreEqual(testElt, elt);
@@ -72,12 +72,12 @@ namespace AlgoUnitTest
                 list.insert(elt);
             
             vector<int> orderBefore;
-            list.for_each([&](int elt){ orderBefore.push_back(elt); });
+            list.forEach([&](int elt){ orderBefore.push_back(elt); });
 
             list.reverse();
 
             vector<int> orderAfter;
-            list.for_each([&](int elt){ orderAfter.push_back(elt); });
+            list.forEach([&](int elt){ orderAfter.push_back(elt); });
 
             int size = orderBefore.size();
             Assert::AreEqual(size, (int) orderAfter.size());

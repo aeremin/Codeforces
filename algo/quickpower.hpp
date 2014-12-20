@@ -1,5 +1,5 @@
 template<class T>
-T quick_power(const T& a, int d)
+T quickPower(const T& a, int d)
 {
 	T res(1);
 	T m = a;

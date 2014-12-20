@@ -72,9 +72,9 @@ public:
     }
 
     template<class Callable>
-    void for_each(Callable callable)
+    void forEach(Callable callable)
     {
-        for_each_node([callable](NodePtr node)
+        forEachNode([callable](NodePtr node)
         {
             callable(node->data);
         });
@@ -96,7 +96,7 @@ public:
 
 private:
     template<class Callable>
-    void for_each_node(Callable callable)
+    void forEachNode(Callable callable)
     {
         auto currNode = head;
         while (currNode)

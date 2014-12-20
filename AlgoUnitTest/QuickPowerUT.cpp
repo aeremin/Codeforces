@@ -14,8 +14,8 @@ namespace AlgoUnitTest
 		{
             for (int i = 1; i < 10; ++i)
             {
-                Assert::AreEqual(1, quick_power(i, 0));
-                Assert::AreEqual(1.0, quick_power((double) i, 0), 1e-6);
+                Assert::AreEqual(1, quickPower(i, 0));
+                Assert::AreEqual(1.0, quickPower((double)i, 0), 1e-6);
             }
 		}
 
@@ -23,8 +23,8 @@ namespace AlgoUnitTest
         {
             for (int i = 1; i < 10; ++i)
             {
-                Assert::AreEqual(i, quick_power(i, 1));
-                Assert::AreEqual((double) i, quick_power((double)i, 1), 1e-6);
+                Assert::AreEqual(i, quickPower(i, 1));
+                Assert::AreEqual((double)i, quickPower((double)i, 1), 1e-6);
             }
         }
 
@@ -34,7 +34,7 @@ namespace AlgoUnitTest
             double a_powered = 1.0;
             for (int d = 0; d < 10; ++d)
             {
-                Assert::AreEqual(a_powered, quick_power(a, d));
+                Assert::AreEqual(a_powered, quickPower(a, d));
                 a_powered *= a;
             }
         }
