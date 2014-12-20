@@ -66,7 +66,7 @@ namespace AlgoUnitTest
 
         TEST_METHOD(ReversesConcreteList12345)
         {
-            vector<int> toInsert = { 1, 2, 3, 4, 7 };
+            vector<int> toInsert = { 1, 2, 3, 4, 5 };
             SingleLinkedList<int> list;
             for (auto elt : toInsert)
                 list.insert(elt);
