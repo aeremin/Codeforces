@@ -42,6 +42,35 @@ public:
         return node;
     }
 
+    // Returns false if no such node found
+    bool deleteNode(NodePtr nodePtr)
+    {
+        auto curr = head;
+        NodePtr prev = nullptr;
+        while (curr)
+        {
+            if (curr == nodePtr)
+            {
+                if (prev)
+                {
+                    prev->next = curr->next;
+                    delete curr;
+                }
+                else
+                {
+                    // Deleting head node
+                    head = curr->next;
+                    delete curr;
+                }
+                return true;
+            }
+            prev = curr;
+            curr = curr->next;
+        }
+
+        return false;
+    }
+
     template<class Callable>
     void for_each(Callable callable)
     {

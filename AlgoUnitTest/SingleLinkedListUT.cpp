@@ -1,9 +1,11 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
 #include <vector>
+#include <algorithm>
 #include "../algo/SingleLinkedList.hpp"
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using std::vector;
+using std::random_shuffle;
 
 namespace AlgoUnitTest
 {
@@ -84,6 +86,30 @@ namespace AlgoUnitTest
                 Assert::AreEqual(orderBefore[i], orderAfter[size - i - 1]);
             }
 
+        }
+
+        TEST_METHOD(InsertAndDeleteOneElement)
+        {
+            SingleLinkedList<int> list;
+            auto node = list.insert(17);
+            list.deleteNode(node);
+            Assert::IsTrue(list.isEmpty());
+        }
+
+        TEST_METHOD(InsertThenDeleteInRandomOrder)
+        {
+            SingleLinkedList<int> list;
+            vector<int> eltsToInsert = { 1, 2, 3, -1, 0, 176, 95 };
+            vector<SingleLinkedList<int>::NodePtr> nodePtrs;
+            for (auto elt : eltsToInsert)
+                nodePtrs.push_back(list.insert(elt));
+
+            random_shuffle(begin(nodePtrs), end(nodePtrs));
+
+            for (auto nodePtr : nodePtrs)
+                Assert::IsTrue( list.deleteNode(nodePtr) );
+
+            Assert::IsTrue(list.isEmpty());
         }
 	};
 }
