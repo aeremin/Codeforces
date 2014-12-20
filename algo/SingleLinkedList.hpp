@@ -9,6 +9,10 @@ template<class T>
 class SingleLinkedList
 {
 public:
+    typedef Node<T>  NodeType;
+    typedef Node<T>* NodePtr;
+
+public:
     SingleLinkedList() : head(nullptr) {}
 
     ~SingleLinkedList()
@@ -29,7 +33,7 @@ public:
 
     void insert(const T& elt)
     {
-        auto node = new Node<T>();
+        auto node = new NodeType();
         node->data = elt;
         node->next = head;
 
@@ -39,7 +43,7 @@ public:
     template<class Callable>
     void for_each(Callable callable)
     {
-        for_each_node([callable](Node<T>* node)
+        for_each_node([callable](NodePtr node)
         {
             callable(node->data);
         });
@@ -47,8 +51,8 @@ public:
 
     void reverse()
     {
-        Node<T>* prevNode = nullptr;
-        Node<T>* currNode = head;
+        NodePtr prevNode = nullptr;
+        NodePtr currNode = head;
         while (currNode)
         {
             auto nextNode = currNode->next;
@@ -72,6 +76,6 @@ private:
     }
 
 private:
-    Node<T>* head;
+    NodePtr head;
 };
 
