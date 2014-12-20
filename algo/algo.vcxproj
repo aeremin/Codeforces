@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Heap.hpp" />
     <ClInclude Include="KnuttMorrisPratt.hpp" />
     <ClInclude Include="quickpower.hpp" />
     <ClInclude Include="SingleLinkedList.hpp" />
