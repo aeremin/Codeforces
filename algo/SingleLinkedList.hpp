@@ -31,13 +31,15 @@ public:
         return head == nullptr;
     }
 
-    void insert(const T& elt)
+    NodePtr insert(const T& elt)
     {
         auto node = new NodeType();
         node->data = elt;
         node->next = head;
 
         head = node;
+
+        return node;
     }
 
     template<class Callable>
