@@ -11,6 +11,17 @@ class SingleLinkedList
 public:
     SingleLinkedList() : head(nullptr) {}
 
+    ~SingleLinkedList()
+    {
+        auto curr = head;
+        while (curr)
+        {
+            auto next = curr->next;
+            delete curr;
+            curr = next;
+        }
+    }
+
     bool isEmpty() const
     {
         return head == nullptr;
