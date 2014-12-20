@@ -13,7 +13,7 @@
   <ItemGroup>
     <ClInclude Include="Heap.hpp" />
     <ClInclude Include="KnuttMorrisPratt.hpp" />
-    <ClInclude Include="quickpower.hpp" />
+    <ClInclude Include="QuickPower.hpp" />
     <ClInclude Include="SingleLinkedList.hpp" />
     <ClInclude Include="SlidingWindowMinFinder.h" />
   </ItemGroup>

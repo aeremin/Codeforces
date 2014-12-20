@@ -3,8 +3,8 @@
   <ItemGroup>
     <ClInclude Include="SlidingWindowMinFinder.h" />
     <ClInclude Include="KnuttMorrisPratt.hpp" />
-    <ClInclude Include="quickpower.hpp" />
     <ClInclude Include="SingleLinkedList.hpp" />
     <ClInclude Include="Heap.hpp" />
+    <ClInclude Include="QuickPower.hpp" />
   </ItemGroup>
 </Project>
