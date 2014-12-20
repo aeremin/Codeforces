@@ -1,3 +1,5 @@
+#pragma once
+
 template<class T>
 T quickPower(const T& a, int d)
 {
