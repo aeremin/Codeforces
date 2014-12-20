@@ -35,5 +35,8 @@
     <ClCompile Include="SingleLinkedListUT.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SlidingWindowMinFinderUT.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
