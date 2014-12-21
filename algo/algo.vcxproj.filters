@@ -6,6 +6,7 @@
     <ClInclude Include="SingleLinkedList.hpp" />
     <ClInclude Include="Heap.hpp" />
     <ClInclude Include="QuickPower.hpp" />
+    <ClInclude Include="QuickSort.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MergeSort.hpp" />

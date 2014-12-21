@@ -90,6 +90,7 @@
     <ClCompile Include="KnuttMorrisPrattUT.cpp" />
     <ClCompile Include="MergeSortUT.cpp" />
     <ClCompile Include="QuickPowerUT.cpp" />
+    <ClCompile Include="QuickSortUT.cpp" />
     <ClCompile Include="SingleLinkedListUT.cpp" />
     <ClCompile Include="SlidingWindowMinFinderUT.cpp" />
     <ClCompile Include="stdafx.cpp">
