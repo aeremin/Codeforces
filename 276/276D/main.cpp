@@ -13,12 +13,6 @@ template <typename T> int sgn(T val) {
     return (T(0) < val) - (val < T(0));
 }
 
-int abs(int val)
-{
-    return (val > 0) ? val : -val;
-}
-
-
 int main()
 {
 #ifndef ONLINE_JUDGE  
