@@ -1,8 +1,6 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
-#include <string>
-#include <vector>
-#include <algorithm>
+
 #include "../algo/KnuttMorrisPratt.hpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;

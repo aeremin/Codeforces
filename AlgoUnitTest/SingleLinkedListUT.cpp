@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
-#include <vector>
-#include <algorithm>
+
 #include "../algo/SingleLinkedList.hpp"
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using std::vector;

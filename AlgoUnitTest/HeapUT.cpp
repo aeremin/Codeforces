@@ -1,9 +1,6 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
-#include <vector>
-#include <algorithm>
-#include <limits>
-#include <cstdlib>
+
 
 #include "../algo/Heap.hpp"
 

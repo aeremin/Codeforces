@@ -11,3 +11,10 @@
 #include "CppUnitTest.h"
 
 // TODO: reference additional headers your program requires here
+
+#include <vector>
+#include <algorithm>
+#include <limits>
+#include <cstdlib>
+#include <string>
+#include <numeric>
