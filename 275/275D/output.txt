@@ -1,0 +1,5 @@
+For vertex 1
+Even: 1; Odd: 1
+For vertex 0
+Even: 2; Odd: 1
+2
