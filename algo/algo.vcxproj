@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BinarySearch.hpp" />
     <ClInclude Include="Heap.hpp" />
     <ClInclude Include="KnuttMorrisPratt.hpp" />
     <ClInclude Include="QuickPower.hpp" />

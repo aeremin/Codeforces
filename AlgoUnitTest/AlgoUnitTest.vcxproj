@@ -86,6 +86,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BinarySearchUT.cpp" />
     <ClCompile Include="HeapUT.cpp" />
     <ClCompile Include="KnuttMorrisPrattUT.cpp" />
     <ClCompile Include="MergeSortUT.cpp" />

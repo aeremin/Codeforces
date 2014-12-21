@@ -7,6 +7,7 @@
     <ClInclude Include="Heap.hpp" />
     <ClInclude Include="QuickPower.hpp" />
     <ClInclude Include="QuickSort.hpp" />
+    <ClInclude Include="BinarySearch.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MergeSort.hpp" />
