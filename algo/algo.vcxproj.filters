@@ -7,4 +7,7 @@
     <ClInclude Include="Heap.hpp" />
     <ClInclude Include="QuickPower.hpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="MergeSort.hpp" />
+  </ItemGroup>
 </Project>
