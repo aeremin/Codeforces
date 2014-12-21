@@ -18,41 +18,28 @@ int main()
 #endif
     int nQueries;
     cin >> nQueries;
+
+    const uint64_t one = 1;
     for (int i = 0; i < nQueries; ++i)
     {
-        int64_t l, r;
+        uint64_t l, r;
         cin >> l >> r;
-        
+
         if (l == r)
         {
             cout << l << '\n';
             continue;
         }
-        
-        int64_t maxDifPower = 0;
-        int64_t maxDif = 1;
-        for (int difPower = 0; difPower < 62; ++difPower)
-        {
-            if ((r & maxDif) != (l & maxDif))
-                maxDifPower = difPower;
-            maxDif *= 2;
-        }
 
-        int64_t ones = 0;
-        maxDif = 1;
-        for (int i = 0; i < maxDifPower; ++i)
-        {
-            ones += maxDif;
-            maxDif *= 2;
-        }
+        int maxDifPow = 1;
+        while (l >> maxDifPow != r >> maxDifPow)
+            ++maxDifPow;
+        uint64_t ones = (one << maxDifPow - 1) - 1;
 
-        int64_t rZeroed = (r >> maxDifPower) << maxDifPower;
-        
-        int64_t res = rZeroed - 1;
-        if ((res + maxDif) <= r)
-            res = res + maxDif;
-
-        cout << res << '\n';
+        if ((r | ones) <= r)
+            cout << (r | ones) << endl;
+        else
+            cout << (l | ones) << endl;
     }
 
 
