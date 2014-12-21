@@ -10,13 +10,16 @@ namespace
     template<class RandomAccessIterator>
     RandomAccessIterator partition(RandomAccessIterator first, RandomAccessIterator last)
     {
-        auto partitioningEltIter = last - 1;
+        auto partitioningEltIter = first + rand() % (last - first);
+        swap(*partitioningEltIter, *(last - 1));
+        partitioningEltIter = last - 1;
+
         auto lastLowIter = first;
-        for (auto iter = first; iter != last; ++iter)
+        int numSameElts = 0;
+        for (auto iter = first; iter != last - 1; ++iter)
         {
-            if (iter == partitioningEltIter)
-                continue;
-            if (*iter < *partitioningEltIter)
+            if (*iter < *partitioningEltIter || 
+                (*iter == *partitioningEltIter && ++numSameElts % 2 == 0))
             {
                 swap(*iter, *lastLowIter);
                 ++lastLowIter;

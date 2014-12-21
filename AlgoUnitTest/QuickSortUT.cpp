@@ -13,7 +13,7 @@ namespace AlgoUnitTest
     TEST_CLASS(QuickSortUT)
     {
     private:
-        static const int cDataSetSize = 2000;
+        static const int cDataSetSize = 1e4;
 
     public:
 
