@@ -35,7 +35,7 @@ namespace AlgoUnitTest
             srand(12);
             int eltToFind = rand() % cDataSetSize;
             auto foundIter = binarySearch(begin(iotadata), end(iotadata), [&](int elt){ return elt >= eltToFind; });
-            Assert::IsTrue(*foundIter = eltToFind);
+            Assert::IsTrue(*foundIter == eltToFind);
         }
 
         TEST_METHOD(CanFindElementInRandomArray)
