@@ -106,5 +106,33 @@ namespace AlgoUnitTest
             Assert::IsFalse(searcher.search(0));
         }
 
+//              4
+//          1 < 
+//      0 <---- 5
+//          2 - 3
+        TEST_METHOD(WorksOnConcreteCase)
+        {
+
+            Graph g;
+            g.addEdge(0, 1);
+            g.addEdge(0, 5);
+            g.addEdge(0, 2);
+            g.addEdge(1, 4);
+            g.addEdge(1, 5);
+            g.addEdge(2, 3);
+
+            DepthFirstSearcher searcher(g);
+
+            // We will stop in vertex 2
+            vector<int> expectedVertices = { 0, 1, 4, 5, 2 };
+            int iVertex = 0;
+            searcher.setVertexPreprocessCallback([&](int vInd)
+            {
+                Assert::AreEqual(expectedVertices[iVertex++], vInd);
+                return (vInd == 2);
+            });
+
+            Assert::IsTrue(searcher.search(0));
+        }
 	};
 }
