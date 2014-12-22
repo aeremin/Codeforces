@@ -28,6 +28,7 @@
     <ProjectGuid>{3FD3D8BB-4975-4C21-88AE-ACB68E2BF1D4}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>algo</RootNamespace>
+    <ProjectName>Algo</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
