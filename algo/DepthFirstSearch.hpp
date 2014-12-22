@@ -43,18 +43,24 @@ public:
 
     bool search(int vertex)
     {
-        processTime_.clear();
-        processTime_.resize(graph_.vertexCount());
-        fill(begin(processTime_), end(processTime_), numeric_limits<int>::max());
+        auto resetTimeArray = [&](vector<int>& arr)
+        {
+            arr.clear();
+            arr.resize(graph_.vertexCount());
+            fill(begin(arr), end(arr), numeric_limits<int>::max());
+        };
+        resetTimeArray(inTime_);
+        resetTimeArray(outTime_);
 
-        return processVertex_(vertex, 0);
+        currProccessTime_ = 0;
+        return processVertex_(vertex);
     }
 
 private:
 
-    bool processVertex_(int vertex, int processTime)
+    bool processVertex_(const int vertex)
     {
-        processTime_[vertex] = processTime;
+        inTime_[vertex] = currProccessTime_++;
 
         if (vertexPreprocessCallback_(vertex))
             return true;
@@ -62,22 +68,19 @@ private:
         bool stop = false;
         for (auto& neighbor : graph_.vertexNeighbors(vertex))
         {
-            int neighborProcessTime = processTime_[neighbor];
-            // Edge to the parent
-            if (neighborProcessTime + 1 == processTime)
-                continue;
-
-            if (neighborProcessTime == numeric_limits<int>::max())
+            if (inTime_[neighbor] == numeric_limits<int>::max())
             {
                 //Discovered new vertex
                 stop = stop || edgeProcessCallback_(vertex, neighbor, true);
-                stop = stop || processVertex_(neighbor, ++processTime);
+                stop = stop || processVertex_(neighbor);
             }
             else // Already processed vertex
-                stop = stop || edgeProcessCallback_(vertex, neighbor, false);
+                if (inTime_[neighbor] < inTime_[vertex]) // To count back-edges only on first encounter
+                    stop = stop || edgeProcessCallback_(vertex, neighbor, false);
 
         }
-                
+
+        outTime_[vertex] = currProccessTime_++;
         stop = stop || vertexPostprocessCallback_(vertex);
         return stop;
     }
@@ -88,6 +91,7 @@ private:
     VertexCallback vertexPreprocessCallback_;
     VertexCallback vertexPostprocessCallback_;
 
-    vector<int> processTime_;
+    vector<int> inTime_;
+    vector<int> outTime_;
     int currProccessTime_;
 };

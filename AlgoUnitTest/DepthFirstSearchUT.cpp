@@ -90,19 +90,12 @@ namespace AlgoUnitTest
             };
 
             int discoveryEdgesCount = 0;
-            int backEdgesCount = 0;
             auto processEdge = [&](int from, int to, bool discovery)
             {
                 if (discovery)
                 {
                     Assert::AreEqual(discoveryEdgesCount++, from);
                     Assert::AreEqual(discoveryEdgesCount, to);
-                }
-                else
-                {
-                    Assert::AreEqual(0, min(from, to));
-                    Assert::AreEqual(nVertices - 1, max(from, to));
-                    ++backEdgesCount;
                 }
                 return false;
             };
@@ -111,7 +104,6 @@ namespace AlgoUnitTest
             searcher.setEdgePostprocessCallback(processEdge);
 
             Assert::IsFalse(searcher.search(0));
-            Assert::AreEqual(2, backEdgesCount); // Back edges are counted twice
         }
 
 	};
