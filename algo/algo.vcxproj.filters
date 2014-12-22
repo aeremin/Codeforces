@@ -9,6 +9,7 @@
     <ClInclude Include="QuickSort.hpp" />
     <ClInclude Include="BinarySearch.hpp" />
     <ClInclude Include="Graph.hpp" />
+    <ClInclude Include="DepthFirstSearch.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MergeSort.hpp" />

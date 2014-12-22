@@ -87,6 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BinarySearchUT.cpp" />
+    <ClCompile Include="DepthFirstSearchUT.cpp" />
     <ClCompile Include="HeapUT.cpp" />
     <ClCompile Include="KnuttMorrisPrattUT.cpp" />
     <ClCompile Include="MergeSortUT.cpp" />
