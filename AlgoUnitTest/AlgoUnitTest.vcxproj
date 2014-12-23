@@ -88,6 +88,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BinarySearchUT.cpp" />
+    <ClCompile Include="ConnectedComponentsDecomposerUT.cpp" />
     <ClCompile Include="DepthFirstSearchUT.cpp" />
     <ClCompile Include="GraphHelper.cpp" />
     <ClCompile Include="HasCycleUT.cpp" />

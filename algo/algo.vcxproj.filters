@@ -10,6 +10,7 @@
     <ClInclude Include="BinarySearch.hpp" />
     <ClInclude Include="Graph.hpp" />
     <ClInclude Include="DepthFirstSearch.hpp" />
+    <ClInclude Include="ConnectedComponentsDecomposer.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MergeSort.hpp" />
