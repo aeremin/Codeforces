@@ -43,17 +43,34 @@ public:
 
     bool search(int vertex)
     {
-        auto resetTimeArray = [&](vector<int>& arr)
+        auto resetArray = [&](vector<int>& arr)
         {
             arr.clear();
             arr.resize(graph_.vertexCount());
             fill(begin(arr), end(arr), numeric_limits<int>::max());
         };
-        resetTimeArray(inTime_);
-        resetTimeArray(outTime_);
+        resetArray(inTime_);
+        resetArray(outTime_);
+        resetArray(parent_);
 
         currProccessTime_ = 0;
+        parent_[vertex] = -1;
         return processVertex_(vertex);
+    }
+
+    int getParent(int vertex) const
+    {
+        return parent_[vertex];
+    }
+
+    int getInTime(int vertex) const
+    {
+        return inTime_[vertex];
+    }
+
+    int getOutTime(int vertex) const
+    {
+        return outTime_[vertex];
     }
 
 private:
@@ -68,16 +85,19 @@ private:
         bool stop = false;
         for (auto& neighbor : graph_.vertexNeighbors(vertex))
         {
+            if (neighbor == parent_[vertex])
+                continue; // Don't want to process same edge twice
+            
             if (inTime_[neighbor] == numeric_limits<int>::max())
             {
                 //Discovered new vertex
+                parent_[neighbor] = vertex;
                 stop = stop || edgeProcessCallback_(vertex, neighbor, true);
                 stop = stop || processVertex_(neighbor);
             }
             else // Already processed vertex
                 if (inTime_[neighbor] < inTime_[vertex]) // To count back-edges only on first encounter
                     stop = stop || edgeProcessCallback_(vertex, neighbor, false);
-
         }
 
         outTime_[vertex] = currProccessTime_++;
@@ -93,5 +113,6 @@ private:
 
     vector<int> inTime_;
     vector<int> outTime_;
+    vector<int> parent_;
     int currProccessTime_;
 };
