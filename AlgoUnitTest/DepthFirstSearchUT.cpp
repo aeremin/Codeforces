@@ -2,6 +2,7 @@
 #include "CppUnitTest.h"
 #include <utility>
 #include "../algo/DepthFirstSearch.hpp"
+#include "GraphHelper.h"
 
 using std::min;
 using std::max;
@@ -43,9 +44,7 @@ namespace AlgoUnitTest
         TEST_METHOD(WorksOnLinearGraph)
         {
             int nVertices = 10;
-            Graph graph(10);
-            for (int i = 0; i < nVertices - 1; ++i)
-                graph.addEdge(i, i + 1);
+            Graph graph = GraphHelper::createLinearGraph(nVertices);
 
             DepthFirstSearcher searcher(graph);
             int verticesCount = 0;
@@ -75,11 +74,7 @@ namespace AlgoUnitTest
         TEST_METHOD(WorksOnSimpleCycle)
         {
             int nVertices = 20;
-            Graph graph(10);
-            for (int i = 0; i < nVertices - 1; ++i)
-                graph.addEdge(i, i + 1);
-            
-            graph.addEdge(nVertices - 1, 0);
+            Graph graph = GraphHelper::createSimpleCycleGraph(nVertices);
 
             DepthFirstSearcher searcher(graph);
             int verticesCount = 0;

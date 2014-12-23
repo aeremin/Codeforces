@@ -82,12 +82,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="GraphHelper.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BinarySearchUT.cpp" />
     <ClCompile Include="DepthFirstSearchUT.cpp" />
+    <ClCompile Include="GraphHelper.cpp" />
     <ClCompile Include="HeapUT.cpp" />
     <ClCompile Include="KnuttMorrisPrattUT.cpp" />
     <ClCompile Include="MergeSortUT.cpp" />
