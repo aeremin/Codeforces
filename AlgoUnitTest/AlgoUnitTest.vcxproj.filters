@@ -56,6 +56,9 @@
     <ClCompile Include="DepthFirstSearchUT.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="HasCycleUT.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="GraphHelper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

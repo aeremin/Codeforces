@@ -90,6 +90,7 @@
     <ClCompile Include="BinarySearchUT.cpp" />
     <ClCompile Include="DepthFirstSearchUT.cpp" />
     <ClCompile Include="GraphHelper.cpp" />
+    <ClCompile Include="HasCycleUT.cpp" />
     <ClCompile Include="HeapUT.cpp" />
     <ClCompile Include="KnuttMorrisPrattUT.cpp" />
     <ClCompile Include="MergeSortUT.cpp" />
