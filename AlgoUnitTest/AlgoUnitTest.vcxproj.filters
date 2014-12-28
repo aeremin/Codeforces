@@ -65,5 +65,8 @@
     <ClCompile Include="ConnectedComponentsDecomposerUT.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SegmentTreeUT.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

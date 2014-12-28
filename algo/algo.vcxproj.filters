@@ -11,6 +11,7 @@
     <ClInclude Include="Graph.hpp" />
     <ClInclude Include="DepthFirstSearch.hpp" />
     <ClInclude Include="ConnectedComponentsDecomposer.hpp" />
+    <ClInclude Include="SegmentTree.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MergeSort.hpp" />
