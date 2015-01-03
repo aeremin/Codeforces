@@ -39,23 +39,8 @@ struct  BombHor
     int p;
 };
 
-int search(std::vector<pair<int,double>> & a, int value){
-    int lmin = 0, lmax = a.size() - 1;
-    if (a[0].first > value) return -1;
-    else lmin = 0;
-    lmax = a.size() - 1;
-    while ((lmax - lmin) > 1){
-        int lmed = (lmax + lmin) / 2;
-        if (a[lmed].first <= value) lmin = lmed;
-        else lmax = lmed;
-    }
-    if (a[lmax].first <= value) return lmax;
-    else return lmin;
-}
-
 int main()
 {
-
     int nBombs, nPlatoons;
     cin >> nPlatoons >> nBombs;
 
@@ -111,44 +96,45 @@ int main()
         }
     }
 
-    vector<double> partVert(bombCondVert.size()), partHor(bombCondHor.size());
-    
+    vector<double> partVert, partHor;
     
     double total = 0;
+    partHor.push_back(total);
     for (int i = 0; i < bombCondHor.size(); ++i)
     {
         total += bombCondHor[i].second;
-        partHor[i] = total;
+        partHor.push_back( total );
     }
     
     total = 0;
+    partVert.push_back(total);
     for (int i = 0; i < bombCondVert.size(); ++i)
     {
         total += bombCondVert[i].second;
-        partVert[i] = total;
+        partVert.push_back( total );
     }
+
+    auto compareByCoord = [](pair<int, double> a, pair<int, double> b) -> bool
+    {
+        return a.first < b.first;
+    };
+
     double res = 0.0;
     for (auto& p : platoons)
     {
         int w = p.x2 - p.x1 + 1;
         int h = p.y2 - p.y1 + 1;
 
-        int firstV = search(bombCondVert, p.x1);
-        int lastV = search(bombCondVert, p.x2);
-        double probV = 0;
-        if (lastV >= 0) probV += partVert[lastV];
-        if (firstV >= 0 && bombCondVert[firstV].first == p.x1) firstV--;
-        if (firstV >= 0) probV -= partVert[firstV];
+        auto firstV = lower_bound(begin(bombCondVert), end(bombCondVert), make_pair(p.x1, 0.0), compareByCoord) - begin(bombCondVert);
+        auto lastV  = upper_bound(begin(bombCondVert), end(bombCondVert), make_pair(p.x2, 0.0), compareByCoord) - begin(bombCondVert);
+        double probV = partVert[lastV] - partVert[firstV];
 
-        int firstH = search(bombCondHor, p.y1);
-        int lastH = search(bombCondHor, p.y2);
-        double probH = 0;
-        if (lastH >= 0) probH += partHor[lastH];
-        if (firstH >= 0 && bombCondHor[firstH].first == p.y1) firstH--;
-        if (firstH >= 0) probH -= partHor[firstH];
+        auto firstH = lower_bound(begin(bombCondHor), end(bombCondHor), make_pair(p.y1, 0.0), compareByCoord) - begin(bombCondHor);
+        auto lastH = upper_bound(begin(bombCondHor), end(bombCondHor), make_pair(p.y2, 0.0), compareByCoord) - begin(bombCondHor);
+        double probH = partHor[lastH] - partHor[firstH];
+
         res += w * probH + h * probV - probH * probV;
     }
-
 
     printf("%.11lf", res);
     
