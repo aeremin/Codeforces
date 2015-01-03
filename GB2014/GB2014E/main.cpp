@@ -28,10 +28,6 @@ int main()
     int nDominoes;
     cin >> nDominoes;
 
-    vector<int> a(60);
-    for (auto& b : a)
-        cin >> b.x >> b.y;
-
     vector<Point>  points;
 
     for (int i = 0; i < nDominoes; ++i)
