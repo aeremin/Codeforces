@@ -12,6 +12,7 @@
     <ClInclude Include="DepthFirstSearch.hpp" />
     <ClInclude Include="ConnectedComponentsDecomposer.hpp" />
     <ClInclude Include="SegmentTree.hpp" />
+    <ClInclude Include="DisjointSet.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MergeSort.hpp" />
