@@ -91,6 +91,7 @@
     <ClCompile Include="ConnectedComponentsDecomposerUT.cpp" />
     <ClCompile Include="DepthFirstSearchUT.cpp" />
     <ClCompile Include="DisjointSetUT.cpp" />
+    <ClCompile Include="FibonacciHeapTest.cpp" />
     <ClCompile Include="GraphHelper.cpp" />
     <ClCompile Include="HasCycleUT.cpp" />
     <ClCompile Include="HeapUT.cpp" />

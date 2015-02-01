@@ -13,6 +13,7 @@
     <ClInclude Include="ConnectedComponentsDecomposer.hpp" />
     <ClInclude Include="SegmentTree.hpp" />
     <ClInclude Include="DisjointSet.hpp" />
+    <ClInclude Include="FibonacciHeap.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MergeSort.hpp" />
