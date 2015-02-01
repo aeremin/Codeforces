@@ -1,0 +1,11 @@
+4 10
+10
+21
+27
+27
+
+nFromCache:  294801 nCalculated:  153300   3
+nFromCache:  844833 nCalculated:  434268   6 
+nFromCache: 1561601 nCalculated:  798616   9
+nFromCache: 2413338 nCalculated: 1230453  12
+
