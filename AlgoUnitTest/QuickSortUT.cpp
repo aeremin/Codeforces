@@ -11,7 +11,7 @@ namespace AlgoUnitTest
     TEST_CLASS(QuickSortUT)
     {
     private:
-        static const int cDataSetSize = 1e4;
+        static const int cDataSetSize =  1e6;
 
     public:
 
@@ -35,8 +35,8 @@ namespace AlgoUnitTest
             vector<int> data(cDataSetSize);
             std::iota(data.rbegin(), data.rend(), 0);
             quickSort(begin(data), end(data));
-            for (auto iter = begin(data); iter != end(data); ++iter)
-                Assert::AreEqual(iter - begin(data), *iter);
+            for (auto iter = begin(data) + 1; iter != end(data); ++iter)
+                Assert::IsTrue(*iter >= *(iter - 1));
         }
 
         TEST_METHOD(SortsOrderedVector)
@@ -44,8 +44,8 @@ namespace AlgoUnitTest
             vector<int> data(cDataSetSize);
             std::iota(data.begin(), data.end(), 0);
             quickSort(begin(data), end(data));
-            for (auto iter = begin(data); iter != end(data); ++iter)
-                Assert::AreEqual(iter - begin(data), *iter);
+            for (auto iter = begin(data) + 1; iter != end(data); ++iter)
+                Assert::IsTrue(*iter >= *(iter - 1));
         }
 
         TEST_METHOD(SortsSameEltVector)
@@ -53,9 +53,8 @@ namespace AlgoUnitTest
             const int testelt = 27;
             vector<int> data(cDataSetSize, testelt);
             quickSort(begin(data), end(data));
-            for (auto elt : data)
-                Assert::AreEqual(testelt, elt);
-
+            for (auto iter = begin(data) + 1; iter != end(data); ++iter)
+                Assert::IsTrue(*iter >= *(iter - 1));
         }
 
         TEST_METHOD(SortsRandomVector)
