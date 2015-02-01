@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<ArrayOfArrayOfArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ArrayOfArrayOfString>
+    <ArrayOfString>
+      <string>F:\Programming\Codeforces\algo\ACM-ICPC\CERC 14-15 Krakov\F\f.in</string>
+      <string>F:\Programming\Codeforces\algo\ACM-ICPC\CERC 14-15 Krakov\F\f.out</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>F:\Programming\Codeforces\algo\ACM-ICPC\CERC 14-15 Krakov\F\main.cpp</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>F:\Programming\Codeforces\algo\ACM-ICPC\CERC 14-15 Krakov\A\main.cpp</string>
+    </ArrayOfString>
+  </ArrayOfArrayOfString>
+</ArrayOfArrayOfArrayOfString>
