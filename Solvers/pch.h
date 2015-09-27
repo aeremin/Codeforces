@@ -1,4 +1,5 @@
 #include <vector>
+#include <deque>
 #include <set>
 #include <unordered_set>
 #include <map>
@@ -9,6 +10,7 @@
 #include <fstream>
 #include <string>
 #include <sstream>
+#include <cstdint>
 
 #include <gtest/gtest.h>
 
