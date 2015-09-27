@@ -13,7 +13,7 @@ class Graph
 public:
     Graph(int nVertices = 0) : edges_(nVertices) {};
 
-    void addEdge(int from, int to)
+    void addEdge(size_t from, size_t to)
     {
         if (max(from, to) >= edges_.size())
             edges_.resize(max(from, to) + 1);
@@ -22,16 +22,16 @@ public:
         edges_[to].push_back(from);
     }
 
-    const vector<int>& vertexNeighbors(int vInd) const
+    const vector<size_t>& vertexNeighbors(size_t vInd) const
     {
         return edges_[vInd];
     }
 
-    int vertexCount() const
+    size_t vertexCount() const
     {
         return edges_.size();
     }
 
 private:
-    vector<vector<int>> edges_;
+    vector<vector<size_t>> edges_;
 };
