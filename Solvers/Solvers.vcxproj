@@ -72,6 +72,7 @@
   <ItemGroup>
     <ClInclude Include="487\Solver487B.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="487\Solver487D.h" />
     <ClInclude Include="testutils\ProblemTest.h" />
   </ItemGroup>
   <ItemGroup>
@@ -80,6 +81,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="pch.cpp" />
+    <ClCompile Include="487\Solver487D.cpp" />
     <ClCompile Include="testutils\ProblemTest.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
