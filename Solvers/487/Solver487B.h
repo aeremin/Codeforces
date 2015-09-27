@@ -1,6 +1,6 @@
 #pragma once
 
-class Solver478B
+class Solver487B
 {
 public:
     int main();

@@ -3,7 +3,7 @@
 #include "Solver487B.h"
 using namespace std;
 
-int Solver478B::main()
+int Solver487B::main()
 {
     int nNumbers, maxDif, minLen;
     cin >> nNumbers >> maxDif >> minLen;
@@ -82,18 +82,18 @@ int Solver478B::main()
     return 0;
 }
 
-class Solver478BTest : public ProblemTest {};
+class Solver487BTest : public ProblemTest {};
 
-TEST_F(Solver478BTest, Example1)
+TEST_F(Solver487BTest, Example1)
 {
     setInput("7 2 2     1 3 1 2 4 1 2");
-    Solver478B().main();
+    Solver487B().main();
     EXPECT_EQ("3", getOutput());
 }
 
-TEST_F(Solver478BTest, Example2)
+TEST_F(Solver487BTest, Example2)
 {
     setInput("7 2 2   1 100 1 100 1 100 1");
-    Solver478B().main();
+    Solver487B().main();
     EXPECT_EQ("-1", getOutput());
 }
