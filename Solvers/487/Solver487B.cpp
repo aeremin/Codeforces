@@ -1,6 +1,6 @@
 #include <Solvers/pch.h>
 #include <algo/SlidingWindowMinFinder.h>
-#include "487B.h"
+#include "Solver487B.h"
 using namespace std;
 
 int Solver478B::main()
