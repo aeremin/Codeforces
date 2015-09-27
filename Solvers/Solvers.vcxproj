@@ -74,6 +74,7 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="487\Solver487D.h" />
     <ClInclude Include="580\Solver580A.h" />
+    <ClInclude Include="580\Solver580B.h" />
     <ClInclude Include="testutils\ProblemTest.h" />
   </ItemGroup>
   <ItemGroup>
@@ -84,6 +85,7 @@
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="487\Solver487D.cpp" />
     <ClCompile Include="580\Solver580A.cpp" />
+    <ClCompile Include="580\Solver580B.cpp" />
     <ClCompile Include="testutils\ProblemTest.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
