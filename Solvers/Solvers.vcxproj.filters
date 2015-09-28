@@ -11,7 +11,8 @@
     <ClInclude Include="580\Solver580D.h" />
     <ClInclude Include="581\Solver581A.h" />
     <ClInclude Include="581\Solver581B.h" />
-    <ClInclude Include="Solver581C.h" />
+    <ClInclude Include="581\Solver581C.h" />
+    <ClInclude Include="581\Solver581D.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -24,6 +25,7 @@
     <ClCompile Include="580\Solver580D.cpp" />
     <ClCompile Include="581\Solver581A.cpp" />
     <ClCompile Include="581\Solver581B.cpp" />
-    <ClCompile Include="Solver581C.cpp" />
+    <ClCompile Include="581\Solver581C.cpp" />
+    <ClCompile Include="581\Solver581D.cpp" />
   </ItemGroup>
 </Project>
