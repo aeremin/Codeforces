@@ -8,6 +8,7 @@
     <ClInclude Include="580\Solver580A.h" />
     <ClInclude Include="580\Solver580B.h" />
     <ClInclude Include="580\Solver580C.h" />
+    <ClInclude Include="580\Solver580D.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -17,5 +18,6 @@
     <ClCompile Include="580\Solver580A.cpp" />
     <ClCompile Include="580\Solver580B.cpp" />
     <ClCompile Include="580\Solver580C.cpp" />
+    <ClCompile Include="580\Solver580D.cpp" />
   </ItemGroup>
 </Project>
