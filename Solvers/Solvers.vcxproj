@@ -71,6 +71,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="487\Solver487B.h" />
+    <ClInclude Include="578\Solver578A.h" />
     <ClInclude Include="579\Solver579B.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="487\Solver487D.h" />
@@ -90,6 +91,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="578\Solver578A.cpp" />
     <ClCompile Include="579\Solver579B.cpp" />
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="487\Solver487D.cpp" />
