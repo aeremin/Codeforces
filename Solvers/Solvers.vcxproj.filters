@@ -14,6 +14,7 @@
     <ClInclude Include="581\Solver581C.h" />
     <ClInclude Include="581\Solver581D.h" />
     <ClInclude Include="579\Solver579A.h" />
+    <ClInclude Include="579\Solver579B.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -29,5 +30,6 @@
     <ClCompile Include="581\Solver581C.cpp" />
     <ClCompile Include="581\Solver581D.cpp" />
     <ClCompile Include="579\Solver579A.cpp" />
+    <ClCompile Include="579\Solver579B.cpp" />
   </ItemGroup>
 </Project>
