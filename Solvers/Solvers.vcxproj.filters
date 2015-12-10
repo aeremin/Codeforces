@@ -17,6 +17,7 @@
     <ClInclude Include="579\Solver579B.h" />
     <ClInclude Include="578\Solver578A.h" />
     <ClInclude Include="578\Solver578B.h" />
+    <ClInclude Include="605\Solver605A.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -35,5 +36,6 @@
     <ClCompile Include="579\Solver579B.cpp" />
     <ClCompile Include="578\Solver578A.cpp" />
     <ClCompile Include="578\Solver578B.cpp" />
+    <ClCompile Include="605\Solver605A.cpp" />
   </ItemGroup>
 </Project>
