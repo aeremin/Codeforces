@@ -2,5 +2,23 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="MaximalIncreasingSubsequenceTest.cpp" />
+    <ClCompile Include="BinarySearchTest.cpp" />
+    <ClCompile Include="ConnectedComponentsDecomposerTest.cpp" />
+    <ClCompile Include="GraphHelper.cpp" />
+    <ClCompile Include="DepthFirstSearchTest.cpp" />
+    <ClCompile Include="DisjointSetTest.cpp" />
+    <ClCompile Include="FibonacciHeapTest.cpp" />
+    <ClCompile Include="HasCycleTest.cpp" />
+    <ClCompile Include="HeapTest.cpp" />
+    <ClCompile Include="KnuttMorrisPrattTest.cpp" />
+    <ClCompile Include="MergeSortTest.cpp" />
+    <ClCompile Include="QuickPowerTest.cpp" />
+    <ClCompile Include="QuickSortTest.cpp" />
+    <ClCompile Include="SegmentTreeTest.cpp" />
+    <ClCompile Include="SingleLinkedListTest.cpp" />
+    <ClCompile Include="SlidingWindowMinFinderTest.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GraphHelper.h" />
   </ItemGroup>
 </Project>

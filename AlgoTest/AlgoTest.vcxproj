@@ -11,7 +11,25 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BinarySearchTest.cpp" />
+    <ClCompile Include="ConnectedComponentsDecomposerTest.cpp" />
+    <ClCompile Include="DepthFirstSearchTest.cpp" />
+    <ClCompile Include="DisjointSetTest.cpp" />
+    <ClCompile Include="FibonacciHeapTest.cpp" />
+    <ClCompile Include="GraphHelper.cpp" />
+    <ClCompile Include="HasCycleTest.cpp" />
+    <ClCompile Include="HeapTest.cpp" />
+    <ClCompile Include="KnuttMorrisPrattTest.cpp" />
     <ClCompile Include="MaximalIncreasingSubsequenceTest.cpp" />
+    <ClCompile Include="MergeSortTest.cpp" />
+    <ClCompile Include="QuickPowerTest.cpp" />
+    <ClCompile Include="QuickSortTest.cpp" />
+    <ClCompile Include="SegmentTreeTest.cpp" />
+    <ClCompile Include="SingleLinkedListTest.cpp" />
+    <ClCompile Include="SlidingWindowMinFinderTest.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GraphHelper.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{FD85A942-6CFE-428D-B740-87202B2D8A6C}</ProjectGuid>

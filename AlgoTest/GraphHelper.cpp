@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "GraphHelper.h"
 
 namespace GraphHelper
