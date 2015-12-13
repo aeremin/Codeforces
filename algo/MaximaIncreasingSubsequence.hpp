@@ -16,3 +16,26 @@ size_t lenOfMaximalIncreasingSubsequence(Iterator first, Iterator last)
     }
     return lastsSubsequenceElts.size();
 }
+
+template<class Iterator>
+size_t lenOfMaximalIncreasingSubsegment(Iterator first, Iterator last)
+{
+    if (first == last)
+    {
+        return 0;
+    }
+    auto result = 0;
+    auto currSegmentStart = first;
+    for (auto it = first + 1; it != last; ++it)
+    {
+        if (*it < *(it - 1))
+        {
+            result = std::max(result, std::distance(currSegmentStart, it));
+            currSegmentStart = it;
+        }
+    }
+
+    result = std::max(result, std::distance(currSegmentStart, last));
+
+    return result;
+}
