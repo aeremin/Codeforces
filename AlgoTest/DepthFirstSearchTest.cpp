@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 #include "algo/DepthFirstSearch.hpp"
-#include "AlgoUnitTest/GraphHelper.h"
+#include "AlgoTest/GraphHelper.h"
 
 TEST(DepthFirstSearchTest, WorksOnSingleVertex)
 {
