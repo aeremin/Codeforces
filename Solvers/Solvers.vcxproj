@@ -74,6 +74,7 @@
     <ClInclude Include="578\Solver578A.h" />
     <ClInclude Include="578\Solver578B.h" />
     <ClInclude Include="579\Solver579B.h" />
+    <ClInclude Include="603\Solver603B.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="487\Solver487D.h" />
     <ClInclude Include="580\Solver580A.h" />
@@ -88,7 +89,7 @@
     <ClInclude Include="605\Solver605A.h" />
     <ClInclude Include="605\Solver605B.h" />
     <ClInclude Include="605\Solver605C.h" />
-    <ClInclude Include="Solver603A.h" />
+    <ClInclude Include="603\Solver603A.h" />
     <ClInclude Include="testutils\ProblemTest.h" />
   </ItemGroup>
   <ItemGroup>
@@ -110,6 +111,7 @@
     <ClCompile Include="612\Solver612C.cpp" />
     <ClCompile Include="612\Solver612D.cpp" />
     <ClCompile Include="612\Solver612E.cpp" />
+    <ClCompile Include="603\Solver603B.cpp" />
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="487\Solver487D.cpp" />
     <ClCompile Include="580\Solver580A.cpp" />
@@ -124,7 +126,7 @@
     <ClCompile Include="605\Solver605A.cpp" />
     <ClCompile Include="605\Solver605B.cpp" />
     <ClCompile Include="605\Solver605C.cpp" />
-    <ClCompile Include="Solver603A.cpp" />
+    <ClCompile Include="603\Solver603A.cpp" />
     <ClCompile Include="testutils\ProblemTest.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

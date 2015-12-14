@@ -20,7 +20,8 @@
     <ClInclude Include="605\Solver605A.h" />
     <ClInclude Include="605\Solver605B.h" />
     <ClInclude Include="605\Solver605C.h" />
-    <ClInclude Include="Solver603A.h" />
+    <ClInclude Include="603\Solver603A.h" />
+    <ClInclude Include="603\Solver603B.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -54,5 +55,7 @@
     <ClCompile Include="612\Solver612D.cpp" />
     <ClCompile Include="612\Solver612C.cpp" />
     <ClCompile Include="612\Solver612E.cpp" />
+    <ClCompile Include="603\Solver603A.cpp" />
+    <ClCompile Include="603\Solver603B.cpp" />
   </ItemGroup>
 </Project>
