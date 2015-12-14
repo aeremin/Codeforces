@@ -70,3 +70,18 @@ TEST(GeomVector, OperatorMultiplicationOuter)
 	EXPECT_EQ(d, b);
 	EXPECT_EQ(d, c);
 }
+
+TEST(GeomVector, DetOfCollinearIsZero)
+{
+	GeomVector2I a = GeomVector2I({ 1, 3 });
+	GeomVector2I b = GeomVector2I({ 2, 6 });
+	EXPECT_EQ(0, det(a, b));
+}
+
+TEST(GeomVector, DetConcreteExample)
+{
+	GeomVector2I a = GeomVector2I({ 1, 2 });
+	GeomVector2I b = GeomVector2I({ 3, 4 });
+	EXPECT_EQ(-2, det(a, b));
+	EXPECT_EQ( 2, det(b, a));
+}

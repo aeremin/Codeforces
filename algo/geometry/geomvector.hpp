@@ -77,4 +77,25 @@ GeomVector<typename T, n> operator*(const typename T& a, const GeomVector<typena
 	return res;
 }
 
-using GeomVector2I = GeomVector<int, 2>;
+template<typename T, int n>
+bool operator<(const GeomVector<typename T, n>& a, const GeomVector<typename T, n>& b)
+{
+	for (int i = 0; i < n; ++i)
+	{
+		if (a[i] < b[i])
+			return true;
+		else if (a[i] > b[i])
+			return false;
+	}
+	return false;
+}
+
+template<typename T>
+using GeomVector2 = GeomVector<T, 2>;
+using GeomVector2I = GeomVector2<int>;
+
+template<typename T>
+T det(const GeomVector2<typename T>& a, const GeomVector2<typename T>& b)
+{
+	return a[0] * b[1] - a[1] * b[0];
+}
