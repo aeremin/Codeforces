@@ -18,6 +18,7 @@
     <ClCompile Include="SingleLinkedListTest.cpp" />
     <ClCompile Include="SlidingWindowMinFinderTest.cpp" />
     <ClCompile Include="geometry\geomvectortest.cpp" />
+    <ClCompile Include="geometry\ConvexHullTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphHelper.h" />

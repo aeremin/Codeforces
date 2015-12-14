@@ -16,6 +16,7 @@
     <ClInclude Include="FibonacciHeap.hpp" />
     <ClInclude Include="MaximaIncreasingSubsequence.hpp" />
     <ClInclude Include="geometry\geomvector.hpp" />
+    <ClInclude Include="geometry\convexhull.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MergeSort.hpp" />
