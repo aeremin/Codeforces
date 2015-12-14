@@ -15,6 +15,7 @@
     <ClInclude Include="DisjointSet.hpp" />
     <ClInclude Include="FibonacciHeap.hpp" />
     <ClInclude Include="MaximaIncreasingSubsequence.hpp" />
+    <ClInclude Include="geometry\geomvector.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MergeSort.hpp" />

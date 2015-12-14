@@ -16,6 +16,7 @@
     <ClCompile Include="DepthFirstSearchTest.cpp" />
     <ClCompile Include="DisjointSetTest.cpp" />
     <ClCompile Include="FibonacciHeapTest.cpp" />
+    <ClCompile Include="geometry\geomvectortest.cpp" />
     <ClCompile Include="GraphHelper.cpp" />
     <ClCompile Include="HasCycleTest.cpp" />
     <ClCompile Include="HeapTest.cpp" />

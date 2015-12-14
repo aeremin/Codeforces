@@ -16,6 +16,7 @@
     <ClInclude Include="DepthFirstSearch.hpp" />
     <ClInclude Include="DisjointSet.hpp" />
     <ClInclude Include="FibonacciHeap.hpp" />
+    <ClInclude Include="geometry\geomvector.hpp" />
     <ClInclude Include="Graph.hpp" />
     <ClInclude Include="Heap.hpp" />
     <ClInclude Include="KnuttMorrisPratt.hpp" />
