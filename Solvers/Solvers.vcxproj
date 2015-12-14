@@ -86,6 +86,7 @@
     <ClInclude Include="581\Solver581D.h" />
     <ClInclude Include="579\Solver579A.h" />
     <ClInclude Include="605\Solver605A.h" />
+    <ClInclude Include="605\Solver605B.h" />
     <ClInclude Include="testutils\ProblemTest.h" />
   </ItemGroup>
   <ItemGroup>
@@ -108,6 +109,7 @@
     <ClCompile Include="581\Solver581D.cpp" />
     <ClCompile Include="579\Solver579A.cpp" />
     <ClCompile Include="605\Solver605A.cpp" />
+    <ClCompile Include="605\Solver605B.cpp" />
     <ClCompile Include="testutils\ProblemTest.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
