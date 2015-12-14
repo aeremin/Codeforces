@@ -2,11 +2,11 @@
 #include <array>
 #include <numeric>
 
-template<typename T, int n>
+template<typename T, size_t n>
 class GeomVector
 {
 public:
-	GeomVector(const std::array<typename T, n>& from) : comps_(from) {}
+	GeomVector(const std::array<T, n>& from) : comps_(from) {}
 
 	T& operator[](size_t ind) { return comps_[ind]; }
 	const T& operator[](size_t ind) const { return comps_[ind]; }
@@ -46,7 +46,7 @@ private:
 };
 
 template<typename T, int n>
-GeomVector<typename T, n> operator+(const GeomVector<typename T, n>& a, const GeomVector<typename T, n>& b)
+GeomVector<T, n> operator+(const GeomVector<T, n>& a, const GeomVector<T, n>& b)
 {
 	auto res = a;
 	res += b;
@@ -54,7 +54,7 @@ GeomVector<typename T, n> operator+(const GeomVector<typename T, n>& a, const Ge
 }
 
 template<typename T, int n>
-GeomVector<typename T, n> operator-(const GeomVector<typename T, n>& a, const GeomVector<typename T, n>& b)
+GeomVector<T, n> operator-(const GeomVector<T, n>& a, const GeomVector<T, n>& b)
 {
 	auto res = a;
 	res -= b;
@@ -62,7 +62,7 @@ GeomVector<typename T, n> operator-(const GeomVector<typename T, n>& a, const Ge
 }
 
 template<typename T, int n>
-GeomVector<typename T, n> operator*(const GeomVector<typename T, n>& a, const typename T& b)
+GeomVector<T, n> operator*(const GeomVector<T, n>& a, const T& b)
 {
 	auto res = a;
 	res *= b;
@@ -70,7 +70,7 @@ GeomVector<typename T, n> operator*(const GeomVector<typename T, n>& a, const ty
 }
 
 template<typename T, int n>
-GeomVector<typename T, n> operator*(const typename T& a, const GeomVector<typename T, n>& b)
+GeomVector<T, n> operator*(const T& a, const GeomVector<T, n>& b)
 {
 	auto res = b;
 	res *= a;
@@ -78,7 +78,7 @@ GeomVector<typename T, n> operator*(const typename T& a, const GeomVector<typena
 }
 
 template<typename T, int n>
-bool operator<(const GeomVector<typename T, n>& a, const GeomVector<typename T, n>& b)
+bool operator<(const GeomVector<T, n>& a, const GeomVector<T, n>& b)
 {
 	for (int i = 0; i < n; ++i)
 	{
@@ -95,7 +95,7 @@ using GeomVector2 = GeomVector<T, 2>;
 using GeomVector2I = GeomVector2<int>;
 
 template<typename T>
-T det(const GeomVector2<typename T>& a, const GeomVector2<typename T>& b)
+T det(const GeomVector2<T>& a, const GeomVector2<T>& b)
 {
 	return a[0] * b[1] - a[1] * b[0];
 }
