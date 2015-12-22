@@ -14,3 +14,13 @@
 #include <functional>
 
 using namespace std;
+
+#ifdef ONLINE_JUDGE
+int main()
+#else
+int main2()
+#endif
+{
+	//Solver590A.run();
+	return 0;
+}
