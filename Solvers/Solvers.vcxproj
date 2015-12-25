@@ -109,6 +109,7 @@
     <ClCompile Include="612\Solver612B.cpp" />
     <ClCompile Include="612\Solver612C.cpp" />
     <ClCompile Include="612\Solver612D.cpp" />
+    <ClCompile Include="612\Solver612E.cpp" />
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="487\Solver487D.cpp" />
     <ClCompile Include="580\Solver580A.cpp" />

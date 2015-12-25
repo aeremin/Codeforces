@@ -53,5 +53,6 @@
     <ClCompile Include="612\Solver612B.cpp" />
     <ClCompile Include="612\Solver612D.cpp" />
     <ClCompile Include="612\Solver612C.cpp" />
+    <ClCompile Include="612\Solver612E.cpp" />
   </ItemGroup>
 </Project>
