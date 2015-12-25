@@ -49,5 +49,9 @@
     <ClCompile Include="609\Solver609A.cpp" />
     <ClCompile Include="609\Solver609B.cpp" />
     <ClCompile Include="609\Solver609C.cpp" />
+    <ClCompile Include="612\Solver612A.cpp" />
+    <ClCompile Include="612\Solver612B.cpp" />
+    <ClCompile Include="612\Solver612D.cpp" />
+    <ClCompile Include="612\Solver612C.cpp" />
   </ItemGroup>
 </Project>
