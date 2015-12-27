@@ -36,28 +36,28 @@ void Solver612D::run()
 		if (points2.back() != points[i]) points2.push_back(points[i]);
 
 
-	vector<pair<int, int>> result;
+	vector<int> result;
 	int64_t currCoverage = 0;
 	for (auto p : points2)
 	{
 		if (startpoints[p] != 0)
 		{
 			currCoverage += startpoints[p];
-			if (currCoverage >= k && (result.empty() || result.back().second != -1))
-				result.push_back({ p, -1 });
+			if (currCoverage >= k && result.size() % 2 == 0)
+				result.push_back(p);
 		}
 
 		if (endpoints[p] != 0)
 		{
 			currCoverage -= endpoints[p];
-			if (currCoverage < k && !result.empty() && result.back().second == -1)
-				result.back().second = p;
+            if (currCoverage < k && result.size() % 2 == 1)
+                result.push_back(p);
 		}
 	}
 
-	cout << result.size() << endl;
-	for (auto p : result)
-		cout << p.first << " " << p.second << "\n";
+	cout << result.size() / 2 << endl;
+    for (int i = 0; i < result.size() / 2; ++i)
+        cout << result[2 * i] << " " << result[2 * i + 1] << "\n";
 };
 
 class Solver612DTest : public ProblemTest {};
@@ -81,4 +81,11 @@ TEST_F(Solver612DTest, Example3)
 	setInput("1 1 6 6");
 	Solver612D().run();
 	EXPECT_EQ("1\n6 6\n", getOutput());
+}
+
+TEST_F(Solver612DTest, Example4)
+{
+    setInput("2 1    -3 -1   1 2");
+    Solver612D().run();
+    EXPECT_EQ("2\n-3 -1\n1 2\n", getOutput());
 }
