@@ -44,7 +44,6 @@
     <ClCompile Include="605\Solver605A.cpp" />
     <ClCompile Include="605\Solver605B.cpp" />
     <ClCompile Include="605\Solver605C.cpp" />
-    <ClCompile Include="Solver603A.cpp" />
     <ClCompile Include="590\Solver590A.cpp" />
     <ClCompile Include="590\Solver590C.cpp" />
     <ClCompile Include="590\Solver590B.cpp" />
