@@ -27,6 +27,7 @@
     <ClInclude Include="SegmentTree.hpp" />
     <ClInclude Include="SingleLinkedList.hpp" />
     <ClInclude Include="SlidingWindowMinFinder.h" />
+    <ClInclude Include="TreePreprocessor.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MergeSort.hpp">

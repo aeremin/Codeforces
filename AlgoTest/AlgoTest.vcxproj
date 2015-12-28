@@ -29,6 +29,7 @@
     <ClCompile Include="SegmentTreeTest.cpp" />
     <ClCompile Include="SingleLinkedListTest.cpp" />
     <ClCompile Include="SlidingWindowMinFinderTest.cpp" />
+    <ClCompile Include="TreePreprocessorTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphHelper.h" />

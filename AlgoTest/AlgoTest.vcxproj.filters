@@ -19,6 +19,7 @@
     <ClCompile Include="SlidingWindowMinFinderTest.cpp" />
     <ClCompile Include="geometry\geomvectortest.cpp" />
     <ClCompile Include="geometry\ConvexHullTest.cpp" />
+    <ClCompile Include="TreePreprocessorTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphHelper.h" />
