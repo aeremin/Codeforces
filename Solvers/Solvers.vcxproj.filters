@@ -59,5 +59,6 @@
     <ClCompile Include="603\Solver603A.cpp" />
     <ClCompile Include="603\Solver603B.cpp" />
     <ClCompile Include="603\Solver603C.cpp" />
+    <ClCompile Include="587\Solver87C.cpp" />
   </ItemGroup>
 </Project>

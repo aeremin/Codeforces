@@ -101,6 +101,7 @@
     <ClCompile Include="578\Solver578A.cpp" />
     <ClCompile Include="578\Solver578B.cpp" />
     <ClCompile Include="579\Solver579B.cpp" />
+    <ClCompile Include="587\Solver87C.cpp" />
     <ClCompile Include="590\Solver590A.cpp" />
     <ClCompile Include="590\Solver590B.cpp" />
     <ClCompile Include="590\Solver590C.cpp" />
