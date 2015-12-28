@@ -3,8 +3,8 @@
 
 namespace GraphHelper
 {
-    Graph createLinearGraph(int nVertices);
+    SimpleGraph createLinearGraph(int nVertices);
 
-    Graph createSimpleCycleGraph(int nVertices);
+    SimpleGraph createSimpleCycleGraph( int nVertices );
 };
 

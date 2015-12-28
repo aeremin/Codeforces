@@ -12,7 +12,7 @@ void Solver580C::run()
     for (auto& h : hasCat)
         cin >> h;
 
-    Graph g;
+    SimpleGraph g(nVertices);
     for (size_t i = 0; i < nVertices - 1; ++i)
     {
         size_t a, b;

@@ -4,7 +4,7 @@
 
 TEST(DepthFirstSearchTest, WorksOnSingleVertex)
 {
-    Graph graph(1);
+    SimpleGraph graph(1);
     DepthFirstSearcher searcher(graph);
     int verticesCount = 0;
     auto increaseVerticesCount = [&](int)
@@ -31,7 +31,7 @@ TEST(DepthFirstSearchTest, WorksOnSingleVertex)
 TEST(DepthFirstSearchTest, WorksOnLinearGraph)
 {
     int nVertices = 10;
-    Graph graph = GraphHelper::createLinearGraph(nVertices);
+    auto graph = GraphHelper::createLinearGraph(nVertices);
 
     DepthFirstSearcher searcher(graph);
     int verticesCount = 0;
@@ -61,7 +61,7 @@ TEST(DepthFirstSearchTest, WorksOnLinearGraph)
 TEST(DepthFirstSearchTest, WorksOnSimpleCycle)
 {
     int nVertices = 20;
-    Graph graph = GraphHelper::createSimpleCycleGraph(nVertices);
+    auto graph = GraphHelper::createSimpleCycleGraph(nVertices);
 
     DepthFirstSearcher searcher(graph);
     int verticesCount = 0;
@@ -103,7 +103,7 @@ TEST(DepthFirstSearchTest, WorksOnSimpleCycle)
 TEST(DepthFirstSearchTest, WorksOnConcreteCase)
 {
 
-    Graph g;
+    SimpleGraph g(6);
     g.addEdge(0, 1);
     g.addEdge(0, 5);
     g.addEdge(0, 2);

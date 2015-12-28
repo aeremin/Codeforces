@@ -11,7 +11,7 @@ using std::fill;
 class ConnectedComponentsDecomposer
 {
 public:
-    explicit ConnectedComponentsDecomposer(const Graph& g) : graph_(g), searcher_(g) {}
+    explicit ConnectedComponentsDecomposer(const SimpleGraph& g) : graph_(g), searcher_(g) {}
 
     void run()
     {
@@ -49,7 +49,7 @@ public:
     }
 
 private:
-    const Graph& graph_;
+    const SimpleGraph& graph_;
     DepthFirstSearcher searcher_;
 
     vector<int> vertexToComponent_;

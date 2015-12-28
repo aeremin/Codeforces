@@ -3,28 +3,33 @@
 #include <utility>
 #include <algorithm>
 
-using std::vector;
-using std::max;
+using namespace std;
 
-// Undirected graph with unweighted edges
+template<class PerEdgeData, class PerVertexData>
 class Graph
 {
 
 public:
-    Graph(int nVertices = 0) : edges_(nVertices) {};
+    Graph( int nVertices, vector<PerVertexData> vertexData = {} )
+        : 
+        edges_(nVertices),
+        vertexData_(move(vertexData))
+    {};
 
-    void addEdge(size_t from, size_t to)
+    void addEdge( size_t from, size_t to, PerEdgeData data = {} )
     {
-        if (max(from, to) >= edges_.size())
-            edges_.resize(max(from, to) + 1);
-       
-        edges_[from].push_back(to);
-        edges_[to].push_back(from);
+        edges_[from].push_back( { to, data } );
+        edges_[to].push_back( { from, data } );
     }
 
-    const vector<size_t>& vertexNeighbors(size_t vInd) const
+    const vector<pair<size_t, PerEdgeData>>& vertexNeighbors(size_t vInd) const
     {
         return edges_[vInd];
+    }
+
+    const PerVertexData& getVertexData(int vInd) const
+    {
+        return vertexData_[vInd];
     }
 
     size_t vertexCount() const
@@ -33,5 +38,10 @@ public:
     }
 
 private:
-    vector<vector<size_t>> edges_;
+    vector<vector<pair<size_t, PerEdgeData>>> edges_;
+    vector<PerVertexData> vertexData_;
 };
+
+struct EmptyStruct {};
+
+using SimpleGraph = Graph<EmptyStruct, EmptyStruct>;

@@ -5,7 +5,7 @@
 TEST(ConnectedComponentsDecomposerTest, WorksOnSimpleCycle)
 {
     const int nVertices = 10;
-    Graph g = GraphHelper::createSimpleCycleGraph(nVertices);
+    auto g = GraphHelper::createSimpleCycleGraph(nVertices);
     ConnectedComponentsDecomposer decomposer(g);
     decomposer.run();
 
@@ -22,7 +22,7 @@ TEST(ConnectedComponentsDecomposerTest, WorksOnConcreteTwoComponentsGraph)
     // 0 - 1  2
     //  \ /   |
     //   3    4
-    Graph g;
+    SimpleGraph g( 5 );
     g.addEdge(0, 1);
     g.addEdge(3, 1);
     g.addEdge(3, 0);

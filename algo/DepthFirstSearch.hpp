@@ -20,7 +20,7 @@ public:
     typedef function<bool(int)> VertexCallback;
 
 public:
-    DepthFirstSearcher(const Graph& graph) : graph_(graph),
+    DepthFirstSearcher(const SimpleGraph& graph) : graph_(graph),
         edgeProcessCallback_( [](int, int, bool)->bool {return false; } ),
         vertexPreprocessCallback_( [](int)->bool {return false; } ),
         vertexPostprocessCallback_( [](int)->bool {return false; } )
@@ -83,8 +83,9 @@ private:
             return true;
 
         bool stop = false;
-        for (auto& neighbor : graph_.vertexNeighbors(vertex))
+        for (auto& edge : graph_.vertexNeighbors(vertex))
         {
+            auto neighbor = edge.first;
             if (neighbor == parent_[vertex])
                 continue; // Don't want to process same edge twice
             
@@ -106,7 +107,7 @@ private:
     }
 
 private:
-    const Graph& graph_;
+    const SimpleGraph& graph_;
     EdgeCallback edgeProcessCallback_;
     VertexCallback vertexPreprocessCallback_;
     VertexCallback vertexPostprocessCallback_;
@@ -123,7 +124,7 @@ private:
 /////////////////////////////////////////
 
 // Checks only component containing startVertex
-static bool hasCycle(const Graph& graph, vector<int>* cycle = nullptr, int startVertex = 0)
+static bool hasCycle(const SimpleGraph& graph, vector<int>* cycle = nullptr, int startVertex = 0)
 {
     DepthFirstSearcher searcher(graph);
 
