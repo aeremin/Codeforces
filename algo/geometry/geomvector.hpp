@@ -45,7 +45,7 @@ private:
 	std::array<T, n> comps_;
 };
 
-template<typename T, int n>
+template<typename T, size_t n>
 GeomVector<T, n> operator+(const GeomVector<T, n>& a, const GeomVector<T, n>& b)
 {
 	auto res = a;
@@ -53,7 +53,7 @@ GeomVector<T, n> operator+(const GeomVector<T, n>& a, const GeomVector<T, n>& b)
 	return res;
 }
 
-template<typename T, int n>
+template<typename T, size_t n>
 GeomVector<T, n> operator-(const GeomVector<T, n>& a, const GeomVector<T, n>& b)
 {
 	auto res = a;
@@ -61,7 +61,7 @@ GeomVector<T, n> operator-(const GeomVector<T, n>& a, const GeomVector<T, n>& b)
 	return res;
 }
 
-template<typename T, int n>
+template<typename T, size_t n>
 GeomVector<T, n> operator*(const GeomVector<T, n>& a, const T& b)
 {
 	auto res = a;
@@ -69,7 +69,7 @@ GeomVector<T, n> operator*(const GeomVector<T, n>& a, const T& b)
 	return res;
 }
 
-template<typename T, int n>
+template<typename T, size_t n>
 GeomVector<T, n> operator*(const T& a, const GeomVector<T, n>& b)
 {
 	auto res = b;
@@ -77,7 +77,7 @@ GeomVector<T, n> operator*(const T& a, const GeomVector<T, n>& b)
 	return res;
 }
 
-template<typename T, int n>
+template<typename T, size_t n>
 bool operator<(const GeomVector<T, n>& a, const GeomVector<T, n>& b)
 {
 	for (int i = 0; i < n; ++i)
