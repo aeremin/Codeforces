@@ -6,7 +6,12 @@ template<typename T, size_t n>
 class GeomVector
 {
 public:
-	GeomVector(const std::array<T, n>& from) : comps_(from) {}
+    GeomVector()
+    {
+        comps_ = std::array<T, n>{};
+    }
+
+    GeomVector(const std::array<T, n>& from) : comps_(from) {}
 
 	T& operator[](size_t ind) { return comps_[ind]; }
 	const T& operator[](size_t ind) const { return comps_[ind]; }
@@ -89,6 +94,16 @@ bool operator<(const GeomVector<T, n>& a, const GeomVector<T, n>& b)
 	}
 	return false;
 }
+
+template<class T, size_t n>
+T dot(const GeomVector<T, n>& a, const GeomVector<T, n>& b)
+{
+    T res{};
+    for (int i = 0; i < n; ++i)
+        res += a[i] * b[i];
+    return res;
+}
+
 
 template<typename T>
 using GeomVector2 = GeomVector<T, 2>;
