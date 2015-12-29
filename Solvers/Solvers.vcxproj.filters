@@ -17,9 +17,7 @@
     <ClInclude Include="579\Solver579B.h" />
     <ClInclude Include="578\Solver578A.h" />
     <ClInclude Include="578\Solver578B.h" />
-    <ClInclude Include="605\Solver605A.h" />
     <ClInclude Include="605\Solver605B.h" />
-    <ClInclude Include="605\Solver605C.h" />
     <ClInclude Include="603\Solver603A.h" />
     <ClInclude Include="603\Solver603B.h" />
     <ClInclude Include="603\Solver603C.h" />

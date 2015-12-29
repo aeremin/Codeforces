@@ -1,6 +1,13 @@
 #include "Solvers/pch.h"
-#include "Solver605A.h"
 #include "algo/MaximaIncreasingSubsequence.hpp"
+#include "algo/geometry/geomvector.hpp"
+#include "algo/geometry/convexhull.hpp"
+
+class Solver605A
+{
+public:
+    void run();
+};
 
 void Solver605A::run()
 {
