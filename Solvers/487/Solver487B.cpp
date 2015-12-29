@@ -1,5 +1,5 @@
 #include <Solvers/pch.h>
-#include <algo/SlidingWindowMinFinder.h>
+#include "algo/SlidingWindowMinFinder.h"
 #include "Solver487B.h"
 using namespace std;
 
