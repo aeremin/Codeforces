@@ -96,6 +96,9 @@
   <ItemGroup>
     <ClCompile Include="468\Solver468A.cpp" />
     <ClCompile Include="468\Solver468B.cpp" />
+    <ClCompile Include="476\Solver476E.cpp" />
+    <ClCompile Include="476\Solver476D.cpp" />
+    <ClCompile Include="476\Solver476C.cpp" />
     <ClCompile Include="487\Solver487B.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
