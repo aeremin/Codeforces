@@ -4,7 +4,7 @@
 using std::string;
 using std::vector;
 
-vector<int> calc_prefix_function(const string& s)
+inline vector<int> calc_prefix_function(const string& s)
 {
 	vector<int> pi;
 	if (s.empty())
