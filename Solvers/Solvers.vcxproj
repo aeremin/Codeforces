@@ -141,6 +141,7 @@
     <ClCompile Include="605\Solver605C.cpp" />
     <ClCompile Include="603\Solver603A.cpp" />
     <ClCompile Include="603\Solver603C.cpp" />
+    <ClCompile Include="SolverStub.cpp" />
     <ClCompile Include="testutils\ProblemTest.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

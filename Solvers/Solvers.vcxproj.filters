@@ -70,5 +70,6 @@
     <ClCompile Include="484\Solver484B.cpp" />
     <ClCompile Include="484\Solver484C.cpp" />
     <ClCompile Include="484\Solver484D.cpp" />
+    <ClCompile Include="SolverStub.cpp" />
   </ItemGroup>
 </Project>
