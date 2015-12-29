@@ -95,8 +95,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CodeFuser.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="testifcompiles.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CodeFuser.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

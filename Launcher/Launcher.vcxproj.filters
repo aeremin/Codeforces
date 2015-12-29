@@ -3,5 +3,9 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="testifcompiles.cpp" />
+    <ClCompile Include="CodeFuser.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CodeFuser.h" />
   </ItemGroup>
 </Project>
