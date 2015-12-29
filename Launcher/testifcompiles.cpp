@@ -15,12 +15,27 @@
 
 using namespace std;
 
+namespace main
+{
+
+class DummySolver
+{
+public:
+    void run() {}
+};
+
+
+
+}
+using CurrentSolver = main::DummySolver;
+
 #ifdef ONLINE_JUDGE
 int main()
 #else
 int main2()
 #endif
 {
-	//Solver590A.run();
+    ios::sync_with_stdio( false );
+    CurrentSolver().run();
 	return 0;
 }
