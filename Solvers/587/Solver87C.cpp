@@ -33,8 +33,8 @@ struct MinPeopleOnPath
 
 MinPeopleOnPath concatenate( const MinPeopleOnPath& a, const MinPeopleOnPath& b )
 {
-    MinPeopleOnPath result();
     for ( int i = 0, j = 0; ( i < a.people.size() || j < b.people.size() ) && result.people.size() < 10; )
+    MinPeopleOnPath result;
     {
         auto aVal = i < a.people.size() ? a.people[i] : numeric_limits<int>::max();
         auto bVal = j < b.people.size() ? b.people[j] : numeric_limits<int>::max();
