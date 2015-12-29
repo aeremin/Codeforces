@@ -1,82 +1,73 @@
-#include <iostream>
-#include <vector>
-#include <deque>
-#include <cassert>
-#include <string>
-#include <algorithm>
-#include <set>
-#include <cstdint>
-#include <limits>
+#include <Solvers/pch.h>
 
 using namespace std;
 
-vector<int64_t> primes;
-vector<vector<int>> powers;
-vector<int64_t> numbers;
-
-
-vector <vector<int>> g;
-vector<int> mt;
-vector<char> used;
-
-bool try_kuhn(int v) {
-    if (used[v])  return false;
-    used[v] = true;
-    for (size_t i = 0; i<g[v].size(); ++i) {
-        int to = g[v][i];
-        if (mt[to] == -1 || try_kuhn(mt[to])) {
-            mt[to] = v;
-            return true;
-        }
-    }
-    return false;
-}
-
-
-void extractprimes(int index)
+class Solver498C
 {
-    auto a = numbers[index];
-    powers.push_back(vector<int>(primes.size(), 0));
-    for (int i = 0; i < primes.size(); ++i)
-    {
-        int p = primes[i];
-        int deg = 0;
-        while (a % p == 0)
-        {
-            a /= p;
-            powers[index][i]++;
-        }
-    }
+public:
+    void run();
 
-    for (int64_t d = 2; d * d <= a; ++d)
-    {
-        if (a % d == 0)
-        {
-            primes.push_back(d);
-            a = a / d;
-            powers[index].push_back(1);
-            while (a % d == 0)
-            {
-                a = a / d;
-                powers[index].back()++;
+    vector<int64_t> primes;
+    vector<vector<int>> powers;
+    vector<int64_t> numbers;
+    vector <vector<int>> g;
+    vector<int> mt;
+    vector<char> used;
+
+    bool try_kuhn(int v) {
+        if (used[v])  return false;
+        used[v] = true;
+        for (size_t i = 0; i < g[v].size(); ++i) {
+            int to = g[v][i];
+            if (mt[to] == -1 || try_kuhn(mt[to])) {
+                mt[to] = v;
+                return true;
             }
         }
+        return false;
     }
 
-    if (a > 1)
+
+    void extractprimes(int index)
     {
-        primes.push_back(a);
-        powers[index].push_back(1);
+        auto a = numbers[index];
+        powers.push_back(vector<int>(primes.size(), 0));
+        for (int i = 0; i < primes.size(); ++i)
+        {
+            int p = primes[i];
+            int deg = 0;
+            while (a % p == 0)
+            {
+                a /= p;
+                powers[index][i]++;
+            }
+        }
+
+        for (int64_t d = 2; d * d <= a; ++d)
+        {
+            if (a % d == 0)
+            {
+                primes.push_back(d);
+                a = a / d;
+                powers[index].push_back(1);
+                while (a % d == 0)
+                {
+                    a = a / d;
+                    powers[index].back()++;
+                }
+            }
+        }
+
+        if (a > 1)
+        {
+            primes.push_back(a);
+            powers[index].push_back(1);
+        }
     }
-}
+};
 
-int main()
+void Solver498C::run()
 {
-#ifndef ONLINE_JUDGE  
-    freopen("input.txt", "rt", stdin);
-    freopen("output.txt", "wt", stdout);
-#endif
-
     int n, m;
     cin >> n >> m;
     numbers.resize(n);
@@ -104,7 +95,7 @@ int main()
         g.clear();
         mt.clear();
         used.clear();
-        
+
         vector<int> startDecomposedL;
         vector<int> endDecomposedL;
         int totalL = 0;
@@ -128,7 +119,7 @@ int main()
         }
 
         g.resize(totalL);
-        
+
         for (auto edge : edges)
         {
             for (int iDecL = startDecomposedL[edge.first / 2]; iDecL < endDecomposedL[edge.first / 2]; ++iDecL)
@@ -144,6 +135,34 @@ int main()
     }
 
     cout << result;
+}
 
-    return 0;
+class Solver498CTest : public ProblemTest
+{
+};
+
+TEST_F( Solver498CTest, Example1 )
+{
+    setInput(
+R"(
+3 2
+8 3 8
+1 2
+2 3
+)");
+    Solver498C().run();
+    EXPECT_EQ("0", getOutput());
+}
+
+TEST_F(Solver498CTest, Example2)
+{
+    setInput(
+R"(
+3 2
+8 12 8
+1 2
+2 3
+)");
+    Solver498C().run();
+    EXPECT_EQ("2", getOutput());
 }
