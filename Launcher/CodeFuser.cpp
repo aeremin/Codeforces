@@ -26,6 +26,7 @@ R"(#include <vector>
 #include <functional>
 #include <array>
 #include <iomanip>
+#include <cassert>
 
 using namespace std;
 )";
