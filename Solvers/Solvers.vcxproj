@@ -140,6 +140,14 @@
     <ClCompile Include="612\Solver612D.cpp" />
     <ClCompile Include="612\Solver612E.cpp" />
     <ClCompile Include="603\Solver603B.cpp" />
+    <ClCompile Include="613\Solver613A.cpp" />
+    <ClCompile Include="613\Solver613B.cpp" />
+    <ClCompile Include="613\Solver613C.cpp" />
+    <ClCompile Include="613\Solver613D.cpp" />
+    <ClCompile Include="613\Solver613E.cpp" />
+    <ClCompile Include="613\Solver613F.cpp" />
+    <ClCompile Include="613\Solver613G.cpp" />
+    <ClCompile Include="613\Solver613H.cpp" />
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="487\Solver487D.cpp" />
     <ClCompile Include="580\Solver580A.cpp" />
