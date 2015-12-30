@@ -19,6 +19,7 @@
     <ClCompile Include="geometry\ConvexHullTest.cpp" />
     <ClCompile Include="geometry\geomvectortest.cpp" />
     <ClCompile Include="GraphHelper.cpp" />
+    <ClCompile Include="GreatestCommonDivisorTest.cpp" />
     <ClCompile Include="HasCycleTest.cpp" />
     <ClCompile Include="HeapTest.cpp" />
     <ClCompile Include="KnuttMorrisPrattTest.cpp" />

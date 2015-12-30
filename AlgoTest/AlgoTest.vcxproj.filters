@@ -21,6 +21,7 @@
     <ClCompile Include="geometry\ConvexHullTest.cpp" />
     <ClCompile Include="TreePreprocessorTest.cpp" />
     <ClCompile Include="ResidueTest.cpp" />
+    <ClCompile Include="GreatestCommonDivisorTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphHelper.h" />
