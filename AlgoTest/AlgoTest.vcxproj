@@ -26,6 +26,7 @@
     <ClCompile Include="MergeSortTest.cpp" />
     <ClCompile Include="QuickPowerTest.cpp" />
     <ClCompile Include="QuickSortTest.cpp" />
+    <ClCompile Include="ResidueTest.cpp" />
     <ClCompile Include="SegmentTreeTest.cpp" />
     <ClCompile Include="SingleLinkedListTest.cpp" />
     <ClCompile Include="SlidingWindowMinFinderTest.cpp" />

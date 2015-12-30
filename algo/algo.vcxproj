@@ -24,6 +24,7 @@
     <ClInclude Include="MaximaIncreasingSubsequence.hpp" />
     <ClInclude Include="QuickPower.hpp" />
     <ClInclude Include="QuickSort.hpp" />
+    <ClInclude Include="Residue.hpp" />
     <ClInclude Include="SegmentTree.hpp" />
     <ClInclude Include="SingleLinkedList.hpp" />
     <ClInclude Include="SlidingWindowMinFinder.h" />

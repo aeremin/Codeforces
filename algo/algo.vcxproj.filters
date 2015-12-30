@@ -18,6 +18,7 @@
     <ClInclude Include="geometry\geomvector.hpp" />
     <ClInclude Include="geometry\convexhull.hpp" />
     <ClInclude Include="TreePreprocessor.hpp" />
+    <ClInclude Include="Residue.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MergeSort.hpp" />
