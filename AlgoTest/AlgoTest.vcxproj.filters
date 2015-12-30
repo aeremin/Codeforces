@@ -22,6 +22,7 @@
     <ClCompile Include="TreePreprocessorTest.cpp" />
     <ClCompile Include="ResidueTest.cpp" />
     <ClCompile Include="GreatestCommonDivisorTest.cpp" />
+    <ClCompile Include="PrimesTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphHelper.h" />

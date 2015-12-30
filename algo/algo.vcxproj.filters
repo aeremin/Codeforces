@@ -21,6 +21,7 @@
     <ClInclude Include="Residue.hpp" />
     <ClInclude Include="GreatestCommonDivisor.hpp" />
     <ClInclude Include="Sign.hpp" />
+    <ClInclude Include="Primes.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MergeSort.hpp" />

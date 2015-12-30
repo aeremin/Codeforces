@@ -23,6 +23,7 @@
     <ClInclude Include="Heap.hpp" />
     <ClInclude Include="KnuttMorrisPratt.hpp" />
     <ClInclude Include="MaximaIncreasingSubsequence.hpp" />
+    <ClInclude Include="Primes.hpp" />
     <ClInclude Include="QuickPower.hpp" />
     <ClInclude Include="QuickSort.hpp" />
     <ClInclude Include="Residue.hpp" />
