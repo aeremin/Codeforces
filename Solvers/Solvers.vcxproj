@@ -118,6 +118,10 @@
     <ClCompile Include="498\Solver498B.cpp" />
     <ClCompile Include="498\Solver498C.cpp" />
     <ClCompile Include="498\Solver498D.cpp" />
+    <ClCompile Include="500\Solver500A.cpp" />
+    <ClCompile Include="500\Solver500B.cpp" />
+    <ClCompile Include="500\Solver500C.cpp" />
+    <ClCompile Include="500\Solver500D.cpp" />
     <ClCompile Include="505\Solver505C.cpp" />
     <ClCompile Include="578\Solver578A.cpp" />
     <ClCompile Include="578\Solver578B.cpp" />
