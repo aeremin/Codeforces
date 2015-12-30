@@ -1,5 +1,7 @@
 #pragma once
 #include <cstdint>
+#include <cassert>
+#include "algo/GreatestCommonDivisor.hpp"
 
 template<int64_t MOD>
 class Residue
@@ -23,6 +25,14 @@ public:
     Residue<MOD> operator+=( Residue<MOD> v )    {  return *this = Residue( rep_ + v.rep() );  }
     Residue<MOD> operator-=( Residue<MOD> v )    {  return *this = Residue( rep_ - v.rep() );  }
     Residue<MOD> operator*=( Residue<MOD> v )    {  return *this = Residue( rep_ * v.rep() );  }
+
+    Residue<MOD> inversed() const
+    {
+        int64_t x, y;
+        auto gcd = gcdDecomposition( rep_, MOD, x, y );
+        assert( gcd == 1 );
+        return Residue( x );
+    }
 
     int64_t rep() const { return rep_; }
 

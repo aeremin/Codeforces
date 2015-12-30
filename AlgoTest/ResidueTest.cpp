@@ -86,6 +86,20 @@ TEST( ResidueTest, CanDecrement )
     EXPECT_EQ( 11, a.rep() );
 }
 
+TEST( ResidueTest, CanInverseAnyNonZeroResidueByPrimeModulo )
+{
+    const uint64_t prime = 867701;
+    using PrimeResidue = Residue<prime>;
+    for ( uint64_t i = 1; i < prime; ++i )
+    {
+        PrimeResidue r( i );
+        PrimeResidue inv = r.inversed();
+        PrimeResidue invTwice = inv.inversed();
+        PrimeResidue product = r * inv;
+        EXPECT_EQ( PrimeResidue( 1 ), product );
+        EXPECT_EQ( r, invTwice );
+    }
+}
 
 
 TEST( ResidueTest, CanOutputToStream )
