@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include "algo/Residue.hpp"
+#include "algo/QuickPower.hpp"
 
 using TestResidue = Residue<13>;
 
@@ -108,4 +109,16 @@ TEST( ResidueTest, CanOutputToStream )
     std::stringstream ss;
     ss << a;
     EXPECT_EQ( "1", ss.str() );
+}
+
+TEST( ResidueTest, FermatTheorem )
+{
+    const uint64_t prime = 867701;
+    using PrimeResidue = Residue<prime>;
+    for ( uint64_t i = 1; i < prime; ++i )
+    {
+        PrimeResidue r( i );
+        auto res = quickPower( r, prime - 1 );
+        EXPECT_EQ( PrimeResidue( 1 ), res );
+    }
 }
