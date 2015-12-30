@@ -26,6 +26,7 @@
     <ClInclude Include="QuickSort.hpp" />
     <ClInclude Include="Residue.hpp" />
     <ClInclude Include="SegmentTree.hpp" />
+    <ClInclude Include="Sign.hpp" />
     <ClInclude Include="SingleLinkedList.hpp" />
     <ClInclude Include="SlidingWindowMinFinder.h" />
     <ClInclude Include="TreePreprocessor.hpp" />

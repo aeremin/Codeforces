@@ -1,4 +1,5 @@
 #include <Solvers/pch.h>
+#include "algo/Sign.hpp"
 
 using namespace std;
 
@@ -6,11 +7,6 @@ class Solver498A
 {
 public:
     void run();
-
-    int64_t sgn(int64_t x)
-    {
-        return x > 0 ? 1 : -1;
-    }
 };
 
 void Solver498A::run()
