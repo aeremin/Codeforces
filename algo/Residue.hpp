@@ -13,6 +13,8 @@ public:
         rep_ = remainder;
     }
 
+    bool operator==( Residue<MOD> other ) const { return rep_ == other.rep_; }
+    
     Residue<MOD> operator++( int )    {  return *this = Residue( rep_ + 1 );  }
     Residue<MOD> operator++( )    {  return *this = Residue( rep_ + 1 );  }
     Residue<MOD> operator--( int )    {  return *this = Residue( rep_ - 1 );  }
