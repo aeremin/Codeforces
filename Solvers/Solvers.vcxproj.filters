@@ -86,13 +86,11 @@
     <ClCompile Include="500\Solver500B.cpp" />
     <ClCompile Include="500\Solver500C.cpp" />
     <ClCompile Include="500\Solver500D.cpp" />
-    <ClCompile Include="613\Solver613A.cpp" />
-    <ClCompile Include="613\Solver613B.cpp" />
-    <ClCompile Include="613\Solver613C.cpp" />
-    <ClCompile Include="613\Solver613D.cpp" />
-    <ClCompile Include="613\Solver613E.cpp" />
-    <ClCompile Include="613\Solver613F.cpp" />
-    <ClCompile Include="613\Solver613G.cpp" />
-    <ClCompile Include="613\Solver613H.cpp" />
+    <ClCompile Include="611\Solver611A.cpp" />
+    <ClCompile Include="611\Solver611B.cpp" />
+    <ClCompile Include="611\Solver611C.cpp" />
+    <ClCompile Include="611\Solver611D.cpp" />
+    <ClCompile Include="611\Solver611E.cpp" />
+    <ClCompile Include="611\Solver611H.cpp" />
   </ItemGroup>
 </Project>
