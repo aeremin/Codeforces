@@ -50,10 +50,6 @@ public:
     }
 };
 
-using CodeforcesResidue = Residue<1000000007>;
-
-
-
 void Solver611D::run()
 {
     int n;

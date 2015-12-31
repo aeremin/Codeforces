@@ -3,8 +3,6 @@
 
 using namespace std;
 
-using CodeforcesResidue = Residue<1000000007>;
-
 class Solver611F
 {
 public:

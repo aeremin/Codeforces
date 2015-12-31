@@ -60,3 +60,5 @@ Residue<MOD> operator*( Residue<MOD> a, int64_t b ) { return a *= b; }
 
 template<int64_t MOD>
 std::ostream& operator<<( std::ostream& outStream, Residue<MOD> a ) {return outStream << a.rep();}
+
+using CodeforcesResidue = Residue<1000000007>;
