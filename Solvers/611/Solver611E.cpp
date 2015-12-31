@@ -20,7 +20,7 @@ void Solver611E::run()
     auto c = fighters[2];
     vector<int> sums = { a, b, c, a + b, b + c, a + c, a + b + c };
     sort(begin(sums), end(sums));
-    vector<int> badGuyLevelCount(8);
+    vector<int> badGuyLevelCount(8, 0);
     for (int i = 0; i < n; ++i)
     {
         int f;
@@ -46,8 +46,8 @@ void Solver611E::run()
         badGuyLevelCount[1] -= badGuyLevelCount[4];
     else
     {
-        badGuyLevelCount[1] = 0;
         badGuyLevelCount[0] = max(0, badGuyLevelCount[0] - (badGuyLevelCount[4] - badGuyLevelCount[1]));
+        badGuyLevelCount[1] = 0;
     }
 
     if (a + b > c)
@@ -57,80 +57,27 @@ void Solver611E::run()
             badGuyLevelCount[2] -= badGuyLevelCount[3];
         else if (badGuyLevelCount[1] + badGuyLevelCount[2] >= badGuyLevelCount[3])
         {
-            badGuyLevelCount[2] = 0;
             badGuyLevelCount[1] -= (badGuyLevelCount[3] - badGuyLevelCount[2]);
+            badGuyLevelCount[2] = 0;
         }
         else
         {
+            badGuyLevelCount[0] = max(0, badGuyLevelCount[0] - (badGuyLevelCount[3] - badGuyLevelCount[1] - badGuyLevelCount[2]));
             badGuyLevelCount[2] = 0;
             badGuyLevelCount[1] = 0;
-            badGuyLevelCount[0] = max(0, badGuyLevelCount[0] - (badGuyLevelCount[3] - badGuyLevelCount[1] - badGuyLevelCount[2]));
         }
 
-        while (badGuyLevelCount[0] + badGuyLevelCount[1] + badGuyLevelCount[2] > 0)
-        {
-            ans++;
-            if (badGuyLevelCount[0] == 0 && badGuyLevelCount[1] == 0)
-            {
-                badGuyLevelCount[2] = max(0, badGuyLevelCount[2] - 2);
-                continue;
-            }
-
-            badGuyLevelCount[0] = max(0, badGuyLevelCount[0] - 1);
-            if (badGuyLevelCount[2] == 0 && badGuyLevelCount[1] == 0)
-                badGuyLevelCount[0] = max(0, badGuyLevelCount[0] - 1);
-            else if (badGuyLevelCount[2] == 0)
-                badGuyLevelCount[1] = max(0, badGuyLevelCount[1] - 1);
-            else
-                badGuyLevelCount[2] = max(0, badGuyLevelCount[2] - 1);
-
-            if (badGuyLevelCount[1] == 0)
-                badGuyLevelCount[0] = max(0, badGuyLevelCount[0] - 1);
-            else
-                badGuyLevelCount[1] = max(0, badGuyLevelCount[1] - 1);
-        }
+        ans += max({
+            (badGuyLevelCount[1] + badGuyLevelCount[2] + 1) / 2,
+            (badGuyLevelCount[0] + badGuyLevelCount[1] + 2 * badGuyLevelCount[2] + 3) / 4,
+            (badGuyLevelCount[0] + badGuyLevelCount[1] + badGuyLevelCount[2] + 2) / 3 });
     }
     else
     {
-        for (int i = 0; i < badGuyLevelCount[3]; ++i)
-        {
-            ans++;
-            if (badGuyLevelCount[0] == 0 && badGuyLevelCount[1] == 0)
-            {
-                badGuyLevelCount[2] = max(0, badGuyLevelCount[2] - 1);
-                continue;
-            }
-
-            badGuyLevelCount[0] = max(0, badGuyLevelCount[0] - 1);
-
-            if (badGuyLevelCount[1] == 0)
-                badGuyLevelCount[0] = max(0, badGuyLevelCount[0] - 1);
-            else
-                badGuyLevelCount[1] = max(0, badGuyLevelCount[1] - 1);
-        }
-
-        while (badGuyLevelCount[0] + badGuyLevelCount[1] + badGuyLevelCount[2] > 0)
-        {
-            ans++;
-            if (badGuyLevelCount[0] == 0 && badGuyLevelCount[1] == 0)
-            {
-                badGuyLevelCount[2] = max(0, badGuyLevelCount[2] - 2);
-                continue;
-            }
-
-            badGuyLevelCount[0] = max(0, badGuyLevelCount[0] - 1);
-            if (badGuyLevelCount[2] == 0 && badGuyLevelCount[1] == 0)
-                badGuyLevelCount[0] = max(0, badGuyLevelCount[0] - 1);
-            else if (badGuyLevelCount[2] == 0)
-                badGuyLevelCount[1] = max(0, badGuyLevelCount[1] - 1);
-            else
-                badGuyLevelCount[2] = max(0, badGuyLevelCount[2] - 1);
-
-            if (badGuyLevelCount[1] == 0)
-                badGuyLevelCount[0] = max(0, badGuyLevelCount[0] - 1);
-            else
-                badGuyLevelCount[1] = max(0, badGuyLevelCount[1] - 1);
-        }
+        ans += max({ badGuyLevelCount[3],
+            (badGuyLevelCount[1] + badGuyLevelCount[2] + badGuyLevelCount[3] + 1) / 2,
+            (badGuyLevelCount[0] + badGuyLevelCount[1] + 2 * badGuyLevelCount[2] + 2 * badGuyLevelCount[3] + 3) / 4,
+            (badGuyLevelCount[0] + badGuyLevelCount[1] + badGuyLevelCount[2] + badGuyLevelCount[3] + 2) / 3 });
     }
 
     cout << ans;
