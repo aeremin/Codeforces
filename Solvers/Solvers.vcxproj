@@ -139,6 +139,7 @@
     <ClCompile Include="611\Solver611C.cpp" />
     <ClCompile Include="611\Solver611D.cpp" />
     <ClCompile Include="611\Solver611E.cpp" />
+    <ClCompile Include="611\Solver611F.cpp" />
     <ClCompile Include="611\Solver611H.cpp" />
     <ClCompile Include="612\Solver612A.cpp" />
     <ClCompile Include="612\Solver612B.cpp" />

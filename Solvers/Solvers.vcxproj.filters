@@ -92,5 +92,6 @@
     <ClCompile Include="611\Solver611D.cpp" />
     <ClCompile Include="611\Solver611E.cpp" />
     <ClCompile Include="611\Solver611H.cpp" />
+    <ClCompile Include="611\Solver611F.cpp" />
   </ItemGroup>
 </Project>
