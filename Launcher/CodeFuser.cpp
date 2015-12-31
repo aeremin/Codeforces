@@ -54,7 +54,7 @@ void CodeFuser::fuse()
     string fusedFile = filePrefix;
     
     string problemSetName = problemName_.substr( 0, 3 );
-    string problemSolverPath = "../Solvers/" + problemSetName + "/Solver" + problemName_ + ".cpp";
+    string problemSolverPath = "../Solvers/" + problemSetName.substr(0, 1) + "xx/" + problemSetName + "/Solver" + problemName_ + ".cpp";
     stack<ifstream> openedFiles;
     unordered_set<string> alreadyIncluded;
     
