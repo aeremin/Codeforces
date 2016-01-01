@@ -13,30 +13,30 @@ void Solver568B::run()
 {
     size_t n;
     cin >> n;
-    vector<vector<CodeforcesResidue>> equivalenceRelationsCount(n + 1, vector<CodeforcesResidue>(n + 1, 0));
+    vector<vector<CodeforcesResidue64>> equivalenceRelationsCount(n + 1, vector<CodeforcesResidue64>(n + 1, 0));
     equivalenceRelationsCount[0][0] = 1;
     for (int nElements = 1; nElements <= n; ++nElements)
     {
         equivalenceRelationsCount[nElements][1] = 1;
         equivalenceRelationsCount[nElements][nElements] = 1;
-        for (int nEquivClasses = 2; nEquivClasses < nElements; ++nEquivClasses)
-            equivalenceRelationsCount[nElements][nEquivClasses] = equivalenceRelationsCount[nElements - 1][nEquivClasses - 1] * 1 +
+        for (int64_t nEquivClasses = 2; nEquivClasses < nElements; ++nEquivClasses)
+            equivalenceRelationsCount[nElements][nEquivClasses] = equivalenceRelationsCount[nElements - 1][nEquivClasses - 1] +
                                                                   equivalenceRelationsCount[nElements - 1][nEquivClasses] * nEquivClasses;
     }
 
-    vector<CodeforcesResidue> totalEquivalenceRelationsCount(n + 1, 0);
+    vector<CodeforcesResidue64> totalEquivalenceRelationsCount(n + 1, 0);
     for (int nElements = 0; nElements <= n; ++nElements)
-        totalEquivalenceRelationsCount[nElements] = accumulate(begin(equivalenceRelationsCount[nElements]), end(equivalenceRelationsCount[nElements]), CodeforcesResidue(0));
+        totalEquivalenceRelationsCount[nElements] = accumulate(begin(equivalenceRelationsCount[nElements]), end(equivalenceRelationsCount[nElements]), CodeforcesResidue64(0));
 
-    vector<CodeforcesResidue> C_n_ = { 1 };
+    vector<CodeforcesResidue64> C_n_ = { 1 };
     for (int k = 1; k <= n; ++k)
     {
         C_n_.push_back(C_n_.back());
         C_n_.back() *= (n - k + 1);
-        C_n_.back() *= CodeforcesResidue(k).inversed();
+        C_n_.back() *= CodeforcesResidue64(k).inversed();
     }
 
-    CodeforcesResidue ans = 0;
+    CodeforcesResidue64 ans = 0;
     for (int badElements = 1; badElements <= n; ++badElements)
         ans += C_n_[badElements] * totalEquivalenceRelationsCount[n - badElements];
 

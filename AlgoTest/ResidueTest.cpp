@@ -2,7 +2,7 @@
 #include "algo/Residue.hpp"
 #include "algo/QuickPower.hpp"
 
-using TestResidue = Residue<13>;
+using TestResidue = Residue<int, 13>;
 
 TEST( ResidueTest, CanConstructFromInt )
 {
@@ -90,7 +90,7 @@ TEST( ResidueTest, CanDecrement )
 TEST( ResidueTest, CanInverseAnyNonZeroResidueByPrimeModulo )
 {
     const uint64_t prime = 867701;
-    using PrimeResidue = Residue<prime>;
+    using PrimeResidue = Residue<int64_t, prime>;
     for ( uint64_t i = 1; i < prime; ++i )
     {
         PrimeResidue r( i );
@@ -114,7 +114,7 @@ TEST( ResidueTest, CanOutputToStream )
 TEST( ResidueTest, FermatTheorem )
 {
     const uint64_t prime = 867701;
-    using PrimeResidue = Residue<prime>;
+    using PrimeResidue = Residue<int64_t, prime>;
     for ( uint64_t i = 1; i < prime; ++i )
     {
         PrimeResidue r( i );
