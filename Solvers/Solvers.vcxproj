@@ -125,6 +125,7 @@
     <ClCompile Include="5xx\500\Solver500C.cpp" />
     <ClCompile Include="5xx\500\Solver500D.cpp" />
     <ClCompile Include="5xx\505\Solver505C.cpp" />
+    <ClCompile Include="5xx\566\Solver566F.cpp" />
     <ClCompile Include="5xx\568\Solver568B.cpp" />
     <ClCompile Include="5xx\578\Solver578A.cpp" />
     <ClCompile Include="5xx\578\Solver578B.cpp" />
