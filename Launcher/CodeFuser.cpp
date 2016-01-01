@@ -25,6 +25,7 @@ R"(#include <vector>
 #include <cstdint>
 #include <functional>
 #include <array>
+#include <valarray>
 #include <iomanip>
 #include <cassert>
 
