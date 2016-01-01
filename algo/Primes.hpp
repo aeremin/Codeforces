@@ -41,3 +41,29 @@ inline std::vector<uint64_t> generatePrimesUntil( uint64_t upperBound )
 
     return result;
 }
+
+inline std::vector<std::pair<uint64_t, uint64_t>> decomposeToPrimePowers(uint64_t n)
+{
+    std::vector<std::pair<uint64_t, uint64_t>> result;
+    auto tryPrime = [&](uint64_t p)
+    {
+        if (n % p == 0)
+        {
+            result.push_back({ p, 0 });
+            while (n % p == 0)
+            {
+                n /= p;
+                result.back().second++;
+            }
+        }
+    };
+
+    tryPrime(2);
+    for (uint64_t primeCandidate = 3; primeCandidate * primeCandidate <= n; primeCandidate += 2)
+        tryPrime(primeCandidate);
+
+    if (n > 1)
+        result.push_back({ n, 1 });
+
+    return result;
+}

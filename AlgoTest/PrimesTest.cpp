@@ -3,7 +3,7 @@
 
 namespace
 {
-uint64_t cSomeRelativelyBigPrime = 867701;
+const uint64_t cSomeRelativelyBigPrime = 867701;
 }
 
 TEST( PrimesTest, IsPrime )
@@ -34,4 +34,13 @@ TEST( PrimesTest, GeneratePrimesUntilMillion )
 {
     auto primesUpToMillion = generatePrimesUntil( 1000000 );
     EXPECT_EQ( 78498, primesUpToMillion.size() ); // Exact number from the web
+}
+
+TEST(PrimesTest, DecomposeToPrimePowers)
+{
+    auto res = decomposeToPrimePowers(32 * 19 * 19 * cSomeRelativelyBigPrime);
+    EXPECT_EQ(3, res.size());
+    auto p1 = std::pair<uint64_t, uint64_t>(2, 5);                        EXPECT_EQ(p1, res[0]);
+    auto p2 = std::pair<uint64_t, uint64_t>(19, 2);                       EXPECT_EQ(p2, res[1]);
+    auto p3 = std::pair<uint64_t, uint64_t>(cSomeRelativelyBigPrime, 1);  EXPECT_EQ(p3, res[2]);
 }
