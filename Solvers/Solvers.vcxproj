@@ -94,6 +94,7 @@
   <ItemGroup>
     <ClCompile Include="0xx\022\Solver022B.cpp" />
     <ClCompile Include="0xx\071\Solver071C.cpp" />
+    <ClCompile Include="1xx\107\Solver107B.cpp" />
     <ClCompile Include="4xx\417\Solver417A.cpp" />
     <ClCompile Include="4xx\468\Solver468A.cpp" />
     <ClCompile Include="4xx\468\Solver468B.cpp" />
