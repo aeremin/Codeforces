@@ -12,6 +12,7 @@
 #include <string>
 #include <sstream>
 #include <cstdint>
+#include <memory>
 
 #include <gtest/gtest.h>
 

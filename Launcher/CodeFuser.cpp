@@ -28,6 +28,7 @@ R"(#include <vector>
 #include <valarray>
 #include <iomanip>
 #include <cassert>
+#include <memory>
 
 using namespace std;
 )";
