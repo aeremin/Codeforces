@@ -32,6 +32,11 @@ public:
         return vertexData_[vInd];
     }
 
+    void setVertexData(int vInd, const PerVertexData& d)
+    {
+        vertexData_[vInd] = d;
+    }
+
     size_t vertexCount() const
     {
         return edges_.size();
