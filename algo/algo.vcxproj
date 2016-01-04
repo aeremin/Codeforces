@@ -26,6 +26,7 @@
     <ClInclude Include="Primes.hpp" />
     <ClInclude Include="QuickPower.hpp" />
     <ClInclude Include="QuickSort.hpp" />
+    <ClInclude Include="Relax.hpp" />
     <ClInclude Include="Residue.hpp" />
     <ClInclude Include="SegmentTree.hpp" />
     <ClInclude Include="Sign.hpp" />
