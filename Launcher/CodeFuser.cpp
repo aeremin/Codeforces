@@ -12,6 +12,7 @@ namespace
 const char* filePrefix =
 R"(#include <vector>
 #include <deque>
+#include <queue>
 #include <set>
 #include <unordered_set>
 #include <map>

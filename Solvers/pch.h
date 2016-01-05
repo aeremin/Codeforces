@@ -1,5 +1,6 @@
 #include <vector>
 #include <deque>
+#include <queue>
 #include <set>
 #include <valarray>
 #include <unordered_set>
@@ -13,6 +14,7 @@
 #include <sstream>
 #include <cstdint>
 #include <memory>
+#include <functional>
 
 #include <gtest/gtest.h>
 
