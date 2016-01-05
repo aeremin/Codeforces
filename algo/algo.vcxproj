@@ -14,6 +14,7 @@
     <ClInclude Include="BinarySearch.hpp" />
     <ClInclude Include="ConnectedComponentsDecomposer.hpp" />
     <ClInclude Include="DepthFirstSearch.hpp" />
+    <ClInclude Include="Dijkstra.hpp" />
     <ClInclude Include="DisjointSet.hpp" />
     <ClInclude Include="FibonacciHeap.hpp" />
     <ClInclude Include="geometry\convexhull.hpp" />
