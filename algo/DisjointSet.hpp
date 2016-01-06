@@ -11,6 +11,8 @@ public:
     {
         for (int i = 0; i < size; ++i)
             parent_[i] = i;
+
+        componentsCount_ = size;
     }
 
     int rep(int elt)
@@ -42,10 +44,17 @@ public:
             parent_[rep2] = rep1;
             if (rank_[rep1] == rank_[rep2])
                 rank_[rep1]++;
+            --componentsCount_;
         }
+    }
+
+    int getComponentsCount() const
+    {
+        return componentsCount_;
     }
 
 private:
     vector<int> rank_;
     vector<int> parent_;
+    int componentsCount_;
 };
