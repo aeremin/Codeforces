@@ -97,6 +97,7 @@
     <ClCompile Include="0xx\067\Solver067A.cpp" />
     <ClCompile Include="0xx\071\Solver071C.cpp" />
     <ClCompile Include="0xx\074\Solver074B.cpp" />
+    <ClCompile Include="0xx\079\Solver079C.cpp" />
     <ClCompile Include="1xx\107\Solver107B.cpp" />
     <ClCompile Include="1xx\132\Solver132C.cpp" />
     <ClCompile Include="1xx\158\Solver158E.cpp" />
