@@ -90,7 +90,7 @@ private:
 
     int calcHeight_(RandomAccessIterator first, RandomAccessIterator last) const
     {
-        auto length = std::distance(first, last);
+        size_t length = std::distance(first, last);
         int result = 1;
         size_t maxLen = 1;
         while (length > maxLen)
@@ -107,3 +107,10 @@ private:
 
     vector<ValueType> valuesHeap_;
 };
+
+
+template<class RandomAccessIterator, class Function>
+SegmentTree<RandomAccessIterator, Function> makeSegmentTree(RandomAccessIterator first, RandomAccessIterator last, Function f)
+{
+    return SegmentTree<RandomAccessIterator, Function>(first, last, f);
+}
