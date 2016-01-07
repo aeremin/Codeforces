@@ -121,6 +121,7 @@
     <ClCompile Include="4xx\464\Solver464C.cpp" />
     <ClCompile Include="4xx\468\Solver468A.cpp" />
     <ClCompile Include="4xx\468\Solver468B.cpp" />
+    <ClCompile Include="4xx\474\Solver474E.cpp" />
     <ClCompile Include="4xx\476\Solver476E.cpp" />
     <ClCompile Include="4xx\476\Solver476D.cpp" />
     <ClCompile Include="4xx\476\Solver476C.cpp" />
