@@ -155,6 +155,7 @@
     <ClCompile Include="5xx\509\Solver509C.cpp" />
     <ClCompile Include="5xx\524\Solver524B.cpp" />
     <ClCompile Include="5xx\533\Solver533E.cpp" />
+    <ClCompile Include="5xx\552\Solver552E.cpp" />
     <ClCompile Include="5xx\566\Solver566F.cpp" />
     <ClCompile Include="5xx\568\Solver568B.cpp" />
     <ClCompile Include="5xx\571\Solver571B.cpp" />
