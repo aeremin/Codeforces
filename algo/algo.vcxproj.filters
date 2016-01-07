@@ -24,6 +24,7 @@
     <ClInclude Include="Primes.hpp" />
     <ClInclude Include="Relax.hpp" />
     <ClInclude Include="Dijkstra.hpp" />
+    <ClInclude Include="SortWithMapping.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MergeSort.hpp" />

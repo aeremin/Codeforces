@@ -33,6 +33,7 @@
     <ClInclude Include="Sign.hpp" />
     <ClInclude Include="SingleLinkedList.hpp" />
     <ClInclude Include="SlidingWindowMinFinder.h" />
+    <ClInclude Include="SortWithMapping.hpp" />
     <ClInclude Include="TreePreprocessor.hpp" />
   </ItemGroup>
   <ItemGroup>
