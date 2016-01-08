@@ -1,7 +1,8 @@
 #pragma once
+#include <cstdint>
 
 template<class T>
-T quickPower(const T& a, int d)
+T quickPower(const T& a, int64_t d)
 {
 	T res(1);
 	T m = a;
