@@ -23,6 +23,7 @@
     <ClCompile Include="ResidueTest.cpp" />
     <ClCompile Include="GreatestCommonDivisorTest.cpp" />
     <ClCompile Include="PrimesTest.cpp" />
+    <ClCompile Include="IndicatorTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphHelper.h" />

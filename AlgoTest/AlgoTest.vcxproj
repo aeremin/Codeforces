@@ -22,6 +22,7 @@
     <ClCompile Include="GreatestCommonDivisorTest.cpp" />
     <ClCompile Include="HasCycleTest.cpp" />
     <ClCompile Include="HeapTest.cpp" />
+    <ClCompile Include="IndicatorTest.cpp" />
     <ClCompile Include="KnuttMorrisPrattTest.cpp" />
     <ClCompile Include="MaximalIncreasingSubsequenceTest.cpp" />
     <ClCompile Include="MergeSortTest.cpp" />

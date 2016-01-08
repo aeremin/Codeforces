@@ -22,6 +22,7 @@
     <ClInclude Include="Graph.hpp" />
     <ClInclude Include="GreatestCommonDivisor.hpp" />
     <ClInclude Include="Heap.hpp" />
+    <ClInclude Include="Indicator.hpp" />
     <ClInclude Include="KnuttMorrisPratt.hpp" />
     <ClInclude Include="MaximaIncreasingSubsequence.hpp" />
     <ClInclude Include="Primes.hpp" />
