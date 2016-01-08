@@ -1,5 +1,6 @@
 #include <Solvers/pch.h>
 #include "algo/geometry/geomvector.hpp"
+#include "algo/FunctorIterator.hpp"
 
 using namespace std;
 
@@ -19,9 +20,13 @@ void Solver615E::run()
         return;
     }
 
-    int64_t k = sqrt(double(n) / 3 + 0.25) - 0.5 + 0.999999999999;
-    n -= 3 * k * (k - 1);
+    auto sizeOfHexagonWithSide = [](int64_t s)->int64_t {return 3 * s * (s - 1); };
+    auto l = makeFunctorIterator(int64_t(0), sizeOfHexagonWithSide);
+    auto r = makeFunctorIterator(int64_t(1) << 30, sizeOfHexagonWithSide);
+    auto k = lower_bound(l, r, n).getParameter() - 1;
     
+    n -= sizeOfHexagonWithSide(k);
+
     GeomVector2<int64_t> pos({ 2 * (k - 1), 0 });
 
     vector<pair<int64_t, GeomVector2<int64_t>>> moves = 
