@@ -1,6 +1,7 @@
 #pragma once
 #include <array>
 #include <numeric>
+#include <cstdint>
 
 template<typename T, size_t n>
 class GeomVector
@@ -108,6 +109,8 @@ T dot(const GeomVector<T, n>& a, const GeomVector<T, n>& b)
 template<typename T>
 using GeomVector2 = GeomVector<T, 2>;
 using GeomVector2I = GeomVector2<int>;
+using GeomVector2I64 = GeomVector2<int64_t>;
+using GeomVector2F = GeomVector2<float>;
 
 template<typename T>
 T det(const GeomVector2<T>& a, const GeomVector2<T>& b)
