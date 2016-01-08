@@ -61,6 +61,7 @@ Residue<UnderlyingInt, MOD> operator*(Residue<UnderlyingInt, MOD> a, UnderlyingI
 template<typename UnderlyingInt, UnderlyingInt MOD>
 std::ostream& operator<<(std::ostream& outStream, Residue<UnderlyingInt, MOD> a) { return outStream << a.rep(); }
 
-using CodeforcesResidue = Residue<int, 1000000007>;
+const int cCodeforcesModulo = 1000000007;
 
-using CodeforcesResidue64 = Residue<int64_t, 1000000007>;
+using CodeforcesResidue = Residue<int, cCodeforcesModulo>;
+using CodeforcesResidue64 = Residue<int64_t, cCodeforcesModulo>;

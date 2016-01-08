@@ -23,7 +23,7 @@ void Solver615D::run()
         ++primesPowers[p];
     }
 
-    Residue<int64_t, 1000000006> divisorsCount = 1;
+    Residue<int64_t, cCodeforcesModulo - 1> divisorsCount = 1;
     CodeforcesResidue64 ans = 1;
     for (auto& p : primesPowers)
     {
