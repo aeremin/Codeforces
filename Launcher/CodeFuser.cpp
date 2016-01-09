@@ -62,7 +62,9 @@ void CodeFuser::fuse()
     unordered_set<string> alreadyIncluded;
     
     openedFiles.emplace( problemSolverPath );
-    
+    if (!openedFiles.top().good())
+        return;
+
     fusedFile.append( "namespace mainns\n{\n" );
 
     while ( !openedFiles.empty() )
