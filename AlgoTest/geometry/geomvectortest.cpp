@@ -85,3 +85,11 @@ TEST(GeomVector, DetConcreteExample)
 	EXPECT_EQ(-2, det(a, b));
 	EXPECT_EQ( 2, det(b, a));
 }
+
+TEST(GeomVector, VariadicConstructor)
+{
+    GeomVector2I64 a = GeomVector2I64(1, 2);
+    EXPECT_EQ(1, a[0]);
+    EXPECT_EQ(2, a[1]);
+}
+

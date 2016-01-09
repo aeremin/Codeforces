@@ -12,6 +12,12 @@ public:
         comps_ = std::array<T, n>{};
     }
 
+    template<typename... Args>
+    GeomVector(Args... args) 
+    { 
+        fill_<0, Args...>(args...); 
+    }
+    
     GeomVector(const std::array<T, n>& from) : comps_(from) {}
 
 	T& operator[](size_t ind) { return comps_[ind]; }
@@ -48,7 +54,17 @@ public:
 	}
 
 private:
-	std::array<T, n> comps_;
+    template<size_t Offset, typename U, typename... Args>
+    void fill_(const U& u, Args... args)
+    {
+        comps_[Offset] = u;
+        fill_<Offset + 1, Args...>(args...);
+    }
+
+    template<size_t Offset>
+    typename std::enable_if<Offset==n>::type fill_() {}
+    
+    std::array<T, n> comps_;
 };
 
 template<typename T, size_t n>
