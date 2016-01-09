@@ -28,6 +28,7 @@
     <ClInclude Include="numbertheory\Primes.hpp" />
     <ClInclude Include="graph\TreePreprocessor.hpp" />
     <ClInclude Include="numbertheory\Divisors.hpp" />
+    <ClInclude Include="numbertheory\Coprimes.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MergeSort.hpp" />

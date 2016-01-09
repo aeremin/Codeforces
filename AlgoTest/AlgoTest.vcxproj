@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClCompile Include="BinarySearchTest.cpp" />
     <ClCompile Include="ConnectedComponentsDecomposerTest.cpp" />
+    <ClCompile Include="CoprimeTest.cpp" />
     <ClCompile Include="DepthFirstSearchTest.cpp" />
     <ClCompile Include="DisjointSetTest.cpp" />
     <ClCompile Include="DivisorsTest.cpp" />
