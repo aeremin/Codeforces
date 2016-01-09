@@ -19,12 +19,6 @@ void Solver582C::run()
     for (auto& elt : numbers)
         cin >> elt;
 
-    if (n == 1)
-    {
-        cout << 0;
-        return;
-    }
-    
     vector<int64_t> divisorsOfN = getDivisorsOf(n);
     divisorsOfN.pop_back();
 
