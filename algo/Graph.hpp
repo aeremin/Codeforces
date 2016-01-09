@@ -14,7 +14,10 @@ public:
         : 
         edges_(nVertices),
         vertexData_(move(vertexData))
-    {};
+    {
+        if (vertexData_.empty())
+            vertexData_.resize(nVertices);
+    };
 
     void addEdge( size_t from, size_t to, PerEdgeData data = {} )
     {
