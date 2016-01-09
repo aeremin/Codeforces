@@ -21,6 +21,7 @@
     <ClInclude Include="geometry\convexhull.hpp" />
     <ClInclude Include="geometry\geomvector.hpp" />
     <ClInclude Include="graph\Graph.hpp" />
+    <ClInclude Include="numbertheory\Divisors.hpp" />
     <ClInclude Include="numbertheory\GreatestCommonDivisor.hpp" />
     <ClInclude Include="Heap.hpp" />
     <ClInclude Include="Indicator.hpp" />

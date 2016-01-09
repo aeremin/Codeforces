@@ -1,6 +1,7 @@
 #include <Solvers/pch.h>
 #include "algo/Relax.hpp"
 #include "algo/numbertheory/GreatestCommonDivisor.hpp"
+#include "algo/numbertheory/Divisors.hpp"
 
 using namespace std;
 
@@ -24,14 +25,8 @@ void Solver582C::run()
         return;
     }
     
-    vector<int64_t> divisorsOfN;
-    for (int64_t d = 1; d * d <= n; ++d)
-        if (n % d == 0)
-        {
-            divisorsOfN.push_back(d);
-            if (n / d > d && d != 1)
-                divisorsOfN.push_back(n / d);
-        }
+    vector<int64_t> divisorsOfN = getDivisorsOf(n);
+    divisorsOfN.pop_back();
 
     int64_t ans = 0;
     for (auto& d : divisorsOfN)

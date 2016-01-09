@@ -25,6 +25,7 @@
     <ClCompile Include="PrimesTest.cpp" />
     <ClCompile Include="IndicatorTest.cpp" />
     <ClCompile Include="FunctorIteratorTest.cpp" />
+    <ClCompile Include="DivisorsTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphHelper.h" />

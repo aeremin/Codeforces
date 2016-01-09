@@ -15,6 +15,7 @@
     <ClCompile Include="ConnectedComponentsDecomposerTest.cpp" />
     <ClCompile Include="DepthFirstSearchTest.cpp" />
     <ClCompile Include="DisjointSetTest.cpp" />
+    <ClCompile Include="DivisorsTest.cpp" />
     <ClCompile Include="FibonacciHeapTest.cpp" />
     <ClCompile Include="FunctorIteratorTest.cpp" />
     <ClCompile Include="geometry\ConvexHullTest.cpp" />
