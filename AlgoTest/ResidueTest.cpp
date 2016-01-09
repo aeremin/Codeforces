@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "algo/Residue.hpp"
+#include "algo/numbertheory/Residue.hpp"
 #include "algo/QuickPower.hpp"
 
 using TestResidue = Residue<int, 13>;

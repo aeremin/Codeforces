@@ -1,6 +1,6 @@
 #include "Solvers/pch.h"
-#include "algo/Graph.hpp"
-#include "algo/TreePreprocessor.hpp"
+#include "algo/graph/Graph.hpp"
+#include "algo/graph/TreePreprocessor.hpp"
 
 class Solver587C
 {

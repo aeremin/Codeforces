@@ -1,6 +1,6 @@
 #include <Solvers/pch.h>
-#include "algo/GreatestCommonDivisor.hpp"
-#include "algo/Primes.hpp"
+#include "algo/numbertheory/GreatestCommonDivisor.hpp"
+#include "algo/numbertheory/Primes.hpp"
 
 using namespace std;
 

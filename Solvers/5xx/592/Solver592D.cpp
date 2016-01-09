@@ -1,5 +1,5 @@
 #include <Solvers/pch.h>
-#include "algo/Graph.hpp"
+#include "algo/graph/Graph.hpp"
 #include "algo/Relax.hpp"
 
 using namespace std;

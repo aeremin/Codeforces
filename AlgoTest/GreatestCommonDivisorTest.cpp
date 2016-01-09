@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "algo/GreatestCommonDivisor.hpp"
+#include "algo/numbertheory/GreatestCommonDivisor.hpp"
 
 TEST( GreatestCommonDivisorTest, ConcreteExamples )
 {

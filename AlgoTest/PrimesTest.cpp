@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "algo/Primes.hpp"
+#include "algo/numbertheory/Primes.hpp"
 
 namespace
 {

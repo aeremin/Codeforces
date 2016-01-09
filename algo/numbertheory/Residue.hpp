@@ -1,7 +1,7 @@
 #pragma once
 #include <cstdint>
 #include <cassert>
-#include "algo/GreatestCommonDivisor.hpp"
+#include "algo/numbertheory/GreatestCommonDivisor.hpp"
 
 template<typename UnderlyingInt, UnderlyingInt MOD>
 class Residue

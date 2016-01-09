@@ -1,6 +1,6 @@
 #include <Solvers/pch.h>
 #include "algo/Relax.hpp"
-#include "algo/GreatestCommonDivisor.hpp"
+#include "algo/numbertheory/GreatestCommonDivisor.hpp"
 
 using namespace std;
 

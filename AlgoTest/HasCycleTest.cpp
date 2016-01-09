@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 #include "AlgoTest/GraphHelper.h"
-#include "algo/DepthFirstSearch.hpp"
+#include "algo/graph/DepthFirstSearch.hpp"
 
 TEST(HasCycleTest, WorksOnLinearGraph)
 {

@@ -1,5 +1,5 @@
 #include <Solvers/pch.h>
-#include "algo/Primes.hpp"
+#include "algo/numbertheory/Primes.hpp"
 
 using namespace std;
 

@@ -8,25 +8,25 @@
     <ClInclude Include="QuickPower.hpp" />
     <ClInclude Include="QuickSort.hpp" />
     <ClInclude Include="BinarySearch.hpp" />
-    <ClInclude Include="Graph.hpp" />
-    <ClInclude Include="DepthFirstSearch.hpp" />
-    <ClInclude Include="ConnectedComponentsDecomposer.hpp" />
     <ClInclude Include="SegmentTree.hpp" />
     <ClInclude Include="DisjointSet.hpp" />
     <ClInclude Include="FibonacciHeap.hpp" />
     <ClInclude Include="MaximaIncreasingSubsequence.hpp" />
     <ClInclude Include="geometry\geomvector.hpp" />
     <ClInclude Include="geometry\convexhull.hpp" />
-    <ClInclude Include="TreePreprocessor.hpp" />
-    <ClInclude Include="Residue.hpp" />
-    <ClInclude Include="GreatestCommonDivisor.hpp" />
     <ClInclude Include="Sign.hpp" />
-    <ClInclude Include="Primes.hpp" />
     <ClInclude Include="Relax.hpp" />
-    <ClInclude Include="Dijkstra.hpp" />
     <ClInclude Include="SortWithMapping.hpp" />
     <ClInclude Include="Indicator.hpp" />
     <ClInclude Include="FunctorIterator.hpp" />
+    <ClInclude Include="graph\ConnectedComponentsDecomposer.hpp" />
+    <ClInclude Include="graph\DepthFirstSearch.hpp" />
+    <ClInclude Include="graph\Dijkstra.hpp" />
+    <ClInclude Include="graph\Graph.hpp" />
+    <ClInclude Include="numbertheory\GreatestCommonDivisor.hpp" />
+    <ClInclude Include="numbertheory\Residue.hpp" />
+    <ClInclude Include="numbertheory\Primes.hpp" />
+    <ClInclude Include="graph\TreePreprocessor.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MergeSort.hpp" />

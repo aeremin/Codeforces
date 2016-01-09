@@ -1,5 +1,5 @@
 #pragma once
-#include "Graph.hpp"
+#include "algo/graph/Graph.hpp"
 #include <stdint.h>
 
 template<class PerEdgeData, class PerVertexData>

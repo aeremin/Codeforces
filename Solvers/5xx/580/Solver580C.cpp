@@ -1,7 +1,7 @@
 #include "Solvers/pch.h"
 #include "Solver580C.h"
-#include "algo/Graph.hpp"
-#include "algo/DepthFirstSearch.hpp"
+#include "algo/graph/Graph.hpp"
+#include "algo/graph/DepthFirstSearch.hpp"
 
 void Solver580C::run()
 {

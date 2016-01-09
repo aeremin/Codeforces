@@ -1,5 +1,5 @@
 #include <Solvers/pch.h>
-#include "algo/GreatestCommonDivisor.hpp"
+#include "algo/numbertheory/GreatestCommonDivisor.hpp"
 
 using namespace std;
 

@@ -1,6 +1,6 @@
 #include <Solvers/pch.h>
-#include "algo/Graph.hpp"
-#include "algo/Residue.hpp"
+#include "algo/graph/Graph.hpp"
+#include "algo/numbertheory/Residue.hpp"
 
 using namespace std;
 

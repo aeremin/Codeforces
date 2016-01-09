@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "algo/TreePreprocessor.hpp"
+#include "algo/graph/TreePreprocessor.hpp"
 
 int concatenate( int a, int b )
 {
