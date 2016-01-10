@@ -27,6 +27,7 @@
     <ClCompile Include="FunctorIteratorTest.cpp" />
     <ClCompile Include="DivisorsTest.cpp" />
     <ClCompile Include="CoprimeTest.cpp" />
+    <ClCompile Include="BinaryCubePrefixTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphHelper.h" />

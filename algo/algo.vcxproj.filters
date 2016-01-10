@@ -29,6 +29,7 @@
     <ClInclude Include="graph\TreePreprocessor.hpp" />
     <ClInclude Include="numbertheory\Divisors.hpp" />
     <ClInclude Include="numbertheory\Coprimes.hpp" />
+    <ClInclude Include="BinaryCubePrefix.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MergeSort.hpp" />
