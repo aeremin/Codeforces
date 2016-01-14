@@ -1,6 +1,6 @@
 #include <Solvers/pch.h>
 #include "algo/numbertheory/Residue.hpp"
-#include "algo/QuickPower.hpp"
+#include "algo/algebra/QuickPower.hpp"
 #include "algo/numbertheory/Primes.hpp"
 
 using namespace std;

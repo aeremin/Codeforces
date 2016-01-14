@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 #include "algo/numbertheory/Residue.hpp"
-#include "algo/QuickPower.hpp"
+#include "algo/algebra/QuickPower.hpp"
 
 using TestResidue = Residue<int, 13>;
 

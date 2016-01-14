@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include "algo/numbertheory/Coprimes.hpp"
 #include "algo/numbertheory/Residue.hpp"
-#include "algo/QuickPower.hpp"
+#include "algo/algebra/QuickPower.hpp"
 
 TEST(CoprimeTest, CoprimeWithOne)
 {

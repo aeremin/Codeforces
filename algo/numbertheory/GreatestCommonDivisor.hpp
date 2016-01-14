@@ -1,6 +1,6 @@
 #pragma once
 #include <stdint.h>
-#include "algo/Sign.hpp"
+#include "algo/algebra/Sign.hpp"
 #include <utility>
 
 namespace

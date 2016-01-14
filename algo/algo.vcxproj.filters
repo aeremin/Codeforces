@@ -5,7 +5,6 @@
     <ClInclude Include="KnuttMorrisPratt.hpp" />
     <ClInclude Include="SingleLinkedList.hpp" />
     <ClInclude Include="Heap.hpp" />
-    <ClInclude Include="QuickPower.hpp" />
     <ClInclude Include="QuickSort.hpp" />
     <ClInclude Include="BinarySearch.hpp" />
     <ClInclude Include="SegmentTree.hpp" />
@@ -14,7 +13,6 @@
     <ClInclude Include="MaximaIncreasingSubsequence.hpp" />
     <ClInclude Include="geometry\geomvector.hpp" />
     <ClInclude Include="geometry\convexhull.hpp" />
-    <ClInclude Include="Sign.hpp" />
     <ClInclude Include="Relax.hpp" />
     <ClInclude Include="SortWithMapping.hpp" />
     <ClInclude Include="Indicator.hpp" />
@@ -30,6 +28,8 @@
     <ClInclude Include="numbertheory\Divisors.hpp" />
     <ClInclude Include="numbertheory\Coprimes.hpp" />
     <ClInclude Include="BinaryCubePrefix.h" />
+    <ClInclude Include="algebra\QuickPower.hpp" />
+    <ClInclude Include="algebra\Sign.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MergeSort.hpp" />

@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "algo/QuickPower.hpp"
+#include "algo/algebra/QuickPower.hpp"
 
 
 TEST(QuickPowerTest, ZeroPower)
