@@ -31,6 +31,7 @@
     <ClInclude Include="algebra\QuickPower.hpp" />
     <ClInclude Include="algebra\Sign.hpp" />
     <ClInclude Include="algebra\Factorial.hpp" />
+    <ClInclude Include="algebra\BinomialCoefficients.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MergeSort.hpp" />

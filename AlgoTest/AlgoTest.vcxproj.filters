@@ -29,6 +29,7 @@
     <ClCompile Include="CoprimeTest.cpp" />
     <ClCompile Include="BinaryCubePrefixTest.cpp" />
     <ClCompile Include="FactorialTest.cpp" />
+    <ClCompile Include="BinomialCoefficientTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphHelper.h" />
