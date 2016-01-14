@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="algebra\Factorial.hpp" />
     <ClInclude Include="BinaryCubePrefix.h" />
     <ClInclude Include="BinarySearch.hpp" />
     <ClInclude Include="graph\ConnectedComponentsDecomposer.hpp" />

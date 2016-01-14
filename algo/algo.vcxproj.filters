@@ -30,6 +30,7 @@
     <ClInclude Include="BinaryCubePrefix.h" />
     <ClInclude Include="algebra\QuickPower.hpp" />
     <ClInclude Include="algebra\Sign.hpp" />
+    <ClInclude Include="algebra\Factorial.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MergeSort.hpp" />
