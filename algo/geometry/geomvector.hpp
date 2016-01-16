@@ -127,6 +127,7 @@ using GeomVector2 = GeomVector<T, 2>;
 using GeomVector2I = GeomVector2<int>;
 using GeomVector2I64 = GeomVector2<int64_t>;
 using GeomVector2F = GeomVector2<float>;
+using GeomVector2D = GeomVector2<double>;
 
 template<typename T>
 T det(const GeomVector2<T>& a, const GeomVector2<T>& b)

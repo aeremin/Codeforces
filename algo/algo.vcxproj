@@ -33,6 +33,7 @@
     <ClInclude Include="MaximaIncreasingSubsequence.hpp" />
     <ClInclude Include="numbertheory\Primes.hpp" />
     <ClInclude Include="algebra\QuickPower.hpp" />
+    <ClInclude Include="pi.hpp" />
     <ClInclude Include="QuickSort.hpp" />
     <ClInclude Include="Relax.hpp" />
     <ClInclude Include="numbertheory\Residue.hpp" />

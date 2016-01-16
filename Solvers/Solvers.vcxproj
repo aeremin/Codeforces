@@ -204,11 +204,9 @@
     <ClCompile Include="6xx\616\Solver616C.cpp" />
     <ClCompile Include="6xx\616\Solver616D.cpp" />
     <ClCompile Include="6xx\616\Solver616E.cpp" />
-    <ClCompile Include="6xx\617\Solver617A.cpp" />
-    <ClCompile Include="6xx\617\Solver617B.cpp" />
-    <ClCompile Include="6xx\617\Solver617C.cpp" />
-    <ClCompile Include="6xx\617\Solver617D.cpp" />
-    <ClCompile Include="6xx\617\Solver617E.cpp" />
+    <ClCompile Include="6xx\613\Solver613A.cpp" />
+    <ClCompile Include="6xx\613\Solver613B.cpp" />
+    <ClCompile Include="6xx\613\Solver613C.cpp" />
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="4xx\487\Solver487D.cpp" />
     <ClCompile Include="5xx\580\Solver580A.cpp" />

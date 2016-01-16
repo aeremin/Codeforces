@@ -42,6 +42,14 @@ inline uint64_t greatestCommonDivisor( int64_t a, int64_t b )
     return gcdInternal( a, b );
 }
 
+inline uint64_t greatestCommonDivisor(const std::vector<int64_t>& numbers)
+{
+    uint64_t res = 0;
+    for (auto a : numbers)
+        res = greatestCommonDivisor(res, a);
+    return res;
+}
+
 inline uint64_t gcdDecomposition( int64_t a, int64_t b, int64_t& x, int64_t& y )
 {
     auto aUnsigned = a * sgn( a );

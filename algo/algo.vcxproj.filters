@@ -32,6 +32,7 @@
     <ClInclude Include="algebra\Sign.hpp" />
     <ClInclude Include="algebra\Factorial.hpp" />
     <ClInclude Include="algebra\BinomialCoefficients.hpp" />
+    <ClInclude Include="pi.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MergeSort.hpp" />
