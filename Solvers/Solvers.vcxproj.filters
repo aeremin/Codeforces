@@ -157,5 +157,8 @@
     <ClCompile Include="FBHC\Solver000B.cpp" />
     <ClCompile Include="FBHC\Solver000C.cpp" />
     <ClCompile Include="FBHC\Solver000D.cpp" />
+    <ClCompile Include="6xx\620\Solver6207C.cpp" />
+    <ClCompile Include="6xx\620\Solver620B.cpp" />
+    <ClCompile Include="6xx\620\Solver620D.cpp" />
   </ItemGroup>
 </Project>
