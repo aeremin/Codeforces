@@ -3,33 +3,43 @@
 #include <cassert>
 #include <vector>
 
+#include "algo/UpdateTypes.hpp"
+
 using std::vector;
 
-template<class RandomAccessIterator, class Function>
+template<typename ValueType, class AggregatingFunction, class UpdateType>
 class SegmentTree
 {
 public:
-    typedef typename RandomAccessIterator::value_type ValueType;
-
-public:
-    SegmentTree(RandomAccessIterator first, RandomAccessIterator last, Function f) : first_(first), last_(last), f_(f)
+    SegmentTree(const vector<ValueType>& initialValues, AggregatingFunction aggregatingFunction)
+        : aggregatingFunction_(aggregatingFunction), size_(initialValues.size())
     {
-        valuesHeap_.resize((1 << calcHeight_(first, last)) - 1);
-        build_(first, last, 0);
+        auto heapSize = (size_t(1) << calcHeight_(size_)) - 1;
+        valuesHeap_.resize(heapSize);
+        lazyUpdatesHeap_.resize(heapSize);
+        build_(begin(initialValues), end(initialValues), 0);
     }
 
-    void update(RandomAccessIterator iter)
+    void updateElement(size_t i, UpdateType upd)
     {
-        update_(iter, 0, first_, last_);
+        updateRange(i, i + 1, upd);
     }
 
-    ValueType getValueOnSegment(RandomAccessIterator left, RandomAccessIterator right) const
+    void updateRange(size_t l, size_t r, UpdateType upd)
     {
-        return calcValueOnSegment_(left, right, 0, first_, last_);
+        if (l == r) return;
+        update_(l, r, upd, 0, 0, size_);
+    }
+
+    ValueType getValueOnSegment(size_t l, size_t r) const
+    {
+        return calcValueOnSegment_(l, r, UpdateType(), 0, 0, size_);
     }
 
 private:
-    void build_(RandomAccessIterator left, RandomAccessIterator right, size_t ind)
+    typedef typename vector<ValueType>::const_iterator Iterator;
+
+    void build_(Iterator left, Iterator right, size_t ind)
     {
         if (right - left == 1)
         {
@@ -40,57 +50,65 @@ private:
             auto center = left + (right - left) / 2;
             build_(left, center, leftChild_(ind));
             build_(center, right, rightChild_(ind));
-            valuesHeap_[ind] = f_(valuesHeap_[leftChild_(ind)], valuesHeap_[rightChild_(ind)]);
+            valuesHeap_[ind] = aggregatingFunction_(valuesHeap_[leftChild_(ind)], valuesHeap_[rightChild_(ind)]);
         }
     }
 
-    ValueType calcValueOnSegment_(RandomAccessIterator segmentLeft, RandomAccessIterator segmentRight,
-                     size_t nodeInd, RandomAccessIterator nodeLeft, RandomAccessIterator nodeRight) const
+    void update_(size_t l, size_t r, const UpdateType& upd, size_t nodeInd, size_t nodeLeft, size_t nodeRight)
     {
-        assert(segmentLeft >= nodeLeft);
-        assert(segmentRight <= nodeRight);
-        
-        if (segmentLeft == nodeLeft && segmentRight == nodeRight)
-            return valuesHeap_[nodeInd];
-        
-        auto nodeCenter = nodeLeft + (nodeRight - nodeLeft) / 2;
-        if (nodeCenter >= segmentRight)
-            return calcValueOnSegment_(segmentLeft, segmentRight, leftChild_(nodeInd), nodeLeft, nodeCenter);
-
-        if (nodeCenter <= segmentLeft)
-            return calcValueOnSegment_(segmentLeft, segmentRight, rightChild_(nodeInd), nodeCenter, nodeRight);
-
-        return f_(calcValueOnSegment_(segmentLeft, nodeCenter, leftChild_(nodeInd), nodeLeft, nodeCenter),
-                  calcValueOnSegment_(nodeCenter, segmentRight, rightChild_(nodeInd), nodeCenter, nodeRight));
-    }
-
-    void update_(RandomAccessIterator changed, size_t nodeInd, RandomAccessIterator nodeLeft, RandomAccessIterator nodeRight)
-    {
-        assert(changed >= nodeLeft);
-        assert(changed <  nodeRight);
-
-        if (nodeRight - nodeLeft == 1)
+        if (l == nodeLeft && r == nodeRight)
         {
-            valuesHeap_[nodeInd] = *changed;
+            lazyUpdatesHeap_[nodeInd] = upd * lazyUpdatesHeap_[nodeInd];
+            return;
+        }
+
+        lazyUpdatesHeap_[leftChild_(nodeInd)] = lazyUpdatesHeap_[nodeInd] * lazyUpdatesHeap_[leftChild_(nodeInd)];
+        lazyUpdatesHeap_[rightChild_(nodeInd)] = lazyUpdatesHeap_[nodeInd] * lazyUpdatesHeap_[rightChild_(nodeInd)];
+        lazyUpdatesHeap_[nodeInd] = UpdateType();
+
+        auto nodeCenter = (nodeLeft + nodeRight) / 2;
+        if (r <= nodeCenter)
+        {
+            update_(l, r, upd, leftChild_(nodeInd), nodeLeft, nodeCenter);
+        }
+        else if (l >= nodeCenter)
+        {
+            update_(l, r, upd, rightChild_(nodeInd), nodeCenter, nodeRight);
         }
         else
         {
-            auto nodeCenter = nodeLeft + (nodeRight - nodeLeft) / 2;
-            if (changed < nodeCenter)
-                update_(changed, leftChild_(nodeInd), nodeLeft, nodeCenter);
-            else
-                update_(changed, rightChild_(nodeInd), nodeCenter, nodeRight);
-            valuesHeap_[nodeInd] = f_(valuesHeap_[leftChild_(nodeInd)], valuesHeap_[rightChild_(nodeInd)]);
+            update_(l, nodeCenter, upd, leftChild_(nodeInd), nodeLeft, nodeCenter);
+            update_(nodeCenter, r, upd, rightChild_(nodeInd), nodeCenter, nodeRight);
         }
-    }
 
+        valuesHeap_[nodeInd] = aggregatingFunction_(calcValueOnSegment_(nodeLeft, nodeCenter, {}, leftChild_(nodeInd), nodeLeft, nodeCenter),
+            calcValueOnSegment_(nodeCenter, nodeRight, {}, rightChild_(nodeInd), nodeCenter, nodeRight));
+    }
 
     static size_t leftChild_(size_t ind) { return 2 * ind + 1; }
     static size_t rightChild_(size_t ind) { return 2 * ind + 2; }
 
-    int calcHeight_(RandomAccessIterator first, RandomAccessIterator last) const
+    ValueType calcValueOnSegment_(size_t l, size_t r, UpdateType upd, size_t nodeInd, size_t nodeLeft, size_t nodeRight) const
     {
-        size_t length = std::distance(first, last);
+        assert(l >= nodeLeft);
+        assert(r <= nodeRight);
+        upd = upd * lazyUpdatesHeap_[nodeInd];
+        if (l == nodeLeft && r == nodeRight)
+            return UpdateApplier<UpdateType, AggregatingFunction>::apply(valuesHeap_[nodeInd], upd, r - l);
+
+        auto nodeCenter = (nodeLeft + nodeRight) / 2;
+
+        if (r <= nodeCenter)
+            return calcValueOnSegment_(l, r, upd, leftChild_(nodeInd), nodeLeft, nodeCenter);
+        else if (l >= nodeCenter)
+            return calcValueOnSegment_(l, r, upd, rightChild_(nodeInd), nodeCenter, nodeRight);
+        else
+            return aggregatingFunction_(calcValueOnSegment_(l, nodeCenter, upd, leftChild_(nodeInd), nodeLeft, nodeCenter),
+                calcValueOnSegment_(nodeCenter, r, upd, rightChild_(nodeInd), nodeCenter, nodeRight));
+    }
+
+    int calcHeight_(size_t length) const
+    {
         int result = 1;
         size_t maxLen = 1;
         while (length > maxLen)
@@ -102,15 +120,16 @@ private:
     }
 
 private:
-    const RandomAccessIterator first_, last_;
-    const Function f_;
+    const AggregatingFunction aggregatingFunction_;
 
+    size_t size_;
     vector<ValueType> valuesHeap_;
+    vector<UpdateType> lazyUpdatesHeap_;
 };
 
-
-template<class RandomAccessIterator, class Function>
-SegmentTree<RandomAccessIterator, Function> makeSegmentTree(RandomAccessIterator first, RandomAccessIterator last, Function f)
+template<typename ValueType, class AggregatingFunction, class UpdateType>
+SegmentTree<ValueType, AggregatingFunction, UpdateType>
+makeSegmentTree(const vector<ValueType>& initialValues, AggregatingFunction aggregatingFunction, UpdateType dummy)
 {
-    return SegmentTree<RandomAccessIterator, Function>(first, last, f);
+    return SegmentTree<ValueType, AggregatingFunction, UpdateType>(initialValues, aggregatingFunction);
 }

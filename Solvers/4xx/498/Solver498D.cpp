@@ -1,5 +1,7 @@
 #include <Solvers/pch.h>
 #include "algo/SegmentTree.hpp"
+#include "algo/Functors.hpp"
+#include "algo/UpdateTypes.hpp"
 
 using namespace std;
 
@@ -35,7 +37,7 @@ void Solver498D::run()
         singleTime = constructFromPeriod(period);
     }
 
-    auto concatFunctor = [](TimeToMove first, TimeToMove second) -> TimeToMove
+    auto concatFunctor = [](const TimeToMove& first, const TimeToMove& second) -> TimeToMove
     {
         TimeToMove result;
         for (int t = 0; t < 60; ++t)
@@ -46,7 +48,7 @@ void Solver498D::run()
         return result;
     };
 
-    SegmentTree<decltype(begin(singleRoadTimes)), decltype(concatFunctor)> timeTree(begin(singleRoadTimes), end(singleRoadTimes), concatFunctor);
+    auto timeTree = makeSegmentTree(singleRoadTimes, concatFunctor, updateTypes::SetValueTo<TimeToMove>());
 
     int nQueries;
     cin >> nQueries;
@@ -57,13 +59,11 @@ void Solver498D::run()
         cin >> type >> a >> b;
         if (type == 'A')
         {
-            cout << timeTree.getValueOnSegment(begin(singleRoadTimes) + (a - 1), begin(singleRoadTimes) + (b - 1)).time[0] << endl;
+            cout << timeTree.getValueOnSegment(a - 1, (b - 1)).time[0] << endl;
         }
         else
         {
-            auto iter = begin(singleRoadTimes) + a - 1;
-            *iter = constructFromPeriod(b);
-            timeTree.update(iter);
+            timeTree.updateElement(a - 1, updateTypes::SetValueTo<TimeToMove>(constructFromPeriod(b)));
         }
     }
 }

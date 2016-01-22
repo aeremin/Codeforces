@@ -2,6 +2,8 @@
 #include "algo/SortWithMapping.hpp"
 #include "algo/SegmentTree.hpp"
 #include "algo/Relax.hpp"
+#include "algo/Functors.hpp"
+#include "algo/UpdateTypes.hpp"
 
 using namespace std;
 
@@ -10,6 +12,8 @@ class Solver474E
 public:
     void run();
 };
+
+
 
 void Solver474E::run()
 {
@@ -29,8 +33,8 @@ void Solver474E::run()
 
     vector<int> predecessors(heights.size());
     vector<pair<int, int>> maxJumpCountAndPredecessor(heights.size(), make_pair(0, -1));
-    auto concat = [](pair<int, int> p1, pair<int, int> p2) {return max(p1, p2); };
-    auto segmentTree = makeSegmentTree(begin(maxJumpCountAndPredecessor), end(maxJumpCountAndPredecessor), concat);
+    auto segmentTree = makeSegmentTree(maxJumpCountAndPredecessor, binaryFunctors::Max<pair<int, int>>(), 
+                                       updateTypes::SetValueTo<pair<int, int>>());
     auto segmentTreeBegin = begin(maxJumpCountAndPredecessor);
     for (size_t i = 0; i < heights.size(); ++i)
     {
@@ -40,19 +44,20 @@ void Solver474E::run()
         auto currMax = make_pair(1, -1);
         if (l > begin(sortedHeights))
         {
-            auto maxL = segmentTree.getValueOnSegment(segmentTreeBegin, segmentTreeBegin + (l - begin(sortedHeights)));
+            auto maxL = segmentTree.getValueOnSegment(0, l - begin(sortedHeights));
             maxL.first++;
             relaxMax(currMax, maxL);
         }
         if (r < end(sortedHeights))
         {
-            auto maxR = segmentTree.getValueOnSegment(segmentTreeBegin + (r - begin(sortedHeights)), end(maxJumpCountAndPredecessor));
+            auto maxR = segmentTree.getValueOnSegment(r - begin(sortedHeights), maxJumpCountAndPredecessor.size());
             maxR.first++;
             relaxMax(currMax, maxR);
         }
         predecessors[i] = currMax.second;
         maxJumpCountAndPredecessor[forwardMapping[i]] = { currMax.first, i };
-        segmentTree.update(segmentTreeBegin + forwardMapping[i]);
+		auto upd = updateTypes::SetValueTo<pair<int, int>>(make_pair(currMax.first, int(i)));
+        segmentTree.updateElement(forwardMapping[i], upd);
     }
 
     deque<size_t> ans;

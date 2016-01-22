@@ -33,6 +33,8 @@
     <ClInclude Include="algebra\Factorial.hpp" />
     <ClInclude Include="algebra\BinomialCoefficients.hpp" />
     <ClInclude Include="pi.hpp" />
+    <ClInclude Include="Functors.hpp" />
+    <ClInclude Include="UpdateTypes.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MergeSort.hpp" />
