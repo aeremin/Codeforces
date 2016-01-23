@@ -104,6 +104,16 @@
   <ItemGroup>
     <ClInclude Include="CodeFuser.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Inputs\FBHC\Round1\A\in.txt" />
+    <Text Include="Inputs\FBHC\Round1\A\out_expected.txt" />
+    <Text Include="Inputs\FBHC\Round1\B\in.txt" />
+    <Text Include="Inputs\FBHC\Round1\B\out_expected.txt" />
+    <Text Include="Inputs\FBHC\Round1\C\in.txt" />
+    <Text Include="Inputs\FBHC\Round1\C\out_expected.txt" />
+    <Text Include="Inputs\FBHC\Round1\D\in.txt" />
+    <Text Include="Inputs\FBHC\Round1\D\out_expected.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

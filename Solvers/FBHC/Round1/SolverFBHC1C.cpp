@@ -2,7 +2,7 @@
 
 using namespace std;
 
-class Solver000C
+class SolverFBHC1C
 {
 public:
     void run();
@@ -37,7 +37,7 @@ public:
     }
 };
 
-void Solver000C::run()
+void SolverFBHC1C::run()
 {
     int t;
     cin >> t;
@@ -49,7 +49,7 @@ void Solver000C::run()
     }
 }
 
-void Solver000C::runOneTest()
+void SolverFBHC1C::runOneTest()
 {
     int64_t nPrices, A, B;
     cin >> nPrices >> A >> B;
@@ -64,34 +64,13 @@ void Solver000C::runOneTest()
     cout << setprecision(9) << fixed << ans;
 }
 
-class Solver000CTest : public ProblemTest
+class SolverFBHC1CTest : public FBHCProblemTest
 {
+public:
+    SolverFBHC1CTest() : FBHCProblemTest("Inputs\\FBHC\\Round1\\C\\") {}
 };
 
-TEST_F(Solver000CTest, Example) {
-  setInput(
-      R"(6
-1 5 8
-2
-1 0 777777777
-7
-1 777777 7777777
-777777777
-2 9 20
-8 2
-5 40 140
-4 9 1 12 7
-5 1000 2004
-4 4 4 4 4
-)");
-
-  std::string expected =
-R"(Case #1: 1.166666667
-Case #2: 3.500000000
-Case #3: 4277777.000000000
-Case #4: 3.227272727
-Case #5: 4.400000000
-Case #6: 2.000000000)";
-  Solver000C().run();
-  EXPECT_EQ(expected, getOutput());
+TEST_F(SolverFBHC1CTest, Example)
+{
+    SolverFBHC1C().run();
 }

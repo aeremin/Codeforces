@@ -17,3 +17,19 @@ private:
     std::stringstream ssIn;
 };
 
+class FBHCProblemTest : public testing::Test
+{
+protected:
+    FBHCProblemTest(std::string filename);
+    ~FBHCProblemTest();
+
+private:
+    std::string filename_;
+
+    std::ifstream in_;
+    std::ofstream out_;
+
+    std::streambuf* defaultOutBuf_ = nullptr;
+    std::streambuf* defaultInBuf_ = nullptr;
+};
+

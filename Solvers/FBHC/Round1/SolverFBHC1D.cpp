@@ -2,7 +2,7 @@
 
 using namespace std;
 
-class Solver000D
+class SolverFBHC1D
 {
 public:
     void run();
@@ -61,7 +61,7 @@ public:
     }
 };
 
-void Solver000D::run()
+void SolverFBHC1D::run()
 {
     int t;
     cin >> t;
@@ -72,7 +72,7 @@ void Solver000D::run()
     }
 }
 
-void Solver000D::runOneTest()
+void SolverFBHC1D::runOneTest()
 {
     cin >> n;
     for (k = 0; (1 << k) < n; ++k);
@@ -125,91 +125,13 @@ void Solver000D::runOneTest()
             
 }
 
-class Solver000DTest : public ProblemTest
+class SolverFBHC1DTest : public FBHCProblemTest
 {
+public:
+    SolverFBHC1DTest() : FBHCProblemTest("Inputs\\FBHC\\Round1\\D\\") {}
 };
 
-TEST_F(Solver000DTest, Example) {
-  setInput(
-      R"(
-5
-1
-0
-2
-0 1
-0 0
-4
-0 1 1 1
-0 0 1 1
-0 0 0 1
-0 0 0 0
-4
-0 0 0 0
-1 0 0 1
-1 1 0 0
-1 0 1 0
-8
-0 0 0 0 0 0 0 0
-1 0 1 0 0 0 0 0
-1 0 0 0 0 0 0 0
-1 1 1 0 0 1 1 0
-1 1 1 1 0 1 0 1
-1 1 1 0 0 0 0 1
-1 1 1 0 1 1 0 1
-1 1 1 1 0 0 0 0
-)");
-
-  std::string expected =
-      R"(Case #1: 
-1 1
-Case #2: 
-1 1
-2 2
-Case #3: 
-1 1
-2 3
-2 3
-3 3
-Case #4: 
-3 3
-1 3
-1 3
-1 3
-Case #5: 
-5 5
-3 5
-3 5
-1 5
-1 5
-2 5
-1 5
-1 5
-)";
-  Solver000D().run();
-  EXPECT_EQ(expected, getOutput());
-}
-
-TEST_F(Solver000DTest, ExampleRandomMaxSize)
+TEST_F(SolverFBHC1DTest, Example)
 {
-    stringstream ss;
-    int size = 16;
-    ss << "1 " << size << " ";
-    auto in = vector<vector<int>>(size, vector<int>(size));
-    for (int i = 0; i < size; ++i)
-        for (int j = i + 1; j < size; ++j)
-        {
-            in[i][j] = rand() % 2;
-            in[j][i] = 1 - in[i][j];
-        }
-
-    for (int i = 0; i < size; ++i)
-        for (int j = 0; j < size; ++j)
-            ss << in[i][j] << " ";
-
-    setInput(ss.str());
-
-    std::string expected =
-        R"(Case #1: 
-)";
-    Solver000D().run();
+    SolverFBHC1D().run();
 }

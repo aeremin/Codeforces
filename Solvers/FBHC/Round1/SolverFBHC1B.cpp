@@ -4,14 +4,14 @@
 
 using namespace std;
 
-class Solver000B
+class SolverFBHC1B
 {
 public:
     void run();
     void runOneTest();
 };
 
-void Solver000B::run()
+void SolverFBHC1B::run()
 {
     int t;
     cin >> t;
@@ -23,7 +23,7 @@ void Solver000B::run()
     }
 }
 
-void Solver000B::runOneTest()
+void SolverFBHC1B::runOneTest()
 {
     int64_t nLoads, nWashers, nDryers, dryTime;
     cin >> nLoads >> nWashers >> nDryers >> dryTime;
@@ -69,32 +69,13 @@ void Solver000B::runOneTest()
     cout << ans;
 }
 
-class Solver000BTest : public ProblemTest
+class SolverFBHC1BTest : public FBHCProblemTest
 {
+public:
+    SolverFBHC1BTest() : FBHCProblemTest("Inputs\\FBHC\\Round1\\B\\") {}
 };
 
-TEST_F( Solver000BTest, Example )
+TEST_F(SolverFBHC1BTest, Example)
 {
-    setInput(
-        R"(5
-1 1 1 34
-1200
-2 3 2 10
-100 10 1
-3 3 3 3
-1 2 3
-4 2 2 7
-5 8
-999 1 999 6
-3
-)");
-
-    std::string expected = 
-R"(Case #1: 1234
-Case #2: 12
-Case #3: 5
-Case #4: 22
-Case #5: 3003)";
-    Solver000B().run();
-    EXPECT_EQ(expected, getOutput());
+    SolverFBHC1B().run();
 }
