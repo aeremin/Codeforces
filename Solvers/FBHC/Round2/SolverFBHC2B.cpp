@@ -22,11 +22,6 @@ void SolverFBHC2B::run()
     }
 }
 
-double probSum(double x, double y)
-{
-    return x + y - x * y;
-}
-
 void SolverFBHC2B::runOneTest()
 {
     int nCoins, goal;
