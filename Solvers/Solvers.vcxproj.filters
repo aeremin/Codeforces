@@ -165,5 +165,9 @@
     <ClCompile Include="FBHC\Round2\SolverFBHC2D.cpp" />
     <ClCompile Include="FBHC\Round2\SolverFBHC2B.cpp" />
     <ClCompile Include="FBHC\Round2\SolverFBHC2C.cpp" />
+    <ClCompile Include="6xx\617\Solver617A.cpp" />
+    <ClCompile Include="6xx\617\Solver617B.cpp" />
+    <ClCompile Include="6xx\617\Solver617C.cpp" />
+    <ClCompile Include="6xx\617\Solver617D.cpp" />
   </ItemGroup>
 </Project>
