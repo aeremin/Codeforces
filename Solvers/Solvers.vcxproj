@@ -222,7 +222,6 @@
     <ClCompile Include="FBHC\Round2\SolverFBHC2A.cpp" />
     <ClCompile Include="FBHC\Round2\SolverFBHC2B.cpp" />
     <ClCompile Include="FBHC\Round2\SolverFBHC2C.cpp" />
-    <ClCompile Include="FBHC\Round2\SolverFBHC2D.cpp" />
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="4xx\487\Solver487D.cpp" />
     <ClCompile Include="5xx\580\Solver580A.cpp" />
