@@ -4,6 +4,7 @@
 #include <stack>
 #include <utility>
 #include <unordered_set>
+#include <cassert>
 
 using namespace std;
 
@@ -52,12 +53,29 @@ int main()
 CodeFuser::CodeFuser(std::string problemName) : problemName_(move(problemName))
 {}
 
+
+std::string CodeFuser::getSolverFileNameByProblemName_() const
+{
+    if (problemName_.length() == 4) // Codeforces
+    {
+        string problemSetName = problemName_.substr(0, 3);
+        return "../Solvers/" + problemSetName.substr(0, 1) + "xx/" + problemSetName + "/Solver" + problemName_ + ".cpp";
+    }
+    else if (problemName_.length() == 6)
+    {
+        assert(problemName_.substr(0, 4) == "FBHC");
+        string roundName = string("Round") + problemName_[4];
+        return "../Solvers/FBHC/" + roundName + "/Solver" + problemName_ + ".cpp";
+    }
+    assert(false);
+    return{};
+}
+
 void CodeFuser::fuse()
 {
     string fusedFile = filePrefix;
-    
-    string problemSetName = problemName_.substr( 0, 3 );
-    string problemSolverPath = "../Solvers/" + problemSetName.substr(0, 1) + "xx/" + problemSetName + "/Solver" + problemName_ + ".cpp";
+   
+    string problemSolverPath = getSolverFileNameByProblemName_();
     stack<ifstream> openedFiles;
     unordered_set<string> alreadyIncluded;
     

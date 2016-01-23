@@ -8,6 +8,7 @@ public:
     void fuse();
 
 private:
+    std::string getSolverFileNameByProblemName_() const;
     std::string problemName_;
 };
 
