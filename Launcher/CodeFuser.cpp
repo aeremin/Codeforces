@@ -36,10 +36,10 @@ using namespace std;
 
 const char* fileMainPart =
 R"(
-#ifdef ONLINE_JUDGE
-int main()
-#else
+#ifdef LOCAL_PC
 int main2()
+#else
+int main()
 #endif
 {
     ios::sync_with_stdio( false );
