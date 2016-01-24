@@ -25,6 +25,8 @@
     <ClInclude Include="geometry\convexhull.hpp" />
     <ClInclude Include="geometry\geomvector.hpp" />
     <ClInclude Include="graph\Graph.hpp" />
+    <ClInclude Include="io\printvector.h" />
+    <ClInclude Include="io\readvector.hpp" />
     <ClInclude Include="query\MoQueryProcessor.hpp" />
     <ClInclude Include="numbertheory\Coprimes.hpp" />
     <ClInclude Include="numbertheory\Divisors.hpp" />

@@ -1,6 +1,8 @@
 #include <Solvers/pch.h>
 #include "algo/query/MoQueryProcessor.hpp"
 #include "algo/query/OrderIndependentSlider.hpp"
+#include "algo/io/printvector.h"
+#include "algo/io/readvector.hpp"
 
 using namespace std;
 
@@ -43,9 +45,7 @@ void Solver617E::run()
 {
     size_t dataSize, nQueries, favXOR;
     cin >> dataSize >> nQueries >> favXOR;
-    vector<uint32_t> data(dataSize);
-    for (auto& elt : data)
-        cin >> elt;
+    auto data = readVector<uint32_t>(dataSize);
 
     vector<uint32_t> prefixXOR = { 0 };
     partial_sum(begin(data), end(data), back_inserter(prefixXOR), bit_xor<uint32_t>());
@@ -61,8 +61,7 @@ void Solver617E::run()
     auto res = MoQueryProccessor<OrderIndependentSlider<GoodPairsCalculator>>(prefixXOR).
         processQueries(queries, OrderIndependentSlider<GoodPairsCalculator>(GoodPairsCalculator(favXOR)));
 
-    for (auto& r : res)
-        cout << r << "\n";
+    printVector(res, "\n");
 }
 
 class Solver617ETest : public ProblemTest
@@ -73,21 +72,21 @@ TEST_F( Solver617ETest, Example1 )
 {
     setInput("5 3 1             1 1 1 1 1             1 5             2 4             1 3");
     Solver617E().run();
-    EXPECT_EQ("9\n4\n4\n", getOutput());
+    EXPECT_EQ("9\n4\n4", getOutput());
 }
 
 TEST_F( Solver617ETest, Example2 )
 {
     setInput("6 2 3             1 2 1 1 0 3             1 6             3 5");
     Solver617E().run();
-    EXPECT_EQ("7\n0\n", getOutput());
+    EXPECT_EQ("7\n0", getOutput());
 }
 
 TEST_F(Solver617ETest, Example3)
 {
     setInput("6 1 0             1 2 1 1 0 3             1 3             3 5");
     Solver617E().run();
-    EXPECT_EQ("0\n", getOutput());
+    EXPECT_EQ("0", getOutput());
 }
 
 TEST_F(Solver617ETest, RandomMaxTest)

@@ -37,6 +37,8 @@
     <ClInclude Include="UpdateTypes.hpp" />
     <ClInclude Include="query\MoQueryProcessor.hpp" />
     <ClInclude Include="query\OrderIndependentSlider.hpp" />
+    <ClInclude Include="io\readvector.hpp" />
+    <ClInclude Include="io\printvector.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MergeSort.hpp" />
