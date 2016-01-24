@@ -32,6 +32,7 @@
     <ClCompile Include="KnuttMorrisPrattTest.cpp" />
     <ClCompile Include="MaximalIncreasingSubsequenceTest.cpp" />
     <ClCompile Include="MergeSortTest.cpp" />
+    <ClCompile Include="MoQueryProcessorTest.cpp" />
     <ClCompile Include="PrimesTest.cpp" />
     <ClCompile Include="QuickPowerTest.cpp" />
     <ClCompile Include="QuickSortTest.cpp" />

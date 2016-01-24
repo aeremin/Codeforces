@@ -35,6 +35,8 @@
     <ClInclude Include="pi.hpp" />
     <ClInclude Include="Functors.hpp" />
     <ClInclude Include="UpdateTypes.hpp" />
+    <ClInclude Include="query\MoQueryProcessor.hpp" />
+    <ClInclude Include="query\OrderIndependentSlider.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MergeSort.hpp" />

@@ -30,6 +30,7 @@
     <ClCompile Include="BinaryCubePrefixTest.cpp" />
     <ClCompile Include="FactorialTest.cpp" />
     <ClCompile Include="BinomialCoefficientTest.cpp" />
+    <ClCompile Include="MoQueryProcessorTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphHelper.h" />
