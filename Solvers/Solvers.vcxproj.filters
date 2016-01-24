@@ -168,5 +168,6 @@
     <ClCompile Include="6xx\617\Solver617B.cpp" />
     <ClCompile Include="6xx\617\Solver617C.cpp" />
     <ClCompile Include="6xx\617\Solver617D.cpp" />
+    <ClCompile Include="6xx\617\Solver617E.cpp" />
   </ItemGroup>
 </Project>

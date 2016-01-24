@@ -92,6 +92,7 @@
     <ClInclude Include="testutils\ProblemTest.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="6xx\617\Solver617E.cpp" />
     <ClCompile Include="6xx\620\Solver620B.cpp" />
     <ClCompile Include="6xx\620\Solver6207C.cpp" />
     <ClCompile Include="6xx\620\Solver620D.cpp" />
