@@ -33,7 +33,7 @@ void Solver613A::run()
             relaxMin(minDist, (currPt + d * (nextPt - currPt) - center).lengthSquared());
     }
 
-    cout << setprecision(18) << fixed << cPi * (maxDist - minDist);
+    cout << setprecision(15) << fixed << cPi * (maxDist - minDist);
 }
 
 class Solver613ATest : public ProblemTest
@@ -44,12 +44,12 @@ TEST_F( Solver613ATest, Example1 )
 {
     setInput("3 0 0             0 1             -1 2             1 2");
     Solver613A().run();
-    EXPECT_EQ("12.566370614359172464", getOutput());
+    EXPECT_EQ("12.566370614359172", getOutput());
 }
 
 TEST_F( Solver613ATest, Example2 )
 {
     setInput("4 1 -1             0 0             1 2             2 0             1 1             ");
     Solver613A().run();
-    EXPECT_EQ("21.991148575128551812", getOutput());
+    EXPECT_EQ("21.991148575128552", getOutput());
 }
