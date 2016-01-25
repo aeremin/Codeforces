@@ -53,7 +53,7 @@ void Solver620E::run()
 
     dfs(0, 0);
 
-    auto segTree = makeSegmentTree(orderedColors, binaryFunctors::Or(), updateTypes::SetValueTo<uint64_t>());
+    auto segTree = makeSegmentTree(orderedColors, bit_or<uint64_t>(), updateTypes::SetValueTo<uint64_t>());
     for (int i = 0; i < nQueries; ++i)
     {
         int queryType;

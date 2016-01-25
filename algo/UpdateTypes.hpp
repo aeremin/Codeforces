@@ -39,7 +39,7 @@ struct UpdateApplier
 };
 
 template<typename T>
-struct UpdateApplier<updateTypes::SetValueTo<T>, binaryFunctors::Sum<T>>
+struct UpdateApplier<updateTypes::SetValueTo<T>, std::plus<T>>
 {
     static T apply(const T& v, const updateTypes::SetValueTo<T>& upd, size_t length) { return upd.isId_ ? v : upd.value_ * length; }
 };
