@@ -15,6 +15,7 @@
     <ClInclude Include="algebra\Factorial.hpp" />
     <ClInclude Include="BinaryCubePrefix.h" />
     <ClInclude Include="BinarySearch.hpp" />
+    <ClInclude Include="bits\FullBinaryTrie.hpp" />
     <ClInclude Include="Functors.hpp" />
     <ClInclude Include="graph\ConnectedComponentsDecomposer.hpp" />
     <ClInclude Include="graph\DepthFirstSearch.hpp" />

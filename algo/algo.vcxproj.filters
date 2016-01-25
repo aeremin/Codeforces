@@ -39,6 +39,7 @@
     <ClInclude Include="query\OrderIndependentSlider.hpp" />
     <ClInclude Include="io\readvector.hpp" />
     <ClInclude Include="io\printvector.h" />
+    <ClInclude Include="bits\FullBinaryTrie.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MergeSort.hpp" />
