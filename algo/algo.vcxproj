@@ -47,6 +47,7 @@
     <ClInclude Include="algebra\Sign.hpp" />
     <ClInclude Include="SingleLinkedList.hpp" />
     <ClInclude Include="SlidingWindowMinFinder.h" />
+    <ClInclude Include="SortBy.hpp" />
     <ClInclude Include="SortWithMapping.hpp" />
     <ClInclude Include="graph\TreePreprocessor.hpp" />
     <ClInclude Include="UpdateTypes.hpp" />

@@ -2,6 +2,7 @@
 #include <vector>
 #include <algorithm>
 #include <utility>
+#include "algo/SortBy.hpp"
 
 // Slider should have following types defined:
 // Slider::InType
@@ -57,14 +58,8 @@ public:
         for (size_t iQuery = 0; iQuery < queries.size(); ++iQuery)
             result[queries[iQuery].first / bucketSize].push_back({ queries[iQuery], iQuery });
 
-        
-        auto insideBucketCompare = [](const QueryWithOriginalIndex& lh, const QueryWithOriginalIndex& rh)
-        {
-            return lh.first.second < rh.first.second;
-        };
-
         for (auto& bucket : result)
-            std::sort(begin(bucket), end(bucket), insideBucketCompare);
+            sortBy(bucket, [](const QueryWithOriginalIndex& q) {return q.first.second; });
 
         return result;
     }
