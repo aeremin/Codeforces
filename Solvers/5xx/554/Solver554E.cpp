@@ -36,7 +36,7 @@ void Solver554E::run()
     for ( auto& p : hate )
         graph.addEdge( ds.rep( p.first ), ds.rep( p.second ) );
 
-    if ( !BipartitionChecker<EmptyStruct, EmptyStruct>( graph ).isBipartite() )
+    if ( !makeBipartitionChecker( graph ).isBipartite() )
     {
         cout << 0;
         return;

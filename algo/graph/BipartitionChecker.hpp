@@ -56,3 +56,9 @@ private:
     vector<int> part_;
     int currentPart_ = 0;
 };
+
+template<class PerEdgeData, class PerVertexData>
+class BipartitionChecker<PerEdgeData, PerVertexData> makeBipartitionChecker(const Graph<PerEdgeData, PerVertexData>& graph)
+{
+    return BipartitionChecker<PerEdgeData, PerVertexData>(graph);
+}
