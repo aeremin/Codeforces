@@ -56,7 +56,7 @@ void Solver486D::run()
         int vInd = p.second;
         currentAllowedMaximum = p.first + maxAllowedDiff;
         ans += calc(vInd, -1);
-        graph->setVertexData(vInd, numeric_limits<int>::max());
+        graph->getVertexData(vInd) = numeric_limits<int>::max();
     }
 
     cout << ans;

@@ -72,7 +72,7 @@ public:
             relaxMin(vData.minSubtreePathPassing, minChildPassingPath);
         }
 
-        graph->setVertexData(vInd, vData);
+        graph->getVertexData(vInd) = vData;
     }
 
 };
@@ -95,7 +95,7 @@ void Solver592D::run()
         int c;
         cin >> c;
         --c;
-        graph->setVertexData(c, { 1 });
+        graph->getVertexData(c) = { 1 };
         relaxMax(maxAttackedCity, c);
     }
 

@@ -23,7 +23,7 @@ public:
     {
         VertexData vData;
         vData.distanceToRoot = (vInd == parentInd) ? 0 : graph->getVertexData(parentInd).distanceToRoot + 1;
-        graph->setVertexData(vInd, vData);
+        graph->getVertexData(vInd) = vData;
 
         int countsSumInd = (vData.distanceToRoot + 1) % 2;
         int countsMinInd = 1 - countsSumInd;
@@ -52,7 +52,7 @@ public:
 
         vData.perPlayerAnswers[countsMinInd] = childMin;
         vData.perPlayerAnswers[countsSumInd] = childSum;
-        graph->setVertexData(vInd, vData);
+        graph->getVertexData(vInd) = vData;
     }
 };
 
