@@ -41,6 +41,7 @@
     <ClInclude Include="io\printvector.h" />
     <ClInclude Include="bits\FullBinaryTrie.hpp" />
     <ClInclude Include="SortBy.hpp" />
+    <ClInclude Include="graph\BipartitionChecker.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MergeSort.hpp" />

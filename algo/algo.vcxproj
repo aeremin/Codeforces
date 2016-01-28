@@ -17,6 +17,7 @@
     <ClInclude Include="BinarySearch.hpp" />
     <ClInclude Include="bits\FullBinaryTrie.hpp" />
     <ClInclude Include="Functors.hpp" />
+    <ClInclude Include="graph\BipartitionChecker.hpp" />
     <ClInclude Include="graph\ConnectedComponentsDecomposer.hpp" />
     <ClInclude Include="graph\DepthFirstSearch.hpp" />
     <ClInclude Include="graph\Dijkstra.hpp" />
