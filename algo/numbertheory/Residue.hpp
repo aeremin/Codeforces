@@ -59,6 +59,13 @@ template<typename UnderlyingInt, UnderlyingInt MOD>
 Residue<UnderlyingInt, MOD> operator*(Residue<UnderlyingInt, MOD> a, UnderlyingInt b) { return a *= b; }
 
 template<typename UnderlyingInt, UnderlyingInt MOD>
+Residue<UnderlyingInt, MOD> operator/(Residue<UnderlyingInt, MOD> a, Residue<UnderlyingInt, MOD> b) { return a *= b.inversed(); }
+
+template<typename UnderlyingInt, UnderlyingInt MOD>
+Residue<UnderlyingInt, MOD> operator/( Residue<UnderlyingInt, MOD> a, UnderlyingInt b ) {  return a *= Residue<UnderlyingInt, MOD>(b).inversed(); }
+
+
+template<typename UnderlyingInt, UnderlyingInt MOD>
 std::ostream& operator<<(std::ostream& outStream, Residue<UnderlyingInt, MOD> a) { return outStream << a.rep(); }
 
 const int cCodeforcesModulo = 1000000007;
