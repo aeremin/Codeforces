@@ -54,6 +54,8 @@ public:
 			currentPowerOfTwo /= 2;
 			node = child_(node, traversorAnswer.second);
 		}
+
+        return{ true, currentValue };
 	}
 
 
