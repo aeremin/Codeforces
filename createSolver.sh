@@ -1,7 +1,8 @@
 mkdir createSolverTmp
 cd createSolverTmp
 
-curl "http://codeforces.com/problemset/problem/${1}/${2}" > problem.txt
+curl "http://codeforces.com/contest/${1}/problem/${2}" > problem.txt;
+
 sed -e 's/<div/\n<div/g' -i problem.txt
 sed -e 's/<\/div>/\n<\/div>/g' -i problem.txt
 sed -e 's/<pre>/\n<pre>/g' -i problem.txt
