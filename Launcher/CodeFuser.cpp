@@ -31,6 +31,7 @@ R"(#include <vector>
 #include <iomanip>
 #include <cassert>
 #include <memory>
+#include <complex>
 
 using namespace std;
 )";

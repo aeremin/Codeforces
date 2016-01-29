@@ -16,6 +16,7 @@
 #include <cstdint>
 #include <memory>
 #include <functional>
+#include <complex>
 
 #include <gtest/gtest.h>
 
