@@ -2,6 +2,7 @@
 #include <array>
 #include <numeric>
 #include <cstdint>
+#include <iostream>
 
 template<typename T, size_t n>
 class GeomVector
@@ -119,6 +120,23 @@ T dot(const GeomVector<T, n>& a, const GeomVector<T, n>& b)
     for (int i = 0; i < n; ++i)
         res += a[i] * b[i];
     return res;
+}
+
+template<typename T, size_t n>
+std::ostream& operator<<(std::ostream& os, const GeomVector<T, n>& a)
+{
+    for (int i = 0; i < n - 1; ++i)
+        os << a[i] << " ";
+    os << a[n - 1];
+    return os;
+}
+
+template<typename T, size_t n>
+std::istream& operator>>(std::istream& is, GeomVector<T, n>& a)
+{
+    for (int i = 0; i < n; ++i)
+        is >> a[i];
+    return is;
 }
 
 

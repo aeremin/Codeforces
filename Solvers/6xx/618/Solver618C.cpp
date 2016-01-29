@@ -1,6 +1,7 @@
 #include <Solvers/pch.h>
 #include "algo/geometry/geomvector.hpp"
 #include "algo/algebra/Sign.hpp"
+#include "algo/io/readvector.hpp"
 
 using namespace std;
 
@@ -14,10 +15,8 @@ void Solver618C::run()
 {
     int n;
     cin >> n;
-    vector<GeomVector2I64> stars(n);
-    for (auto& s : stars)
-        cin >> s[0] >> s[1];
-
+    auto stars = readVector<GeomVector2I64>(n);
+    
     vector<int> smallestTri = { 0, 1 };
     for (int i = 2; i < n; ++i)
     {
