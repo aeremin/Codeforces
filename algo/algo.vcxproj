@@ -14,9 +14,11 @@
     <ClInclude Include="algebra\BinomialCoefficients.hpp" />
     <ClInclude Include="algebra\Factorial.hpp" />
     <ClInclude Include="BinaryCubePrefix.h" />
+    <ClInclude Include="binaryfunctors\FirstArgument.hpp" />
+    <ClInclude Include="binaryfunctors\Max.hpp" />
+    <ClInclude Include="binaryfunctors\Min.hpp" />
     <ClInclude Include="BinarySearch.hpp" />
     <ClInclude Include="bits\FullBinaryTrie.hpp" />
-    <ClInclude Include="Functors.hpp" />
     <ClInclude Include="graph\BipartitionChecker.hpp" />
     <ClInclude Include="graph\ConnectedComponentsDecomposer.hpp" />
     <ClInclude Include="graph\DepthFirstSearch.hpp" />
@@ -51,7 +53,14 @@
     <ClInclude Include="SortBy.hpp" />
     <ClInclude Include="SortWithMapping.hpp" />
     <ClInclude Include="graph\TreePreprocessor.hpp" />
-    <ClInclude Include="UpdateTypes.hpp" />
+    <ClInclude Include="updateappliers\IncreaseByIdempotent.h" />
+    <ClInclude Include="updateappliers\LinearTransformIdempotent.h" />
+    <ClInclude Include="updateappliers\SetToIdempotent.h" />
+    <ClInclude Include="updateappliers\SetToPlus.hpp" />
+    <ClInclude Include="updateappliers\UpdateApplier.hpp" />
+    <ClInclude Include="updatetypes\IncreaseBy.hpp" />
+    <ClInclude Include="updatetypes\LinearTransform.hpp" />
+    <ClInclude Include="updatetypes\SetTo.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MergeSort.hpp">

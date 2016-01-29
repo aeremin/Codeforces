@@ -1,6 +1,9 @@
 #include <Solvers/pch.h>
-#include "algo/SegmentTree.hpp"
 #include "algo/pi.hpp"
+#include "algo/binaryfunctors/FirstArgument.hpp"
+#include "algo/updatetypes/LinearTransform.hpp"
+#include "algo/updateappliers/LinearTransformIdempotent.h"
+#include "algo/SegmentTree.hpp"
 
 using namespace std;
 
@@ -8,31 +11,6 @@ class Solver618E
 {
 public:
     void run();
-
-    struct LinearTransform
-    {
-    public:
-        LinearTransform(complex<double> a = { 1.0, 0.0 }, complex<double> b = { 0.0, 0.0 }) : a_(a), b_(b) {}
-
-        friend LinearTransform operator*(const LinearTransform& lh, const LinearTransform& rh)
-        {
-            return{ lh.a_ * rh.a_, lh.b_ + lh.a_ * rh.b_ };
-        }
-
-        complex<double> a_, b_;
-    };
-
-
-};
-
-
-template<typename T>
-struct UpdateApplier<Solver618E::LinearTransform, binaryFunctors::FirstArgument<T>>
-{
-    static complex<double> apply(const complex<double>& v, const Solver618E::LinearTransform& upd, size_t length)
-    {
-        return upd.a_ * v + upd.b_;
-    }
 };
 
 void Solver618E::run()
@@ -43,8 +21,11 @@ void Solver618E::run()
     for (int i = 0; i <= n; ++i)
         points[i] = { i + 0.0, 0.0 };
 
+    
+    typedef updateTypes::LinearTransform<complex<double>> TransformType;
+
     cout << setprecision(10) << fixed;
-    auto segmentTree = makeSegmentTree(points, binaryFunctors::FirstArgument<complex<double>>(), LinearTransform());
+    auto segmentTree = makeSegmentTree(points, binaryFunctors::FirstArgument<complex<double>>(), TransformType());
     for (int i = 0; i < m; ++i)
     {
         int x, y, z;
@@ -54,12 +35,12 @@ void Solver618E::run()
         if (x == 1)
         {
             auto shift = double(z) * (blue - red) / abs(blue - red);
-            segmentTree.updateRange(y, n + 1, LinearTransform({ 1.0, 0.0 }, shift));
+            segmentTree.updateRange(y, n + 1, TransformType({ 1.0, 0.0 }, shift));
         }
         else
         {
             auto rot = polar(1.0, -double(z) / 180.0 * cPi);
-            segmentTree.updateRange(y, n + 1, LinearTransform(rot, red * (complex<double>(1, 0) - rot)));
+            segmentTree.updateRange(y, n + 1, TransformType(rot, red * (complex<double>(1, 0) - rot)));
         }
         auto last = segmentTree.getValueOnSegment(n, n + 1);
         cout << last.real() << " " << last.imag() << " ";

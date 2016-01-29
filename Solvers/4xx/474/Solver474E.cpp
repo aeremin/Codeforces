@@ -2,8 +2,9 @@
 #include "algo/SortWithMapping.hpp"
 #include "algo/SegmentTree.hpp"
 #include "algo/Relax.hpp"
-#include "algo/Functors.hpp"
-#include "algo/UpdateTypes.hpp"
+#include "algo/updatetypes/SetTo.hpp"
+#include "algo/binaryfunctors/Max.hpp"
+#include "algo/updateappliers/SetToIdempotent.h"
 
 using namespace std;
 
@@ -34,7 +35,7 @@ void Solver474E::run()
     vector<int> predecessors(heights.size());
     vector<pair<int, int>> maxJumpCountAndPredecessor(heights.size(), make_pair(0, -1));
     auto segmentTree = makeSegmentTree(maxJumpCountAndPredecessor, binaryFunctors::Max<pair<int, int>>(), 
-                                       updateTypes::SetValueTo<pair<int, int>>());
+                                       updateTypes::SetTo<pair<int, int>>());
     auto segmentTreeBegin = begin(maxJumpCountAndPredecessor);
     for (size_t i = 0; i < heights.size(); ++i)
     {
@@ -56,7 +57,7 @@ void Solver474E::run()
         }
         predecessors[i] = currMax.second;
         maxJumpCountAndPredecessor[forwardMapping[i]] = { currMax.first, i };
-		auto upd = updateTypes::SetValueTo<pair<int, int>>(make_pair(currMax.first, int(i)));
+		auto upd = updateTypes::SetTo<pair<int, int>>(make_pair(currMax.first, int(i)));
         segmentTree.updateElement(forwardMapping[i], upd);
     }
 

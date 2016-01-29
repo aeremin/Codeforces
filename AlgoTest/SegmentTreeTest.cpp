@@ -1,6 +1,8 @@
 #include <gtest/gtest.h>
 #include <numeric>
 #include "algo/SegmentTree.hpp"
+#include "algo/updatetypes/SetTo.hpp"
+#include "algo/updateappliers/SetToPlus.hpp"
 
 using std::vector;
 
@@ -14,7 +16,7 @@ protected:
 
 TEST_F(SegmentTreeTest, WorksOnSameElementArray)
 {
-    auto segmentTree = makeSegmentTree(data, std::plus<int>(), updateTypes::SetValueTo<int>());
+    auto segmentTree = makeSegmentTree(data, std::plus<int>(), updateTypes::SetTo<int>());
     for (size_t leftOffset = 0; leftOffset < dataSize - 1; ++leftOffset)
         for (size_t rightOffset = leftOffset + 1; rightOffset < dataSize; ++rightOffset)
         {
@@ -27,9 +29,9 @@ TEST_F(SegmentTreeTest, WorksOnSameElementArray)
 
 TEST_F(SegmentTreeTest, WorksAfterOneUpdate)
 {
-	auto segmentTree = makeSegmentTree(data, std::plus<int>(), updateTypes::SetValueTo<int>());
+	auto segmentTree = makeSegmentTree(data, std::plus<int>(), updateTypes::SetTo<int>());
     const int changedEltInd = 4;
-    segmentTree.updateElement(changedEltInd, updateTypes::SetValueTo<int>(dataElt + 1));
+    segmentTree.updateElement(changedEltInd, updateTypes::SetTo<int>(dataElt + 1));
     for (size_t leftOffset = 0; leftOffset < dataSize - 1; ++leftOffset)
         for (size_t rightOffset = leftOffset + 1; rightOffset < dataSize; ++rightOffset)
         {
@@ -42,8 +44,8 @@ TEST_F(SegmentTreeTest, WorksAfterOneUpdate)
 
 TEST_F(SegmentTreeTest, WorksAfterOneRangeUpdate)
 {
-	auto segmentTree = makeSegmentTree(data, std::plus<int>(), updateTypes::SetValueTo<int>());
-    segmentTree.updateRange(0, 3, updateTypes::SetValueTo<int>(dataElt + 1));
+	auto segmentTree = makeSegmentTree(data, std::plus<int>(), updateTypes::SetTo<int>());
+    segmentTree.updateRange(0, 3, updateTypes::SetTo<int>(dataElt + 1));
     for (size_t leftOffset = 0; leftOffset < dataSize - 1; ++leftOffset)
         for (size_t rightOffset = leftOffset + 1; rightOffset < dataSize; ++rightOffset)
         {
@@ -59,7 +61,7 @@ TEST_F(SegmentTreeTest, RandomTest)
     const size_t bigDataSize = 10000;
     const size_t nIterations = 10000;
     data = vector<int>(bigDataSize, 0);
-	auto segmentTree = makeSegmentTree(data, std::plus<int>(), updateTypes::SetValueTo<int>());
+	auto segmentTree = makeSegmentTree(data, std::plus<int>(), updateTypes::SetTo<int>());
     for (size_t i = 0; i < nIterations; ++i)
     {
         {
@@ -70,7 +72,7 @@ TEST_F(SegmentTreeTest, RandomTest)
             std::tie(l, r) = std::minmax(l, r);
 
             // Update SegmentTree
-            segmentTree.updateRange(l, r, updateTypes::SetValueTo<int>(value));
+            segmentTree.updateRange(l, r, updateTypes::SetTo<int>(value));
             // Update plain array
             for (size_t j = l; j < r; ++j)
                 data[j] = value;

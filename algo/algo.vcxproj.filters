@@ -7,7 +7,6 @@
     <ClInclude Include="Heap.hpp" />
     <ClInclude Include="QuickSort.hpp" />
     <ClInclude Include="BinarySearch.hpp" />
-    <ClInclude Include="SegmentTree.hpp" />
     <ClInclude Include="DisjointSet.hpp" />
     <ClInclude Include="FibonacciHeap.hpp" />
     <ClInclude Include="MaximaIncreasingSubsequence.hpp" />
@@ -33,8 +32,6 @@
     <ClInclude Include="algebra\Factorial.hpp" />
     <ClInclude Include="algebra\BinomialCoefficients.hpp" />
     <ClInclude Include="pi.hpp" />
-    <ClInclude Include="Functors.hpp" />
-    <ClInclude Include="UpdateTypes.hpp" />
     <ClInclude Include="query\MoQueryProcessor.hpp" />
     <ClInclude Include="query\OrderIndependentSlider.hpp" />
     <ClInclude Include="io\readvector.hpp" />
@@ -42,6 +39,18 @@
     <ClInclude Include="bits\FullBinaryTrie.hpp" />
     <ClInclude Include="SortBy.hpp" />
     <ClInclude Include="graph\BipartitionChecker.hpp" />
+    <ClInclude Include="binaryfunctors\Max.hpp" />
+    <ClInclude Include="binaryfunctors\Min.hpp" />
+    <ClInclude Include="binaryfunctors\FirstArgument.hpp" />
+    <ClInclude Include="updatetypes\SetTo.hpp" />
+    <ClInclude Include="updatetypes\IncreaseBy.hpp" />
+    <ClInclude Include="SegmentTree.hpp" />
+    <ClInclude Include="updatetypes\LinearTransform.hpp" />
+    <ClInclude Include="updateappliers\IncreaseByIdempotent.h" />
+    <ClInclude Include="updateappliers\SetToIdempotent.h" />
+    <ClInclude Include="updateappliers\SetToPlus.hpp" />
+    <ClInclude Include="updateappliers\LinearTransformIdempotent.h" />
+    <ClInclude Include="updateappliers\UpdateApplier.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MergeSort.hpp" />

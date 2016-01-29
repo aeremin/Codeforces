@@ -3,8 +3,6 @@
 #include <cassert>
 #include <vector>
 
-#include "algo/UpdateTypes.hpp"
-
 using std::vector;
 
 template<typename ValueType, class AggregatingFunction, class UpdateType>
