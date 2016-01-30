@@ -6,6 +6,6 @@ struct UpdateApplier<updateTypes::IncreaseBy<T>, IdempotentFunctor>
 {
     static T apply(const T& v, const updateTypes::IncreaseBy<T>& upd, size_t)
     {
-        return T + upd.value_;
+        return v + upd.value_;
     }
 };
