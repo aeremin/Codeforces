@@ -47,6 +47,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)..\googletest\googletest\include\</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>Solvers/pch.h</PrecompiledHeaderFile>
+      <PreprocessorDefinitions>LOCAL_PC;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -62,6 +63,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)..\googletest\googletest\include\</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>Solvers/pch.h</PrecompiledHeaderFile>
+      <PreprocessorDefinitions>LOCAL_PC;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
