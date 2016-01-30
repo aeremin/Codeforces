@@ -52,6 +52,7 @@
     <ClInclude Include="updateappliers\LinearTransformIdempotent.h" />
     <ClInclude Include="updateappliers\UpdateApplier.hpp" />
     <ClInclude Include="geometry\AngleSort.hpp" />
+    <ClInclude Include="sqr.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MergeSort.hpp" />
