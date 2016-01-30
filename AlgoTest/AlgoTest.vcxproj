@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AngleSortTest.cpp" />
     <ClCompile Include="BinaryCubePrefixTest.cpp" />
     <ClCompile Include="BinarySearchTest.cpp" />
     <ClCompile Include="BinomialCoefficientTest.cpp" />

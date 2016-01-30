@@ -33,6 +33,7 @@
     <ClCompile Include="MoQueryProcessorTest.cpp" />
     <ClCompile Include="FullBinaryTrieTest.cpp" />
     <ClCompile Include="BipartitionCheckerTest.cpp" />
+    <ClCompile Include="AngleSortTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphHelper.h" />
