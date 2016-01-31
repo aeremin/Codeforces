@@ -25,6 +25,11 @@ public:
         edges_[to].push_back( { from, data } );
     }
 
+    void addUndirectedEdge(size_t from, size_t to, PerEdgeData data = {})
+    {
+        edges_[from].push_back({ to, data });
+    }
+
     const vector<pair<size_t, PerEdgeData>>& vertexNeighbors(size_t vInd) const
     {
         return edges_[vInd];
