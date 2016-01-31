@@ -20,6 +20,7 @@
     <ClInclude Include="BinarySearch.hpp" />
     <ClInclude Include="bits\FullBinaryTrie.hpp" />
     <ClInclude Include="geometry\AngleSort.hpp" />
+    <ClInclude Include="graph\TopologicalSorter.hpp" />
     <ClInclude Include="sqr.hpp" />
     <ClInclude Include="graph\BipartitionChecker.hpp" />
     <ClInclude Include="graph\ConnectedComponentsDecomposer.hpp" />

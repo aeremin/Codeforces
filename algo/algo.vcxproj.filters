@@ -53,6 +53,7 @@
     <ClInclude Include="updateappliers\UpdateApplier.hpp" />
     <ClInclude Include="geometry\AngleSort.hpp" />
     <ClInclude Include="sqr.hpp" />
+    <ClInclude Include="graph\TopologicalSorter.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MergeSort.hpp" />
