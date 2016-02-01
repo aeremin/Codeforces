@@ -64,6 +64,7 @@
     <ClInclude Include="updatetypes\IncreaseBy.hpp" />
     <ClInclude Include="updatetypes\LinearTransform.hpp" />
     <ClInclude Include="updatetypes\SetTo.hpp" />
+    <ClInclude Include="WeightComparator.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MergeSort.hpp">

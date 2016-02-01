@@ -1,7 +1,12 @@
 #include "Solvers/pch.h"
-#include "Solver605B.h"
 #include <limits>
+#include "algo/WeightComparator.hpp"
 
+class Solver605B
+{
+public:
+    void run();
+};
 
 struct EdgeInfo
 {
@@ -34,9 +39,9 @@ void Solver605B::run()
         return;
     }
     
-    auto edgeCompareWeight = [](const EdgeInfo& a, const EdgeInfo& b){return a.weight < b.weight; };
-    std::sort(begin(mstEdges), end(mstEdges), edgeCompareWeight);
-    std::sort(begin(nonMstEdges), end(nonMstEdges), edgeCompareWeight);
+    auto edgeWeight = [](const EdgeInfo& a){return a.weight; };
+    std::sort(begin(mstEdges), end(mstEdges), makeWeightComparator(edgeWeight));
+    std::sort(begin(nonMstEdges), end(nonMstEdges),  makeWeightComparator(edgeWeight));
 
     if (!nonMstEdges.empty())
     {
@@ -72,6 +77,8 @@ void Solver605B::run()
                 nonMstEdges[k].from = i;
                 nonMstEdges[k].to = j;
             }
+            else
+                break;
         }
     }
 

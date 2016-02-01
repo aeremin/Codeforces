@@ -88,7 +88,6 @@
     <ClInclude Include="5xx\581\Solver581C.h" />
     <ClInclude Include="5xx\581\Solver581D.h" />
     <ClInclude Include="5xx\579\Solver579A.h" />
-    <ClInclude Include="6xx\605\Solver605B.h" />
     <ClInclude Include="6xx\603\Solver603A.h" />
     <ClInclude Include="6xx\603\Solver603C.h" />
     <ClInclude Include="testutils\ProblemTest.h" />

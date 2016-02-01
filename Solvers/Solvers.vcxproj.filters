@@ -20,7 +20,6 @@
     <ClInclude Include="6xx\603\Solver603A.h" />
     <ClInclude Include="6xx\603\Solver603B.h" />
     <ClInclude Include="6xx\603\Solver603C.h" />
-    <ClInclude Include="6xx\605\Solver605B.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
