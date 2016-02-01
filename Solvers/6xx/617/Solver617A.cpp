@@ -2,33 +2,33 @@
 
 using namespace std;
 
-class Solver621A
+class Solver617A
 {
 public:
     void run();
 };
 
-void Solver621A::run()
+void Solver617A::run()
 {
     int n;
     cin >> n;
     cout << (n + 4) / 5;
 }
 
-class Solver621ATest : public ProblemTest
+class Solver617ATest : public ProblemTest
 {
 };
 
-TEST_F( Solver621ATest, Example1 )
+TEST_F(Solver617ATest, Example1 )
 {
     setInput("5");
-    Solver621A().run();
+    Solver617A().run();
     EXPECT_EQ("1", getOutput());
 }
 
-TEST_F( Solver621ATest, Example2 )
+TEST_F(Solver617ATest, Example2 )
 {
     setInput("12");
-    Solver621A().run();
+    Solver617A().run();
     EXPECT_EQ("3", getOutput());
 }

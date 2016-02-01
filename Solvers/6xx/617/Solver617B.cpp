@@ -2,13 +2,13 @@
 
 using namespace std;
 
-class Solver621B
+class Solver617B
 {
 public:
     void run();
 };
 
-void Solver621B::run()
+void Solver617B::run()
 {
     int n;
     cin >> n;
@@ -30,27 +30,27 @@ void Solver621B::run()
     cout << ((prevNut == -1) ? 0 : res);
 }
 
-class Solver621BTest : public ProblemTest
+class Solver617BTest : public ProblemTest
 {
 };
 
-TEST_F( Solver621BTest, Example1 )
+TEST_F( Solver617BTest, Example1 )
 {
     setInput("3             0 1 0");
-    Solver621B().run();
+    Solver617B().run();
     EXPECT_EQ("1", getOutput());
 }
 
-TEST_F( Solver621BTest, Example2 )
+TEST_F( Solver617BTest, Example2 )
 {
     setInput("5                          1 0 1 0 1");
-    Solver621B().run();
+    Solver617B().run();
     EXPECT_EQ("4", getOutput());
 }
 
-TEST_F(Solver621BTest, NoNuts)
+TEST_F(Solver617BTest, NoNuts)
 {
     setInput("5                          0 0 0 0 0");
-    Solver621B().run();
+    Solver617B().run();
     EXPECT_EQ("0", getOutput());
 }
