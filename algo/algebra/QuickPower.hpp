@@ -2,10 +2,10 @@
 #include <cstdint>
 
 template<class T>
-T quickPower(const T& a, int64_t d)
+T quickPower(const T& a, int64_t d, T one = T(1))
 {
-	T res(1);
-	T m = a;
+    auto res = one;
+	auto m = a;
 	while (d > 0)
 	{
 		if (d % 2 == 0)
