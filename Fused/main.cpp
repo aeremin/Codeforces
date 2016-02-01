@@ -1,5 +1,6 @@
 #include <vector>
 #include <deque>
+#include <queue>
 #include <set>
 #include <unordered_set>
 #include <map>
@@ -12,28 +13,29 @@
 #include <sstream>
 #include <cstdint>
 #include <functional>
+#include <array>
+#include <valarray>
+#include <iomanip>
+#include <cassert>
+#include <memory>
+#include <complex>
+#include <regex>
 
 using namespace std;
 
-namespace main
-{
 
-class DummySolver
+class SolverDummy
 {
 public:
-    void run() {}
+    void run();
 };
 
-
-
+void SolverDummy::run()
+{
 }
-using CurrentSolver = main::DummySolver;
 
-#ifdef ONLINE_JUDGE
+using CurrentSolver = SolverDummy;
 int main()
-#else
-int main2()
-#endif
 {
     ios::sync_with_stdio( false );
     CurrentSolver().run();

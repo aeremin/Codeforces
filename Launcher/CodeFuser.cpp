@@ -39,11 +39,7 @@ using namespace std;
 
 const char* fileMainPart =
 R"(
-#ifdef LOCAL_PC
-int main2()
-#else
 int main()
-#endif
 {
     ios::sync_with_stdio( false );
     CurrentSolver().run();
@@ -84,8 +80,6 @@ void CodeFuser::fuse()
     openedFiles.emplace( problemSolverPath );
     if (!openedFiles.top().good())
         return;
-
-    fusedFile.append( "namespace mainns\n{\n" );
 
     while ( !openedFiles.empty() )
     {
@@ -130,10 +124,9 @@ void CodeFuser::fuse()
             openedFiles.pop();
     }
 
-    fusedFile.append( "} //namespace mainns\n" );
-    fusedFile.append( "using CurrentSolver = mainns::Solver" + problemName_ + ";" );
+    fusedFile.append( "using CurrentSolver = Solver" + problemName_ + ";" );
     fusedFile.append( fileMainPart );
 
-    ofstream out( "testifcompiles.cpp" );
+    ofstream out( "../Fused/main.cpp" );
     out << fusedFile;
 }
