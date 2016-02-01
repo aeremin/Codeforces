@@ -18,6 +18,7 @@
 #include <functional>
 #include <complex>
 
+#include <regex>
 #include <gtest/gtest.h>
 
 #include <Solvers/testutils/ProblemTest.h>

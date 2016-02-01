@@ -32,6 +32,7 @@ R"(#include <vector>
 #include <cassert>
 #include <memory>
 #include <complex>
+#include <regex>
 
 using namespace std;
 )";
