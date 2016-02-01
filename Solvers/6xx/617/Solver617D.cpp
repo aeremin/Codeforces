@@ -3,7 +3,7 @@
 
 using namespace std;
 
-class Solver621D
+class Solver617D
 {
 public:
     void run();
@@ -14,7 +14,7 @@ public:
     }
 };
 
-void Solver621D::run()
+void Solver617D::run()
 {
     GeomVector2I a, b, c;
     cin >> a[0] >> a[1];
@@ -44,27 +44,27 @@ void Solver621D::run()
     cout << 3;
 }
 
-class Solver621DTest : public ProblemTest
+class Solver617DTest : public ProblemTest
 {
 };
 
-TEST_F( Solver621DTest, Example1 )
+TEST_F( Solver617DTest, Example1 )
 {
     setInput("1 -1             1 1             1 2             ");
-    Solver621D().run();
+    Solver617D().run();
     EXPECT_EQ("1", getOutput());
 }
 
-TEST_F( Solver621DTest, Example2 )
+TEST_F( Solver617DTest, Example2 )
 {
     setInput("-1 -1             -1 3             4 3");
-    Solver621D().run();
+    Solver617D().run();
     EXPECT_EQ("2", getOutput());
 }
 
-TEST_F(Solver621DTest, Example3)
+TEST_F(Solver617DTest, Example3)
 {
     setInput("1 1             2 3             3 2");
-    Solver621D().run();
+    Solver617D().run();
     EXPECT_EQ("3", getOutput());
 }
