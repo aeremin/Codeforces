@@ -34,6 +34,7 @@
     <ClCompile Include="FullBinaryTrieTest.cpp" />
     <ClCompile Include="BipartitionCheckerTest.cpp" />
     <ClCompile Include="AngleSortTest.cpp" />
+    <ClCompile Include="DPProcessorTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphHelper.h" />

@@ -55,6 +55,7 @@
     <ClInclude Include="sqr.hpp" />
     <ClInclude Include="graph\TopologicalSorter.hpp" />
     <ClInclude Include="WeightComparator.hpp" />
+    <ClInclude Include="DPProcessor.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MergeSort.hpp" />

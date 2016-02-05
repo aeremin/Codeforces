@@ -21,6 +21,7 @@
     <ClCompile Include="DepthFirstSearchTest.cpp" />
     <ClCompile Include="DisjointSetTest.cpp" />
     <ClCompile Include="DivisorsTest.cpp" />
+    <ClCompile Include="DPProcessorTest.cpp" />
     <ClCompile Include="FactorialTest.cpp" />
     <ClCompile Include="FibonacciHeapTest.cpp" />
     <ClCompile Include="FullBinaryTrieTest.cpp" />
