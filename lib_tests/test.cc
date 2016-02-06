@@ -46,6 +46,36 @@ DEFINE_COMPARISON_AND_HASH_2(IntPair, first, second);
 DEFINE_COMPARISON_AND_HASH_4(Foo4, a, b, c, d);
 
 int main() {
+  DirectedGraph_AdjacencyList graph(20);
+  graph.add_edge(0, 1);
+  graph.add_edge(0, 10);
+  graph.add_edge(0, 11);
+  graph.add_edge(1, 5);
+  graph.add_edge(5, 4);
+  graph.add_edge(5, 3);
+  graph.add_edge(3, 2);
+  graph.add_edge(4, 2);
+  graph.add_edge(12, 13);
+  graph.add_edge(13, 14);
+  graph.add_edge(14, 0);
+  graph.add_edge(14, 2);
+  graph.add_edge(2, 0);  // bam!
+  auto top_sorted = topological_sort_reachable(graph, {0});
+
+  for (auto vertex_index : top_sorted)
+    cout << vertex_index << " ";
+  cout << "\n";
+
+  dfs(graph, {3, 7}, [](GraphIndex vertex){
+    cout << vertex << " ";
+  });
+  cout << "\n";
+
+  return 0;
+
+
+
+
   set_io_file_names(foo_in_foo_out("test"));
 
   std::set<pair<int, int>> int_pair_set;
@@ -82,11 +112,4 @@ int main() {
   int i_bar = indexer.add("bar");
   assert(i_foo == indexer.index("foo"));
   assert("bar" == indexer.value(i_bar));
-
-  SimpleGraph_AdjacencyList graph(10);
-  auto top_sorted = topological_sort_reachable(graph, {0});
-
-  dfs(graph, {3, 7}, [](GraphIndex vertex){
-    printf("%d ", vertex);
-  });
 }

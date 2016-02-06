@@ -6,26 +6,33 @@
 
 
 // TODO: Move somewhere
+enum class IterationControl {
+  Continue,
+  Abort,
+};
+
+// TODO: Move somewhere
 class Nothing {};
 
 // Depth-first search.
 // Typespec:
-//     ResultT visitor(ResultT, GraphIndex)
+//     IterationControl visitor(StateT&, GraphIndex)
 //
 // TODO: Test.
 // TODO: Simplify.
 // TODO: Optimize.
-template<typename SimpleGraphT, typename VisitorT, typename ResultT>
-ResultT dfs(const SimpleGraphT& graph,
-            const std::vector<GraphIndex>& starting_vetrices,
-            const VisitorT& visitor,
-            ResultT initial) {
+template<typename GraphT, typename VisitorT, typename StateT>
+void dfs(const GraphT& graph,
+         const std::vector<GraphIndex>& starting_vetrices,
+         const VisitorT& visitor,
+         StateT& state) {
   struct StackItem {
     GraphIndex vertex;
     GraphIndex i_neighbour;
   };
   VisitedBitset visited(graph.num_vertices(), false);
   std::stack<StackItem> stack;
+  bool aborting = false;
   for (GraphIndex start : starting_vetrices) {
     if (!visited[start]) {
       visited[start] = true;
@@ -33,39 +40,43 @@ ResultT dfs(const SimpleGraphT& graph,
     }
     while (!stack.empty()) {
       auto& top = stack.top();
-      const auto& neighbourhood = graph.neighbours(top.vertex);
       bool we_need_to_go_deeper = false;
-      while (top.i_neighbour < GraphIndex(neighbourhood.size())) {
-        GraphIndex neighbour = neighbourhood[top.i_neighbour];
-        ++top.i_neighbour;
-        if (!visited[neighbour]) {
-          visited[neighbour] = true;
-          stack.push({neighbour, 0});
-          we_need_to_go_deeper = true;
-          break;
+      if (!aborting) {
+        const auto& neighbourhood = graph.out_nbrs(top.vertex);
+        while (top.i_neighbour < GraphIndex(neighbourhood.size())) {
+          GraphIndex neighbour = neighbourhood[top.i_neighbour];
+          ++top.i_neighbour;
+          if (!visited[neighbour]) {
+            visited[neighbour] = true;
+            stack.push({neighbour, 0});
+            we_need_to_go_deeper = true;
+            break;
+          }
         }
       }
       if (!we_need_to_go_deeper) {
-        initial = visitor(std::move(initial), top.vertex);
+        if (visitor(state, top.vertex) == IterationControl::Abort) {
+          aborting = true;
+        }
         stack.pop();
       }
     }
   }
-  return initial;
 }
 
 // Depth-first search.
 // Typespec:
 //     void visitor(GraphIndex)
 //
-template<typename SimpleGraphT, typename VisitorT>
-void dfs(const SimpleGraphT& graph,
+template<typename GraphT, typename VisitorT>
+void dfs(const GraphT& graph,
          const std::vector<GraphIndex>& starting_vetrices,
          const VisitorT& visitor) {
+  Nothing state;
   dfs(graph, starting_vetrices,
       [&visitor](Nothing, GraphIndex vertex){
         visitor(vertex);
-        return Nothing{};
+        return IterationControl::Continue;
       },
-      Nothing{});
+      state);
 }
