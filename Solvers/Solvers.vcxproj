@@ -129,6 +129,7 @@
     <ClCompile Include="6xx\623\Solver623B.cpp" />
     <ClCompile Include="6xx\623\Solver623C.cpp" />
     <ClCompile Include="6xx\623\Solver623A.cpp" />
+    <ClCompile Include="6xx\623\Solver623D.cpp" />
     <ClCompile Include="6xx\624\Solver624A.cpp" />
     <ClCompile Include="6xx\624\Solver624B.cpp" />
     <ClCompile Include="FBHC\Round1\SolverFBHC1A.cpp" />
