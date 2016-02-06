@@ -1,6 +1,7 @@
 #include "std.h"
 
 #include "containers/indexer.h"
+#include "graph/topological_sort.h"
 #include "io/scan.h"
 #include "io/targets.h"
 #include "util/hash_compare.h"
@@ -81,4 +82,11 @@ int main() {
   int i_bar = indexer.add("bar");
   assert(i_foo == indexer.index("foo"));
   assert("bar" == indexer.value(i_bar));
+
+  SimpleGraph_AdjacencyList graph(10);
+  auto top_sorted = topological_sort_reachable(graph, {0});
+
+  dfs(graph, {3, 7}, [](GraphIndex vertex){
+    printf("%d ", vertex);
+  });
 }
