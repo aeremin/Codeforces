@@ -59,15 +59,41 @@ int main() {
   graph.add_edge(13, 14);
   graph.add_edge(14, 0);
   graph.add_edge(14, 2);
-  graph.add_edge(2, 0);  // bam!
-  auto top_sorted = topological_sort_reachable(graph, {0});
 
-  for (auto vertex_index : top_sorted)
+  auto top_sorted_opt = topological_sort_reachable_optimistic(graph, {0});
+  auto top_sorted_chk = topological_sort_reachable_checked(graph, {0});
+
+  assert(top_sorted_chk.status == TopologicalSortResult::Ok);
+
+  cout << "\ntop_sorted_opt:\n";
+  for (auto vertex_index : top_sorted_opt)
+    cout << vertex_index << " ";
+  cout << "\n";
+  cout << "\ntop_sorted_chk:\n";
+  for (auto vertex_index : top_sorted_chk.vertices)
     cout << vertex_index << " ";
   cout << "\n";
 
-  dfs(graph, {3, 7}, [](GraphIndex vertex){
+  graph.add_edge(2, 1);  // bam!
+
+  top_sorted_opt = topological_sort_reachable_optimistic(graph, {0});
+  top_sorted_chk = topological_sort_reachable_checked(graph, {0});
+
+  assert(top_sorted_chk.status == TopologicalSortResult::LoopDetected);
+
+  cout << "\ntop_sorted_opt:\n";
+  for (auto vertex_index : top_sorted_opt)
+    cout << vertex_index << " ";
+  cout << "\n";
+  cout << "\ntop_sorted_chk:\n";
+  for (auto vertex_index : top_sorted_chk.vertices)
+    cout << vertex_index << " ";
+  cout << "\n";
+
+  cout << "\ndfs:\n";
+  dfs(graph, {3, 7}, [](const DfsState&, GraphIndex vertex){
     cout << vertex << " ";
+    return IterationControl::Continue;
   });
   cout << "\n";
 
