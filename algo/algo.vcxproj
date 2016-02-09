@@ -19,6 +19,7 @@
     <ClInclude Include="binaryfunctors\Min.hpp" />
     <ClInclude Include="BinarySearch.hpp" />
     <ClInclude Include="bits\FullBinaryTrie.hpp" />
+    <ClInclude Include="graph\BreadthFirstSearch.hpp" />
     <ClInclude Include="DPProcessor.hpp" />
     <ClInclude Include="geometry\AngleSort.hpp" />
     <ClInclude Include="graph\TopologicalSorter.hpp" />

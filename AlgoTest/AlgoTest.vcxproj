@@ -16,6 +16,7 @@
     <ClCompile Include="BinarySearchTest.cpp" />
     <ClCompile Include="BinomialCoefficientTest.cpp" />
     <ClCompile Include="BipartitionCheckerTest.cpp" />
+    <ClCompile Include="BreadthSearchTest.cpp" />
     <ClCompile Include="ConnectedComponentsDecomposerTest.cpp" />
     <ClCompile Include="CoprimeTest.cpp" />
     <ClCompile Include="DepthFirstSearchTest.cpp" />
