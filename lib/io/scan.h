@@ -5,6 +5,9 @@
 //   If the call had failed, the retuned value is undefined.
 //   For convenience has alias called try_scan_T,
 //   expect (T == std::string) where the alias is try_scan_word.
+//   TODO: Consider:
+//           - swapping arguments (set variable, return success)
+//           - using optionals instead
 //
 // * scan<T>
 //   Reads T from standard input. Abort on failure.

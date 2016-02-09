@@ -134,8 +134,8 @@ int main() {
   string str = scan();
 
   Indexer<std::string> indexer;
-  int i_foo = indexer.add("foo");
-  int i_bar = indexer.add("bar");
+  int i_foo = indexer.insert_new("foo");
+  int i_bar = indexer.insert_new("bar");
   assert(i_foo == indexer.index("foo"));
   assert("bar" == indexer.value(i_bar));
 }

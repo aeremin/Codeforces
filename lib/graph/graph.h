@@ -4,20 +4,30 @@
 
 
 using GraphIndex = int;
-using VisitedBitset = vector<char>;
+using VisitedBitset = std::vector<char>;
 
 
 class SimpleGraph_AdjacencyList {
 public:
-  SimpleGraph_AdjacencyList(GraphIndex num_vertices__) : edges_(num_vertices__) {}
+  SimpleGraph_AdjacencyList(GraphIndex num_vertices__ = 0) : edges_(num_vertices__) {}
 
   GraphIndex num_vertices() const {
     return GraphIndex(edges_.size());
+  }
+  void extend_to_fit(GraphIndex num_vertices__) {
+    ++num_vertices__;
+    if (num_vertices__ > GraphIndex(edges_.size()))
+      edges_.resize(num_vertices__);
   }
 
   void add_edge(GraphIndex a, GraphIndex b) {
     edges_.at(a).push_back(b);
     edges_.at(b).push_back(a);
+  }
+  void add_edge_with_vertices(GraphIndex a, GraphIndex b) {
+    extend_to_fit(a);
+    extend_to_fit(b);
+    add_edge(a, b);
   }
 
   const std::vector<GraphIndex>& nbrs(GraphIndex a) const {
@@ -36,14 +46,24 @@ private:
 
 class DirectedGraph_AdjacencyList {
 public:
-  DirectedGraph_AdjacencyList(GraphIndex num_vertices__) : edges_(num_vertices__) {}
+  DirectedGraph_AdjacencyList(GraphIndex num_vertices__ = 0) : edges_(num_vertices__) {}
 
   GraphIndex num_vertices() const {
     return GraphIndex(edges_.size());
   }
+  void extend_to_fit(GraphIndex num_vertices__) {
+    ++num_vertices__;
+    if (num_vertices__ > GraphIndex(edges_.size()))
+      edges_.resize(num_vertices__);
+  }
 
   void add_edge(GraphIndex a, GraphIndex b) {
     edges_.at(a).push_back(b);
+  }
+  void add_edge_with_vertices(GraphIndex a, GraphIndex b) {
+    extend_to_fit(a);
+    extend_to_fit(b);
+    add_edge(a, b);
   }
 
   const std::vector<GraphIndex>& out_nbrs(GraphIndex a) const {
