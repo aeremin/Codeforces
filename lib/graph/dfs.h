@@ -25,6 +25,7 @@
 
 
 struct DfsState {
+  GraphIndex starting_vertex = 0;
   VisitedBitset visited;
   bool aborting = false;
 };
@@ -52,6 +53,7 @@ IterationResult dfs(const GraphT& graph,
   state.visited.resize(graph.num_vertices(), false);
   std::stack<StackItem> stack;
   for (GraphIndex start : starting_vetrices) {
+    state.starting_vertex = start;
     if (!state.visited[start]) {
       if (on_enter(const_state, start) == IterationControl::Abort) {
         state.aborting = true;
