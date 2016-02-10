@@ -92,6 +92,8 @@ IterationResult dfs(const GraphT& graph,
         stack.pop();
       }
     }
+    if (state.aborting)
+      break;
   }
   return state.aborting ? IterationResult::Aborted : IterationResult::Done;
 }
