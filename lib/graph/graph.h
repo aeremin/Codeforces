@@ -4,7 +4,9 @@
 
 
 using GraphIndex = int;
-using VisitedBitset = std::vector<char>;
+using GraphVertexBitset = std::vector<char>;
+
+constexpr GraphIndex kInvalidGraphVertex = -1;
 
 
 class SimpleGraph_AdjacencyList {

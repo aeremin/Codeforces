@@ -1,19 +1,34 @@
 // Depth-first search.
 //
-// Supports all graphs, directed or non-directed. Only need to know the
+// Signature:
+//   dfs(graph, starting_vertices, [on_see, on_enter], on_exit)
+//
+// Supports all graphs, directed or non-directed. Only needs to know the
 // outer neighbourhood.
+//
+// starting_vertices is any iterable collection of GraphIndex'es, e.g.
+// std::vector, initializer_list or a range (see util/range.h).
+// To start with one vertex use `{vertex}`.
 //
 // All callbacks must have the following signature:
 // ` IterationControl callback(const DfsState&, GraphIndex);
 //
 // Callback types:
-//   - on_see: a vertex is being considered as a candidate to go to.
-//   - on_enter: a vertex is pushed to stack
+//   - on_see: a vertex is being considered as a candidate to go to;
+//   - on_enter: a vertex is pushed to stack;
 //   - on_exit: a vertex is poped from stack - this is the most important
-//     part for dfs
+//     part for dfs.
 //
-// Callback sequence for each vertex:
+// Returns IterationResult, which is
+//   - Aborted if any callback returned Abort, and
+//   - Done otherwise.
+//
+// Call sequence for each vertex:
 //   (on_see (on_enter on_see* on_exit on_see*)?)?
+// After abortion:
+//   - no more on_see or on_enter are issued;
+//   - on_exit are issued for all vertices that had on_enter called before,
+//     and only for them (so, the above-mentioned call sequence holds true).
 
 #pragma once
 
@@ -26,7 +41,7 @@
 
 struct DfsState {
   GraphIndex starting_vertex = 0;
-  VisitedBitset visited;
+  GraphVertexBitset visited;
   bool aborting = false;
 };
 
@@ -38,9 +53,9 @@ IterationControl dfs_noop_continue(const DfsState&, GraphIndex) {
 // TODO: Test.
 // TODO: Benchmark.
 // TODO: Try to simplify.
-template<typename GraphT, typename OnSeeT, typename OnEnterT, typename OnExitT>
+template<typename GraphT, typename VertexListT, typename OnSeeT, typename OnEnterT, typename OnExitT>
 IterationResult dfs(const GraphT& graph,
-                    const std::vector<GraphIndex>& starting_vetrices,
+                    const VertexListT& starting_vertices,
                     const OnSeeT& on_see,
                     const OnEnterT& on_enter,
                     const OnExitT& on_exit) {
@@ -52,7 +67,7 @@ IterationResult dfs(const GraphT& graph,
   const DfsState& const_state = state;
   state.visited.resize(graph.num_vertices(), false);
   std::stack<StackItem> stack;
-  for (GraphIndex start : starting_vetrices) {
+  for (GraphIndex start : starting_vertices) {
     state.starting_vertex = start;
     if (!state.visited[start]) {
       if (on_enter(const_state, start) == IterationControl::Abort) {
@@ -100,9 +115,27 @@ IterationResult dfs(const GraphT& graph,
   return state.aborting ? IterationResult::Aborted : IterationResult::Done;
 }
 
+template<typename GraphT, typename OnSeeT, typename OnEnterT, typename OnExitT>
+IterationResult dfs(const GraphT& graph,
+                    const std::initializer_list<GraphIndex>& starting_vertices,
+                    const OnSeeT& on_see,
+                    const OnEnterT& on_enter,
+                    const OnExitT& on_exit) {
+  return dfs<GraphT, std::initializer_list<GraphIndex>, OnSeeT, OnEnterT, OnExitT>(
+      graph, starting_vertices, on_see, on_enter, on_exit);
+}
+
+template<typename GraphT, typename VertexListT, typename VisitorT>
+IterationResult dfs(const GraphT& graph,
+                    const VertexListT& starting_vertices,
+                    const VisitorT& visitor) {
+  return dfs(graph, starting_vertices, dfs_noop_continue, dfs_noop_continue, visitor);
+}
+
 template<typename GraphT, typename VisitorT>
 IterationResult dfs(const GraphT& graph,
-                    const std::vector<GraphIndex>& starting_vetrices,
+                    const std::initializer_list<GraphIndex>& starting_vertices,
                     const VisitorT& visitor) {
-  return dfs(graph, starting_vetrices, dfs_noop_continue, dfs_noop_continue, visitor);
+  return dfs<GraphT, std::initializer_list<GraphIndex>, VisitorT>(
+      graph, starting_vertices, visitor);
 }

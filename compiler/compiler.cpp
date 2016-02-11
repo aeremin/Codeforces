@@ -18,6 +18,9 @@ namespace po = boost::program_options;
 constexpr int kBadCommandLine = 1;
 constexpr int kRuntimeError = 2;
 
+const std::string kIndent = "  ";
+const std::string kIncludedFromPrefix = kIndent + "from ";
+
 
 int main(int argc, char* argv[]) {
   po::options_description opts("Allowed options");
@@ -86,7 +89,7 @@ int main(int argc, char* argv[]) {
         int dependency_index = process_file(dependency, true);
         include_graph.add_edge_with_vertices(file_index, dependency_index);
       } catch (const std::runtime_error& err) {
-        throw std::runtime_error(std::string(err.what()) + "\n  from " + file_name);
+        throw std::runtime_error(std::string(err.what()) + "\n" + kIncludedFromPrefix + file_name);
       }
     }
     return file_index;
@@ -94,18 +97,25 @@ int main(int argc, char* argv[]) {
 
   try {
     int main_file_index = process_file(input_file, false);
-    auto file_indices_sorted = topological_sort_reachable_checked(include_graph, {main_file_index});
-    switch (file_indices_sorted.status) {
+    const auto file_indices_sorted = topological_sort_reachable_checked(include_graph, {main_file_index});
+    switch (file_indices_sorted.status()) {
       case TopologicalSortResult::Ok:
         break;
       case TopologicalSortResult::LoopDetected:
-        throw std::runtime_error("Fatal error: inclusion loop detected");
+        GraphIndex loop_start = file_indices_sorted.loop().back();
+        std::string inclusion_sequence = kIndent + file_indexer.value(loop_start);
+        for (auto it = file_indices_sorted.vertices().begin();
+                  it != file_indices_sorted.vertices().end(); ++it) {
+          const std::string loop_marker = (*it == loop_start) ? " (!)" : "";
+          inclusion_sequence += "\n" + kIncludedFromPrefix + file_indexer.value(*it) + loop_marker;
+        }
+        throw std::runtime_error("Fatal error: inclusion loop detected:\n" + inclusion_sequence);
     }
 
     for (const std::string& s : system_includes)
       std::cout << "#include <" << s << ">\n";
     std::cout << "\n\n";
-    for (GraphIndex file_index : file_indices_sorted.vertices) {
+    for (GraphIndex file_index : file_indices_sorted.vertices()) {
       std::cout << "\n" << "// From " << file_indexer.value(file_index) << "\n\n";
       for (const std::string& l : files.at(file_index).code_lines)
         std::cout << l << "\n";

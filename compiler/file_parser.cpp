@@ -47,6 +47,7 @@ ParsedFile parse_file(const std::string& path, const ParserOptions& options, boo
     std::smatch sm;
     if (std::regex_match(line, sm, pragma_once_regex)) {
       ++pragma_once_count;
+    // TODO: Fix includes with comments.
     } else if (std::regex_match(line, sm, local_include_regex)) {
       assert(sm.size() == 2);
       file.local_includes.push_back(sm[1]);

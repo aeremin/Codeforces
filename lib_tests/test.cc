@@ -7,6 +7,30 @@
 #include "util/hash_compare.h"
 
 
+template<typename VectorT>
+void print_vector(const VectorT& vec) {
+  for (auto vertex_index : vec)
+    cout << vertex_index << " ";
+  cout << "\n";
+}
+
+void print_top_sorted_opt(const std::vector<GraphIndex>& top_sorted_opt) {
+  cout << "\ntop_sorted_opt:\n";
+  print_vector(top_sorted_opt);
+}
+
+void print_top_sorted_chk(const TopologicalSortResult& top_sorted_chk) {
+  cout << "\ntop_sorted_chk vertices:\n";
+  print_vector(top_sorted_chk.vertices());
+  if (top_sorted_chk.status() == TopologicalSortResult::LoopDetected) {
+    cout << "top_sorted_chk preloop:\n";
+    print_vector(top_sorted_chk.preloop());
+    cout << "top_sorted_chk loop:\n";
+    print_vector(top_sorted_chk.loop());
+  }
+}
+
+
 struct Simple {
   int value;
 };
@@ -63,32 +87,20 @@ int main() {
   auto top_sorted_opt = topological_sort_reachable_optimistic(graph, {0});
   auto top_sorted_chk = topological_sort_reachable_checked(graph, {0});
 
-  assert(top_sorted_chk.status == TopologicalSortResult::Ok);
+  assert(top_sorted_chk.status() == TopologicalSortResult::Ok);
 
-  cout << "\ntop_sorted_opt:\n";
-  for (auto vertex_index : top_sorted_opt)
-    cout << vertex_index << " ";
-  cout << "\n";
-  cout << "\ntop_sorted_chk:\n";
-  for (auto vertex_index : top_sorted_chk.vertices)
-    cout << vertex_index << " ";
-  cout << "\n";
+  print_top_sorted_opt(top_sorted_opt);
+  print_top_sorted_chk(top_sorted_chk);
 
   graph.add_edge(2, 1);  // bam!
 
   top_sorted_opt = topological_sort_reachable_optimistic(graph, {0});
   top_sorted_chk = topological_sort_reachable_checked(graph, {0});
 
-  assert(top_sorted_chk.status == TopologicalSortResult::LoopDetected);
+  assert(top_sorted_chk.status() == TopologicalSortResult::LoopDetected);
 
-  cout << "\ntop_sorted_opt:\n";
-  for (auto vertex_index : top_sorted_opt)
-    cout << vertex_index << " ";
-  cout << "\n";
-  cout << "\ntop_sorted_chk:\n";
-  for (auto vertex_index : top_sorted_chk.vertices)
-    cout << vertex_index << " ";
-  cout << "\n";
+  print_top_sorted_opt(top_sorted_opt);
+  print_top_sorted_chk(top_sorted_chk);
 
   cout << "\ndfs:\n";
   dfs(graph, {3, 7}, [](const DfsState&, GraphIndex vertex){
@@ -96,6 +108,26 @@ int main() {
     return IterationControl::Continue;
   });
   cout << "\n";
+
+
+  DirectedGraph_AdjacencyList graph2(20);
+
+  graph2.add_edge(0, 1);
+  graph2.add_edge(2, 3);
+  graph2.add_edge(4, 5);
+  graph2.add_edge(5, 4);  // bam!
+  graph2.add_edge(6, 7);
+  graph2.add_edge(8, 9);
+
+  graph2.add_edge(10, 0);  // bam!
+  graph2.add_edge(10, 4);  // bam!
+  graph2.add_edge(10, 11);  // bam!
+
+  print_top_sorted_chk(topological_sort_reachable_checked(graph2, {0, 2, 4, 6, 8}));
+  print_top_sorted_chk(topological_sort_reachable_checked(graph2, {0, 2, 10, 6, 8}));
+  print_top_sorted_chk(topological_sort_reachable_checked(graph2, {0, 2, 5, 6, 8}));
+  print_top_sorted_chk(topological_sort_reachable_checked(graph2, {5}));
+  print_top_sorted_chk(topological_sort_reachable_checked(graph2, {10}));
 
   return 0;
 
