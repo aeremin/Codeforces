@@ -88,7 +88,7 @@ int main() {
   auto top_sorted_opt = topological_sort_reachable_optimistic(graph, {0});
   auto top_sorted_chk = topological_sort_reachable_checked(graph, {0});
 
-  assert(top_sorted_chk.status() == TopologicalSortResult::Ok);
+  CHECK(top_sorted_chk.status() == TopologicalSortResult::Ok);
 
   print_top_sorted_opt(top_sorted_opt);
   print_top_sorted_chk(top_sorted_chk);
@@ -98,7 +98,7 @@ int main() {
   top_sorted_opt = topological_sort_reachable_optimistic(graph, {0});
   top_sorted_chk = topological_sort_reachable_checked(graph, {0});
 
-  assert(top_sorted_chk.status() == TopologicalSortResult::LoopDetected);
+  CHECK(top_sorted_chk.status() == TopologicalSortResult::LoopDetected);
 
   print_top_sorted_opt(top_sorted_opt);
   print_top_sorted_chk(top_sorted_chk);
@@ -173,6 +173,6 @@ int main() {
   Indexer<std::string> indexer;
   int i_foo = indexer.insert_new("foo");
   int i_bar = indexer.insert_new("bar");
-  assert(i_foo == indexer.index("foo"));
-  assert("bar" == indexer.value(i_bar));
+  CHECK(i_foo == indexer.index("foo"));
+  CHECK("bar" == indexer.value(i_bar));
 }

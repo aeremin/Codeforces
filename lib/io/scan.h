@@ -68,7 +68,6 @@
 
 #pragma once
 
-#include <cassert>
 #include <cinttypes>
 #include <cstdio>
 #include <iostream>
@@ -76,6 +75,7 @@
 #include <string>
 #include <tuple>
 
+#include "util/check.h"
 #include "util/range.h"
 #include "util/types.h"
 
@@ -87,7 +87,7 @@ template<typename T>
 T scan() {
   bool success = false;
   T result = try_scan<T>(success);
-  assert(success);
+  CHECK(success);
   return result;
 }
 
@@ -159,7 +159,7 @@ inline std::string scan_word()  { return scan<std::string>(); }
 inline std::string scan_line() {
   bool success = false;
   std::string result = try_scan_line(success);
-  assert(success);
+  CHECK(success);
   return result;
 }
 
@@ -205,7 +205,7 @@ void scan(Head& head, Tail&... tail) {
 #define DEFINE_SCAN_VECTOR_N(NAME, SCAN_FUNCTION)  \
 template<typename ElementT>  \
 std::vector<ElementT> NAME(size_t n_elements) {  \
-  assert(ssize_t(n_elements) >= 0);  \
+  CHECK(ssize_t(n_elements) >= 0);  \
   std::vector<ElementT> result;  \
   result.reserve(n_elements);  \
   FOR_TIMES(n_elements) {  \

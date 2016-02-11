@@ -4,9 +4,10 @@
 
 #pragma once
 
-#include <cassert>
 #include <vector>
 #include <unordered_map>
+
+#include "util/check.h"
 
 
 template<typename ValueT>
@@ -27,7 +28,7 @@ public:
 
   int insert_new(const ValueT& value__) {
     auto result = insert(value__);
-    assert(result.second);
+    CHECK_DEFAULT(result.second);
     return result.first;
   }
 
@@ -36,11 +37,11 @@ public:
   }
 
   int index(const ValueT& value__) const {
-    return value_to_index_.at(value__);
+    return map_at(value_to_index_, value__);
   }
 
   const ValueT& value(int index__) const {
-    return index_to_value_.at(index__);
+    return vec_at(index_to_value_, index__);
   }
 
 private:

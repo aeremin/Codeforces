@@ -29,6 +29,7 @@
 #include <numeric>
 
 #include "graph/dfs.h"
+#include "util/check.h"
 #include "util/range.h"
 #include "util/view.h"
 
@@ -59,11 +60,11 @@ public:
   }
 
   ContainterView<std::vector<GraphIndex>::const_iterator> preloop() const {
-    assert(status_ == LoopDetected);
+    CHECK_DEFAULT(status_ == LoopDetected);
     return {loop_begin_, vertices_.end()};
   }
   ContainterView<std::vector<GraphIndex>::const_iterator> loop() const {
-    assert(status_ == LoopDetected);
+    CHECK_DEFAULT(status_ == LoopDetected);
     return {vertices_.begin(), loop_begin_};
   }
 
@@ -118,23 +119,23 @@ TopologicalSortResult topological_sort_reachable_checked(const DirectedGraphT& g
             }
           },
           [&](const GraphTraversalState&, GraphIndex v) {  // on enter
-            assert(!in_current_chain[v]);
+            CHECK_INTERNAL(!in_current_chain[v]);
             in_current_chain[v] = true;
             return IterationControl::Proceed;
           },
           [&](const GraphTraversalState&, GraphIndex v) {  // on exit
-            assert(in_current_chain[v]);
+            CHECK_INTERNAL(in_current_chain[v]);
             in_current_chain[v] = false;
             result.push_back(v);
             return IterationControl::Proceed;
           });
   if (dfs_result == IterationResult::Done) {
-    assert(loop_start_vertex == kInvalidGraphVertex);
+    CHECK_INTERNAL(loop_start_vertex == kInvalidGraphVertex);
     return {TopologicalSortResult::Ok, result, result.size()};
   } else {
-    assert(loop_start_vertex != kInvalidGraphVertex);
+    CHECK_INTERNAL(loop_start_vertex != kInvalidGraphVertex);
     auto loop_start_it = std::find(result.begin(), result.end(), loop_start_vertex);
-    assert(loop_start_it != result.end());
+    CHECK_INTERNAL(loop_start_it != result.end());
     size_t loop_length = (loop_start_it + 1) - result.begin();
     return {TopologicalSortResult::LoopDetected, result, loop_length};
   }

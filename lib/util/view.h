@@ -25,6 +25,8 @@
 #include <iterator>
 #include <stdexcept>
 
+#include "util/check.h"
+
 
 template<typename IteratorT>
 class ContainterView {
@@ -53,9 +55,7 @@ public:
 
 private:
   void check_index(size_t index) {
-    size_t size_ = size();
-    if (index >= size_)
-      throw std::out_of_range(std::to_string(index) + " >= " + std::to_string(size_));
+    CHECK_DEBUG(index < size());
   }
 
   IteratorT begin_ = {};

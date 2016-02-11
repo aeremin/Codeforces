@@ -3,6 +3,8 @@
 #include <limits>
 #include <vector>
 
+#include "util/check.h"
+
 
 using GraphIndex = int;
 
@@ -24,8 +26,8 @@ public:
   }
 
   void add_edge(GraphIndex a, GraphIndex b) {
-    edges_.at(a).push_back(b);
-    edges_.at(b).push_back(a);
+    vec_at(edges_, a).push_back(b);
+    vec_at(edges_, b).push_back(a);
   }
   void add_edge_with_vertices(GraphIndex a, GraphIndex b) {
     extend_to_fit(a);
@@ -34,13 +36,13 @@ public:
   }
 
   const std::vector<GraphIndex>& nbrs(GraphIndex a) const {
-    return edges_.at(a);
+    return vec_at(edges_, a);
   }
   const std::vector<GraphIndex>& in_nbrs(GraphIndex a) const {
-    return edges_.at(a);
+    return vec_at(edges_, a);
   }
   const std::vector<GraphIndex>& out_nbrs(GraphIndex a) const {
-    return edges_.at(a);
+    return vec_at(edges_, a);
   }
 
 private:
@@ -61,7 +63,7 @@ public:
   }
 
   void add_edge(GraphIndex a, GraphIndex b) {
-    edges_.at(a).push_back(b);
+    vec_at(edges_, a).push_back(b);
   }
   void add_edge_with_vertices(GraphIndex a, GraphIndex b) {
     extend_to_fit(a);
@@ -70,7 +72,7 @@ public:
   }
 
   const std::vector<GraphIndex>& out_nbrs(GraphIndex a) const {
-    return edges_.at(a);
+    return vec_at(edges_, a);
   }
 
 private:

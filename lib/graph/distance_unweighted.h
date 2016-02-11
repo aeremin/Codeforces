@@ -14,6 +14,7 @@
 #pragma once
 
 #include "graph/bfs.h"
+#include "util/check.h"
 
 
 // TODO: Move to math library; add 'max' and 'bound'
@@ -32,7 +33,7 @@ std::vector<GraphIndex> find_distance_unweighted(const GraphT& graph,
       {source},
       [&](const GraphTraversalState& state, GraphIndex v) {
         if (state.previous_vertex != kInvalidGraphVertex) {
-          assert(distances[state.previous_vertex] != kMaxGraphIndex);
+          CHECK_INTERNAL(distances[state.previous_vertex] != kMaxGraphIndex);
           inplace_min(distances[v], distances[state.previous_vertex] + 1);
         }
         return IterationControl::Proceed;
@@ -50,7 +51,7 @@ GraphIndex find_distance_unweighted(const GraphT& graph,
       {source},
       [&](const GraphTraversalState& state, GraphIndex v) {
         if (state.previous_vertex != kInvalidGraphVertex) {
-          assert(distances[state.previous_vertex] != kMaxGraphIndex);
+          CHECK_INTERNAL(distances[state.previous_vertex] != kMaxGraphIndex);
           inplace_min(distances[v], distances[state.previous_vertex] + 1);
         }
         if (v == destination)
