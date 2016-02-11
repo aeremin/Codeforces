@@ -208,5 +208,7 @@
     <ClCompile Include="6xx\625\Solver625B.cpp" />
     <ClCompile Include="6xx\625\Solver625C.cpp" />
     <ClCompile Include="6xx\625\Solver625D.cpp" />
+    <ClCompile Include="6xx\622\Solver622E.cpp" />
+    <ClCompile Include="6xx\622\Solver622F.cpp" />
   </ItemGroup>
 </Project>
