@@ -1,11 +1,12 @@
 #pragma once
 
+#include <limits>
 #include <vector>
 
 
 using GraphIndex = int;
-using GraphVertexBitset = std::vector<char>;
 
+constexpr GraphIndex kMaxGraphIndex = std::numeric_limits<GraphIndex>::max();
 constexpr GraphIndex kInvalidGraphVertex = -1;
 
 

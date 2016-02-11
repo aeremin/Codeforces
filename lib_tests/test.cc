@@ -2,6 +2,7 @@
 
 #include "containers/indexer.h"
 #include "graph/topological_sort.h"
+#include "graph/distance_unweighted.h"
 #include "io/scan.h"
 #include "io/targets.h"
 #include "util/hash_compare.h"
@@ -103,9 +104,9 @@ int main() {
   print_top_sorted_chk(top_sorted_chk);
 
   cout << "\ndfs:\n";
-  dfs(graph, {3, 7}, [](const DfsState&, GraphIndex vertex){
+  dfs(graph, {3, 7}, [](const GraphTraversalState&, GraphIndex vertex){
     cout << vertex << " ";
-    return IterationControl::Continue;
+    return IterationControl::Proceed;
   });
   cout << "\n";
 
@@ -128,6 +129,10 @@ int main() {
   print_top_sorted_chk(topological_sort_reachable_checked(graph2, {0, 2, 5, 6, 8}));
   print_top_sorted_chk(topological_sort_reachable_checked(graph2, {5}));
   print_top_sorted_chk(topological_sort_reachable_checked(graph2, {10}));
+
+  cout << "\n";
+  cout << "d = " << find_distance_unweighted(graph2, 10, 5) << "\n";
+  cout << "d = " << find_distance_unweighted(graph2, 11, 10) << "\n";
 
   return 0;
 

@@ -7,6 +7,7 @@ enum class IterationResult {
 };
 
 enum class IterationControl {
-  Continue,
-  Abort,
+  Proceed,
+  AbortGently,
+  AbortBluntly,
 };

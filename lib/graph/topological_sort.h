@@ -80,9 +80,9 @@ std::vector<GraphIndex> topological_sort_reachable_optimistic(const DirectedGrap
   std::vector<GraphIndex> result;
   dfs(graph,
       starting_vertices,
-      [&result](const DfsState&, GraphIndex v) {
+      [&result](const GraphTraversalState&, GraphIndex v) {
         result.push_back(v);
-        return IterationControl::Continue;
+        return IterationControl::Proceed;
       });
   return result;
 }
@@ -103,30 +103,30 @@ template<typename DirectedGraphT, typename VertexListT>
 TopologicalSortResult topological_sort_reachable_checked(const DirectedGraphT& graph,
                                                          const VertexListT& starting_vertices) {
   std::vector<GraphIndex> result;
-  GraphVertexBitset in_current_chain(graph.num_vertices(), false);
+  std::vector<char> in_current_chain(graph.num_vertices(), false);
   GraphIndex loop_start_vertex = kInvalidGraphVertex;
   IterationResult dfs_result =
       dfs(graph,
           starting_vertices,
-          [&](const DfsState&, GraphIndex v) {  // on seen
+          [&](const GraphTraversalState&, GraphIndex v) {  // on seen
             if (in_current_chain[v]) {
               loop_start_vertex = v;
               result.clear();
-              return IterationControl::Abort;
+              return IterationControl::AbortGently;
             } else {
-              return IterationControl::Continue;
+              return IterationControl::Proceed;
             }
           },
-          [&](const DfsState&, GraphIndex v) {  // on enter
+          [&](const GraphTraversalState&, GraphIndex v) {  // on enter
             assert(!in_current_chain[v]);
             in_current_chain[v] = true;
-            return IterationControl::Continue;
+            return IterationControl::Proceed;
           },
-          [&](const DfsState&, GraphIndex v) {  // on exit
+          [&](const GraphTraversalState&, GraphIndex v) {  // on exit
             assert(in_current_chain[v]);
             in_current_chain[v] = false;
             result.push_back(v);
-            return IterationControl::Continue;
+            return IterationControl::Proceed;
           });
   if (dfs_result == IterationResult::Done) {
     assert(loop_start_vertex == kInvalidGraphVertex);
