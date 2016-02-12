@@ -175,4 +175,10 @@ int main() {
   int i_bar = indexer.insert_new("bar");
   CHECK(i_foo == indexer.index("foo"));
   CHECK("bar" == indexer.value(i_bar));
+
+  auto www = value_or(v, 7);
+  std::map<int, int> m;
+  auto mmm = value_or(m, 7);
+  FIX_UNUSED(www);
+  FIX_UNUSED(mmm);
 }

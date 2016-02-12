@@ -1,3 +1,14 @@
+// Convenience getter function for standard containers.
+//
+// * at(container, key)
+//   Checks if 'key' is valid and returns `container[key]`.
+//   Works similar to std::vector::at or std::map::at, but uses DEBUG_CHECK
+//   instead of throwing exceptions.
+//
+// * value_or(container, key, default_value)
+//   Returs `container[key]` if 'key' is valid or 'default_value' otherwise.
+//   Works similar std::experimental::optional::value_or.
+
 #pragma once
 
 #include "util/check.h"
@@ -25,4 +36,18 @@ typename MapT::mapped_type& at(MapT& map, const typename MapT::key_type& key) {
   auto it = map.find(key);
   CHECK_DEBUG(it != map.end());
   return it->second;
+}
+
+
+template<typename VectorT>
+typename VectorT::value_type value_or(VectorT& vec, size_t index,
+                                      const typename VectorT::value_type& default_value = {}) {
+  return (index < vec.size()) ? vec[index] : default_value;
+}
+
+template<typename MapT>
+typename MapT::mapped_type value_or(MapT& map, const typename MapT::key_type& key,
+                                    const typename MapT::mapped_type& default_value = {}) {
+  auto it = map.find(key);
+  return (it != map.end()) ? it->second : default_value;
 }
