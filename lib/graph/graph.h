@@ -3,7 +3,7 @@
 #include <limits>
 #include <vector>
 
-#include "util/check.h"
+#include "util/getters.h"
 
 
 using GraphIndex = int;

@@ -7,7 +7,7 @@
 #include <vector>
 #include <unordered_map>
 
-#include "util/check.h"
+#include "util/getters.h"
 
 
 template<typename ValueT>
