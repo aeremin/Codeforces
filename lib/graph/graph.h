@@ -26,8 +26,8 @@ public:
   }
 
   void add_edge(GraphIndex a, GraphIndex b) {
-    vec_at(edges_, a).push_back(b);
-    vec_at(edges_, b).push_back(a);
+    at(edges_, a).push_back(b);
+    at(edges_, b).push_back(a);
   }
   void add_edge_with_vertices(GraphIndex a, GraphIndex b) {
     extend_to_fit(a);
@@ -36,13 +36,13 @@ public:
   }
 
   const std::vector<GraphIndex>& nbrs(GraphIndex a) const {
-    return vec_at(edges_, a);
+    return at(edges_, a);
   }
   const std::vector<GraphIndex>& in_nbrs(GraphIndex a) const {
-    return vec_at(edges_, a);
+    return at(edges_, a);
   }
   const std::vector<GraphIndex>& out_nbrs(GraphIndex a) const {
-    return vec_at(edges_, a);
+    return at(edges_, a);
   }
 
 private:
@@ -63,7 +63,7 @@ public:
   }
 
   void add_edge(GraphIndex a, GraphIndex b) {
-    vec_at(edges_, a).push_back(b);
+    at(edges_, a).push_back(b);
   }
   void add_edge_with_vertices(GraphIndex a, GraphIndex b) {
     extend_to_fit(a);
@@ -72,7 +72,7 @@ public:
   }
 
   const std::vector<GraphIndex>& out_nbrs(GraphIndex a) const {
-    return vec_at(edges_, a);
+    return at(edges_, a);
   }
 
 private:

@@ -37,11 +37,11 @@ public:
   }
 
   int index(const ValueT& value__) const {
-    return map_at(value_to_index_, value__);
+    return at(value_to_index_, value__);
   }
 
   const ValueT& value(int index__) const {
-    return vec_at(index_to_value_, index__);
+    return at(index_to_value_, index__);
   }
 
 private:
