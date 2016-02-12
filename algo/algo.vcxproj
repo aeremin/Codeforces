@@ -57,11 +57,13 @@
     <ClInclude Include="SortBy.hpp" />
     <ClInclude Include="SortWithMapping.hpp" />
     <ClInclude Include="graph\TreePreprocessor.hpp" />
+    <ClInclude Include="updateappliers\IdApplier.hpp" />
     <ClInclude Include="updateappliers\IncreaseByIdempotent.h" />
     <ClInclude Include="updateappliers\LinearTransformIdempotent.h" />
     <ClInclude Include="updateappliers\SetToIdempotent.h" />
     <ClInclude Include="updateappliers\SetToPlus.hpp" />
     <ClInclude Include="updateappliers\UpdateApplier.hpp" />
+    <ClInclude Include="updatetypes\Id.hpp" />
     <ClInclude Include="updatetypes\IncreaseBy.hpp" />
     <ClInclude Include="updatetypes\LinearTransform.hpp" />
     <ClInclude Include="updatetypes\SetTo.hpp" />
