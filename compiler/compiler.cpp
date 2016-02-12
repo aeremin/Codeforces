@@ -8,7 +8,7 @@
 
 #include <boost/program_options.hpp>
 
-#include "containers/indexer.h"
+#include "container/indexer.h"
 #include "graph/topological_sort.h"
 
 #include "file_parser.h"

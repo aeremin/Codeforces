@@ -2,13 +2,17 @@ cmake_minimum_required(VERSION 2.6)
 project(contest_lib_test)
 
 find_package(Boost 1.54.0 COMPONENTS program_options REQUIRED)
+find_package(GTest REQUIRED)
 
 set(lib_dir ${CMAKE_SOURCE_DIR}/lib)
 
-set(tests_dir ${CMAKE_SOURCE_DIR}/lib_tests)
 set(tests_exe contest_lib_test)
-set(tests_srcs ${tests_dir}/test.cc)
+set(tests_srcs
+    ${lib_dir}/test.cc
+    ${lib_dir}/container/indexer_test.cpp)
 add_executable(${tests_exe}  ${tests_srcs})
+target_link_libraries(${tests_exe} ${GTEST_LIBRARIES})
+target_link_libraries(${tests_exe} "pthread")
 
 set(compiler_dir ${CMAKE_SOURCE_DIR}/compiler)
 set(compiler_exe solution_compiler)

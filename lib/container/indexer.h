@@ -14,7 +14,7 @@ template<typename ValueT>
 class Indexer {
 public:
   int size() const {
-    return index_to_value_.size();
+    return int(index_to_value_.size());
   }
 
   std::pair<int, bool> insert(const ValueT& value__) {

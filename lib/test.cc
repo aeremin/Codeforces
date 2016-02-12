@@ -1,6 +1,7 @@
 #include "std.h"
 
-#include "containers/indexer.h"
+#include <gtest/gtest.h>
+
 #include "graph/topological_sort.h"
 #include "graph/distance_unweighted.h"
 #include "io/scan.h"
@@ -70,6 +71,16 @@ DEFINE_COMPARISON_AND_HASH_2(Foo2, bar, buz);
 DEFINE_COMPARISON_AND_HASH_2(IntPair, first, second);
 DEFINE_COMPARISON_AND_HASH_4(Foo4, a, b, c, d);
 
+
+
+int main(int argc, char* argv[]) {
+  testing::InitGoogleTest(&argc, argv);
+  // TODO: set library_tests__enable_checks from command line flags, add launch script
+  return RUN_ALL_TESTS();
+}
+
+
+#if 0
 int main() {
   DirectedGraph_AdjacencyList graph(20);
   graph.add_edge(0, 1);
@@ -170,15 +181,10 @@ int main() {
   auto vec = scan_vector_2<pair<int, double>>(n);
   string str = scan();
 
-  Indexer<std::string> indexer;
-  int i_foo = indexer.insert_new("foo");
-  int i_bar = indexer.insert_new("bar");
-  CHECK(i_foo == indexer.index("foo"));
-  CHECK("bar" == indexer.value(i_bar));
-
   auto www = value_or(v, 7);
   std::map<int, int> m;
   auto mmm = value_or(m, 7);
   FIX_UNUSED(www);
   FIX_UNUSED(mmm);
 }
+#endif
