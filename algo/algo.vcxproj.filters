@@ -57,6 +57,7 @@
     <ClInclude Include="WeightComparator.hpp" />
     <ClInclude Include="DPProcessor.hpp" />
     <ClInclude Include="graph\BreadthFirstSearch.hpp" />
+    <ClInclude Include="Range.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MergeSort.hpp" />

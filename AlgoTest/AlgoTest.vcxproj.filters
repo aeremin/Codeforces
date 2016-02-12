@@ -36,6 +36,7 @@
     <ClCompile Include="AngleSortTest.cpp" />
     <ClCompile Include="DPProcessorTest.cpp" />
     <ClCompile Include="BreadthSearchTest.cpp" />
+    <ClCompile Include="RangeTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphHelper.h" />

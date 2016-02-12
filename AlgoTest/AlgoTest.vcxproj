@@ -41,6 +41,7 @@
     <ClCompile Include="PrimesTest.cpp" />
     <ClCompile Include="QuickPowerTest.cpp" />
     <ClCompile Include="QuickSortTest.cpp" />
+    <ClCompile Include="RangeTest.cpp" />
     <ClCompile Include="ResidueTest.cpp" />
     <ClCompile Include="SegmentTreeTest.cpp" />
     <ClCompile Include="SingleLinkedListTest.cpp" />
