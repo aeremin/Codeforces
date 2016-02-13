@@ -15,7 +15,10 @@ sed -e 'N;s/ = \n/ = /g' -i io.txt
 
 solver="Solver${1}${2}"
 
-printf "#include <Solvers/pch.h>\n\nusing namespace std;\n\nclass ${solver}\n{\npublic:\n    void run();\n};\n\nvoid ${solver}::run()\n{\n\n}\n\n" >> out.cpp
+printf "#include <Solvers/pch.h>\n" >> out.cpp
+printf "#include \"algo/io/baseio.hpp\"\n" >> out.cpp
+printf "#include \"algo/range.hpp\"\n" >> out.cpp
+printf "using namespace std;\n\nclass ${solver}\n{\npublic:\n    void run();\n};\n\nvoid ${solver}::run()\n{\n\n}\n\n" >> out.cpp
 printf "class ${solver}Test : public ProblemTest {};\n\n" >> out.cpp
 
 exampleNumber=0
