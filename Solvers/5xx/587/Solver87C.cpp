@@ -92,7 +92,7 @@ class Solver587CTest : public ProblemTest {};
 
 TEST_F( Solver587CTest, Example1 )
 {
-	setInput("5 4 5       1 3       1 2      1 4      4 5      2 1 4 3          4 5 6     1 5 2     5 5 10     2 3 3     5 3 1");
+    setInput("5 4 5       1 3       1 2      1 4      4 5      2 1 4 3          4 5 6     1 5 2     5 5 10     2 3 3     5 3 1");
     Solver587C().run();
     EXPECT_EQ("1 3 \n2 2 3 \n0 \n3 1 2 4 \n1 2 \n", getOutput());
 }

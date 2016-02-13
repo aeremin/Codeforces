@@ -43,7 +43,7 @@ int main()
 {
     ios::sync_with_stdio( false );
     CurrentSolver().run();
-	return 0;
+    return 0;
 }
 )";
 }

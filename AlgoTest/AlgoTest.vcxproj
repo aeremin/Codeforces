@@ -16,6 +16,7 @@
     <ClCompile Include="BinarySearchTest.cpp" />
     <ClCompile Include="BinomialCoefficientTest.cpp" />
     <ClCompile Include="BipartitionCheckerTest.cpp" />
+    <ClCompile Include="BreadthSearchTest.cpp" />
     <ClCompile Include="ConnectedComponentsDecomposerTest.cpp" />
     <ClCompile Include="CoprimeTest.cpp" />
     <ClCompile Include="DepthFirstSearchTest.cpp" />
@@ -40,6 +41,7 @@
     <ClCompile Include="PrimesTest.cpp" />
     <ClCompile Include="QuickPowerTest.cpp" />
     <ClCompile Include="QuickSortTest.cpp" />
+    <ClCompile Include="RangeTest.cpp" />
     <ClCompile Include="ResidueTest.cpp" />
     <ClCompile Include="SegmentTreeTest.cpp" />
     <ClCompile Include="SingleLinkedListTest.cpp" />

@@ -57,7 +57,7 @@ void Solver474E::run()
         }
         predecessors[i] = currMax.second;
         maxJumpCountAndPredecessor[forwardMapping[i]] = { currMax.first, i };
-		auto upd = updateTypes::SetTo<pair<int, int>>(make_pair(currMax.first, int(i)));
+        auto upd = updateTypes::SetTo<pair<int, int>>(make_pair(currMax.first, int(i)));
         segmentTree.updateElement(forwardMapping[i], upd);
     }
 

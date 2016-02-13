@@ -10,14 +10,14 @@ public:
 
 void Solver610A::run()
 {
-	int len;
-	cin >> len;
-	if (len % 2 == 1)
-		cout << 0;
-	else if (len % 4 == 0)
-		cout << (len / 4 - 1);
-	else
-		cout << (len / 4);
+    int len;
+    cin >> len;
+    if (len % 2 == 1)
+        cout << 0;
+    else if (len % 4 == 0)
+        cout << (len / 4 - 1);
+    else
+        cout << (len / 4);
 }
 
 class Solver610ATest : public ProblemTest {};

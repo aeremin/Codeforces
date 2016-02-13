@@ -58,6 +58,8 @@
     <ClInclude Include="DPProcessor.hpp" />
     <ClInclude Include="updatetypes\Id.hpp" />
     <ClInclude Include="updateappliers\IdApplier.hpp" />
+    <ClInclude Include="graph\BreadthFirstSearch.hpp" />
+    <ClInclude Include="Range.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MergeSort.hpp" />

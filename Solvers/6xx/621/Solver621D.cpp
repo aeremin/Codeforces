@@ -10,44 +10,44 @@ public:
 
 void Solver621D::run()
 {
-	vector<string> formulas =
-	{
-		"x^y^z", "x^z^y", "(x^y)^z", "y^x^z", "y^z^x", "(y^x)^z", "z^x^y", "z^y^x", "(z^x)^y"
-	};
-	vector<function<complex<double>(complex<double>, complex<double>, complex<double>)>> functors = 
-	{
-		[](complex<double> x, complex<double> y, complex<double> z) {return log(log(x)) + z * log(y); },
-		[](complex<double> x, complex<double> y, complex<double> z) {return log(log(x)) + y * log(z); },
-		[](complex<double> x, complex<double> y, complex<double> z) {return log(log(x)) + log(y) + log(z); },
-		
-		[](complex<double> x, complex<double> y, complex<double> z) {return log(log(y)) + z * log(x); },
-		[](complex<double> x, complex<double> y, complex<double> z) {return log(log(y)) + x * log(z); },
-		[](complex<double> x, complex<double> y, complex<double> z) {return log(log(y)) + log(x) + log(z); },
-		
-		[](complex<double> x, complex<double> y, complex<double> z) {return log(log(z)) + y * log(x); },
-		[](complex<double> x, complex<double> y, complex<double> z) {return log(log(z)) + x * log(y); },
-		[](complex<double> x, complex<double> y, complex<double> z) {return log(log(z)) + log(x) + log(y); },
-	};
+    vector<string> formulas =
+    {
+        "x^y^z", "x^z^y", "(x^y)^z", "y^x^z", "y^z^x", "(y^x)^z", "z^x^y", "z^y^x", "(z^x)^y"
+    };
+    vector<function<complex<double>(complex<double>, complex<double>, complex<double>)>> functors = 
+    {
+        [](complex<double> x, complex<double> y, complex<double> z) {return log(log(x)) + z * log(y); },
+        [](complex<double> x, complex<double> y, complex<double> z) {return log(log(x)) + y * log(z); },
+        [](complex<double> x, complex<double> y, complex<double> z) {return log(log(x)) + log(y) + log(z); },
+        
+        [](complex<double> x, complex<double> y, complex<double> z) {return log(log(y)) + z * log(x); },
+        [](complex<double> x, complex<double> y, complex<double> z) {return log(log(y)) + x * log(z); },
+        [](complex<double> x, complex<double> y, complex<double> z) {return log(log(y)) + log(x) + log(z); },
+        
+        [](complex<double> x, complex<double> y, complex<double> z) {return log(log(z)) + y * log(x); },
+        [](complex<double> x, complex<double> y, complex<double> z) {return log(log(z)) + x * log(y); },
+        [](complex<double> x, complex<double> y, complex<double> z) {return log(log(z)) + log(x) + log(y); },
+    };
 
-	double xr, yr, zr;
-	cin >> xr >> yr >> zr;
-	complex<double> x = { xr, 0.0 }, y = { yr, 0.0 }, z = { zr, 0.0 };
-	vector<complex<double>> results;
-	for (auto f : functors)
-		results.push_back(f(x, y, z));
+    double xr, yr, zr;
+    cin >> xr >> yr >> zr;
+    complex<double> x = { xr, 0.0 }, y = { yr, 0.0 }, z = { zr, 0.0 };
+    vector<complex<double>> results;
+    for (auto f : functors)
+        results.push_back(f(x, y, z));
 
-	auto compareExponentsOf = [](complex<double> a, complex<double> b) -> bool
-	{
-		double aSign = abs(a.imag()) > 0.001 ? -1.0 : 1.0;
-		double bSign = abs(b.imag()) > 0.001 ? -1.0 : 1.0;
+    auto compareExponentsOf = [](complex<double> a, complex<double> b) -> bool
+    {
+        double aSign = abs(a.imag()) > 0.001 ? -1.0 : 1.0;
+        double bSign = abs(b.imag()) > 0.001 ? -1.0 : 1.0;
         if ( aSign == bSign )
             return ( a.real() * aSign < b.real() * bSign );
         else
             return aSign < bSign;
-	};
+    };
 
-	auto maxIndex = max_element(begin(results), end(results), compareExponentsOf) - begin(results);
-	cout << formulas[maxIndex];
+    auto maxIndex = max_element(begin(results), end(results), compareExponentsOf) - begin(results);
+    cout << formulas[maxIndex];
 }
 
 class Solver621DTest : public ProblemTest {};

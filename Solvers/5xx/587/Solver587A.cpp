@@ -5,7 +5,7 @@ using namespace std;
 class Solver587A
 {
 public:
-	void run();
+    void run();
 };
 
 
@@ -39,12 +39,12 @@ TEST_F(Solver587ATest, Example1)
 {
     setInput("5        1 1 2 3 3");
     Solver587A().run();
-	EXPECT_EQ("2", getOutput());
+    EXPECT_EQ("2", getOutput());
 }
 
 TEST_F(Solver587ATest, Example2)
 {
     setInput("4        0 1 2 3");
     Solver587A().run();
-	EXPECT_EQ("4", getOutput());
+    EXPECT_EQ("4", getOutput());
 }
