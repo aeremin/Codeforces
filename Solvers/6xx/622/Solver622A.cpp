@@ -1,5 +1,6 @@
 #include <Solvers/pch.h>
 #include "algo/FunctorIterator.hpp"
+#include "algo/io/baseio.hpp"
 
 using namespace std;
 
@@ -11,8 +12,7 @@ public:
 
 void Solver622A::run()
 {
-    int64_t n;
-    cin >> n;
+    auto n = read<int64_t>();
 
     auto countAfterKParts = [](int64_t k)
     {

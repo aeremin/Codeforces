@@ -60,6 +60,7 @@
     <ClInclude Include="updateappliers\IdApplier.hpp" />
     <ClInclude Include="graph\BreadthFirstSearch.hpp" />
     <ClInclude Include="Range.hpp" />
+    <ClInclude Include="io\baseio.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MergeSort.hpp" />

@@ -41,7 +41,6 @@ const char* fileMainPart =
 R"(
 int main()
 {
-    ios::sync_with_stdio( false );
     CurrentSolver().run();
     return 0;
 }

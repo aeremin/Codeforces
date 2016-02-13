@@ -11,8 +11,8 @@ public:
 
 void Solver600B::run()
 {
-    int n, m;
-    cin >> n >> m;
+    auto n = read<int>();
+    auto m = read<int>();
     auto a = readVector<int>( n );
     auto b = readVector<int>( m );
     sort( begin( a ), end( a ) );

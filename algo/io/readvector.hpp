@@ -1,12 +1,12 @@
 #pragma once
 #include <vector>
-#include <iostream>
+#include "algo/io/baseio.hpp"
 
 template<typename T>
 std::vector<T> readVector(size_t size)
 {
     std::vector<T> res(size);
     for (auto& elt : res)
-        std::cin >> elt;
+        elt = read<T>();
     return res;
 }
