@@ -4,7 +4,7 @@ template<typename T>
 class Range
 {
 public:
-    Range( T start, T end ) : start_( start ), end_( end )  {}
+    Range(T start, T end) : start_(std::min(start, end)), end_(end) {}
     
     
     class Iterator
