@@ -30,12 +30,14 @@
 //   - Done otherwise.
 //
 // Call sequence for each vertex, if no aborts:
-//   (on_see on_enter on_see* on_exit on_see*)?
+//   (on_see? on_enter on_see* on_exit on_see*)?
 // After AbortGently:
 //   - no more on_see or on_enter are issued;
 //   - on_exit are issued for all vertices that had on_enter called before,
 //     and only for them (so, the above-mentioned call sequence holds true).
 // After AbortBluntly: no more callbacks are issued.
+
+// TODO: Treat callback returning void as if they return IterationControl::Proceed.
 
 #pragma once
 
@@ -53,7 +55,7 @@ struct GraphTraversalState {
   bool aborting = false;
 };
 
-IterationControl graph_traversal_noop_continue(const GraphTraversalState&, GraphIndex) {
+inline IterationControl graph_traversal_noop_continue(const GraphTraversalState&, GraphIndex) {
   return IterationControl::Proceed;
 };
 

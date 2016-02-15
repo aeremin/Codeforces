@@ -87,7 +87,7 @@ int main(int argc, char* argv[]) {
     for (const std::string& dependency : current_file.local_includes) {
       try {
         int dependency_index = process_file(dependency, true);
-        include_graph.add_edge_with_vertices(file_index, dependency_index);
+        include_graph.add_arc_with_vertices(file_index, dependency_index);
       } catch (const std::runtime_error& err) {
         throw std::runtime_error(std::string(err.what()) + "\n" + kIncludedFromPrefix + file_name);
       }

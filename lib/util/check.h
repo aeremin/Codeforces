@@ -24,6 +24,8 @@
 
 #pragma once
 
+#include <cstdlib>
+
 #include "util/macro.h"
 
 
