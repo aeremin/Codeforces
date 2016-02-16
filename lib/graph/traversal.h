@@ -14,7 +14,7 @@
 // Substituting stack corresponds to DFS; queue - to BFS.
 //
 // starting_vertices is any iterable collection of GraphIndex'es, e.g.
-// std::vector, initializer_list or a range (see util/range.h).
+// std::vector, initializer_list or a range (see iter/range.h).
 // To start with one vertex use `{vertex}`.
 //
 // All callbacks must have the following signature:

@@ -29,9 +29,9 @@
 #include <numeric>
 
 #include "graph/dfs.h"
+#include "iter/range.h"
+#include "iter/view.h"
 #include "util/check.h"
-#include "util/range.h"
-#include "util/view.h"
 
 
 class TopologicalSortResult {
