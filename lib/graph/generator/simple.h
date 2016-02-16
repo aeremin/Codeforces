@@ -1,6 +1,6 @@
 #pragma once
 
-#include "graph/graph.h"
+#include "graph/adjacency_list.h"
 #include "internal_tests/random.h"
 #include "util/range.h"
 

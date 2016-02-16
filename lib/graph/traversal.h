@@ -44,7 +44,7 @@
 #include <queue>
 #include <stack>
 
-#include "graph/graph.h"
+#include "graph/basic.h"
 #include "util/callbacks.h"
 
 
@@ -101,7 +101,7 @@ IterationResult traverse_graph(const GraphT& graph,
       if (!state.aborting) {
         const auto& neighbourhood = graph.out_nbrs(top.vertex);
         while (top.i_neighbour < GraphIndex(neighbourhood.size())) {
-          GraphIndex neighbour = neighbourhood[top.i_neighbour];
+          GraphIndex neighbour = neighbourhood[top.i_neighbour].vertex;
           switch (on_see(const_state, neighbour)) {
             case IterationControl::Proceed:
               break;

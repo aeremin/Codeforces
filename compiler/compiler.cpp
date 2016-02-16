@@ -9,6 +9,7 @@
 #include <boost/program_options.hpp>
 
 #include "container/indexer.h"
+#include "graph/adjacency_list.h"
 #include "graph/topological_sort.h"
 
 #include "file_parser.h"
@@ -58,7 +59,7 @@ int main(int argc, char* argv[]) {
   Indexer<std::string> file_indexer;
   std::vector<ParsedFile> files;
   std::set<std::string> system_includes;
-  DirectedGraph_AdjacencyList include_graph;
+  DirectedGraph_Nonloaded_AdjacencyList include_graph;
 
   std::function<int(const std::string&, bool)> process_file =
       [&](const std::string& file_name, bool is_header) {
