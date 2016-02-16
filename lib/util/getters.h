@@ -15,12 +15,12 @@
 
 
 template<typename VectorT>
-const typename VectorT::value_type& at(const VectorT& vec, size_t index) {
+typename VectorT::const_reference at(const VectorT& vec, size_t index) {
   CHECK_DEFAULT(index < vec.size());
   return vec[index];
 }
 template<typename VectorT>
-typename VectorT::value_type& at(VectorT& vec, size_t index) {
+typename VectorT::reference at(VectorT& vec, size_t index) {
   CHECK_DEBUG(index < vec.size());
   return vec[index];
 }
