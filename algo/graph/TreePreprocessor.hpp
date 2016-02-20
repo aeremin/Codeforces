@@ -1,10 +1,26 @@
 #pragma once
 #include "algo/graph/Graph.hpp"
+#include <vector>
 #include <stdint.h>
 
 template<class PerEdgeData, class PerVertexData>
 class TreePreprocessor
 {
+public:
+    struct LiftData
+    {
+        LiftData() {}
+        LiftData(int parent_, PerEdgeData edgeData_, PerVertexData vertexData_)
+        : parent(parent_), edgeData(edgeData_), vertexData(vertexData_) {}
+        int parent;
+        PerEdgeData edgeData;
+        PerVertexData vertexData;
+    };
+private:
+    const Graph<PerEdgeData, PerVertexData>& graph_;
+    std::vector<int> depths_;
+    std::vector<vector<LiftData>> binaryLiftData_;
+    
 public:
     TreePreprocessor( const Graph<PerEdgeData, PerVertexData>& graph )
         : graph_( graph ),
@@ -12,21 +28,14 @@ public:
         binaryLiftData_( graph.vertexCount() )
     {
         depths_[0] = 0;
-        binaryLiftData_[0].push_back( { -1, {}, {} } );
+        binaryLiftData_[0].push_back( LiftData( -1, PerEdgeData(), PerVertexData() ) );
         dfs_( 0 );
         calculateBinaryLifts_();
     }
 
-    struct LiftData
-    {
-        int parent;
-        PerEdgeData edgeData;
-        PerVertexData vertexData;
-    };
-
     LiftData lift( int vInd, size_t dist )
     {
-        LiftData result = { vInd, {}, {} };
+        LiftData result( vInd, PerEdgeData(), PerVertexData() );
         size_t jumpLog = 0;
         while ( dist > 0 )
         {
@@ -70,10 +79,6 @@ public:
     }
 
 private:
-    const Graph<PerEdgeData, PerVertexData>& graph_;
-    vector<int> depths_;
-
-    vector<vector<LiftData>> binaryLiftData_;
 
     int lcaInternal_( int vInd1, int vInd2, int maxJumpLog )
     {

@@ -1,10 +1,11 @@
 #include <gtest/gtest.h>
-#include "algo/graph/TreePreprocessor.hpp"
 
 int concatenate( int a, int b )
 {
     return a + b;
 }
+
+#include "algo/graph/TreePreprocessor.hpp"
 
 using TreeCountingEdgesAndVertices = Graph<int, int>;
 

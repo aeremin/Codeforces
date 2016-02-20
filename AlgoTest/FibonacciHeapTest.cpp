@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include "algo/FibonacciHeap.hpp"
+#include <algorithm>
 
 using std::vector;
 
@@ -30,7 +31,7 @@ TEST(FibonacciHeapTest, IsSortedAfterPush)
 {
     const int nElts = 100000;
     vector<int> eltToPush(nElts);
-    generate(begin(eltToPush), end(eltToPush), rand);
+    std::generate(begin(eltToPush), end(eltToPush), rand);
 
     FibonacciHeap<int> heap;
     for (int elt : eltToPush)

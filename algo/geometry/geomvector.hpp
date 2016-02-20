@@ -18,8 +18,6 @@ public:
     { 
         fill_<0, Args...>(args...); 
     }
-    
-    GeomVector(const std::array<T, n>& from) : comps_(from) {}
 
 	T& operator[](size_t ind) { return comps_[ind]; }
 	const T& operator[](size_t ind) const { return comps_[ind]; }

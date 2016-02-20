@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include "algo/Heap.hpp"
+#include <algorithm>
 
 using namespace std;
 

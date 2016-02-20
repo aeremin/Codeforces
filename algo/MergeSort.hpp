@@ -2,6 +2,7 @@
 
 #include <iterator>
 #include <utility>
+#include <vector>
 
 using std::distance;
 using std::copy;
@@ -18,7 +19,7 @@ void mergeSort(RandomAccessIterator first, RandomAccessIterator last)
     mergeSort(center, last);
 
     //We need to "backup" left part as it will be rewritten
-    vector<RandomAccessIterator::value_type> backup(dist / 2);
+    std::vector<typename RandomAccessIterator::value_type> backup(dist / 2);
     copy(first, center, begin(backup));
 
     auto leftPartIter = begin(backup);

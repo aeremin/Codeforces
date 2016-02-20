@@ -1,4 +1,5 @@
 #pragma once
+#include <algorithm>
 #include "algo/geometry/geomvector.hpp"
 
 template<typename T>

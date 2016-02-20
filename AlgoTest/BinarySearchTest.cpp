@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include <numeric>
+#include <algorithm>
 #include "algo/BinarySearch.hpp"
 using namespace std;
 

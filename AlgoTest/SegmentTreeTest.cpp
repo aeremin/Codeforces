@@ -1,8 +1,9 @@
 #include <gtest/gtest.h>
 #include <numeric>
-#include "algo/SegmentTree.hpp"
+#include <algorithm>
 #include "algo/updatetypes/SetTo.hpp"
 #include "algo/updateappliers/SetToPlus.hpp"
+#include "algo/SegmentTree.hpp"
 
 using std::vector;
 

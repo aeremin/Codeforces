@@ -1,6 +1,7 @@
 #pragma once
 #include <utility>
 #include <assert.h>
+#include <cmath>
 
 template<typename T>
 class CyclicDoubleLinkedList;
@@ -23,7 +24,7 @@ template<typename T>
 class CyclicDoubleLinkedList
 {
 public:
-    typedef Node<typename T> NodeType;
+    typedef Node<T> NodeType;
     
     CyclicDoubleLinkedList() : head_(nullptr), size_(0) {}
 
@@ -118,7 +119,7 @@ template<typename T>
 class FibonacciHeap
 {
 public:
-    typedef Node<typename T> NodeType;
+    typedef Node<T> NodeType;
 
     FibonacciHeap() : minNode_(nullptr), size_(0) {}
 
@@ -276,7 +277,7 @@ private:
     {
         topLevel_.forEachNode([&](NodeType* node)
         {
-            assert(child->parent = nullptr);
+            assert(node->parent = nullptr);
         });
     }
 

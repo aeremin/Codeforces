@@ -5,7 +5,7 @@
 template<class Iterator>
 size_t lenOfMaximalIncreasingSubsequence(Iterator first, Iterator last)
 {
-    std::vector<Iterator::value_type> lastsSubsequenceElts;
+    std::vector<typename Iterator::value_type> lastsSubsequenceElts;
     for (auto it = first; it != last; ++it)
     {
         auto relaxIter = std::upper_bound(begin(lastsSubsequenceElts), end(lastsSubsequenceElts), *it);
@@ -30,12 +30,12 @@ size_t lenOfMaximalIncreasingSubsegment(Iterator first, Iterator last)
     {
         if (*it < *(it - 1))
         {
-            result = std::max(result, std::distance(currSegmentStart, it));
+            result = std::max<int>(result, std::distance(currSegmentStart, it));
             currSegmentStart = it;
         }
     }
 
-    result = std::max(result, std::distance(currSegmentStart, last));
+    result = std::max<int>(result, std::distance(currSegmentStart, last));
 
     return result;
 }

@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <algorithm>
 
 template<typename T, typename Predicate>
 void sortWithMappings(std::vector<T>& container, Predicate predicate,
