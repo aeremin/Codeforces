@@ -18,6 +18,10 @@ set(tests_srcs
     ${solvers_dir}/6xx/626/Solver626B.cpp
     ${solvers_dir}/6xx/626/Solver626C.cpp
     ${solvers_dir}/6xx/626/Solver626D.cpp
+    ${solvers_dir}/6xx/629/Solver629A.cpp
+    ${solvers_dir}/6xx/629/Solver629B.cpp
+    ${solvers_dir}/6xx/629/Solver629C.cpp
+    ${solvers_dir}/6xx/629/Solver629D.cpp
     ${algotest_dir}/geometry/ConvexHullTest.cpp
     ${algotest_dir}/geometry/geomvectortest.cpp
     ${algotest_dir}/AngleSortTest.cpp
