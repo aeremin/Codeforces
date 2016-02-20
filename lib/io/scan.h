@@ -80,17 +80,6 @@
 #include "util/types.h"
 
 
-template<typename T>
-T try_scan(bool& success);
-
-template<typename T>
-T scan() {
-  bool success = false;
-  T result = try_scan<T>(success);
-  CHECK(success);
-  return result;
-}
-
 #define DEFINE_SIMPLE_SCAN_TYPE(TYPE_NAME, FORMAT)  \
   template<>  \
   TYPE_NAME try_scan<TYPE_NAME>(bool& success) {  \
@@ -99,13 +88,29 @@ T scan() {
     return result;  \
   }
 
+#ifdef LOCAL_PC
+
+// Use iostream locally for redirections in unit tests
+template<typename T>
+T try_scan(bool& success) {
+  T result;
+  success = bool(std::cin >> result);
+  return result;
+}
+
+#else
+
+template<typename T>
+T try_scan(bool& success);
+
+// Use stdio remotely, because it's faster
 DEFINE_SIMPLE_SCAN_TYPE(int, "%d");
 DEFINE_SIMPLE_SCAN_TYPE(uint, "%u");
 DEFINE_SIMPLE_SCAN_TYPE(int64, "%" SCNd64);
 DEFINE_SIMPLE_SCAN_TYPE(uint64, "%" SCNu64);
 DEFINE_SIMPLE_SCAN_TYPE(float, "%f");
 DEFINE_SIMPLE_SCAN_TYPE(double, "%lf");
-DEFINE_SIMPLE_SCAN_TYPE(char, "%c");
+DEFINE_SIMPLE_SCAN_TYPE(char, "%c");  // TODO: sync with iostream (in terms of whitespace treatment)
 
 template<>
 std::string try_scan<std::string>(bool& success) {
@@ -113,6 +118,8 @@ std::string try_scan<std::string>(bool& success) {
   success = bool(std::cin >> result);
   return result;
 }
+
+#endif
 
 #if 0  // TODO try
 template<typename Arg>
@@ -146,6 +153,14 @@ inline std::string try_scan_line(bool& success) {
   return result;
 }
 
+
+template<typename T>
+T scan() {
+  bool success = false;
+  T result = try_scan<T>(success);
+  CHECK(success);
+  return result;
+}
 
 inline int scan_int()           { return scan<int>();    }
 inline uint scan_uint()         { return scan<uint>();   }
