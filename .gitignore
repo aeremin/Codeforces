@@ -1,5 +1,7 @@
 Release
 Debug
 ipch
+build
 *.sdf
 *.opensdf
+*kdev*
