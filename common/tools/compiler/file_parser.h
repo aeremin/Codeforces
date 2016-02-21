@@ -1,5 +1,6 @@
 #pragma once
 
+#include <istream>
 #include <string>
 #include <vector>
 
@@ -25,4 +26,4 @@ struct ParsedFile {
     std::vector<ParsingProblem> problems;
 };
 
-ParsedFile ParseFile(const std::string& path, const ParserOptions& options, bool is_header);
+ParsedFile ParseFile(std::istream& input, const ParserOptions& options, bool is_header);

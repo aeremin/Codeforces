@@ -1,5 +1,6 @@
 #include "compiler.h"
 
+#include <fstream>
 #include <functional>
 #include <iostream>
 #include <set>
@@ -27,8 +28,21 @@ std::string Compile(const std::string& main_file, CompilerOptions& options) {
         int file_index = it.first;
         if (!it.second)
             return file_index;    // already parsed
-        const std::string file_path = (is_header ? options.include_path + "/" : "") + file_name;
-        files.push_back(ParseFile(file_path, options.parser_options, is_header));
+        const auto& include_paths = is_header ? options.include_paths : std::vector<std::string>{"."};
+        bool file_found = false;
+        for (const auto& include_path : include_paths) {
+            const std::string file_path = include_path + "/" + file_name;
+            std::fstream input(file_path, std::ios_base::in);
+            if (!input.fail()) {
+                file_found = true;
+                files.push_back(ParseFile(input, options.parser_options, is_header));
+                break;
+            }
+        }
+        if (!file_found) {
+            std::cerr << "Error: cannot find file \"" << file_name << "\"\n";
+            throw std::runtime_error("Fatal error parsing " + file_name);
+        }
         const ParsedFile& current_file = files.back();
         for (const ParsingProblem& problem : current_file.problems) {
             const std::string location = file_name + ((problem.line >= 0) ? ":" + std::to_string(problem.line) : "");

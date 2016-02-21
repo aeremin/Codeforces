@@ -1,6 +1,5 @@
 #include "file_parser.h"
 
-#include <fstream>
 #include <regex>
 
 #include "strings/trim.h"
@@ -17,19 +16,14 @@ std::regex test_start_regex("class (.*)_Test : public SolverTest.*");
 }  // namespace
 
 
-ParsedFile ParseFile(const std::string& path, const ParserOptions& options, bool is_header) {
+ParsedFile ParseFile(std::istream& input, const ParserOptions& options, bool is_header) {
     CHECK(options.strip_comments == false);    // TODO: support
     ParsedFile file;
-    std::fstream in(path, std::ios_base::in);
-    if (in.fail()) {
-        file.problems.push_back({ParsingProblem::Error, -1, "cannot open file"});
-        return file;
-    }
     std::string line;
     int i_line = -1;
     int pragma_once_count = 0;
     std::string solver_name;
-    while (std::getline(in, line)) {
+    while (std::getline(input, line)) {
         ++i_line;
         size_t old_length = line.length();
         rtrim(line);

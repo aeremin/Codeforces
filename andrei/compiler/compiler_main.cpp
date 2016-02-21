@@ -15,7 +15,7 @@ int main(int argc, char* argv[]) {
     opts.add_options()
         ("help", "produce help message")
         ("strip-comments", "remove comments from the file")
-        ("include-path", po::value<std::string>(), "include path")
+        ("include-path", po::value<std::vector<std::string>>(), "include path")
         ("input-file", po::value<std::string>(), "input file")
     ;
 
@@ -40,7 +40,7 @@ int main(int argc, char* argv[]) {
 
     CompilerOptions options;
     options.parser_options.strip_comments = var_map.count("strip-comments");
-    options.include_path = var_map.count("include-path") ? var_map["include-path"].as<std::string>() : "";
+    options.include_paths = var_map["include-path"].as<std::vector<std::string>>();
     const std::string main_file = var_map["input-file"].as<std::string>();
 
     try {
