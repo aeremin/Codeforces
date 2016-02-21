@@ -1,6 +1,6 @@
 #include "Solvers/pch.h"
 #include <limits>
-#include "algo/WeightComparator.hpp"
+#include "util/weight_comparator.h"
 
 class Solver605B
 {
@@ -40,8 +40,8 @@ void Solver605B::run()
     }
     
     auto edgeWeight = [](const EdgeInfo& a){return a.weight; };
-    std::sort(begin(mstEdges), end(mstEdges), makeWeightComparator(edgeWeight));
-    std::sort(begin(nonMstEdges), end(nonMstEdges),  makeWeightComparator(edgeWeight));
+    std::sort(begin(mstEdges), end(mstEdges), make_weight_comparator(edgeWeight));
+    std::sort(begin(nonMstEdges), end(nonMstEdges),  make_weight_comparator(edgeWeight));
 
     if (!nonMstEdges.empty())
     {
