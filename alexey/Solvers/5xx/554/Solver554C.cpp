@@ -24,7 +24,7 @@ void Solver554C::run()
     {
         int countOfMax = count.back();
         count.pop_back();
-        ans *= BinomialCoefficient( CodeforcesResidue64( 1 ), nBalls - 1, countOfMax - 1 );
+        ans *= BinomialCoefficient<CodeforcesResidue64>(nBalls - 1, countOfMax - 1 );
         nBalls -= countOfMax;
     }
 

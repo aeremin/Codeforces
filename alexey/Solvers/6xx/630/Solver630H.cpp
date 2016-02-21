@@ -12,10 +12,9 @@ public:
 
 void Solver630H::run()
 {
-    int64_t n;
+    int64 n;
     cin >> n;
-    int64_t one = 1;
-    cout << BinomialCoefficient(one, n, 5) * BinomialCoefficient(one, n, 5) * 120;
+    cout << BinomialCoefficient<int64>(n, 5) * BinomialCoefficient<int64>(n, 5) * 120;
 }
 
 class Solver630HTest : public ProblemTest {};

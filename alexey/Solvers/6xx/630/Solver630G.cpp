@@ -13,10 +13,9 @@ public:
 
 void Solver630G::run()
 {
-    int64_t n;
+    int64 n;
     cin >> n;
-    int64_t one = 1;
-    cout << BinomialCoefficient(one, n + 2, 3) * BinomialCoefficient(one, n + 4, 5);
+    cout << BinomialCoefficient<int64>(n + 2, 3) * BinomialCoefficient<int64>(n + 4, 5);
 }
 
 class Solver630GTest : public ProblemTest {};
