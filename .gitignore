@@ -1,7 +1,9 @@
 Release
 Debug
 ipch
-build
+build*
 *.sdf
 *.opensdf
-*kdev*
+*.kdev*
+*.user
+*.user.*
