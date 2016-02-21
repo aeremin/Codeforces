@@ -91,11 +91,12 @@
 #ifdef LOCAL_PC
 
 // Use iostream locally for redirections in unit tests
+// TODO: Add checks so that it doesn't compile for unsupported types.
 template<typename T>
 T try_scan(bool& success) {
-  T result;
-  success = bool(std::cin >> result);
-  return result;
+    T result;
+    success = bool(std::cin >> result);
+    return result;
 }
 
 #else
@@ -114,9 +115,9 @@ DEFINE_SIMPLE_SCAN_TYPE(char, "%c");  // TODO: sync with iostream (in terms of w
 
 template<>
 std::string try_scan<std::string>(bool& success) {
-  std::string result;
-  success = bool(std::cin >> result);
-  return result;
+    std::string result;
+    success = bool(std::cin >> result);
+    return result;
 }
 
 #endif
@@ -124,16 +125,16 @@ std::string try_scan<std::string>(bool& success) {
 #if 0  // TODO try
 template<typename Arg>
 std::tuple<Arg> try_scan<std::tuple<Arg>>(bool& success) {
-  return std::make_tuple(try_scan<Arg>(success));
+    return std::make_tuple(try_scan<Arg>(success));
 }
 
 template<typename Head, typename... Tail>
 std::tuple<Head, Tail> try_scan<std::tuple<Head, Tail>>(bool& success) {
-  auto head = try_scan<Head>(success);
-  if (!success)
-    return {};
-  auto tail = try_scan<Tail>(success);
-  return std::tuple_cat(head, tail);
+    auto head = try_scan<Head>(success);
+    if (!success)
+        return {};
+    auto tail = try_scan<Tail>(success);
+    return std::tuple_cat(head, tail);
 }
 #endif
 
@@ -147,19 +148,19 @@ inline char try_scan_char(bool& success)        { return try_scan<char>(success)
 inline std::string try_scan_word(bool& success) { return try_scan<std::string>(success); }
 
 inline std::string try_scan_line(bool& success) {
-  std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-  std::string result;
-  success = bool(std::getline(std::cin, result));
-  return result;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::string result;
+    success = bool(std::getline(std::cin, result));
+    return result;
 }
 
 
 template<typename T>
 T scan() {
-  bool success = false;
-  T result = try_scan<T>(success);
-  CHECK(success);
-  return result;
+    bool success = false;
+    T result = try_scan<T>(success);
+    CHECK(success);
+    return result;
 }
 
 inline int scan_int()           { return scan<int>();    }
@@ -172,28 +173,28 @@ inline char scan_char()         { return scan<char>();   }
 inline std::string scan_word()  { return scan<std::string>(); }
 
 inline std::string scan_line() {
-  bool success = false;
-  std::string result = try_scan_line(success);
-  CHECK(success);
-  return result;
+    bool success = false;
+    std::string result = try_scan_line(success);
+    CHECK(success);
+    return result;
 }
 
 
 class ScanResult {
 public:
-  ScanResult(const ScanResult&) = delete;
-  ScanResult& operator=(const ScanResult&) = delete;
-  ScanResult(ScanResult&&) = delete;
-  ScanResult& operator=(ScanResult&&) = delete;
+    ScanResult(const ScanResult&) = delete;
+    ScanResult& operator=(const ScanResult&) = delete;
+    ScanResult(ScanResult&&) = delete;
+    ScanResult& operator=(ScanResult&&) = delete;
 
-  template<typename T>
-  operator T() && {
-    return scan<T>();
-  }
+    template<typename T>
+    operator T() && {
+        return scan<T>();
+    }
 };
 
 ScanResult scan() {
-  return {};
+    return {};
 }
 
 // TODO: fix for std::string
@@ -208,25 +209,25 @@ ScanResult scan() {
 
 template<typename Arg>
 void scan(Arg& arg) {
-  arg = scan<Arg>();
+    arg = scan<Arg>();
 }
 
 template<typename Head, typename... Tail>
 void scan(Head& head, Tail&... tail) {
-  scan(head);
-  scan(tail...);
+    scan(head);
+    scan(tail...);
 }
 
 #define DEFINE_SCAN_VECTOR_N(NAME, SCAN_FUNCTION)  \
 template<typename ElementT>  \
 std::vector<ElementT> NAME(size_t n_elements) {  \
-  CHECK(ssize_t(n_elements) >= 0);  \
-  std::vector<ElementT> result;  \
-  result.reserve(n_elements);  \
-  FOR_TIMES(n_elements) {  \
-    result.push_back(SCAN_FUNCTION);  \
-  }  \
-  return result;  \
+    CHECK(ssize_t(n_elements) >= 0);  \
+    std::vector<ElementT> result;  \
+    result.reserve(n_elements);  \
+    FOR_TIMES(n_elements) {  \
+        result.push_back(SCAN_FUNCTION);  \
+    }  \
+    return result;  \
 }
 
 DEFINE_SCAN_VECTOR_N(scan_vector, scan())
