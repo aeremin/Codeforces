@@ -1,5 +1,5 @@
 #include <Solvers/pch.h>
-#include "algo/Relax.hpp"
+#include "util/relax.h"
 
 using namespace std;
 
@@ -54,7 +54,7 @@ void SolverFBHC2A::runOneTest()
     for (int i = 0; i <= n; ++i)
     {
         int j = *upper_bound(begin(indOfDifference), end(indOfDifference), i - 1 );
-        relaxMin(ans, max(prefixColorCount[i], suffixColorCount[n - j]));
+        relax_min(ans, max(prefixColorCount[i], suffixColorCount[n - j]));
     }
 
     cout << ans;

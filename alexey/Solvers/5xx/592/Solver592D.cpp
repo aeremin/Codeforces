@@ -1,6 +1,6 @@
 #include <Solvers/pch.h>
 #include "algo/graph/Graph.hpp"
-#include "algo/Relax.hpp"
+#include "util/relax.h"
 
 using namespace std;
 
@@ -42,7 +42,7 @@ public:
                 vData.attackedCountInSubtree += childData.attackedCountInSubtree;
                 vData.minSubtreeCyclicPathLength += childData.minSubtreeCyclicPathLength + 2;
                 childMinSubtreePaths.emplace_back(childData.minSubtreePath.first - childData.minSubtreeCyclicPathLength, childData.minSubtreePath.second);
-                relaxMin(minChildPassingPath, make_pair(childData.minSubtreePathPassing.first - childData.minSubtreeCyclicPathLength, childData.minSubtreePathPassing.second ));
+                relax_min(minChildPassingPath, make_pair(childData.minSubtreePathPassing.first - childData.minSubtreeCyclicPathLength, childData.minSubtreePathPassing.second ));
             }
         }
         if (childMinSubtreePaths.size() == 0)
@@ -57,7 +57,7 @@ public:
             vData.minSubtreePathPassing = vData.minSubtreePath;
             
             minChildPassingPath.first += vData.minSubtreeCyclicPathLength;
-            relaxMin(vData.minSubtreePathPassing, minChildPassingPath);
+            relax_min(vData.minSubtreePathPassing, minChildPassingPath);
         }
         else
         {
@@ -69,7 +69,7 @@ public:
             vData.minSubtreePathPassing.second = min(childMinSubtreePaths[0].second, childMinSubtreePaths[1].second);
             
             minChildPassingPath.first += vData.minSubtreeCyclicPathLength;
-            relaxMin(vData.minSubtreePathPassing, minChildPassingPath);
+            relax_min(vData.minSubtreePathPassing, minChildPassingPath);
         }
 
         graph->getVertexData(vInd) = vData;
@@ -96,7 +96,7 @@ void Solver592D::run()
         cin >> c;
         --c;
         graph->getVertexData(c) = { 1 };
-        relaxMax(maxAttackedCity, c);
+        relax_max(maxAttackedCity, c);
     }
 
     dfs(maxAttackedCity, maxAttackedCity);

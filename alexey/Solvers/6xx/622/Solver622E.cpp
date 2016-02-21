@@ -1,6 +1,6 @@
 #include <Solvers/pch.h>
 #include "algo/graph/Graph.hpp"
-#include "algo/Relax.hpp"
+#include "util/relax.h"
 
 using namespace std;
 
@@ -52,9 +52,9 @@ void Solver622E::run()
         for (auto d : leavesDepths)
         {
             ++subAns;
-            relaxMax(subAns, d);
+            relax_max(subAns, d);
         }
-        relaxMax(ans, subAns);
+        relax_max(ans, subAns);
     }
 
     cout << ans;

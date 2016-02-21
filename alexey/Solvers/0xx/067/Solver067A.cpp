@@ -1,5 +1,5 @@
 #include <Solvers/pch.h>
-#include "algo/Relax.hpp"
+#include "util/relax.h"
 
 using namespace std;
 
@@ -32,9 +32,9 @@ void Solver067A::run()
     {
         ans.push_back(minAllowed[i]);
         if (s[i - 1] == 'R')
-            relaxMax(ans.back(), ans[i - 1] + 1);
+            relax_max(ans.back(), ans[i - 1] + 1);
         else if (s[i - 1] == '=')
-            relaxMax(ans.back(), ans[i - 1]);
+            relax_max(ans.back(), ans[i - 1]);
     }
 
     for (auto elt : ans)

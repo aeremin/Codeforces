@@ -1,5 +1,5 @@
 #include <Solvers/pch.h>
-#include "algo/Relax.hpp"
+#include "util/relax.h"
 
 using namespace std;
 
@@ -21,9 +21,9 @@ void Solver616B::run()
         {
             int v;
             cin >> v;
-            relaxMin(minOnAvenue, v);
+            relax_min(minOnAvenue, v);
         }
-        relaxMax(ans, minOnAvenue);
+        relax_max(ans, minOnAvenue);
     }
     cout << ans;
 }

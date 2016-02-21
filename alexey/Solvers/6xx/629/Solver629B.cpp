@@ -1,6 +1,6 @@
 #include <Solvers/pch.h>
 #include "algo/io/baseio.hpp"
-#include "algo/Relax.hpp"
+#include "util/relax.h"
 #include "iter/range.h"
 using namespace std;
 
@@ -38,7 +38,7 @@ void Solver629B::run()
         for (auto p : m)
             if (p.first <= i && p.second >= i)
                 ++canM;
-        relaxMax(ans, 2 * min(canF, canM));
+        relax_max(ans, 2 * min(canF, canM));
     }
     cout << ans;
 }

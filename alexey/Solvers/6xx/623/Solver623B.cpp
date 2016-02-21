@@ -63,9 +63,9 @@ void Solver623B::run()
         initialState[BeforeCut] = costAdjust( numbers.front() );
         initialState[StartedCutFromFirstElement] = a;
         auto res = proc.process( initialState, begin(numbers) + 1, end(numbers) );
-        relaxMin( minCost, res[BeforeCut] );
-        relaxMin( minCost, res[StartedCut] );
-        relaxMin( minCost, res[FinishedCut] );
+        relax_min( minCost, res[BeforeCut] );
+        relax_min( minCost, res[StartedCut] );
+        relax_min( minCost, res[FinishedCut] );
     }
     cout << minCost;
 }

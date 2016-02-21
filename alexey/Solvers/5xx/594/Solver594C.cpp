@@ -1,7 +1,7 @@
 #include <Solvers/pch.h>
 #include "algo/io/baseio.hpp"
 #include "iter/range.h"
-#include "algo/Relax.hpp"
+#include "util/relax.h"
 using namespace std;
 
 class Solver594C
@@ -51,7 +51,7 @@ void Solver594C::run()
                     for (int i : range(d))
                         del.insert(y[n - 1 - i].second);
                     if (del.size() <= k)
-                        relaxMin(ans, minArea(x[a].first, y[c].first, x[n - 1 - b].first, y[n - 1 - d].first));
+                        relax_min(ans, minArea(x[a].first, y[c].first, x[n - 1 - b].first, y[n - 1 - d].first));
                 }
     print(ans);
 }

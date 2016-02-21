@@ -1,5 +1,5 @@
 #include <Solvers/pch.h>
-#include "algo/Relax.hpp"
+#include "util/relax.h"
 
 using namespace std;
 
@@ -18,14 +18,14 @@ void Solver608A::run()
     {
         int f, t;
         cin >> f >> t;
-        relaxMax(lastOnFloor[f], t);
+        relax_max(lastOnFloor[f], t);
     }
 
     int ans = 0;
     for (int i = nFloors; i > 0; --i)
     {
-        relaxMax(ans, lastOnFloor[i]);
-        relaxMax(ans, ans + 1);
+        relax_max(ans, lastOnFloor[i]);
+        relax_max(ans, ans + 1);
     }
 
     cout << ans;

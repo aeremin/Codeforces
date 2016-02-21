@@ -1,6 +1,6 @@
 #include <Solvers/pch.h>
 #include "algo/SortWithMapping.hpp"
-#include "algo/Relax.hpp"
+#include "util/relax.h"
 #include "algo/updatetypes/SetTo.hpp"
 #include "algo/binaryfunctors/Max.hpp"
 #include "algo/updateappliers/SetToIdempotent.h"
@@ -47,13 +47,13 @@ void Solver474E::run()
         {
             auto maxL = segmentTree.getValueOnSegment(0, l - begin(sortedHeights));
             maxL.first++;
-            relaxMax(currMax, maxL);
+            relax_max(currMax, maxL);
         }
         if (r < end(sortedHeights))
         {
             auto maxR = segmentTree.getValueOnSegment(r - begin(sortedHeights), maxJumpCountAndPredecessor.size());
             maxR.first++;
-            relaxMax(currMax, maxR);
+            relax_max(currMax, maxR);
         }
         predecessors[i] = currMax.second;
         maxJumpCountAndPredecessor[forwardMapping[i]] = { currMax.first, i };

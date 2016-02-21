@@ -1,6 +1,6 @@
 #include <Solvers/pch.h>
 #include "algo/FunctorIterator.hpp"
-#include "algo/Relax.hpp"
+#include "util/relax.h"
 
 using namespace std;
 
@@ -63,7 +63,7 @@ void SolverFBHC1B::runOneTest()
         dryingQueue.pop();
         auto dryFinishTime = dryTime + max(t, firstAvailableDryingStart);
         dryingQueue.push(dryFinishTime);
-        relaxMax(ans, dryFinishTime);
+        relax_max(ans, dryFinishTime);
     }
 
     cout << ans;

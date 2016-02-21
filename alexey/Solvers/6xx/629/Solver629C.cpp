@@ -1,7 +1,7 @@
 #include <Solvers/pch.h>
 #include "algo/io/baseio.hpp"
 #include "iter/range.h"
-#include "algo/Relax.hpp"
+#include "util/relax.h"
 #include "algo/numbertheory/Residue.hpp"
 using namespace std;
 
@@ -41,7 +41,7 @@ void Solver629C::run()
             totalDisbalance++;
         else
             totalDisbalance--;
-        relaxMin(lowestDisbalance, totalDisbalance);
+        relax_min(lowestDisbalance, totalDisbalance);
     }
     
     CodeforcesResidue64 ans = 0;

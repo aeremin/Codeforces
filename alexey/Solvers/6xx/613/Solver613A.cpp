@@ -1,6 +1,6 @@
 #include <Solvers/pch.h>
 #include "algo/geometry/geomvector.hpp"
-#include "algo/Relax.hpp"
+#include "util/relax.h"
 #include "algo/pi.hpp"
 
 using namespace std;
@@ -26,11 +26,11 @@ void Solver613A::run()
     {
         auto currPt = vertices[i];
         auto nextPt = vertices[(i + 1) % nVertices];
-        relaxMax(maxDist, (currPt - center).lengthSquared());
-        relaxMin(minDist, (currPt - center).lengthSquared());
+        relax_max(maxDist, (currPt - center).lengthSquared());
+        relax_min(minDist, (currPt - center).lengthSquared());
         double d = dot(center - currPt, nextPt - currPt) / dot(nextPt - currPt, nextPt - currPt);
         if (d >= 0 && d <= 1)
-            relaxMin(minDist, (currPt + d * (nextPt - currPt) - center).lengthSquared());
+            relax_min(minDist, (currPt + d * (nextPt - currPt) - center).lengthSquared());
     }
 
     cout << setprecision(15) << fixed << cPi * (maxDist - minDist);

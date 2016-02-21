@@ -1,5 +1,5 @@
 #include <Solvers/pch.h>
-#include "algo/Relax.hpp"
+#include "util/relax.h"
 
 using namespace std;
 
@@ -33,7 +33,7 @@ public:
             auto neigbour = make_pair(x + offs.first, y + offs.second);
             if (neigbour.first >= 0 && neigbour.first < width && neigbour.second >= 0 && neigbour.second < height)
                 if (nextLetter.at(board[y][x]) == board[neigbour.second][neigbour.first])
-                    relaxMax(maxNeighbourValue, getMaxValue(neigbour.first, neigbour.second));
+                    relax_max(maxNeighbourValue, getMaxValue(neigbour.first, neigbour.second));
         }
         return maxValues[x][y] = maxNeighbourValue + 1;
     }
@@ -55,7 +55,7 @@ void Solver374C::run()
         {
             auto v = getMaxValue(x, y);
             if (board[y][x] == 'D')
-                relaxMax(maxValue, v);
+                relax_max(maxValue, v);
         }
 
 

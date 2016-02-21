@@ -1,5 +1,5 @@
 #include <Solvers/pch.h>
-#include "algo/Relax.hpp"
+#include "util/relax.h"
 #include "algo/numbertheory/GreatestCommonDivisor.hpp"
 #include "algo/numbertheory/Divisors.hpp"
 

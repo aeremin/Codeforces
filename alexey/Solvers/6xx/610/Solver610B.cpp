@@ -1,6 +1,6 @@
 #include <Solvers/pch.h>
 #include "algo/io/readvector.hpp"
-#include "algo/Relax.hpp"
+#include "util/relax.h"
 
 using namespace std;
 
@@ -24,11 +24,11 @@ void Solver610B::run()
             addition++;
         else
         {
-            relaxMax(maxAddition, addition);
+            relax_max(maxAddition, addition);
             addition = 0;
         }
     }
-    relaxMax( maxAddition, addition );
+    relax_max( maxAddition, addition );
 
     cout << n * minAmount + maxAddition;
 }

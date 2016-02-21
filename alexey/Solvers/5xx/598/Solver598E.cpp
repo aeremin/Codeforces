@@ -1,5 +1,5 @@
 #include <Solvers/pch.h>
-#include "algo/Relax.hpp"
+#include "util/relax.h"
 
 using namespace std;
 
@@ -38,7 +38,7 @@ void Solver598E::run()
                         auto h2 = b;
                         auto w2 = a - verticalCutPos;
                         sort(h2, w2);
-                        relaxMin(minPrice[a][b][d], verticalPrice + minPrice[h1][w1][d1] + minPrice[h2][w2][d2]);
+                        relax_min(minPrice[a][b][d], verticalPrice + minPrice[h1][w1][d1] + minPrice[h2][w2][d2]);
                     }
 
                     for (int horizontalCutPos = 1; horizontalCutPos < b; ++horizontalCutPos)
@@ -49,7 +49,7 @@ void Solver598E::run()
                         auto h2 = b - horizontalCutPos;
                         auto w2 = a;
                         sort(h2, w2);
-                        relaxMin(minPrice[a][b][d], horizontalPrice + minPrice[h1][w1][d1] + minPrice[h2][w2][d2]);
+                        relax_min(minPrice[a][b][d], horizontalPrice + minPrice[h1][w1][d1] + minPrice[h2][w2][d2]);
                     }
                 }
         }

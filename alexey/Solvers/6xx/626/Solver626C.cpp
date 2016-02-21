@@ -1,7 +1,7 @@
 #include <Solvers/pch.h>
 #include "algo/io/baseio.hpp"
 #include "iter/range.h"
-#include "algo/Relax.hpp"
+#include "util/relax.h"
 #include "algo/FunctorIterator.hpp"
 using namespace std;
 

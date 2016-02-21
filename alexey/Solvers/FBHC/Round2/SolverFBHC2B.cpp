@@ -1,5 +1,5 @@
 #include <Solvers/pch.h>
-#include "algo/Relax.hpp"
+#include "util/relax.h"
 
 using namespace std;
 
@@ -44,7 +44,7 @@ void SolverFBHC2B::runOneTest()
     vector<double> bestEv(nCoins + 1, 0.0);
     for (int i = 1; i <= nCoins; ++i)
         for (int j = 1; j <= i; ++j)
-            relaxMax(bestEv[i], bestEv[i - j] + probsOfGoal[j]);
+            relax_max(bestEv[i], bestEv[i - j] + probsOfGoal[j]);
 
     cout << setprecision(9) << fixed << bestEv.back();
 }

@@ -3,7 +3,7 @@
 #include "iter/range.h"
 #include "algo/io/readvector.hpp"
 #include "algo/SlidingWindowMinFinder.h"
-#include "algo/Relax.hpp"
+#include "util/relax.h"
 using namespace std;
 
 class Solver594A
@@ -21,7 +21,7 @@ void Solver594A::run()
     auto l = n / 2 - 1;
     int ans = numeric_limits<int>::max();
     for (int i : range(l + 1))
-        relaxMin(ans, pos[i + l + 1] - pos[i]);
+        relax_min(ans, pos[i + l + 1] - pos[i]);
 
     print(ans);
 }

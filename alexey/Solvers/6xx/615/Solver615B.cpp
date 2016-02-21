@@ -1,6 +1,6 @@
 #include <Solvers/pch.h>
 #include "algo/graph/Graph.hpp"
-#include "algo/Relax.hpp"
+#include "util/relax.h"
 
 using namespace std;
 
@@ -28,8 +28,8 @@ void Solver615B::run()
     {
         maxLen[i] = 0;
         for (auto& p : g.vertexNeighbors(i))
-            relaxMax(maxLen[i], 1 + maxLen[p.first]);
-        relaxMax<int64_t>(ans, (maxLen[i] + 1) * g.vertexNeighbors(i).size());
+            relax_max(maxLen[i], 1 + maxLen[p.first]);
+        relax_max<int64_t>(ans, (maxLen[i] + 1) * g.vertexNeighbors(i).size());
     }
 
     cout << ans;

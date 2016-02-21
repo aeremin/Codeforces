@@ -1,5 +1,5 @@
 #include <Solvers/pch.h>
-#include "algo/Relax.hpp"
+#include "util/relax.h"
 
 using namespace std;
 
@@ -23,7 +23,7 @@ void Solver582B::run()
 
     int maxNumberCount = 0;
     for (auto& p : numberCount)
-        relaxMax(maxNumberCount, p.second);
+        relax_max(maxNumberCount, p.second);
 
     int periodsToIterate = min(300, nPeriods);
     vector<int> maxLen(periodsToIterate * nNumbers, 1);
@@ -31,13 +31,13 @@ void Solver582B::run()
     for (int i = 0; i < periodsToIterate * nNumbers; ++i)
         for (int j = i - 1; j >= max(0, i - nNumbers); --j)
             if (numbers[j % nNumbers] <= numbers[i % nNumbers])
-                relaxMax(maxLen[i], maxLen[j] + 1);
+                relax_max(maxLen[i], maxLen[j] + 1);
 
     int ans = 0;
     for (int i = 0; i < periodsToIterate * nNumbers; ++i)
-        relaxMax(ans, maxLen[i] + (nPeriods - i / nNumbers - 1) * maxNumberCount);
+        relax_max(ans, maxLen[i] + (nPeriods - i / nNumbers - 1) * maxNumberCount);
 
-    relaxMax(ans, nPeriods * maxNumberCount);
+    relax_max(ans, nPeriods * maxNumberCount);
 
     cout << ans;
 }

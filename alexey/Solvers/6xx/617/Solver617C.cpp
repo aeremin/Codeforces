@@ -1,6 +1,6 @@
 #include <Solvers/pch.h>
 #include "algo/geometry/geomvector.hpp"
-#include "algo/Relax.hpp"
+#include "util/relax.h"
 
 using namespace std;
 
@@ -33,8 +33,8 @@ void Solver617C::run()
         auto dist1 = (i == -1) ? 0 : distances[i].first;
         int64_t dist2 = 0;
         for (int j = i + 1; j < n; ++j)
-            relaxMax(dist2, distances[j].second);
-        relaxMin(bestDistance, dist1 + dist2);
+            relax_max(dist2, distances[j].second);
+        relax_min(bestDistance, dist1 + dist2);
     }
 
     cout << bestDistance;

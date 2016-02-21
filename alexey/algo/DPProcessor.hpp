@@ -3,7 +3,7 @@
 #include <vector>
 #include <unordered_map>
 #include <limits>
-#include "algo/Relax.hpp"
+#include "util/relax.h"
 
 
 template<typename InType, typename OutType, int StatesCount>
@@ -43,7 +43,7 @@ private:
                 {
                     auto ruleResultCost = stateCost + ruleCost;
                     auto ruleResultState = std::get<1>( rule );
-                    relaxMin( tmp_[ruleResultState], ruleResultCost );
+                    relax_min( tmp_[ruleResultState], ruleResultCost );
                 }
             }
         }

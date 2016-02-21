@@ -2,7 +2,7 @@
 #include "algo/io/baseio.hpp"
 #include "algo/io/readvector.hpp"
 #include "iter/range.h"
-#include "algo/Relax.hpp"
+#include "util/relax.h"
 using namespace std;
 
 class Solver573B
@@ -27,7 +27,7 @@ void Solver573B::run()
 
     int ans = 0;
     for (int i = 0; i < n; ++i)
-        relaxMax(ans, min(maxL[i], maxR[i]));
+        relax_max(ans, min(maxL[i], maxR[i]));
 
     cout << ans;
 }

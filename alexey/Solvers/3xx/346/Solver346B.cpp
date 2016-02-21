@@ -25,7 +25,7 @@ vector<vector<int>> calcAdvancedPrefixFunction(const string& s)
     return res;
 }
 
-void relaxMax(string& s, const string& r)
+void relax_max(string& s, const string& r)
 {
     if (r.length() > s.length())
         s = r;
@@ -43,9 +43,9 @@ void Solver346B::run()
             for (int j = 0; j < virus.length(); ++j)
             {
                 if (i1 < s1.length())
-                    relaxMax(maxSubsequence[i1 + 1][i2][j], maxSubsequence[i1][i2][j]);
+                    relax_max(maxSubsequence[i1 + 1][i2][j], maxSubsequence[i1][i2][j]);
                 if (i2 < s2.length())
-                    relaxMax(maxSubsequence[i1][i2 + 1][j], maxSubsequence[i1][i2][j]);
+                    relax_max(maxSubsequence[i1][i2 + 1][j], maxSubsequence[i1][i2][j]);
 
                 if (i1 < s1.length() && i2 < s2.length() && s1[i1] == s2[i2])
                 {
@@ -54,13 +54,13 @@ void Solver346B::run()
                         jj = j + 1;
                     else
                         jj = prefixFunc[j][s1[i1] - 'A'];
-                    relaxMax(maxSubsequence[i1 + 1][i2 + 1][jj], maxSubsequence[i1][i2][j] + s1[i1]);
+                    relax_max(maxSubsequence[i1 + 1][i2 + 1][jj], maxSubsequence[i1][i2][j] + s1[i1]);
                 }
             }
 
     string ans;
     for (int j = 0; j < virus.length(); ++j)
-        relaxMax(ans, maxSubsequence[s1.length()][s2.length()][j]);
+        relax_max(ans, maxSubsequence[s1.length()][s2.length()][j]);
 
     if (ans.length() > 0)
         cout << ans;

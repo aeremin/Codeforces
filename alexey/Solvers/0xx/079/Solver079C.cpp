@@ -1,6 +1,6 @@
 #include <Solvers/pch.h>
 #include "algo/KnuttMorrisPratt.hpp"
-#include "algo/Relax.hpp"
+#include "util/relax.h"
 
 using namespace std;
 
@@ -33,7 +33,7 @@ void Solver079C::run()
         {
             int bannedStringLen = pi.size() - s.length() - 1;
             if (pi[r + bannedStringLen + 1] == bannedStringLen)
-                relaxMax(l, r - bannedStringLen + 2);
+                relax_max(l, r - bannedStringLen + 2);
         }
         if (r + 1 - l > maxLen)
         {

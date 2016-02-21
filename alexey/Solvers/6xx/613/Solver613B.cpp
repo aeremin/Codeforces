@@ -1,7 +1,7 @@
 #include <Solvers/pch.h>
 #include "algo/SortWithMapping.hpp"
 #include "algo/FunctorIterator.hpp"
-#include "algo/Relax.hpp"
+#include "util/relax.h"
 #include "algo/Indicator.hpp"
 
 using namespace std;
@@ -65,7 +65,7 @@ void Solver613B::run()
         if (i >= n - bestMaximizedSkillsCount)
             skills[i] = A;
         else
-            relaxMax(skills[i], minimum);
+            relax_max(skills[i], minimum);
     }
 
     cout << maxForce << "\n";

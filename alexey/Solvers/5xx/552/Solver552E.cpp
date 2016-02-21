@@ -1,5 +1,5 @@
 #include <Solvers/pch.h>
-#include "algo/Relax.hpp"
+#include "util/relax.h"
 
 using namespace std;
 
@@ -56,7 +56,7 @@ void Solver552E::run()
             for (posR = multiplyingPositions[r]; expression[posR] == '*'; posR += 2)
                 productOnRight *= charToDigit(expression[posR + 1]);
 
-            relaxMax(maxValue,
+            relax_max(maxValue,
                 calcExpressionResult(expression.substr(0, posL)) +
                 productOnLeft * calcExpressionResult(expression.substr(multiplyingPositions[l] + 1, multiplyingPositions[r] - multiplyingPositions[l] - 1)) * productOnRight +
                 calcExpressionResult(expression.substr(posR + 1, string::npos)));

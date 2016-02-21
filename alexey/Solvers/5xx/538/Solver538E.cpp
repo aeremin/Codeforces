@@ -1,6 +1,6 @@
 #include <Solvers/pch.h>
 #include "algo/graph/Graph.hpp"
-#include "algo/Relax.hpp"
+#include "util/relax.h"
 
 using namespace std;
 
@@ -40,7 +40,7 @@ public:
 
             auto childData = graph->getVertexData(childInd);
             childSum += childData.perPlayerAnswers[countsSumInd];
-            relaxMin(childMin, childData.perPlayerAnswers[countsMinInd]);
+            relax_min(childMin, childData.perPlayerAnswers[countsMinInd]);
         }
 
         if (childSum == 0) // childSum == 0  ==> no childs ==> leaf
