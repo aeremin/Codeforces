@@ -21,14 +21,14 @@ add_executable(${tests_exe}  ${tests_srcs})
 # target_link_libraries(${tests_exe} ${GTEST_LIBRARIES})  # TODO: link gmock through CMake module utilities
 target_link_libraries(${tests_exe} "gmock" "pthread")
 
-set(compiler_exe solution_compiler)
-set(compiler_srcs
-    ${src_dir}/compiler/compiler_main.cpp
-    ${common_dir}/tools/compiler/compiler.cpp
-    ${common_dir}/tools/compiler/file_parser.cpp
+set(fuser_exe solution_fuser)
+set(fuser_srcs
+    ${src_dir}/fuser/fuser_main.cpp
+    ${common_dir}/tools/fuser/fuser.cpp
+    ${common_dir}/tools/fuser/file_parser.cpp
 )
-add_executable(${compiler_exe}  ${compiler_srcs})
-target_link_libraries(${compiler_exe} ${Boost_LIBRARIES})
+add_executable(${fuser_exe}  ${fuser_srcs})
+target_link_libraries(${fuser_exe} ${Boost_LIBRARIES})
 
 include_directories(${common_dir})
 include_directories(${common_lib_dir})

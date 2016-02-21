@@ -2,7 +2,7 @@
 
 #include <boost/program_options.hpp>
 
-#include "tools/compiler/compiler.h"
+#include "tools/fuser/fuser.h"
 
 namespace po = boost::program_options;
 
