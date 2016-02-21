@@ -6,30 +6,24 @@
 #include "graph/topological_sort.h"
 #include "graph/distance_unweighted.h"
 #include "io/scan.h"
+#include "io/print.h"
 #include "io/targets.h"
 #include "util/hash_compare.h"
 
 
-template<typename VectorT>
-void print_vector(const VectorT& vec) {
-  for (auto vertex_index : vec)
-    cout << vertex_index << " ";
-  cout << "\n";
-}
-
 void print_top_sorted_opt(const std::vector<GraphIndex>& top_sorted_opt) {
   cout << "\ntop_sorted_opt:\n";
-  print_vector(top_sorted_opt);
+  print_vector_ln(top_sorted_opt);
 }
 
 void print_top_sorted_chk(const TopologicalSortResult& top_sorted_chk) {
   cout << "\ntop_sorted_chk vertices:\n";
-  print_vector(top_sorted_chk.vertices());
+  print_vector_ln(top_sorted_chk.vertices());
   if (top_sorted_chk.status() == TopologicalSortResult::LoopDetected) {
     cout << "top_sorted_chk preloop:\n";
-    print_vector(top_sorted_chk.preloop());
+    print_vector_ln(top_sorted_chk.preloop());
     cout << "top_sorted_chk loop:\n";
-    print_vector(top_sorted_chk.loop());
+    print_vector_ln(top_sorted_chk.loop());
   }
 }
 
@@ -139,6 +133,10 @@ int main(int argc, char* argv[]) {
   cout << "\n";
   cout << "d = " << find_distance_unweighted(graph2, 10, 5) << "\n";
   cout << "d = " << find_distance_unweighted(graph2, 11, 10) << "\n";
+
+  print_ln(1.0);
+  print_ln(1000.0);
+  print_ln(1, ' ', 2);
 
 
 
