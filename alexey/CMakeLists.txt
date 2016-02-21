@@ -5,6 +5,7 @@ find_package(GTest REQUIRED)
 
 set(root_dir ${CMAKE_SOURCE_DIR}/..)
 set(common_dir ${root_dir}/common)
+set(common_lib_dir ${common_dir}/lib)
 set(src_dir ${CMAKE_SOURCE_DIR})
 set(solvers_dir ${CMAKE_SOURCE_DIR}/Solvers)
 set(launcher_dir ${CMAKE_SOURCE_DIR}/Launcher)
@@ -12,6 +13,8 @@ set(algotest_dir ${CMAKE_SOURCE_DIR}/AlgoTest)
 
 set(tests_exe codeforces)
 set(tests_srcs
+    ${common_dir}/tools/fuser/fuser.cpp
+    ${common_dir}/tools/fuser/file_parser.cpp
     ${launcher_dir}/main.cpp
     ${launcher_dir}/CodeFuser.h
     ${launcher_dir}/CodeFuser.cpp
@@ -272,7 +275,9 @@ add_executable(${tests_exe}  ${tests_srcs})
 target_link_libraries(${tests_exe} ${GTEST_LIBRARIES})
 target_link_libraries(${tests_exe} "pthread")
 
+include_directories(${common_dir})
+include_directories(${common_lib_dir})
 include_directories(${src_dir})
-include_directories(${common_dir}/lib)
+include_directories(${root_dir}/andrei/lib)  # TODO FIXME (for fuser)
 
 add_definitions("-std=c++11 -DLOCAL_PC")

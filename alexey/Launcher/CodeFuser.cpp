@@ -1,10 +1,9 @@
 #include "CodeFuser.h"
-#include <iostream>
-#include <fstream>
-#include <stack>
-#include <utility>
-#include <unordered_set>
 #include <cassert>
+#include <string>
+#include <fstream>
+
+#include "tools/fuser/fuser.h"
 
 using namespace std;
 
@@ -56,13 +55,13 @@ std::string CodeFuser::getSolverFileNameByProblemName_() const
     if (problemName_.length() == 4) // Codeforces
     {
         string problemSetName = problemName_.substr(0, 3);
-        return "../Solvers/" + problemSetName.substr(0, 1) + "xx/" + problemSetName + "/Solver" + problemName_ + ".cpp";
+        return "Solvers/" + problemSetName.substr(0, 1) + "xx/" + problemSetName + "/Solver" + problemName_ + ".cpp";
     }
     else if (problemName_.length() == 6)
     {
         assert(problemName_.substr(0, 4) == "FBHC");
         string roundName = string("Round") + problemName_[4];
-        return "../Solvers/FBHC/" + roundName + "/Solver" + problemName_ + ".cpp";
+        return "Solvers/FBHC/" + roundName + "/Solver" + problemName_ + ".cpp";
     }
     assert(false);
     return{};
@@ -70,62 +69,15 @@ std::string CodeFuser::getSolverFileNameByProblemName_() const
 
 void CodeFuser::fuse()
 {
-    string fusedFile = filePrefix;
+    ofstream out( "Fused/main.cpp" );
+    out << filePrefix;
    
     string problemSolverPath = getSolverFileNameByProblemName_();
-    stack<ifstream> openedFiles;
-    unordered_set<string> alreadyIncluded;
-    
-    openedFiles.emplace( problemSolverPath );
-    if (!openedFiles.top().good())
-        return;
 
-    while ( !openedFiles.empty() )
-    {
-        bool shouldPop = true;
-        auto& currFile = openedFiles.top();
-        while ( !currFile.eof() )
-        {
-            string line;
-            getline( currFile, line );
-
-            if ( line.find( "#include \"algo" ) != string::npos )
-            {
-                auto fromPos = line.find_first_of( '\"' );
-                auto toPos = line.find_last_of( '\"' );
-                auto includedFilename = line.substr( fromPos + 1, toPos - fromPos - 1 );
-                auto shouldInclude = alreadyIncluded.insert( includedFilename ).second;
-                if ( shouldInclude )
-                {
-                    auto fullIncludePath = "../" + includedFilename;
-                    openedFiles.emplace( fullIncludePath );
-                    shouldPop = false;
-                    break;
-                }
-            }
-
-            if ( line.find( "#include" ) != string::npos )
-                continue;
-
-            if ( line.find( "#pragma once" ) != string::npos )
-                continue;
-
-            if ( line.find( "using namespace std;" ) != string::npos )
-                continue;
-
-            if ( line.find( "ProblemTest" ) != string::npos )
-                break;
-
-            fusedFile.append( line );
-            fusedFile.append( "\n" );
-        }
-        if (shouldPop)
-            openedFiles.pop();
-    }
-
-    fusedFile.append( "using CurrentSolver = Solver" + problemName_ + ";" );
-    fusedFile.append( fileMainPart );
-
-    ofstream out( "../Fused/main.cpp" );
-    out << fusedFile;
+    CompilerOptions options;
+    options.include_paths = {".", "../common/lib"};
+    auto fused = Compile(problemSolverPath, options);
+    string pchToDelete = "#include <Solvers/pch.h>";
+    fused.erase(fused.find(pchToDelete), pchToDelete.length());
+    out << fused;
 }
