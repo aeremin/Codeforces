@@ -1,7 +1,7 @@
 #include <Solvers/pch.h>
 #include "algo/io/baseio.hpp"
 #include "iter/range.h"
-#include "algo/pi.hpp"
+#include "math/pi.h"
 
 using namespace std;
 
@@ -12,7 +12,7 @@ public:
     
     double vol(double l, int n)
     {
-        auto x = l / (2 * (tan(cPi / n)));
+        auto x = l / (2 * (tan(kPi / n)));
         auto rr = l * l / 4.0 + x * x;
         auto h = sqrt(l * l - rr);
         auto s = l * x * n / 2;

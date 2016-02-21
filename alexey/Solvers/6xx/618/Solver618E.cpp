@@ -1,5 +1,5 @@
 #include <Solvers/pch.h>
-#include "algo/pi.hpp"
+#include "math/pi.h"
 #include "algo/binaryfunctors/FirstArgument.hpp"
 #include "algo/updatetypes/LinearTransform.hpp"
 #include "algo/updateappliers/LinearTransformIdempotent.h"
@@ -39,7 +39,7 @@ void Solver618E::run()
         }
         else
         {
-            auto rot = polar(1.0, -double(z) / 180.0 * cPi);
+            auto rot = polar(1.0, -double(z) / 180.0 * kPi);
             segmentTree.updateRange(y, n + 1, TransformType(rot, red * (complex<double>(1, 0) - rot)));
         }
         auto last = segmentTree.getValueOnSegment(n, n + 1);

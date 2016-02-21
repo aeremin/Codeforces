@@ -1,7 +1,7 @@
 #include <Solvers/pch.h>
 #include "algo/geometry/geomvector.hpp"
 #include "util/relax.h"
-#include "algo/pi.hpp"
+#include "math/pi.h"
 
 using namespace std;
 
@@ -33,7 +33,7 @@ void Solver613A::run()
             relax_min(minDist, (currPt + d * (nextPt - currPt) - center).lengthSquared());
     }
 
-    cout << setprecision(15) << fixed << cPi * (maxDist - minDist);
+    cout << setprecision(15) << fixed << kPi * (maxDist - minDist);
 }
 
 class Solver613ATest : public ProblemTest

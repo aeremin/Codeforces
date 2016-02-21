@@ -1,7 +1,7 @@
 #include <Solvers/pch.h>
 #include "algo/io/baseio.hpp"
 #include "algo/SortWithMapping.hpp"
-#include "algo/pi.hpp"
+#include "math/pi.h"
 #include "iter/range.h"
 #include "algo/binaryfunctors/Max.hpp"
 #include "algo/updatetypes/SetTo.hpp"
@@ -43,7 +43,7 @@ void Solver629D::run()
         segmentTree.updateElement(currOrder, maxSumV);
     }
     auto ans = segmentTree.getValueOnSegment(0, n + 1);
-    cout << setprecision(9) << fixed << cPi * ans;
+    cout << setprecision(9) << fixed << kPi * ans;
 }
 
 class Solver629DTest : public ProblemTest {};

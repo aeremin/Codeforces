@@ -1,7 +1,7 @@
 #include <Solvers/pch.h>
 #include "algo/io/baseio.hpp"
 #include "iter/range.h"
-#include "algo/pi.hpp"
+#include "math/pi.h"
 using namespace std;
 
 class Solver630P
@@ -11,7 +11,7 @@ public:
 
     double segLen(int n, int k)
     {
-        return 2 * sin((cPi * k) / n);
+        return 2 * sin((kPi * k) / n);
     }
 };
 
@@ -25,12 +25,12 @@ void Solver630P::run()
     auto B = segLen(n, k);
     auto a = segLen(n, 1);
     auto A = segLen(n, k - 1);
-    auto r = (a * sin((cPi * (k - 1)) / n)) / (A * sin(cPi * 2.0 / n));
+    auto r = (a * sin((kPi * (k - 1)) / n)) / (A * sin(kPi * 2.0 / n));
     auto l = B / (1 + r) * r;
-    auto s = 0.5 * l * l * sin(cPi * 3.0 / n) * n;
-    auto ss = (cPi / n - 0.5 * sin(2 * cPi / n)) * n;
+    auto s = 0.5 * l * l * sin(kPi * 3.0 / n) * n;
+    auto ss = (kPi / n - 0.5 * sin(2 * kPi / n)) * n;
 
-    auto S = (cPi - s - ss) * R * R;
+    auto S = (kPi - s - ss) * R * R;
     
     cout << setprecision(11) << fixed << S;
 }
