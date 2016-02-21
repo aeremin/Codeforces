@@ -12,8 +12,6 @@ public:
 
 void Solver612D::run()
 {
-    std::ios::sync_with_stdio(false);
-
     int n, k;
     cin >> n >> k;
     std::unordered_map<int, int> startpoints(n), endpoints(n);

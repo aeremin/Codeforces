@@ -29,7 +29,7 @@ void Solver615B::run()
         maxLen[i] = 0;
         for (auto& p : g.vertexNeighbors(i))
             relaxMax(maxLen[i], 1 + maxLen[p.first]);
-        relaxMax(ans, (maxLen[i] + 1) * g.vertexNeighbors(i).size());
+        relaxMax<int64_t>(ans, (maxLen[i] + 1) * g.vertexNeighbors(i).size());
     }
 
     cout << ans;

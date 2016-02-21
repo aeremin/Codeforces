@@ -1,6 +1,6 @@
 #include <Solvers/pch.h>
 #include "algo/io/baseio.hpp"
-#include "algo/range.hpp"
+#include "algo/Range.hpp"
 #include "algo/algebra/BinomialCoefficients.hpp"
 using namespace std;
 

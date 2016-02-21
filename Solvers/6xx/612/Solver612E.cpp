@@ -47,7 +47,6 @@ vector<int64_t> Solver612E::compose(int64_t n, const CycleDecomposition& decompo
 
 void Solver612E::run()
 {
-    ios::sync_with_stdio(false);
     int64_t n;
     cin >> n;
     vector<int64_t> permutation(n);

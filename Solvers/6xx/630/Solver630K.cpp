@@ -1,6 +1,6 @@
 #include <Solvers/pch.h>
 #include "algo/io/baseio.hpp"
-#include "algo/range.hpp"
+#include "algo/Range.hpp"
 #include "algo/numbertheory/Coprimes.hpp"
 using namespace std;
 

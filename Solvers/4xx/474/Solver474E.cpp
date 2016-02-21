@@ -1,10 +1,10 @@
 #include <Solvers/pch.h>
 #include "algo/SortWithMapping.hpp"
-#include "algo/SegmentTree.hpp"
 #include "algo/Relax.hpp"
 #include "algo/updatetypes/SetTo.hpp"
 #include "algo/binaryfunctors/Max.hpp"
 #include "algo/updateappliers/SetToIdempotent.h"
+#include "algo/SegmentTree.hpp"
 
 using namespace std;
 

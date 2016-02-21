@@ -33,7 +33,6 @@ TEST_F(Solver621ATest, Example1)
 1 2 3
 )";
     string output = R"(6)";
-    output.pop_back();
     setInput(input);
     Solver621A().run();
     EXPECT_EQ(output, getOutput());
@@ -46,7 +45,6 @@ TEST_F(Solver621ATest, Example2)
 999999999 999999999 999999999 999999999 999999999
 )";
     string output = R"(3999999996)";
-    output.pop_back();
     setInput(input);
     Solver621A().run();
     EXPECT_EQ(output, getOutput());

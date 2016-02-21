@@ -45,7 +45,7 @@ TEST_F(Solver576CTest, Example1)
 5 0
 9 12
 )";
-    string output = R"(4 3 1 2 5 
+    string output = R"(1 3 4 2 5 
 )";
     output.pop_back();
     setInput(input);

@@ -1,4 +1,5 @@
 #pragma once
+#include <algorithm>
 
 template<typename T>
 class Range

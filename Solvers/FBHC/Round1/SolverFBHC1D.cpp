@@ -20,7 +20,16 @@ public:
             return 1 + (1 << (k - 1 - winnedRounds));
     }
 
-    uint32_t getNumBitsSet(uint32_t mask) const { return __popcnt16(mask); }
+    uint32_t getNumBitsSet(uint32_t mask) const
+    {
+        uint32_t res = 0;
+        while (mask)
+        {
+            mask ^= mask & ~(mask - 1);
+            ++res;
+        }
+        return res;
+    }
     
     vector<uint32_t> getAllSubmasks(uint32_t m) const
     {

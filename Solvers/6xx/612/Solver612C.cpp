@@ -1,5 +1,5 @@
 #include "Solvers/pch.h"
-#include <stack>;
+#include <stack>
 
 using namespace std;
 

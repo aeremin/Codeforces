@@ -1,5 +1,5 @@
 #include <Solvers/pch.h>
-#include "algo/range.hpp"
+#include "algo/Range.hpp"
 #include "algo/io/readvector.hpp"
 using namespace std;
 

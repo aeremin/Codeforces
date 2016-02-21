@@ -47,7 +47,7 @@ int Solver487B::main()
     {
         if (i + 1 < minLen)
         {
-            minParts.push_back(INT_MAX);
+            minParts.push_back(numeric_limits<int>::max());
             continue;
         }
 
@@ -59,18 +59,18 @@ int Solver487B::main()
 
         if (maxBack[i] < minLen)
         {
-            minParts.push_back(INT_MAX);
+            minParts.push_back(numeric_limits<int>::max());
             continue;
         }
 
         while (resultFinder.getLeft() < i - maxBack[i]) resultFinder.incLeft();
         while (resultFinder.getRight() <= i - minLen) resultFinder.incRight();
         int curMinParts = resultFinder.getMin();
-        if (curMinParts < INT_MAX) curMinParts++;
+        if (curMinParts < numeric_limits<int>::max()) curMinParts++;
         minParts.push_back(curMinParts);
     }
 
-    if (minParts.back() < INT_MAX)
+    if (minParts.back() < numeric_limits<int>::max())
     {
         cout << minParts.back();
     }
