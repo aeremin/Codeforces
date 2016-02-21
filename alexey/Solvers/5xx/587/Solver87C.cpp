@@ -49,7 +49,6 @@ MinPeopleOnPath concatenate( const MinPeopleOnPath& a, const MinPeopleOnPath& b 
 
 void Solver587C::run()
 {
-    ios::sync_with_stdio( false );
     int nCities, nPeople, nQueries;
     cin >> nCities >> nPeople >> nQueries;
     vector<pair<int, int>> edges(nCities - 1);
