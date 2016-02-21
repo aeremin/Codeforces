@@ -2,7 +2,7 @@
 #include "algo/geometry/geomvector.hpp"
 #include "algo/io/readvector.hpp"
 #include "algo/FunctorIterator.hpp"
-#include "algo/sqr.hpp"
+#include "math/sqr.h"
 
 using namespace std;
 
