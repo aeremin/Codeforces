@@ -1,5 +1,7 @@
+// TODO: move to //common
+
 #include <gtest/gtest.h>
-#include "algo/algebra/Factorial.hpp"
+#include "math/factorial.h"
 #include <vector>
 #include "algo/numbertheory/Residue.hpp"
 

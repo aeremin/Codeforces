@@ -1,6 +1,6 @@
 #include <Solvers/pch.h>
 #include "algo/geometry/geomvector.hpp"
-#include "algo/algebra/Sign.hpp"
+#include "math/sign.h"
 #include "algo/io/readvector.hpp"
 
 using namespace std;

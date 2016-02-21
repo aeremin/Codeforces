@@ -1,6 +1,6 @@
 #include <Solvers/pch.h>
 #include "algo/numbertheory/Residue.hpp"
-#include "algo/algebra/QuickPower.hpp"
+#include "math/quick_power.h"
 
 using namespace std;
 
@@ -21,7 +21,7 @@ public:
 
         vector<CodeforcesResidue64> values = { 0 };
         for (int64_t i = 1; i <= k + 1; ++i)
-            values.push_back(values.back() + quickPower(CodeforcesResidue64(i), k));
+            values.push_back(values.back() + quick_power(CodeforcesResidue64(i), k));
 
         if (n <= k + 1)
             return values[n];
@@ -109,7 +109,7 @@ TEST_F(Solver622FTest, CompareWithBruteForce)
         CodeforcesResidue64 bruteForceAnswer = 0;
         for (int n = 1; n <= 100; ++n)
         {
-            bruteForceAnswer += quickPower(CodeforcesResidue64(n), k);
+            bruteForceAnswer += quick_power(CodeforcesResidue64(n), k);
             ASSERT_EQ(bruteForceAnswer, Solver622F().res(n, k)) << n << " " << k;
         }
     }

@@ -15,7 +15,7 @@ int64_t minPow(int64_t p, int64_t k)
     return ans;
 }
 
-int64_t quickPower(int64_t a, int64_t d)
+int64_t quick_power(int64_t a, int64_t d)
 {
     int64_t ans = 1;
     while (d > 0)
@@ -41,7 +41,7 @@ void Solver603B::run()
     auto m = (k == 0) ? 1 : minPow(p, k);
     auto l = (p - 1) / m;
     if (k == 1) ++l;
-    std::cout << quickPower(p, l);
+    std::cout << quick_power(p, l);
 }
 
 class Solver603BTest : public ProblemTest {};

@@ -1,6 +1,6 @@
 #include <Solvers/pch.h>
 #include "algo/numbertheory/Residue.hpp"
-#include "algo/algebra/QuickPower.hpp"
+#include "math/quick_power.h"
 #include "algo/numbertheory/Primes.hpp"
 
 using namespace std;
@@ -27,9 +27,9 @@ void Solver615D::run()
     CodeforcesResidue64 ans = 1;
     for (auto& p : primesPowers)
     {
-        ans = quickPower(ans, p.second + 1);
-        auto prod = quickPower<CodeforcesResidue64>(p.first, (p.second + 1) * p.second / 2);
-        ans *= quickPower(prod, divisorsCount.rep());
+        ans = quick_power(ans, p.second + 1);
+        auto prod = quick_power<CodeforcesResidue64>(p.first, (p.second + 1) * p.second / 2);
+        ans *= quick_power(prod, divisorsCount.rep());
         divisorsCount *= (p.second + 1);
     }
 

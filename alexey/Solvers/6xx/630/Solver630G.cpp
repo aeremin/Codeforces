@@ -1,7 +1,7 @@
 #include <Solvers/pch.h>
 #include "algo/io/baseio.hpp"
 #include "iter/range.h"
-#include "algo/algebra/BinomialCoefficients.hpp"
+#include "math/binomial_coefficients.h"
 
 using namespace std;
 
@@ -16,7 +16,7 @@ void Solver630G::run()
     int64_t n;
     cin >> n;
     int64_t one = 1;
-    cout << binomialCoefficient(one, n + 2, 3) * binomialCoefficient(one, n + 4, 5);
+    cout << BinomialCoefficient(one, n + 2, 3) * BinomialCoefficient(one, n + 4, 5);
 }
 
 class Solver630GTest : public ProblemTest {};

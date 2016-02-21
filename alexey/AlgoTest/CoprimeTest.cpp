@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include "algo/numbertheory/Coprimes.hpp"
 #include "algo/numbertheory/Residue.hpp"
-#include "algo/algebra/QuickPower.hpp"
+#include "math/quick_power.h"
 
 TEST(CoprimeTest, CoprimeWithOne)
 {
@@ -34,6 +34,6 @@ TEST(CoprimeTest, EulerTheorem)
     int64_t phiOfN = coprimes.size();
     using ResidueModuloN = Residue<int64_t, n>;
     for (auto a : coprimes)
-        EXPECT_EQ(ResidueModuloN(1), quickPower(ResidueModuloN(a), phiOfN));
+        EXPECT_EQ(ResidueModuloN(1), quick_power(ResidueModuloN(a), phiOfN));
     
 }

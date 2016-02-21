@@ -13,7 +13,7 @@ public:
 class IntToIntOffsettingMap
 {
 public:
-    // Sort of hack for quickPower to work 
+    // Sort of hack for quick_power to work 
     IntToIntOffsettingMap( int dummy, int offset = 0 ) : offset_( offset )
     {
     }
@@ -50,7 +50,7 @@ private:
 };
 
 template<class T>
-void quickPower( const T& a, int d, T& res )
+void quick_power( const T& a, int d, T& res )
 {
     T m = a;
     while ( d > 0 )
@@ -103,7 +103,7 @@ void Solver484C::run()
         }
 
         IntToIntOffsettingMap permutation( dsort );
-        quickPower( dsort, strLen - k, permutation );
+        quick_power( dsort, strLen - k, permutation );
         for ( int i = 0; i < strLen; ++i )
         {
             int indexAfterPermutation = permutation( i ) + ( strLen - k + 1 );

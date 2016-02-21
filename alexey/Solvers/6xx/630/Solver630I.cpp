@@ -1,8 +1,8 @@
 #include <Solvers/pch.h>
 #include "algo/io/baseio.hpp"
 #include "iter/range.h"
-#include "algo/algebra/BinomialCoefficients.hpp"
-#include "algo/algebra/QuickPower.hpp"
+#include "math/binomial_coefficients.h"
+#include "math/quick_power.h"
 using namespace std;
 
 class Solver630I
@@ -15,8 +15,8 @@ void Solver630I::run()
 {
     int64_t n;
     cin >> n;
-    cout << 4 * ((n - 3) * quickPower<int64_t>(4, n - 4) * 9 +
-                  2 * quickPower<int64_t>(4, n - 3) * 3);
+    cout << 4 * ((n - 3) * quick_power<int64_t>(4, n - 4) * 9 +
+                  2 * quick_power<int64_t>(4, n - 3) * 3);
 }
 
 class Solver630ITest : public ProblemTest {};

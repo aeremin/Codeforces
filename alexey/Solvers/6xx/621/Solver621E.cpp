@@ -1,7 +1,7 @@
 #include <Solvers/pch.h>
 #include "algo/io/readvector.hpp"
 #include "algo/numbertheory/Residue.hpp"
-#include "algo/algebra/QuickPower.hpp"
+#include "math/quick_power.h"
 
 using namespace std;
 
@@ -61,7 +61,7 @@ void Solver621E::run()
         oneBlock.distr[d % modulo]++;
     oneBlock.decimalPower = 10;
 
-    auto allBlocks = quickPower(oneBlock, blockCount, Distribution::id(modulo));
+    auto allBlocks = quick_power(oneBlock, blockCount, Distribution::id(modulo));
     cout << allBlocks.distr[res];
 }
 

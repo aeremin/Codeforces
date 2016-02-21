@@ -240,7 +240,6 @@ set(tests_srcs
     ${algotest_dir}/AngleSortTest.cpp
     ${algotest_dir}/BinaryCubePrefixTest.cpp
     ${algotest_dir}/BinarySearchTest.cpp
-    ${algotest_dir}/BinomialCoefficientTest.cpp
     ${algotest_dir}/BipartitionCheckerTest.cpp
     ${algotest_dir}/BreadthSearchTest.cpp
     ${algotest_dir}/ConnectedComponentsDecomposerTest.cpp
@@ -263,7 +262,6 @@ set(tests_srcs
     ${algotest_dir}/MergeSortTest.cpp
     ${algotest_dir}/MoQueryProcessorTest.cpp
     ${algotest_dir}/PrimesTest.cpp
-    ${algotest_dir}/QuickPowerTest.cpp
     ${algotest_dir}/ResidueTest.cpp
     ${algotest_dir}/SegmentTreeTest.cpp
     ${algotest_dir}/SingleLinkedListTest.cpp

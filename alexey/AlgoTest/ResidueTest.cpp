@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 #include "algo/numbertheory/Residue.hpp"
-#include "algo/algebra/QuickPower.hpp"
+#include "math/quick_power.h"
 
 using TestResidue = Residue<int, 13>;
 
@@ -118,7 +118,7 @@ TEST( ResidueTest, FermatTheorem )
     for ( uint64_t i = 1; i < prime; ++i )
     {
         PrimeResidue r( i );
-        auto res = quickPower( r, prime - 1 );
+        auto res = quick_power( r, prime - 1 );
         EXPECT_EQ( PrimeResidue( 1 ), res );
     }
 }

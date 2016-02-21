@@ -1,7 +1,7 @@
 #include <Solvers/pch.h>
 #include "algo/numbertheory/Residue.hpp"
 #include "algo/io/readvector.hpp"
-#include "algo/algebra/BinomialCoefficients.hpp"
+#include "math/binomial_coefficients.h"
 
 using namespace std;
 
@@ -24,7 +24,7 @@ void Solver554C::run()
     {
         int countOfMax = count.back();
         count.pop_back();
-        ans *= binomialCoefficient( CodeforcesResidue64( 1 ), nBalls - 1, countOfMax - 1 );
+        ans *= BinomialCoefficient( CodeforcesResidue64( 1 ), nBalls - 1, countOfMax - 1 );
         nBalls -= countOfMax;
     }
 
