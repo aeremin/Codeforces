@@ -4,10 +4,11 @@ project(contest_lib_test)
 find_package(Boost 1.54.0 COMPONENTS program_options REQUIRED)
 # find_package(GTest REQUIRED)
 
-set(root_dir ${CMAKE_SOURCE_DIR}/..)
+set(src_dir ${CMAKE_SOURCE_DIR})
+set(root_dir ${src_dir}/..)
 set(common_dir ${root_dir}/common)
 set(common_lib_dir ${common_dir}/lib)
-set(lib_dir ${CMAKE_SOURCE_DIR}/lib)
+set(lib_dir ${src_dir}/lib)
 
 set(tests_exe contest_lib_test)
 set(tests_srcs
@@ -20,17 +21,18 @@ add_executable(${tests_exe}  ${tests_srcs})
 # target_link_libraries(${tests_exe} ${GTEST_LIBRARIES})  # TODO: link gmock through CMake module utilities
 target_link_libraries(${tests_exe} "gmock" "pthread")
 
-set(compiler_dir ${CMAKE_SOURCE_DIR}/compiler)
 set(compiler_exe solution_compiler)
 set(compiler_srcs
-    ${compiler_dir}/compiler.cpp
-    ${compiler_dir}/file_parser.cpp
+    ${src_dir}/compiler/compiler_main.cpp
+    ${common_dir}/tools/compiler/compiler.cpp
+    ${common_dir}/tools/compiler/file_parser.cpp
 )
 add_executable(${compiler_exe}  ${compiler_srcs})
 target_link_libraries(${compiler_exe} ${Boost_LIBRARIES})
 
-include_directories(${lib_dir})
+include_directories(${common_dir})
 include_directories(${common_lib_dir})
+include_directories(${lib_dir})
 
 add_definitions("-std=c++11 -DLOCAL_PC")
 set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wcast-align -Wconversion -Wunused -Wformat=2 -Wcast-qual -Wold-style-cast -Woverloaded-virtual -Wshadow -Wnon-virtual-dtor -Werror")
