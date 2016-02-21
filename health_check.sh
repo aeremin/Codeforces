@@ -1,6 +1,9 @@
-cd alexey/build
 set -e
-cmake ..
-make
-./codeforces
-cd ../..
+
+cd alexey
+./health_check.sh
+cd ..
+
+cd andrei
+./health_check.sh
+cd ..
