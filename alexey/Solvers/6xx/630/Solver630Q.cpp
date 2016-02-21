@@ -1,6 +1,6 @@
 #include <Solvers/pch.h>
 #include "algo/io/baseio.hpp"
-#include "algo/Range.hpp"
+#include "iter/range.h"
 #include "algo/pi.hpp"
 
 using namespace std;

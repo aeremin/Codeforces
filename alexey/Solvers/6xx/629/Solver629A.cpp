@@ -1,7 +1,7 @@
 #include <Solvers/pch.h>
 #include "algo/io/baseio.hpp"
 #include "algo/io/readvector.hpp"
-#include "algo/Range.hpp"
+#include "iter/range.h"
 using namespace std;
 
 class Solver629A

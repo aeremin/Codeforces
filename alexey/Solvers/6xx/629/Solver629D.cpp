@@ -2,7 +2,7 @@
 #include "algo/io/baseio.hpp"
 #include "algo/SortWithMapping.hpp"
 #include "algo/pi.hpp"
-#include "algo/Range.hpp"
+#include "iter/range.h"
 #include "algo/binaryfunctors/Max.hpp"
 #include "algo/updatetypes/SetTo.hpp"
 #include "algo/updateappliers/SetToIdempotent.h"

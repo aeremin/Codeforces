@@ -3,6 +3,8 @@ project(codeforces)
 
 find_package(GTest REQUIRED)
 
+set(root_dir ${CMAKE_SOURCE_DIR}/..)
+set(common_dir ${root_dir}/common)
 set(src_dir ${CMAKE_SOURCE_DIR})
 set(solvers_dir ${CMAKE_SOURCE_DIR}/Solvers)
 set(launcher_dir ${CMAKE_SOURCE_DIR}/Launcher)
@@ -262,7 +264,6 @@ set(tests_srcs
     ${algotest_dir}/MoQueryProcessorTest.cpp
     ${algotest_dir}/PrimesTest.cpp
     ${algotest_dir}/QuickPowerTest.cpp
-    ${algotest_dir}/RangeTest.cpp
     ${algotest_dir}/ResidueTest.cpp
     ${algotest_dir}/SegmentTreeTest.cpp
     ${algotest_dir}/SingleLinkedListTest.cpp
@@ -274,5 +275,6 @@ target_link_libraries(${tests_exe} ${GTEST_LIBRARIES})
 target_link_libraries(${tests_exe} "pthread")
 
 include_directories(${src_dir})
+include_directories(${common_dir}/lib)
 
 add_definitions("-std=c++11 -DLOCAL_PC")

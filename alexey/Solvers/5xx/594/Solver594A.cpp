@@ -1,6 +1,6 @@
 #include <Solvers/pch.h>
 #include "algo/io/baseio.hpp"
-#include "algo/Range.hpp"
+#include "iter/range.h"
 #include "algo/io/readvector.hpp"
 #include "algo/SlidingWindowMinFinder.h"
 #include "algo/Relax.hpp"

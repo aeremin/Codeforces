@@ -4,6 +4,9 @@ project(contest_lib_test)
 find_package(Boost 1.54.0 COMPONENTS program_options REQUIRED)
 # find_package(GTest REQUIRED)
 
+set(root_dir ${CMAKE_SOURCE_DIR}/..)
+set(common_dir ${root_dir}/common)
+set(common_lib_dir ${common_dir}/lib)
 set(lib_dir ${CMAKE_SOURCE_DIR}/lib)
 
 set(tests_exe contest_lib_test)
@@ -27,6 +30,7 @@ add_executable(${compiler_exe}  ${compiler_srcs})
 target_link_libraries(${compiler_exe} ${Boost_LIBRARIES})
 
 include_directories(${lib_dir})
+include_directories(${common_lib_dir})
 
 add_definitions("-std=c++11 -DLOCAL_PC")
 set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wcast-align -Wconversion -Wunused -Wformat=2 -Wcast-qual -Wold-style-cast -Woverloaded-virtual -Wshadow -Wnon-virtual-dtor -Werror")

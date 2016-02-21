@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "algo/Range.hpp"
+#include "iter/range.h"
 
 TEST( RangeTest, CanIterateSomeRange )
 {
@@ -20,4 +20,13 @@ TEST( RangeTest, CanIterateSomeZeroBasedRange )
         actual.push_back( i );
 
     EXPECT_EQ( expected, actual );
+}
+
+
+TEST( RangeTest, InversedRange )
+{
+    for ( auto i : range( 10, 5 ) ) {
+        (void)i;
+        FAIL();
+    }
 }
