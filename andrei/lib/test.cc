@@ -2,6 +2,7 @@
 
 #include <gtest/gtest.h>
 
+#include "graph/adjacency_list.h"
 #include "graph/topological_sort.h"
 #include "graph/distance_unweighted.h"
 #include "io/scan.h"
@@ -74,27 +75,21 @@ DEFINE_COMPARISON_AND_HASH_4(Foo4, a, b, c, d);
 
 
 int main(int argc, char* argv[]) {
-  testing::InitGoogleTest(&argc, argv);
-  // TODO: set library_tests__enable_checks from command line flags, add launch script
-  return RUN_ALL_TESTS();
-}
+  // TODO: make all these unit tests
 
-
-#if 0
-int main() {
-  DirectedGraph_AdjacencyList graph(20);
-  graph.add_edge(0, 1);
-  graph.add_edge(0, 10);
-  graph.add_edge(0, 11);
-  graph.add_edge(1, 5);
-  graph.add_edge(5, 4);
-  graph.add_edge(5, 3);
-  graph.add_edge(3, 2);
-  graph.add_edge(4, 2);
-  graph.add_edge(12, 13);
-  graph.add_edge(13, 14);
-  graph.add_edge(14, 0);
-  graph.add_edge(14, 2);
+  DirectedGraph_Nonloaded_AdjacencyList graph(20);
+  graph.add_arc(0, 1);
+  graph.add_arc(0, 10);
+  graph.add_arc(0, 11);
+  graph.add_arc(1, 5);
+  graph.add_arc(5, 4);
+  graph.add_arc(5, 3);
+  graph.add_arc(3, 2);
+  graph.add_arc(4, 2);
+  graph.add_arc(12, 13);
+  graph.add_arc(13, 14);
+  graph.add_arc(14, 0);
+  graph.add_arc(14, 2);
 
   auto top_sorted_opt = topological_sort_reachable_optimistic(graph, {0});
   auto top_sorted_chk = topological_sort_reachable_checked(graph, {0});
@@ -104,7 +99,7 @@ int main() {
   print_top_sorted_opt(top_sorted_opt);
   print_top_sorted_chk(top_sorted_chk);
 
-  graph.add_edge(2, 1);  // bam!
+  graph.add_arc(2, 1);  // bam!
 
   top_sorted_opt = topological_sort_reachable_optimistic(graph, {0});
   top_sorted_chk = topological_sort_reachable_checked(graph, {0});
@@ -122,18 +117,18 @@ int main() {
   cout << "\n";
 
 
-  DirectedGraph_AdjacencyList graph2(20);
+  DirectedGraph_Nonloaded_AdjacencyList graph2(20);
 
-  graph2.add_edge(0, 1);
-  graph2.add_edge(2, 3);
-  graph2.add_edge(4, 5);
-  graph2.add_edge(5, 4);  // bam!
-  graph2.add_edge(6, 7);
-  graph2.add_edge(8, 9);
+  graph2.add_arc(0, 1);
+  graph2.add_arc(2, 3);
+  graph2.add_arc(4, 5);
+  graph2.add_arc(5, 4);  // bam!
+  graph2.add_arc(6, 7);
+  graph2.add_arc(8, 9);
 
-  graph2.add_edge(10, 0);  // bam!
-  graph2.add_edge(10, 4);  // bam!
-  graph2.add_edge(10, 11);  // bam!
+  graph2.add_arc(10, 0);  // bam!
+  graph2.add_arc(10, 4);  // bam!
+  graph2.add_arc(10, 11);  // bam!
 
   print_top_sorted_chk(topological_sort_reachable_checked(graph2, {0, 2, 4, 6, 8}));
   print_top_sorted_chk(topological_sort_reachable_checked(graph2, {0, 2, 10, 6, 8}));
@@ -145,8 +140,12 @@ int main() {
   cout << "d = " << find_distance_unweighted(graph2, 10, 5) << "\n";
   cout << "d = " << find_distance_unweighted(graph2, 11, 10) << "\n";
 
-  return 0;
 
+
+
+  testing::InitGoogleTest(&argc, argv);
+  // TODO: set library_tests__enable_checks from command line flags, add launch script
+  return RUN_ALL_TESTS();
 
 
 
@@ -186,5 +185,7 @@ int main() {
   auto mmm = value_or(m, 7);
   FIX_UNUSED(www);
   FIX_UNUSED(mmm);
+
+
+  return 0;
 }
-#endif
