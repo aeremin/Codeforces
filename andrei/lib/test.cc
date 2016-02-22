@@ -8,7 +8,8 @@
 #include "io/scan.h"
 #include "io/print.h"
 #include "io/targets.h"
-#include "util/hash_compare.h"
+#include "util/lexicographical_compare.h"
+#include "util/hash.h"
 
 
 void print_top_sorted_opt(const std::vector<GraphIndex>& top_sorted_opt) {
@@ -60,11 +61,14 @@ private:
 
 using IntPair = pair<int, int>;
 
-DEFINE_COMPARISON_AND_HASH_1(Fancy, value());
-DEFINE_COMPARISON_AND_HASH_1(Simple, value);
-DEFINE_COMPARISON_AND_HASH_2(Foo2, bar, buz);
-DEFINE_COMPARISON_AND_HASH_2(IntPair, first, second);
-DEFINE_COMPARISON_AND_HASH_4(Foo4, a, b, c, d);
+DEFINE_HASH_1(Fancy, value());
+DEFINE_HASH_1(Simple, value);
+DEFINE_HASH_2(Foo2, bar, buz);
+DEFINE_HASH_2(IntPair, first, second);
+DEFINE_HASH_4(Foo4, a, b, c, d);
+
+DEFINE_LEXICOGRAPHICAL_COMPARISON_1(Fancy, value());
+DEFINE_LEXICOGRAPHICAL_COMPARISON_2(Foo2, bar, buz);
 
 
 
