@@ -291,8 +291,7 @@ set(tests_srcs
     ${algotest_dir}/TreePreprocessorTest.cpp
 )
 add_executable(${tests_exe}  ${tests_srcs})
-target_link_libraries(${tests_exe} ${GTEST_LIBRARIES})
-target_link_libraries(${tests_exe} "pthread")
+target_link_libraries(${tests_exe} "gtest")
 
 include_directories(${common_dir})
 include_directories(${common_lib_dir})
