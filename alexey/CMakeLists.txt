@@ -288,7 +288,8 @@ set(tests_srcs
     ${algotest_dir}/SegmentTreeTest.cpp
     ${algotest_dir}/SingleLinkedListTest.cpp
     ${algotest_dir}/SlidingWindowMinFinderTest.cpp
-    ${algotest_dir}/TreePreprocessorTest.cpp
+    ${algotest_dir}/TopologicalSorterTest.cpp
+	${algotest_dir}/TreePreprocessorTest.cpp
 )
 add_executable(${tests_exe}  ${tests_srcs})
 target_link_libraries(${tests_exe} "gtest")
