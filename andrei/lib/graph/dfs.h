@@ -16,7 +16,7 @@ IterationResult dfs(const GraphT& graph,
                     const OnSeeT& on_see,
                     const OnEnterT& on_enter,
                     const OnExitT& on_exit) {
-  using GraphTraversalStack = std::stack<GraphTraversalExecutionItem>;
+  using GraphTraversalStack = std::stack<GraphTraversalExecutionItem, std::vector<GraphTraversalExecutionItem>>;
   return traverse_graph<GraphTraversalStack, GraphT, VertexListT, OnSeeT, OnEnterT, OnExitT>(
       graph, starting_vertices, on_see, on_enter, on_exit);
 }
