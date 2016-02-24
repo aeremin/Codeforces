@@ -10,6 +10,11 @@ class Graph
 {
 
 public:
+    struct Edge : public pair<size_t, PerEdgeData> {
+        using pair<size_t, PerEdgeData>::pair;
+        int vertex() const { return this->first; }
+    };
+
     struct OutVertex
     {
         int vertex;
@@ -19,7 +24,6 @@ public:
     Graph( int nVertices, vector<PerVertexData> vertexData = {} )
         : 
         edges_(nVertices),
-        edgesNoData_( nVertices ),
         vertexData_(move(vertexData))
     {
         if (vertexData_.empty())
@@ -35,10 +39,9 @@ public:
     void addUndirectedEdge(size_t from, size_t to, PerEdgeData data = {})
     {
         edges_[from].push_back({ to, data });
-        edgesNoData_[from].push_back( { to } );
     }
 
-    const vector<pair<size_t, PerEdgeData>>& vertexNeighbors(size_t vInd) const
+    const vector<Edge>& vertexNeighbors(size_t vInd) const
     {
         return edges_[vInd];
     }
@@ -63,14 +66,13 @@ public:
         return edges_.size();
     }
    
-    const vector<OutVertex>& out_nbrs( int v ) const
+    const vector<Edge>& out_nbrs( int v ) const
     {
-        return edgesNoData_[v];
+        return edges_[v];
     }
 
 private:
-    vector<vector<pair<size_t, PerEdgeData>>> edges_;
-    vector<vector<OutVertex>> edgesNoData_;
+    vector<vector<Edge>> edges_;
     vector<PerVertexData> vertexData_;
 };
 
