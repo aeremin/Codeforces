@@ -79,7 +79,7 @@ public:
 
 protected:
     static SimpleGraph* graph;
-    static const int nEdges = 50000;
+    static const int nEdges = 2000000;
 };
 
 SimpleGraph* TopologicalSorterLinearGraphTest::graph = nullptr;
