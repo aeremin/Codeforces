@@ -16,7 +16,7 @@ std::vector<GeomVector2<T>> convexHull(std::vector<GeomVector2<T>> points)
 	std::iter_swap(lexicoMinIter, end(points) - 1);
 	points.pop_back();
 
-	auto angleThenLengthCompare = [&](const GeomVector2<T>& a, GeomVector2<T>& b)
+	auto angleThenLengthCompare = [&](const GeomVector2<T>& a, const GeomVector2<T>& b)
 	{
 		auto aDif = a - startPoint;
 		auto bDif = b - startPoint;
