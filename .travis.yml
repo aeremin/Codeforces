@@ -1,4 +1,4 @@
-language: bash
+language: cpp
 
-script: bash health_check.sh
+script: ./health_check.sh
 
