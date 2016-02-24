@@ -1,3 +1,5 @@
+﻿[![Build Status](https://travis-ci.org/aeremin/Codeforces.svg?branch=master)](https://travis-ci.org/aeremin/Codeforces)
+
 In the wake of competitive programing, behold this repo!
 
 It contains:
