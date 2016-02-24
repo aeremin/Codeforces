@@ -43,6 +43,6 @@ TEST(DfsTest, Empty) {
 
 // Payloads no not affect the algorithms - just check compilability.
 TEST(DfsTest, Payload) {
-  auto graph = generate_empty_graph<UndirectedGraph_AdjacencyList<std::string>>(1);
+  auto graph = generate_full_graph<UndirectedGraph_AdjacencyList<std::string>>(1);
   dfs(graph, {0}, graph_traversal_noop_continue);
 }

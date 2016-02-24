@@ -1,9 +1,13 @@
 // Graph specified by an adjacency list.
 //
 // See graph/defs.h for graph interface description.
+//
+// If an edge between to vertices exists, the effect of adding it again
+// is undefined.
 
 #pragma once
 
+#include <type_traits>
 #include <vector>
 
 #include "graph/basic.h"
@@ -14,14 +18,23 @@
 namespace internal {
 
 template<typename PayloadT>
-struct Graph_AdjacencyList_HalfEdge {
-  GraphIndex vertex;
-  PayloadT payload;
+class Graph_AdjacencyList_HalfEdge {
+public:
+  Graph_AdjacencyList_HalfEdge(GraphIndex vertex__, PayloadT payload__ = {}) : vertex_(vertex__), payload_(payload__) {}
+  GraphIndex vertex() const { return vertex_; }
+  PayloadT payload() const { return payload_; }
+private:
+  GraphIndex vertex_ = kInvalidGraphVertex;
+  PayloadT payload_ = {};
 };
 template<>
-struct Graph_AdjacencyList_HalfEdge<void> {
-  GraphIndex vertex;
-  operator GraphIndex() const { return vertex; }
+class Graph_AdjacencyList_HalfEdge<void> {
+public:
+  Graph_AdjacencyList_HalfEdge(GraphIndex vertex__) : vertex_(vertex__) {}
+  GraphIndex vertex() const { return vertex_; }
+  operator GraphIndex() const { return vertex_; }
+private:
+  GraphIndex vertex_ = kInvalidGraphVertex;
 };
 
 #define UNDIRECTED_GRAPH  \
@@ -34,7 +47,7 @@ struct Graph_AdjacencyList_HalfEdge<void> {
 template<bool kDirected, typename PayloadT>
 class Graph_AdjacencyList {
 public:
-  using Edge = Graph_AdjacencyList_HalfEdge<PayloadT>;
+  using HalfEdge = Graph_AdjacencyList_HalfEdge<PayloadT>;
 
   Graph_AdjacencyList(GraphIndex num_vertices__ = 0) : edges_(num_vertices__) {}
 
@@ -82,15 +95,15 @@ public:
     add_arc(a, b, p);
   }
 
-  RESTRICT(UNDIRECTED_GRAPH) const std::vector<Edge>& in_nbrs(GraphIndex a) const {
+  RESTRICT(UNDIRECTED_GRAPH) const std::vector<HalfEdge>& in_nbrs(GraphIndex a) const {
     return at(edges_, a);
   }
-  const std::vector<Edge>& out_nbrs(GraphIndex a) const {
+  const std::vector<HalfEdge>& out_nbrs(GraphIndex a) const {
     return at(edges_, a);
   }
 
 private:
-  std::vector<std::vector<Edge>> edges_;
+  std::vector<std::vector<HalfEdge>> edges_;
 };
 
 #undef UNDIRECTED_GRAPH
