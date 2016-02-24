@@ -49,6 +49,11 @@ TEST_F( TopologicalSorterRandomTest, AndreyTopologySort )
     EXPECT_EQ( res.status(), TopologicalSortResult::Ok );
 }
 
+TEST_F( TopologicalSorterRandomTest, AndreyTopologySortOptimistic )
+{
+    auto res = topological_sort_optimistic( *graph );
+}
+
 TEST_F( TopologicalSorterRandomTest, AlexeyTopologySort )
 {
     auto ts = makeTopologicalSorter( *graph );
@@ -83,6 +88,11 @@ TEST_F( TopologicalSorterLinearGraphTest, AndreyTopologySort )
 {
     auto res = topological_sort_checked( *graph );
     EXPECT_EQ( res.status(), TopologicalSortResult::Ok );
+}
+
+TEST_F( TopologicalSorterLinearGraphTest, AndreyTopologySortOptimistic )
+{
+    auto res = topological_sort_optimistic( *graph );
 }
 
 TEST_F( TopologicalSorterLinearGraphTest, AlexeyTopologySort )
