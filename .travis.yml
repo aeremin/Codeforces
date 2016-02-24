@@ -1,3 +1,4 @@
 language: bash
 
 script: bash health_check.sh
+
