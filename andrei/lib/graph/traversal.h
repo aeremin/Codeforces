@@ -55,9 +55,11 @@ struct GraphTraversalState {
   bool aborting = false;
 };
 
-inline IterationControl graph_traversal_noop_continue(const GraphTraversalState&, GraphIndex) {
-  return IterationControl::Proceed;
-};
+// NOTE. This could've been a normal function, but that makes traversal slower
+//       under gcc with "-O2". Even with "__attribute__((always_inline))".
+//       I assume, inlining happens too late or doesn't happen at all.
+#define graph_traversal_noop_continue  \
+  [](const GraphTraversalState&, GraphIndex) { return IterationControl::Proceed; }
 
 struct GraphTraversalExecutionItem {
   GraphIndex vertex;
