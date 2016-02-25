@@ -15,35 +15,41 @@ class TopologicalSorterRandomTest : public testing::Test
 public:
     static void SetUpTestCase()
     {
-        std::vector<int> order( nVertices );
-        std::iota( begin( order ), end( order ), 0 );
-        std::random_shuffle( begin( order ), end( order ) );
-
-        graph = new SimpleGraph( nVertices );
-        for ( auto i : range( nEdges ) )
-        {
-            int from = rand() % nVertices;
-            int to = rand() % nVertices;
-            if ( order[to] < order[from] )
-                graph->addUndirectedEdge( to, from );
-            else if ( order[to] > order[from] )
-                graph->addUndirectedEdge( from, to );
-        }
+        graph = createRandomDAG();
     }
 
     static void TearDownTestCase()
     {
-        delete graph;
-        graph = nullptr;
+        graph.reset();
     }
 
-public:
-    static SimpleGraph* graph;
+    static std::unique_ptr<SimpleGraph> createRandomDAG()
+    {
+        std::vector<int> order(nVertices);
+        std::iota(begin(order), end(order), 0);
+        std::random_shuffle(begin(order), end(order));
+
+        std::unique_ptr<SimpleGraph> result(new SimpleGraph(nVertices));
+        for (auto i : range(nEdges))
+        {
+            int from = rand() % nVertices;
+            int to = rand() % nVertices;
+            if (order[to] < order[from])
+                result->addUndirectedEdge(to, from);
+            else if (order[to] > order[from])
+                result->addUndirectedEdge(from, to);
+        }
+
+        return result;
+    }
+
+protected:
+    static std::unique_ptr<SimpleGraph> graph;
     static const int nVertices = 10000;
     static const int nEdges = 50000000;
 };
 
-SimpleGraph* TopologicalSorterRandomTest::graph = nullptr;
+std::unique_ptr<SimpleGraph> TopologicalSorterRandomTest::graph = nullptr;
 
 TEST_F( TopologicalSorterRandomTest, AndreyTopologySort )
 {
@@ -108,23 +114,21 @@ class TopologicalSorterRandomBenchmark : public benchmark::Fixture
 public:
     TopologicalSorterRandomBenchmark()
     {
-        TopologicalSorterRandomTest::SetUpTestCase();
+        graph = TopologicalSorterRandomTest::createRandomDAG();
     }
 
-    ~TopologicalSorterRandomBenchmark()
-    {
-        TopologicalSorterRandomTest::TearDownTestCase();
-    }
+protected:
+    std::unique_ptr<SimpleGraph> graph;
 };
 
 BENCHMARK_F( TopologicalSorterRandomBenchmark, AlexeyTest )( benchmark::State& st )
 {
     while ( st.KeepRunning() )
-        makeTopologicalSorter( *TopologicalSorterRandomTest::graph );
+        makeTopologicalSorter( *graph );
 }
 
 BENCHMARK_F( TopologicalSorterRandomBenchmark, AndreyTest )( benchmark::State& st )
 {
     while ( st.KeepRunning() )
-        topological_sort_checked( *TopologicalSorterRandomTest::graph );
+        topological_sort_checked( *graph );
 }
