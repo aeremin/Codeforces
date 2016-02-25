@@ -34,6 +34,7 @@ public:
     static void TearDownTestCase()
     {
         delete graph;
+        graph = nullptr;
     }
 
 public:
