@@ -154,7 +154,7 @@ TEST_F( Solver582ETest, Example2 )
     EXPECT_EQ("4", getOutput());
 }
 
-TEST_F(Solver582ETest, DISABLED_Example3)
+TEST_F(Solver582ETest, Example3)
 {
     setInput("((?)&(?))|((?)&(?))     0");
     Solver582E().run();
