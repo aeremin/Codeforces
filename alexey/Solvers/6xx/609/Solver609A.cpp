@@ -36,7 +36,7 @@ void Solver609A::run()
 
 class Solver609ATest : public ProblemTest {};
 
-TEST_F(Solver609ATest, DISABLED_Example1)
+TEST_F(Solver609ATest, Example1)
 {
     setInput("4        1 9        3 1        6 1        7 4");
     Solver609A().run();
