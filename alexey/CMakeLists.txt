@@ -38,9 +38,9 @@ add_subdirectory(${CMAKE_BINARY_DIR}/googletest-src
 add_subdirectory(${CMAKE_BINARY_DIR}/googlebenchmark-src
                  ${CMAKE_BINARY_DIR}/googlebenchmark-build)
  
- include_directories("${gtest_SOURCE_DIR}/include"
+include_directories("${gtest_SOURCE_DIR}/include"
                     "${gmock_SOURCE_DIR}/include"
-					"${benchmark_SOURCE_DIR}/include")
+                    "${benchmark_SOURCE_DIR}/include")
 
 set(tests_exe codeforces)
 set(tests_srcs
