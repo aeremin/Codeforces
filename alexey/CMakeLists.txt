@@ -10,13 +10,21 @@ set(launcher_dir ${CMAKE_SOURCE_DIR}/Launcher)
 set(algotest_dir ${CMAKE_SOURCE_DIR}/AlgoTest)
 
 # Download and unpack googletest at configure time
-configure_file(CMakeLists.txt.in
+configure_file(GTest.cmake.in
                googletest-download/CMakeLists.txt)
 execute_process(COMMAND ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}" .
   WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/googletest-download )
 execute_process(COMMAND ${CMAKE_COMMAND} --build .
   WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/googletest-download )
- 
+
+# Download and unpack googletest at configure time
+configure_file(GBenchmark.cmake.in
+               googlebenchmark-download/CMakeLists.txt)
+execute_process(COMMAND ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}" .
+  WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/googlebenchmark-download )
+execute_process(COMMAND ${CMAKE_COMMAND} --build .
+  WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/googlebenchmark-download )
+  
 # Prevent GoogleTest from overriding our compiler/linker options
 # when building with Visual Studio
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
@@ -27,8 +35,12 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 add_subdirectory(${CMAKE_BINARY_DIR}/googletest-src
                  ${CMAKE_BINARY_DIR}/googletest-build)
  
-include_directories("${gtest_SOURCE_DIR}/include"
-                    "${gmock_SOURCE_DIR}/include")
+add_subdirectory(${CMAKE_BINARY_DIR}/googlebenchmark-src
+                 ${CMAKE_BINARY_DIR}/googlebenchmark-build)
+ 
+ include_directories("${gtest_SOURCE_DIR}/include"
+                    "${gmock_SOURCE_DIR}/include"
+					"${benchmark_SOURCE_DIR}/include")
 
 set(tests_exe codeforces)
 set(tests_srcs
@@ -299,7 +311,7 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 endif()
 
 add_executable(${tests_exe}  ${tests_srcs})
-target_link_libraries(${tests_exe} "gtest")
+target_link_libraries(${tests_exe} "gtest" "benchmark")
 
 include_directories(${common_dir})
 include_directories(${common_lib_dir})

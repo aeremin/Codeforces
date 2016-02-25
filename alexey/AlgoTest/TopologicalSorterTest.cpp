@@ -1,4 +1,6 @@
 #include <gtest/gtest.h>
+#include <benchmark/benchmark.h>
+
 #include <memory>
 #include <numeric>
 
@@ -6,8 +8,7 @@
 #include "iter/range.h"
 #include "algo/graph/TopologicalSorter.hpp"
 #include "graph/topological_sort.h"
-#include <chrono>
-#include <thread>
+
 
 class TopologicalSorterRandomTest : public testing::Test
 {
@@ -35,7 +36,7 @@ public:
         delete graph;
     }
 
-protected:
+public:
     static SimpleGraph* graph;
     static const int nVertices = 10000;
     static const int nEdges = 50000000;
@@ -99,4 +100,30 @@ TEST_F( TopologicalSorterLinearGraphTest, AlexeyTopologySort )
 {
     auto ts = makeTopologicalSorter( *graph );
     EXPECT_TRUE( ts.isDAG() );
+}
+
+class TopologicalSorterRandomBenchmark : public benchmark::Fixture
+{
+public:
+    TopologicalSorterRandomBenchmark()
+    {
+        TopologicalSorterRandomTest::SetUpTestCase();
+    }
+
+    ~TopologicalSorterRandomBenchmark()
+    {
+        TopologicalSorterRandomTest::TearDownTestCase();
+    }
+};
+
+BENCHMARK_F( TopologicalSorterRandomBenchmark, AlexeyTest )( benchmark::State& st )
+{
+    while ( st.KeepRunning() )
+        makeTopologicalSorter( *TopologicalSorterRandomTest::graph );
+}
+
+BENCHMARK_F( TopologicalSorterRandomBenchmark, AndreyTest )( benchmark::State& st )
+{
+    while ( st.KeepRunning() )
+        topological_sort_checked( *TopologicalSorterRandomTest::graph );
 }
