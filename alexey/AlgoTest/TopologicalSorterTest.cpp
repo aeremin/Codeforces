@@ -121,6 +121,7 @@ protected:
     std::unique_ptr<SimpleGraph> graph;
 };
 
+/*
 BENCHMARK_F( TopologicalSorterRandomBenchmark, AlexeyTest )( benchmark::State& st )
 {
     while ( st.KeepRunning() )
@@ -132,3 +133,4 @@ BENCHMARK_F( TopologicalSorterRandomBenchmark, AndreyTest )( benchmark::State& s
     while ( st.KeepRunning() )
         topological_sort_checked( *graph );
 }
+*/
