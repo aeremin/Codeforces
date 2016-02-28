@@ -22,7 +22,7 @@ public:
 
 
     Graph( int nVertices, vector<PerVertexData> vertexData = {} )
-        : 
+        :
         edges_(nVertices),
         vertexData_(move(vertexData))
     {
@@ -55,7 +55,7 @@ public:
     {
         return vertexData_[vInd];
     }
-    
+
     size_t vertexCount() const
     {
         return edges_.size();
@@ -65,7 +65,7 @@ public:
     {
         return edges_.size();
     }
-   
+
     const vector<Edge>& out_nbrs( int v ) const
     {
         return edges_[v];
