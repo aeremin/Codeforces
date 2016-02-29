@@ -277,6 +277,7 @@ set(tests_srcs
     ${solvers_dir}/testutils/ProblemTest.cpp
     ${algotest_dir}/geometry/ConvexHullTest.cpp
     ${algotest_dir}/geometry/geomvectortest.cpp
+    ${algotest_dir}/strings/trie_test.cpp
     ${algotest_dir}/AngleSortTest.cpp
     ${algotest_dir}/borrower_test.cpp
     ${algotest_dir}/BinaryCubePrefixTest.cpp
