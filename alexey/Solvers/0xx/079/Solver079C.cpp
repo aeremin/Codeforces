@@ -1,5 +1,5 @@
 #include <Solvers/pch.h>
-#include "algo/KnuttMorrisPratt.hpp"
+#include "algo/strings/KnuttMorrisPratt.hpp"
 #include "util/relax.h"
 
 using namespace std;

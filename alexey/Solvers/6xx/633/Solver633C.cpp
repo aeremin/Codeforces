@@ -1,7 +1,7 @@
 #include <Solvers/pch.h>
 #include "algo/io/baseio.hpp"
 #include "iter/range.h"
-#include "algo/KnuttMorrisPratt.hpp"
+#include "algo/strings/KnuttMorrisPratt.hpp"
 #include "algo/io/readvector.hpp"
 using namespace std;
 
@@ -45,7 +45,7 @@ void Solver633C::run()
     vector<int> jumps(len + 1, -2);
     jumps[0] = -1;
     for ( int i : range( len ) )
-        for ( auto p : ; [i] )
+        for ( auto p : allowedBackJumps[i] )
             if ( jumps[1 + i - p.first] >= -1 )
             {
                 jumps[1 + i] = p.second;
