@@ -208,7 +208,7 @@ set(tests_srcs
     ${solvers_dir}/6xx/617/Solver617B.cpp
     ${solvers_dir}/6xx/617/Solver617C.cpp
     ${solvers_dir}/6xx/617/Solver617D.cpp
-    ${solvers_dir}/6xx/617/Solver617E.cpp
+	${solvers_dir}/6xx/617/Solver617E.cpp
     ${solvers_dir}/6xx/618/Solver618A.cpp
     ${solvers_dir}/6xx/618/Solver618B.cpp
     ${solvers_dir}/6xx/618/Solver618C.cpp
@@ -267,6 +267,7 @@ set(tests_srcs
     ${solvers_dir}/6xx/630/Solver630Q.cpp
     ${solvers_dir}/6xx/630/Solver630R.cpp
     ${solvers_dir}/6xx/633/Solver633A.cpp
+    ${solvers_dir}/6xx/633/Solver633B.cpp
     ${solvers_dir}/6xx/633/Solver633G.cpp
     ${solvers_dir}/pch.cpp
     ${solvers_dir}/SolverStub.cpp
