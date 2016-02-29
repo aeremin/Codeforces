@@ -3,6 +3,8 @@
 #include "iter/range.h"
 #include "algo/strings/KnuttMorrisPratt.hpp"
 #include "algo/io/readvector.hpp"
+#include "algo/strings/trie.h"
+
 using namespace std;
 
 class Solver633C
@@ -34,35 +36,44 @@ void Solver633C::run()
     int dictionarySize;
     cin >> dictionarySize;
     vector<string> dictionary = readVector<string>( dictionarySize );
-    vector<vector<pair<int, int>>> allowedBackJumps( len );
-    for ( auto i : range(dictionarySize) )
-    {
-        auto finishes = allowedFinishes( dictionary[i], ciphered );
-        for ( auto j : finishes )
-            allowedBackJumps[j].push_back( { dictionary[i].length(), i } );
+    unordered_map<string, string> decipherer;
+    Trie trie;
+    for (const auto& word : dictionary) {
+        string wordLowCase;
+        transform(word.begin(), word.end(), back_inserter(wordLowCase), ::tolower);
+        decipherer.insert({ wordLowCase, word });
+        trie.AddWord(wordLowCase + "\n");
     }
 
-    vector<int> jumps(len + 1, -2);
-    jumps[0] = -1;
-    for ( int i : range( len ) )
-        for ( auto p : allowedBackJumps[i] )
-            if ( jumps[1 + i - p.first] >= -1 )
-            {
-                jumps[1 + i] = p.second;
+    vector<string> jumps(len + 1, "");
+    jumps[0] = "\n";
+    
+    for (int i : range(len)) {
+        string currWord;
+        size_t currNode = 0;
+        for (int j = i; j >= 0; --j) {
+            currWord.push_back(ciphered[j]);
+            currNode = trie.traverse(currNode, ciphered[j]);
+            if (currNode == Trie::InvalidIndex)
+                break;
+            if (trie.traverse(currNode, '\n') != Trie::InvalidIndex && !jumps[j].empty()) {
+                jumps[i + 1] = currWord;
                 break;
             }
+        }
+    }
 
-    deque<int> indices;
+    deque<string> words;
     int currPos = len;
     do
     {
-        int currIndex = jumps[currPos];
-        indices.push_front( currIndex );
-        currPos -= dictionary[currIndex].length();
+        auto word = jumps[currPos];
+        words.push_front(word);
+        currPos -= word.length();
     } while ( currPos > 0 );
 
-    for ( auto i : indices )
-        cout << dictionary[i] << " ";
+    for ( auto w : words)
+        cout << decipherer[w] << " ";
 }
 
 class Solver633CTest : public ProblemTest {};

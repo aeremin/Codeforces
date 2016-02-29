@@ -270,6 +270,7 @@ set(tests_srcs
     ${solvers_dir}/6xx/630/Solver630R.cpp
     ${solvers_dir}/6xx/633/Solver633A.cpp
     ${solvers_dir}/6xx/633/Solver633B.cpp
+    ${solvers_dir}/6xx/633/Solver633C.cpp
     ${solvers_dir}/6xx/633/Solver633D.cpp
     ${solvers_dir}/6xx/633/Solver633G.cpp
     ${solvers_dir}/pch.cpp
