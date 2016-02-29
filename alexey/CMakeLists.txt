@@ -244,6 +244,7 @@ set(tests_srcs
     ${solvers_dir}/6xx/626/Solver626C.cpp
     ${solvers_dir}/6xx/626/Solver626D.cpp
     ${solvers_dir}/6xx/629/Solver629A.cpp
+    ${solvers_dir}/6xx/627/Solver627B.cpp
     ${solvers_dir}/6xx/629/Solver629B.cpp
     ${solvers_dir}/6xx/629/Solver629C.cpp
     ${solvers_dir}/6xx/629/Solver629D.cpp
