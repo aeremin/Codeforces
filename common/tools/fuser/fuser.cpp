@@ -43,7 +43,7 @@ std::string Compile(const std::string& main_file, CompilerOptions& options) {
             std::cerr << "Error: cannot find file \"" << file_name << "\"\n";
             throw std::runtime_error("Fatal error parsing " + file_name);
         }
-        const ParsedFile& current_file = files.back();
+        const ParsedFile current_file = files.back();
         for (const ParsingProblem& problem : current_file.problems) {
             const std::string location = file_name + ((problem.line >= 0) ? ":" + std::to_string(problem.line) : "");
             switch (problem.severity) {
