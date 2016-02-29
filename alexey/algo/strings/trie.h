@@ -17,7 +17,7 @@ public:
             auto next = traverse(curr, c);
             if (next == InvalidIndex) {
                 next = nodes_.size();
-                nodes_.push_back({});
+                nodes_.emplace_back();
                 nodes_[curr].insert({ c, next });
             }
             curr = next;
