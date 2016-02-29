@@ -185,7 +185,6 @@ set(tests_srcs
     ${solvers_dir}/6xx/611/Solver611D.cpp
     ${solvers_dir}/6xx/611/Solver611E.cpp
     ${solvers_dir}/6xx/611/Solver611F.cpp
-    ${solvers_dir}/6xx/611/Solver611H.cpp
     ${solvers_dir}/6xx/612/Solver612A.cpp
     ${solvers_dir}/6xx/612/Solver612B.cpp
     ${solvers_dir}/6xx/612/Solver612C.cpp

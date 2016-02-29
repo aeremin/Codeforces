@@ -22,16 +22,6 @@ public:
     {
         return ( actor.right >= song.right );
     }
-
-    int getSingerIndex( Interval song, deque<Interval>& actors )
-    {
-        if ( actors.empty() ) return -1;
-
-        auto iter = lower_bound( begin( actors ), begin( actors ), song, [&]( Interval actor, Interval song ) -> bool
-        {
-            return canR( actor, song );
-        } );
-    }
 };
 
 void Solver496E::run()

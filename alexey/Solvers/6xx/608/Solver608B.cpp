@@ -14,7 +14,7 @@ void Solver608B::run()
     string a, b;
     cin >> a >> b;
     auto onesOnPrefix = count(begin(b), end(b) - a.length() + 1 , '1');
-    vector<int> onesCount = { onesOnPrefix };
+    vector<int> onesCount = { int(onesOnPrefix) };
     for (int i = 1; i < a.length(); ++i)
         onesCount.push_back(onesCount.back() + indicator<int>(b[b.length() - a.length() + i] == '1')
                                              - indicator<int>(b[i - 1] == '1'));

@@ -69,7 +69,7 @@ public:
 
         if ( total[0] == total[1] ) return -1;
         if ( total[0] > total[1] ) return winner == 1 ? total[0] : -1;
-        if ( total[0] < total[1] ) return winner == 2 ? total[1] : -1;
+        return winner == 2 ? total[1] : -1;
     }
 };
 

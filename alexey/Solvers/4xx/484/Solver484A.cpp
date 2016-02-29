@@ -28,7 +28,7 @@ void Solver484A::run()
         int maxDifPow = 1;
         while ( l >> maxDifPow != r >> maxDifPow )
             ++maxDifPow;
-        uint64_t ones = ( one << maxDifPow - 1 ) - 1;
+        uint64_t ones = ( one << (maxDifPow - 1) ) - 1;
 
         if ( ( r | ones ) <= r )
             cout << ( r | ones ) << endl;

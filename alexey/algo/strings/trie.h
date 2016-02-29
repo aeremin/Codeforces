@@ -5,7 +5,7 @@
 
 class Trie {
 public:
-    static const size_t InvalidIndex = -1;
+    enum { InvalidIndex = -1 };
 
     Trie() : nodes_(1) {}
 
