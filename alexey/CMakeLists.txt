@@ -272,6 +272,7 @@ set(tests_srcs
     ${solvers_dir}/6xx/633/Solver633C.cpp
     ${solvers_dir}/6xx/633/Solver633D.cpp
     ${solvers_dir}/6xx/633/Solver633G.cpp
+    ${solvers_dir}/6xx/634/Solver634A.cpp
     ${solvers_dir}/pch.cpp
     ${solvers_dir}/SolverStub.cpp
     ${solvers_dir}/testutils/ProblemTest.cpp
