@@ -23,6 +23,14 @@ public:
         coefficients_[d] = v;
     }
 
+    const T& coefficient( int d ) const {
+        return coefficients_[d];
+    }
+
+    T& coefficient( int d ) {
+        return coefficients_[d];
+    }
+
     T GetValue( const T& pt ) const {
         auto result = T( 0 );
         for ( int i = formal_degree(); i >= 1; --i )
