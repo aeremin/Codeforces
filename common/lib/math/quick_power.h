@@ -2,17 +2,17 @@
 
 #include "util/types.h"
 
-template<class T>
-T quick_power(const T& a, int64 p, T one = T(1)) {
+template<class T, class MultiplicationFunctor = std::multiplies<T>>
+T quick_power(const T& a, int64 p, T one = { 1 }, MultiplicationFunctor mf = {}) {
     auto res = one;
     auto m = a;
     while (p > 0) {
         if (p % 2 == 0) {
-            m = m * m;
+            m = mf(m, m);
             p /= 2;
         }
         else {
-            res *= m;
+            res = mf(res, m);
             p--;
         }
     }
