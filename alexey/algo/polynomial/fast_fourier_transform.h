@@ -3,7 +3,7 @@
 #include "algo/polynomial/polynomial.h"
 #include "math/pi.h"
 
-int rev( int num, int lg_n ) {
+inline int rev( int num, int lg_n ) {
     int res = 0;
     for ( int i = 0; i < lg_n; ++i )
         if ( num & ( 1 << i ) )
@@ -14,7 +14,7 @@ int rev( int num, int lg_n ) {
 // Formal degree of p must be of form n = 2^k - 1.
 // Time complexity is O(2^k * k) = O(n lg n).
 // Additional space is O(1).
-Polynomial<std::complex<double>> FastFourierTransform( Polynomial<std::complex<double>> p, bool invert ) {
+inline Polynomial<std::complex<double>> FastFourierTransform( Polynomial<std::complex<double>> p, bool invert ) {
     int n = p.formal_degree() + 1;
     int lg_n = 0;
     while ( ( 1 << lg_n ) < n ) ++lg_n;
