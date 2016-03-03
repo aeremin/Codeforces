@@ -71,6 +71,12 @@ public:
         return *this;
     }
 
+    const Polynomial<T>& operator*=(const Polynomial<T>& other) {
+        auto product = *this * other;
+        coefficients_ = std::move(product.coefficients_);
+        return *this;
+    }
+
 private:
     std::vector<T> coefficients_;
 };
