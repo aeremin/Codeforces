@@ -1,7 +1,7 @@
 #include <Solvers/pch.h>
 #include "algo/io/baseio.hpp"
 #include "iter/range.h"
-#include "algo/strings/knutt_morris_pratt.h"
+#include "algo/strings/find_occurences.h"
 using namespace std;
 
 class Solver631D {
@@ -23,6 +23,11 @@ public:
         }
         return res;
     }
+
+    bool isSubstringOf( pair<int64_t, char> text, pair<int64_t, char> pattern ) const {
+        return text.first >= pattern.first && text.second == pattern.second;
+    }
+
 };
 
 void Solver631D::run() {
@@ -38,25 +43,22 @@ void Solver631D::run() {
         cout << ans;
     }
     else {
-        vector<pair<int64_t, char>> concat(begin(s2) + 1, end(s2) - 1);
-        concat.push_back({ 0, '#' });
-        copy(begin(s1), end(s1), back_inserter(concat));
-        auto pi = PrefixFunction(concat);
+        vector<pair<int64_t, char>> centralPart( begin( s2 ) + 1, end( s2 ) - 1 );
+        auto occurences = FindOccurences( s1, centralPart );
         int64_t ans = 0;
-        for (int i : range(s2.size() - 1, pi.size() - 1))
-            if (pi[i] == s2.size() - 2) {
-                auto j = i - s2.size() + 1;
-                
-                auto s1partB = s1[j - s2.size() + 2];
-                auto s2partB = s2.front();
-                
-                auto s1partA = s1[j + 1];
-                auto s2partA = s2.back();
+        for ( auto i : occurences ) {
+            if (i == 0)
+                continue;
 
-                if ((s1partB.second == s2partB.second && s1partB.first >= s2partB.first) &&
-                    (s1partA.second == s2partA.second && s1partA.first >= s2partA.first))
-                    ++ans;
-            }
+            auto s1partBefore = s1[i - 1];
+            auto s2partBefore = s2.front();
+
+            auto s1partAfter = s1[i + s2.size() - 2];
+            auto s2partAfter = s2.back();
+
+            if ( isSubstringOf( s1partBefore, s2partBefore ) && isSubstringOf( s1partAfter, s2partAfter ) )
+                 ++ans;
+        }
 
         cout << ans;
     }
