@@ -6,7 +6,7 @@
 template<class Container>
 std::vector<int> PrefixFunction( const Container& s )
 {
-	vector<int> pi;
+	std::vector<int> pi;
 	if (s.empty())
 		return pi;
     pi.push_back( 0 );
