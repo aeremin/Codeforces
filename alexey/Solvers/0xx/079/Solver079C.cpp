@@ -1,5 +1,5 @@
 #include <Solvers/pch.h>
-#include "algo/strings/KnuttMorrisPratt.hpp"
+#include "algo/strings/knutt_morris_pratt.h"
 #include "util/relax.h"
 
 using namespace std;
@@ -21,7 +21,7 @@ void Solver079C::run()
     {
         string bannedString;
         cin >> bannedString;
-        ref = calc_prefix_function(bannedString + "!" + s);
+        ref = PrefixFunction(bannedString + "!" + s);
     }
 
     int maxLen = 0;

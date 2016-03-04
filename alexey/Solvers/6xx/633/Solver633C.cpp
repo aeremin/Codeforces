@@ -1,7 +1,7 @@
 #include <Solvers/pch.h>
 #include "algo/io/baseio.hpp"
 #include "iter/range.h"
-#include "algo/strings/KnuttMorrisPratt.hpp"
+#include "algo/strings/knutt_morris_pratt.h"
 #include "algo/io/readvector.hpp"
 #include "algo/strings/trie.h"
 
@@ -17,7 +17,7 @@ public:
         transform( pattern.begin(), pattern.end(), pattern.begin(), ::tolower );
         reverse( pattern.begin(), pattern.end() );
         string s = pattern + "$" + ciphered;
-        auto pi = calc_prefix_function( s );
+        auto pi = PrefixFunction( s );
         vector<int> result;
         for ( int i : range( ciphered.length() ) )
             if ( pi[pattern.length() + 1 + i] == pattern.length() )

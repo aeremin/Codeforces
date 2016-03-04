@@ -1,5 +1,5 @@
 #include <Solvers/pch.h>
-#include "algo/strings/KnuttMorrisPratt.hpp"
+#include "algo/strings/knutt_morris_pratt.h"
 
 using namespace std;
 
@@ -34,7 +34,7 @@ void Solver432D::run()
 {
     string s;
     cin >> s;
-    auto pi = calc_prefix_function(s);
+    auto pi = PrefixFunction(s);
     vector<vector<size_t>> inversedPi(s.length() + 1);
     for (size_t i = 0; i < s.length(); ++i)
         inversedPi[pi[i]].push_back(i);

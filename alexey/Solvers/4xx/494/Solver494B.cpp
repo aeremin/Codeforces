@@ -1,5 +1,5 @@
 #include <Solvers/pch.h>
-#include "algo/strings/KnuttMorrisPratt.hpp"
+#include "algo/strings/knutt_morris_pratt.h"
 
 using namespace std;
 
@@ -19,7 +19,7 @@ void Solver494B::run()
     cin >> t;
 
     string concat = t + '$' + s;
-    auto pi = calc_prefix_function( concat );
+    auto pi = PrefixFunction( concat );
 
     int goodpi = t.length();
 

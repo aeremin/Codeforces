@@ -1,6 +1,7 @@
 #include <Solvers/pch.h>
 #include "algo/io/baseio.hpp"
 #include "iter/range.h"
+#include "algo/strings/knutt_morris_pratt.h"
 using namespace std;
 
 class Solver631D {
@@ -22,21 +23,6 @@ public:
         }
         return res;
     }
-
-    inline vector<int> calcPrefixFunction(const vector<pair<int64_t, char>>& s) {
-        vector<int> pi;
-        if (s.empty())
-            return pi;
-        pi.push_back(0);
-        for (int i = 1; i < s.size(); ++i) {
-            int curPi = pi.back();
-            while (curPi > 0 && s[i] != s[curPi])
-                curPi = pi[curPi - 1];
-            if (s[i] == s[curPi]) curPi++;
-            pi.push_back(curPi);
-        }
-        return pi;
-    }
 };
 
 void Solver631D::run() {
@@ -55,7 +41,7 @@ void Solver631D::run() {
         vector<pair<int64_t, char>> concat(begin(s2) + 1, end(s2) - 1);
         concat.push_back({ 0, '#' });
         copy(begin(s1), end(s1), back_inserter(concat));
-        auto pi = calcPrefixFunction(concat);
+        auto pi = PrefixFunction(concat);
         int64_t ans = 0;
         for (int i : range(s2.size() - 1, pi.size() - 1))
             if (pi[i] == s2.size() - 2) {

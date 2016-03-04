@@ -1,5 +1,5 @@
 #include <Solvers/pch.h>
-#include "algo/strings/KnuttMorrisPratt.hpp"
+#include "algo/strings/knutt_morris_pratt.h"
 
 using namespace std;
 
@@ -21,7 +21,7 @@ void Solver615C::run()
     {
         auto prefixString = needToBuild.substr(buildIter, string::npos) + ":";
         string t = prefixString + inShop;
-        auto pi = calc_prefix_function(t);
+        auto pi = PrefixFunction(t);
         auto maxLenIter = max_element(begin(pi) + prefixString.length(), end(pi));
         int maxLen = *maxLenIter;
         if (maxLen == 0)
