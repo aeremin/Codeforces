@@ -291,6 +291,7 @@ set(tests_srcs
     ${algotest_dir}/polynomial/polynomial_test.cpp
     ${algotest_dir}/polynomial/fast_fourier_transform_test.cpp
     ${algotest_dir}/strings/trie_test.cpp
+    ${algotest_dir}/strings/find_occurences_test.cpp
     ${algotest_dir}/AngleSortTest.cpp
     ${algotest_dir}/borrower_test.cpp
     ${algotest_dir}/BinaryCubePrefixTest.cpp
