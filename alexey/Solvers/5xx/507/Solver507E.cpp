@@ -26,7 +26,7 @@ void Solver507E::run()
     }
 
     set<pair<int, int>> path;
-    auto dijkstraResult = getMinimalPathsFrom(graph, 0);
+    auto dijkstraResult = getMinimalPathsFrom(graph, 0, numeric_limits<double>::max());
     auto lastVertex = nCities - 1;
     while (lastVertex != 0)
     {

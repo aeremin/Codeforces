@@ -9,9 +9,9 @@ struct DijkstraResult
 
 
 template<class PerEdgeData, class PerVertexData>
-DijkstraResult<PerEdgeData> getMinimalPathsFrom(const Graph<PerEdgeData, PerVertexData>& graph, size_t startVertex)
+DijkstraResult<PerEdgeData> getMinimalPathsFrom(const Graph<PerEdgeData, PerVertexData>& graph, size_t startVertex, PerEdgeData inAccessibleValue)
 {
-    DijkstraResult<PerEdgeData> result = { vector<PerEdgeData>(graph.vertexCount()), vector<size_t>(graph.vertexCount(), -1) };
+    DijkstraResult<PerEdgeData> result = { vector<PerEdgeData>(graph.vertexCount(), inAccessibleValue), vector<size_t>(graph.vertexCount(), -1) };
     using FullEdgeData = tuple<PerEdgeData, size_t, size_t>;
     priority_queue<FullEdgeData, vector<FullEdgeData>, greater<FullEdgeData>> nextVerticesData;
     nextVerticesData.push(make_tuple(PerEdgeData(), startVertex, startVertex));
