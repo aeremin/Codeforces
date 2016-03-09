@@ -44,7 +44,6 @@ public:
 
 void Solver559B::run()
 {
-    std::ios::sync_with_stdio(false);
     string s1, s2;
     cin >> s1 >> s2;
     if (isEquivalent(s1, s2))
