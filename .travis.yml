@@ -14,4 +14,4 @@ addons:
     - gcc-4.9
     - g++-4.9
 
-script: cd alexey && ./health_check.sh
+script: ./health_check.sh
