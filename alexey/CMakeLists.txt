@@ -70,6 +70,8 @@ set(tests_srcs
     ${solvers_dir}/3xx/354/Solver354C.cpp
     ${solvers_dir}/3xx/358/Solver358D.cpp
     ${solvers_dir}/3xx/372/Solver372B.cpp
+    ${solvers_dir}/3xx/377/Solver377A.cpp
+    ${solvers_dir}/3xx/377/Solver377B.cpp
     ${solvers_dir}/3xx/374/Solver374C.cpp
     ${solvers_dir}/3xx/379/Solver379D.cpp
     ${solvers_dir}/4xx/401/Solver401D.cpp
