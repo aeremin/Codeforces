@@ -1,8 +1,11 @@
 cmake_minimum_required(VERSION 2.6)
 project(common_lib_tests)
 
-set(lib_dir ${CMAKE_SOURCE_DIR}/lib)
-set(lib_tests_dir ${CMAKE_SOURCE_DIR}/lib_tests)
+set(src_dir ${CMAKE_SOURCE_DIR})
+set(lib_dir ${src_dir}/lib)
+set(lib_tests_dir ${src_dir}/lib_tests)
+
+include(${src_dir}/external/CMakeLists.txt)
 
 set(tests_exe common_lib_tests)
 set(tests_srcs
@@ -12,8 +15,7 @@ set(tests_srcs
     ${lib_tests_dir}/math/quick_power_test.cpp
 )
 add_executable(${tests_exe}  ${tests_srcs})
-# target_link_libraries(${tests_exe} ${GTEST_LIBRARIES})  # TODO: link gmock through CMake module utilities
-target_link_libraries(${tests_exe} "gmock" "pthread")
+target_link_libraries(${tests_exe} "gmock" "benchmark" "pthread")
 
 include_directories(${lib_dir})
 

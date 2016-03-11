@@ -2,13 +2,14 @@ cmake_minimum_required(VERSION 2.6)
 project(contest_lib_test)
 
 find_package(Boost 1.54.0 COMPONENTS program_options REQUIRED)
-# find_package(GTest REQUIRED)
 
 set(src_dir ${CMAKE_SOURCE_DIR})
 set(root_dir ${src_dir}/..)
 set(common_dir ${root_dir}/common)
 set(common_lib_dir ${common_dir}/lib)
 set(lib_dir ${src_dir}/lib)
+
+include(${common_dir}/external/CMakeLists.txt)
 
 set(tests_exe contest_lib_test)
 set(tests_srcs
@@ -18,8 +19,7 @@ set(tests_srcs
     ${lib_dir}/solution_tests/matchers_test.cpp
 )
 add_executable(${tests_exe}  ${tests_srcs})
-# target_link_libraries(${tests_exe} ${GTEST_LIBRARIES})  # TODO: link gmock through CMake module utilities
-target_link_libraries(${tests_exe} "gmock" "pthread")
+target_link_libraries(${tests_exe} "gmock" "benchmark" "pthread")
 
 set(fuser_exe solution_fuser)
 set(fuser_srcs
