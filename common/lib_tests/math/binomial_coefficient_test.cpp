@@ -5,7 +5,7 @@ TEST(BinomialCoefficientTest, ProperResultsForNEqual4)
 {
     std::vector<int> expected = { 1, 4, 6, 4, 1 };
     for (size_t i = 0; i < expected.size(); ++i)
-        EXPECT_EQ(expected[i], BinomialCoefficient<int>(4, i)) << i;
+        EXPECT_EQ(expected[i], BinomialCoefficient<int>(4, int64(i))) << i;
 }
 
 TEST(BinomialCoefficientTest, SumOfBinomialCoefficientsIsPowerOfTwo)
