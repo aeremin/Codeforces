@@ -10,12 +10,12 @@ TEST(BinomialCoefficientTest, ProperResultsForNEqual4)
 
 TEST(BinomialCoefficientTest, SumOfBinomialCoefficientsIsPowerOfTwo)
 {
-    for (int64_t n = 0; n < 62; ++n)
+    for (int64 n = 0; n < 62; ++n)
     {
-        int64_t sum = 0;
-        for (int64_t k = 0; k <= n; ++k)
-            sum += BinomialCoefficient<int64_t>(n, k);
-        EXPECT_EQ(int64_t(1) << n, sum);
+        int64 sum = 0;
+        for (int64 k = 0; k <= n; ++k)
+            sum += BinomialCoefficient<int64>(n, k);
+        EXPECT_EQ(int64(1) << n, sum);
     }
 }
 
