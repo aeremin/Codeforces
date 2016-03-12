@@ -43,7 +43,7 @@ void Solver377C::run() {
     int nHeroes;
     cin >> nHeroes;
     powers = readVector<int>(nHeroes);
-    sort(rbegin(powers), rend(powers));
+    sort(powers.rbegin(), powers.rend());
 
     cin >> nActions;
     actions = vector<pair<char, int>>(nActions);
