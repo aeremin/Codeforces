@@ -17,17 +17,26 @@ public:
         return 3 - 2 * t;
     }
 
+    unordered_map<uint32_t, int> ansCache;
+    
     int ans(uint32_t heroesMask, int actI) {
         if (actI == nActions)
             return 0;
+
+        auto itCache = ansCache.find(heroesMask);
+        if (itCache != end(ansCache))
+            return itCache->second;
 
         auto teamSign = teamToSign(actions[actI].second);
 
         if (actions[actI].first == 'p')
             for (int iPick : range(nActions))
-                if (heroesMask & (1 << iPick))
-                    return ans(heroesMask ^ (1 << iPick), actI + 1)
-                    + teamSign * powers[iPick];
+                if (heroesMask & (1 << iPick)) {
+                    int res = ans(heroesMask ^ (1 << iPick), actI + 1)
+                        + teamSign * powers[iPick];
+                    ansCache[heroesMask] = res;
+                    return res;
+                }
 
         assert(actions[actI].first == 'b');
         int res = numeric_limits<int>::min();
@@ -35,7 +44,9 @@ public:
             if (heroesMask & (1 << iBan))
                 relax_max(res, teamSign * ans(heroesMask ^ (1 << iBan), actI + 1));
 
-        return teamSign * res;
+        res *= teamSign;
+        ansCache[heroesMask] = res;
+        return res;
     }
 };
 
