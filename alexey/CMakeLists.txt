@@ -282,6 +282,7 @@ set(tests_srcs
     ${solvers_dir}/testutils/ProblemTest.cpp
     ${algotest_dir}/geometry/ConvexHullTest.cpp
     ${algotest_dir}/geometry/geomvectortest.cpp
+	${algotest_dir}/geometry/linear_functions_max_test.cpp
     ${algotest_dir}/polynomial/polynomial_test.cpp
     ${algotest_dir}/polynomial/fast_fourier_transform_test.cpp
     ${algotest_dir}/strings/trie_test.cpp
