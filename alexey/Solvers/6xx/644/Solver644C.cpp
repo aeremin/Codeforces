@@ -45,7 +45,8 @@ void Solver644C::run() {
     print( '\n' );
     for ( auto& p : perPathSites )
         if ( p.second.size() > 1 ) {
-            printVector( p.second );
+			sort(begin(p.second), end(p.second));
+			printVector( p.second );
             print( '\n' );
         }
 }
@@ -66,7 +67,7 @@ http://abacaba.com/t
 http://abacaba.com/test
 )";
     string output = R"(1
-http://abacaba.ru http://abacaba.de
+http://abacaba.de http://abacaba.ru
 )";
     setInput( input );
     Solver644C().run();
@@ -92,7 +93,7 @@ http://a.a.a/aba..b/a
 http://abc/aba..b/a
 )";
     string output = R"(2
-http://ccc.bbbb http://cba.com
+http://cba.com http://ccc.bbbb
 http://a.a.a http://a.c http://abc
 )";
     setInput( input );
