@@ -272,6 +272,11 @@ set(tests_srcs
     ${solvers_dir}/6xx/644/Solver644A.cpp
     ${solvers_dir}/6xx/644/Solver644B.cpp
     ${solvers_dir}/6xx/644/Solver644C.cpp
+    ${solvers_dir}/6xx/645/Solver645A.cpp
+    ${solvers_dir}/6xx/645/Solver645B.cpp
+    ${solvers_dir}/6xx/645/Solver645C.cpp
+    ${solvers_dir}/6xx/645/Solver645D.cpp
+    ${solvers_dir}/6xx/645/Solver645E.cpp
     ${solvers_dir}/6xx/650/Solver650A.cpp
     ${solvers_dir}/6xx/650/Solver650B.cpp
     ${solvers_dir}/6xx/650/Solver650C.cpp
