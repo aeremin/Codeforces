@@ -15,7 +15,7 @@ public:
 
     void run()
     {
-        int nVertices = graph_.vertexCount();
+        int nVertices = graph_.num_vertices();
         vertexToComponent_.clear();
         vertexToComponent_.resize(nVertices);
         fill(begin(vertexToComponent_), end(vertexToComponent_), -1);

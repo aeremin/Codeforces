@@ -11,7 +11,7 @@ struct DijkstraResult
 template<class PerEdgeData, class PerVertexData>
 DijkstraResult<PerEdgeData> getMinimalPathsFrom(const Graph<PerEdgeData, PerVertexData>& graph, size_t startVertex, PerEdgeData inAccessibleValue)
 {
-    DijkstraResult<PerEdgeData> result = { vector<PerEdgeData>(graph.vertexCount(), inAccessibleValue), vector<size_t>(graph.vertexCount(), -1) };
+    DijkstraResult<PerEdgeData> result = { vector<PerEdgeData>(graph.num_vertices(), inAccessibleValue), vector<size_t>(graph.num_vertices(), -1) };
     using FullEdgeData = tuple<PerEdgeData, size_t, size_t>;
     priority_queue<FullEdgeData, vector<FullEdgeData>, greater<FullEdgeData>> nextVerticesData;
     nextVerticesData.push(make_tuple(PerEdgeData(), startVertex, startVertex));
@@ -27,7 +27,7 @@ DijkstraResult<PerEdgeData> getMinimalPathsFrom(const Graph<PerEdgeData, PerVert
         result.minimalDistances[nextVertexInd] = nextVertexDist;
         result.predecessors[nextVertexInd] = get<2>(nextVertexData);
         
-        for (auto& p : graph.vertexNeighbors(nextVertexInd))
+        for (auto& p : graph.out_nbrs(nextVertexInd))
             nextVerticesData.push(make_tuple(nextVertexDist + p.second, p.first, nextVertexInd));
     }
 

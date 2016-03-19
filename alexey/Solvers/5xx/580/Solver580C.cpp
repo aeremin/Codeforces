@@ -17,7 +17,7 @@ void Solver580C::run()
     {
         size_t a, b;
         cin >> a >> b;
-        g.addEdge(a - 1, b - 1);
+        g.add_edge(a - 1, b - 1);
     }
 
     DepthFirstSearcher searcher(g);
@@ -38,7 +38,7 @@ void Solver580C::run()
     int canVisit = 0;
     for (size_t i = 1; i < nVertices; ++i)
     {
-        bool isLeaf = g.vertexNeighbors(i).size() == 1;
+        bool isLeaf = g.out_nbrs(i).size() == 1;
         bool notToManyCats = nCatsInARow[i] <= maxCatsAllowed;
         if (isLeaf && notToManyCats)
             canVisit++;

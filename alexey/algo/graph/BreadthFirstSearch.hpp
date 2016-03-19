@@ -7,7 +7,7 @@ template<class VertexProcessCallback, class PerEdgeData, class PerVertexData>
 void breadthFirstSearch( const Graph<PerEdgeData, PerVertexData>& graph, VertexProcessCallback cbk, size_t startVertex = 0 )
 {
     enum class Status {Unprocessed, Queued, Processed };
-    std::vector<Status> status( graph.vertexCount(), Status::Unprocessed );
+    std::vector<Status> status( graph.num_vertices(), Status::Unprocessed );
     std::queue<size_t> toProcess;
     toProcess.push( startVertex );
     while ( !toProcess.empty() )
@@ -17,7 +17,7 @@ void breadthFirstSearch( const Graph<PerEdgeData, PerVertexData>& graph, VertexP
         cbk( v );
         status[v] = Status::Processed;
 
-        for ( auto pNei : graph.vertexNeighbors( v ) )
+        for ( auto pNei : graph.out_nbrs( v ) )
         {
             if ( status[pNei.first] == Status::Unprocessed )
             {

@@ -24,8 +24,8 @@ private:
 public:
     TreePreprocessor( const Graph<PerEdgeData, PerVertexData>& graph )
         : graph_( graph ),
-        depths_( graph.vertexCount(), -1 ),
-        binaryLiftData_( graph.vertexCount() )
+        depths_( graph.num_vertices(), -1 ),
+        binaryLiftData_( graph.num_vertices() )
     {
         depths_[0] = 0;
         binaryLiftData_[0].push_back( LiftData( -1, PerEdgeData(), PerVertexData() ) );
@@ -74,7 +74,7 @@ public:
         auto dist2 = depths_[vInd2] - depths_[lca];
         auto lift2 = lift( vInd2, dist2 );
         return{ concatenate( lift1.edgeData, lift2.edgeData ),
-                concatenate( concatenate( lift1.vertexData, lift2.vertexData ), graph_.getVertexData( lca ) ) };
+                concatenate( concatenate( lift1.vertexData, lift2.vertexData ), graph_.get_vertex_data( lca ) ) };
 
     }
 
@@ -94,11 +94,11 @@ private:
 
     void dfs_( int vInd )
     {
-        for ( auto& edge : graph_.vertexNeighbors( vInd ) )
+        for ( auto& edge : graph_.out_nbrs( vInd ) )
         {
             if ( binaryLiftData_[edge.first].empty() )
             {
-                binaryLiftData_[edge.first].push_back( { vInd, edge.second, graph_.getVertexData( edge.first ) } );
+                binaryLiftData_[edge.first].push_back( { vInd, edge.second, graph_.get_vertex_data( edge.first ) } );
                 depths_[edge.first] = depths_[vInd] + 1;
                 dfs_( edge.first );
             }
@@ -107,9 +107,9 @@ private:
 
     void calculateBinaryLifts_()
     {
-        for ( uint64_t jumpLog = 1; ( 1 << jumpLog ) < graph_.vertexCount(); ++jumpLog )
+        for ( uint64_t jumpLog = 1; ( 1 << jumpLog ) < graph_.num_vertices(); ++jumpLog )
         {
-            for ( size_t iVertex = 0; iVertex < graph_.vertexCount(); ++iVertex )
+            for ( size_t iVertex = 0; iVertex < graph_.num_vertices(); ++iVertex )
             {
                 auto firstHalfJumpData = binaryLiftData_[iVertex][jumpLog - 1];
                 if ( firstHalfJumpData.parent == -1 )

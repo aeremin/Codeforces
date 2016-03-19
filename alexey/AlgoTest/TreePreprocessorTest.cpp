@@ -12,9 +12,9 @@ using TreeCountingEdgesAndVertices = Graph<int, int>;
 TEST( TreePreprocessorTest, ConcreteExample )
 {
     TreeCountingEdgesAndVertices tree( 4, { 1, 1, 1, 1 } );
-    tree.addEdge( 0, 1, 1 );
-    tree.addEdge( 1, 2, 1 );
-    tree.addEdge( 0, 3, 1 );
+    tree.add_edge( 0, 1, 1 );
+    tree.add_edge( 1, 2, 1 );
+    tree.add_edge( 0, 3, 1 );
     
     TreePreprocessor<int, int> processor( tree );
     EXPECT_EQ( std::make_pair( 3, 4 ), processor.valueOnPath( 2, 3 ));

@@ -21,7 +21,7 @@ public:
     {
         vertexToInterval[vInd].first = orderedColors.size();
 
-        for (auto p : graph->vertexNeighbors(vInd))
+        for (auto p : graph->out_nbrs(vInd))
             if (p.first != parentInd)
                 dfs(p.first, vInd);
 
@@ -51,7 +51,7 @@ void Solver620E::run()
     {
         int a, b;
         cin >> a >> b;
-        graph->addEdge(a - 1, b - 1);
+        graph->add_edge(a - 1, b - 1);
     }
 
     dfs(0, 0);

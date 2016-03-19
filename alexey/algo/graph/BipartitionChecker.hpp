@@ -9,9 +9,9 @@ public:
     BipartitionChecker( const Graph<PerEdgeData, PerVertexData>& graph ) 
         : 
         graph_(graph),
-        part_( graph_.vertexCount(), -1 )
+        part_( graph_.num_vertices(), -1 )
     {
-        for ( size_t i = 0; i < graph_.vertexCount(); ++i )
+        for ( size_t i = 0; i < graph_.num_vertices(); ++i )
             if ( part_[i] == -1 )
                 isBipartite_ = isBipartite_ && dfs_( i );
     }
@@ -38,7 +38,7 @@ private:
         part_[vInd] = currentPart_;
         currentPart_ = 1 - currentPart_;
         bool res = true;
-        for ( auto p : graph_.vertexNeighbors( vInd ) )
+        for ( auto p : graph_.out_nbrs( vInd ) )
         {
             auto neiInd = p.first;
             if ( part_[neiInd] == -1 )

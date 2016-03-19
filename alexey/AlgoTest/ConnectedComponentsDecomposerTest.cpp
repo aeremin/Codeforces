@@ -23,11 +23,11 @@ TEST(ConnectedComponentsDecomposerTest, WorksOnConcreteTwoComponentsGraph)
     //  \ /   |
     //   3    4
     SimpleGraph g( 5 );
-    g.addEdge(0, 1);
-    g.addEdge(3, 1);
-    g.addEdge(3, 0);
+    g.add_edge(0, 1);
+    g.add_edge(3, 1);
+    g.add_edge(3, 0);
 
-    g.addEdge(2, 4);
+    g.add_edge(2, 4);
 
     ConnectedComponentsDecomposer decomposer(g);
     decomposer.run();

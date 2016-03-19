@@ -20,7 +20,6 @@ public:
         int vertex;
     };
 
-
     Graph( int nVertices, vector<PerVertexData> vertexData = {} )
         :
         edges_(nVertices),
@@ -30,35 +29,25 @@ public:
             vertexData_.resize(nVertices);
     };
 
-    void addEdge( size_t from, size_t to, PerEdgeData data = {} )
+    void add_edge( int from, int to, PerEdgeData data = {} )
     {
         edges_[from].push_back( { to, data } );
         edges_[to].push_back( { from, data } );
     }
 
-    void addUndirectedEdge(size_t from, size_t to, PerEdgeData data = {})
+    void add_undirected_edge(int from, int to, PerEdgeData data = {})
     {
         edges_[from].push_back({ to, data });
     }
 
-    const vector<Edge>& vertexNeighbors(size_t vInd) const
-    {
-        return edges_[vInd];
-    }
-
-    const PerVertexData& getVertexData(int vInd) const
+    const PerVertexData& get_vertex_data(int vInd) const
     {
         return vertexData_[vInd];
     }
 
-    PerVertexData& getVertexData(int vInd)
+    PerVertexData& get_vertex_data(int vInd)
     {
         return vertexData_[vInd];
-    }
-
-    size_t vertexCount() const
-    {
-        return edges_.size();
     }
 
     int num_vertices() const

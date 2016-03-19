@@ -23,20 +23,20 @@ public:
 
     void dfs(int vInd, int parentInd)
     {
-        VertexData vData = graph->getVertexData(vInd);
+        VertexData vData = graph->get_vertex_data(vInd);
         vData.attackedCountInSubtree = vData.isAttacked;
         vData.minSubtreeCyclicPathLength = 0;
 
         vector<pair<int, int>> childMinSubtreePaths;
         pair<int, int> minChildPassingPath = { numeric_limits<int>::max(), 0 };
 
-        for (auto& p : graph->vertexNeighbors(vInd))
+        for (auto& p : graph->out_nbrs(vInd))
         {
             auto childInd = p.first;
             if (childInd == parentInd)
                 continue;
             dfs(childInd, vInd);
-            VertexData childData = graph->getVertexData(childInd);
+            VertexData childData = graph->get_vertex_data(childInd);
             if (childData.attackedCountInSubtree > 0)
             {
                 vData.attackedCountInSubtree += childData.attackedCountInSubtree;
@@ -72,7 +72,7 @@ public:
             relax_min(vData.minSubtreePathPassing, minChildPassingPath);
         }
 
-        graph->getVertexData(vInd) = vData;
+        graph->get_vertex_data(vInd) = vData;
     }
 
 };
@@ -86,7 +86,7 @@ void Solver592D::run()
     {
         int from, to;
         cin >> from >> to;
-        graph->addEdge(from - 1, to - 1);
+        graph->add_edge(from - 1, to - 1);
     }
 
     int maxAttackedCity = 0;
@@ -95,12 +95,12 @@ void Solver592D::run()
         int c;
         cin >> c;
         --c;
-        graph->getVertexData(c) = { 1 };
+        graph->get_vertex_data(c) = { 1 };
         relax_max(maxAttackedCity, c);
     }
 
     dfs(maxAttackedCity, maxAttackedCity);
-    auto vData = graph->getVertexData(maxAttackedCity);
+    auto vData = graph->get_vertex_data(maxAttackedCity);
     cout << (vData.minSubtreePathPassing.second + 1) << " " << vData.minSubtreePathPassing.first;
 }
 

@@ -15,9 +15,9 @@ public:
     TopologicalSorter(const Graph<PerEdgeData, PerVertexData>& graph)
         :
         graph_(graph),
-        statuses_(graph_.vertexCount(), Status::Unprocessed)
+        statuses_(graph_.num_vertices(), Status::Unprocessed)
     {
-        for (size_t i = 0; i < graph_.vertexCount(); ++i)
+        for (size_t i = 0; i < graph_.num_vertices(); ++i)
             if (statuses_[i] == Status::Unprocessed)
                 isDAG_ = isDAG_ && dfs_(i);
         if (isDAG_)
@@ -34,7 +34,7 @@ private:
     {
         statuses_[i] = Status::Started;
         auto res = true;
-        for (auto pNei : graph_.vertexNeighbors(i))
+        for (auto pNei : graph_.out_nbrs(i))
         {
             if (statuses_[pNei.first] == Status::Started)
                 return false;

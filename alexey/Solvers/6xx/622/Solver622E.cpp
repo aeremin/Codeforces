@@ -15,7 +15,7 @@ public:
     void dfs(int v, int p)
     {
         bool isLeaf = true;
-        for (auto pNei : g->vertexNeighbors(v))
+        for (auto pNei : g->out_nbrs(v))
         {
             if (pNei.first == p) continue;
             isLeaf = false;
@@ -38,12 +38,12 @@ void Solver622E::run()
     {
         int a, b;
         cin >> a >> b;
-        g->addEdge(a - 1, b - 1);
+        g->add_edge(a - 1, b - 1);
     }
 
     int ans = 0;
     
-    for (auto pNei : g->vertexNeighbors(0))
+    for (auto pNei : g->out_nbrs(0))
     {
         leavesDepths.clear();
         dfs(pNei.first, 0);

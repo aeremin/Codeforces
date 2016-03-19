@@ -15,7 +15,7 @@ public:
     void dfs(size_t vInd, size_t pInd)
     {
         vector<pair<int, int>> childData;
-        for (auto& pNei : graph->vertexNeighbors(vInd))
+        for (auto& pNei : graph->out_nbrs(vInd))
         {
             if (pNei.first == pInd)
                 continue;
@@ -50,7 +50,7 @@ void Solver618D::run()
     {
         int a, b;
         cin >> a >> b;
-        graph->addEdge(a - 1, b - 1);
+        graph->add_edge(a - 1, b - 1);
     }
 
     if (y > x)
@@ -65,7 +65,7 @@ void Solver618D::run()
     {
         bool isStar = false;
         for (int i = 0; i < n; ++i)
-            isStar = isStar || (graph->vertexNeighbors(i).size() == n - 1);
+            isStar = isStar || (graph->out_nbrs(i).size() == n - 1);
 
         if (isStar)
             cout << x + (n - 2) * y;

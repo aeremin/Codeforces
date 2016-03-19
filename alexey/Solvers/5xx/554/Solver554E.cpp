@@ -34,7 +34,7 @@ void Solver554E::run()
 
     SimpleGraph graph( n );
     for ( auto& p : hate )
-        graph.addEdge( ds.rep( p.first ), ds.rep( p.second ) );
+        graph.add_edge( ds.rep( p.first ), ds.rep( p.second ) );
 
     if ( !makeBipartitionChecker( graph ).isBipartite() )
     {

@@ -34,7 +34,7 @@ public:
     {
         vdDn[vInd].subtreeSize = 1;
         vdDn[vInd].totalDistanceToSubtree = 0;
-        for (auto p : g->vertexNeighbors(vInd))
+        for (auto p : g->out_nbrs(vInd))
         {
             if (p.first == pInd) continue;
             dfsDn(p.first, vInd);
@@ -69,14 +69,14 @@ void Solver629E::dfsUp(int vInd, int pInd, VertexData up)
     vdUp[vInd] = up;
     up.totalDistanceToSubtree += up.subtreeSize; 
     up.subtreeSize++;
-    for (auto p : g->vertexNeighbors(vInd))
+    for (auto p : g->out_nbrs(vInd))
         if (p.first != pInd)
         {
             up.subtreeSize += vdDn[p.first].subtreeSize;
             up.totalDistanceToSubtree += vdDn[p.first].subtreeSize + vdDn[p.first].totalDistanceToSubtree;
         }
 
-    for (auto p : g->vertexNeighbors(vInd))
+    for (auto p : g->out_nbrs(vInd))
         if (p.first != pInd)
         {
             auto upCopy = up;
@@ -100,7 +100,7 @@ void Solver629E::run()
     {
         int a, b;
         cin >> a >> b;
-        g->addEdge(a - 1, b - 1, ed); 
+        g->add_edge(a - 1, b - 1, ed); 
     }
 
     dfsDn(0, 0);

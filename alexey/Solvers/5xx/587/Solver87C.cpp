@@ -70,7 +70,7 @@ void Solver587C::run()
 
     Graph<MyEmptyStruct, MinPeopleOnPath> tree( nCities, peoplePerCitySorted );
     for ( auto& p : edges )
-        tree.addEdge( p.first - 1, p.second - 1);
+        tree.add_edge( p.first - 1, p.second - 1);
 
     TreePreprocessor<MyEmptyStruct, MinPeopleOnPath> processor( tree );
 

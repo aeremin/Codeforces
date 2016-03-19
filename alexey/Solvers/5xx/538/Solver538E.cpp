@@ -22,8 +22,8 @@ public:
     void dfs(int vInd, int parentInd)
     {
         VertexData vData;
-        vData.distanceToRoot = (vInd == parentInd) ? 0 : graph->getVertexData(parentInd).distanceToRoot + 1;
-        graph->getVertexData(vInd) = vData;
+        vData.distanceToRoot = (vInd == parentInd) ? 0 : graph->get_vertex_data(parentInd).distanceToRoot + 1;
+        graph->get_vertex_data(vInd) = vData;
 
         int countsSumInd = (vData.distanceToRoot + 1) % 2;
         int countsMinInd = 1 - countsSumInd;
@@ -31,14 +31,14 @@ public:
         int childSum = 0;
         int childMin = numeric_limits<int>::max();
         
-        for (auto& p : graph->vertexNeighbors(vInd))
+        for (auto& p : graph->out_nbrs(vInd))
         {
             auto childInd = p.first;
             if (childInd == parentInd)
                 continue;
             dfs(childInd, vInd);
 
-            auto childData = graph->getVertexData(childInd);
+            auto childData = graph->get_vertex_data(childInd);
             childSum += childData.perPlayerAnswers[countsSumInd];
             relax_min(childMin, childData.perPlayerAnswers[countsMinInd]);
         }
@@ -52,7 +52,7 @@ public:
 
         vData.perPlayerAnswers[countsMinInd] = childMin;
         vData.perPlayerAnswers[countsSumInd] = childSum;
-        graph->getVertexData(vInd) = vData;
+        graph->get_vertex_data(vInd) = vData;
     }
 };
 
@@ -65,11 +65,11 @@ void Solver538E::run()
     {
         int a, b;
         cin >> a >> b;
-        graph->addEdge(a - 1, b - 1);
+        graph->add_edge(a - 1, b - 1);
     }
 
     dfs(0, 0);
-    auto rootData = graph->getVertexData(0);
+    auto rootData = graph->get_vertex_data(0);
     cout << (leafCount - rootData.perPlayerAnswers[0] + 1) << " " << (rootData.perPlayerAnswers[1]);
 }
 

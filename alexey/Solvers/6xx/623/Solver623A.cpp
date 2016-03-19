@@ -27,7 +27,7 @@ void Solver623A::run()
     for (int i = 0; i < nVertices; ++i)
         for (int j = 0; j < i; ++j)
             if (!connected[i][j])
-                g.addEdge(i, j);
+                g.add_edge(i, j);
 
     auto bp = makeBipartitionChecker(g);
     if (!bp.isBipartite())
@@ -36,7 +36,7 @@ void Solver623A::run()
     }
     else
     {
-        auto isNotZeroDegree = [&](int i) { return !g.vertexNeighbors(i).empty(); };
+        auto isNotZeroDegree = [&](int i) { return !g.out_nbrs(i).empty(); };
         
         auto parts = bp.getSomePartitioning();
         string s(nVertices, 'b');

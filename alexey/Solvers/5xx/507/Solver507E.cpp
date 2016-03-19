@@ -22,7 +22,7 @@ void Solver507E::run()
     {
         int a, b, z;
         cin >> a >> b >> z;
-        graph.addEdge(a - 1, b - 1, 1 + (1 - z) * fixRoadCost);
+        graph.add_edge(a - 1, b - 1, 1 + (1 - z) * fixRoadCost);
     }
 
     set<pair<int, int>> path;
@@ -37,7 +37,7 @@ void Solver507E::run()
 
     vector<tuple<int, int, int>> output;
     for (size_t i = 0; i < nCities; ++i)
-        for (auto p : graph.vertexNeighbors(i))
+        for (auto p : graph.out_nbrs(i))
         {
             if (p.first < i)
                 continue;

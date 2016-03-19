@@ -26,7 +26,7 @@ public:
     {
         subtreeRange[v].first = counter;
         ++counter;
-        for (auto nei : graph->vertexNeighbors(v))
+        for (auto nei : graph->out_nbrs(v))
             if (nei.first != p)
                 dfs(nei.first, v);
         subtreeRange[v].second = counter;
@@ -70,7 +70,7 @@ void Solver633G::run()
     {
         int a, b;
         cin >> a >> b;
-        graph->addEdge(a - 1, b - 1);
+        graph->add_edge(a - 1, b - 1);
     }
 
     subtreeRange.resize(n);

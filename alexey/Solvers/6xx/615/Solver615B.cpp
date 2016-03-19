@@ -19,7 +19,7 @@ void Solver615B::run()
     {
         int a, b;
         cin >> a >> b;
-        g.addEdge(a - 1, b - 1);
+        g.add_edge(a - 1, b - 1);
     }
 
     vector<int64_t> maxLen(nVertices, -1);
@@ -27,9 +27,9 @@ void Solver615B::run()
     for (int i = 0; i < nVertices; ++i)
     {
         maxLen[i] = 0;
-        for (auto& p : g.vertexNeighbors(i))
+        for (auto& p : g.out_nbrs(i))
             relax_max(maxLen[i], 1 + maxLen[p.first]);
-        relax_max<int64_t>(ans, (maxLen[i] + 1) * g.vertexNeighbors(i).size());
+        relax_max<int64_t>(ans, (maxLen[i] + 1) * g.out_nbrs(i).size());
     }
 
     cout << ans;

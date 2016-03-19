@@ -46,7 +46,7 @@ public:
         auto resetArray = [&](vector<int>& arr)
         {
             arr.clear();
-            arr.resize(graph_.vertexCount());
+            arr.resize(graph_.num_vertices());
             fill(begin(arr), end(arr), numeric_limits<int>::max());
         };
         resetArray(inTime_);
@@ -83,7 +83,7 @@ private:
             return true;
 
         bool stop = false;
-        for (auto& edge : graph_.vertexNeighbors(vertex))
+        for (auto& edge : graph_.out_nbrs(vertex))
         {
             auto neighbor = edge.first;
             if (neighbor == parent_[vertex])

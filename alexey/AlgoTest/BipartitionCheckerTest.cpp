@@ -24,7 +24,7 @@ TEST(BipartitionCheckerTest, OddCycleIsNotBipartite)
 TEST(BipartitionCheckerTest, GraphWithSelfLoopIsNotBipartite)
 {
     SimpleGraph graph(10);
-    graph.addEdge(5, 5);
+    graph.add_edge(5, 5);
     auto checker = makeBipartitionChecker(graph);
     EXPECT_FALSE(checker.isBipartite());
 }
@@ -32,9 +32,9 @@ TEST(BipartitionCheckerTest, GraphWithSelfLoopIsNotBipartite)
 TEST(BipartitionCheckerTest, HexagonWithMainDiagonalsIsBipartite)
 {
     auto graph = GraphHelper::createSimpleCycleGraph(6);
-    graph.addEdge(0, 3);
-    graph.addEdge(1, 4);
-    graph.addEdge(2, 5);
+    graph.add_edge(0, 3);
+    graph.add_edge(1, 4);
+    graph.add_edge(2, 5);
     auto checker = makeBipartitionChecker(graph);
     EXPECT_TRUE(checker.isBipartite());
     auto parts = checker.getSomePartitioning();

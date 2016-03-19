@@ -18,7 +18,7 @@ public:
     {
         vector<int> childDepth = { -1 };
         
-        for (auto p : graph->vertexNeighbors(vInd))
+        for (auto p : graph->out_nbrs(vInd))
         {
             int nei = p.first;
             if (nei == parentInd)
@@ -48,13 +48,13 @@ void Solver014D::run()
     {
         int a, b;
         cin >> a >> b;
-        graph->addEdge(a - 1, b - 1);
+        graph->add_edge(a - 1, b - 1);
     }
 
     int ans = 0;
     
     for (int firstVertex = 0; firstVertex < nCities; ++firstVertex)
-        for (auto p : graph->vertexNeighbors(firstVertex))
+        for (auto p : graph->out_nbrs(firstVertex))
         {
             int secondVertex = p.first;
             if (secondVertex < firstVertex)

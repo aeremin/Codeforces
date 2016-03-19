@@ -30,8 +30,8 @@ void Solver567E::run()
         int a, b;
         int64_t w;
         cin >> a >> b >> w;
-        gForward.addUndirectedEdge(a - 1, b - 1, w);
-        gBackward.addUndirectedEdge(b - 1, a - 1, w);
+        gForward.add_undirected_edge(a - 1, b - 1, w);
+        gBackward.add_undirected_edge(b - 1, a - 1, w);
         edgeInfos.push_back({ a - 1, b - 1, w });
     }
     

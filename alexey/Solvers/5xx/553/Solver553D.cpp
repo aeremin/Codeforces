@@ -28,14 +28,14 @@ void Solver553D::run()
     {
         int a;
         cin >> a;
-        graph.getVertexData(a - 1).hasFortress = true;
+        graph.get_vertex_data(a - 1).hasFortress = true;
     }
     
     for (int i = 0; i < nEdges; ++i)
     {
         int a, b;
         cin >> a >> b;
-        graph.addEdge(a - 1, b - 1);
+        graph.add_edge(a - 1, b - 1);
     }
 
     typedef pair<double, size_t> QueueElt;
@@ -43,8 +43,8 @@ void Solver553D::run()
     
     for (int i = 0; i < nVertices; ++i)
     {
-        auto& currRef = graph.getVertexData(i);
-        currRef.currentStrengthEstimate = graph.vertexNeighbors(i).size();
+        auto& currRef = graph.get_vertex_data(i);
+        currRef.currentStrengthEstimate = graph.out_nbrs(i).size();
         currRef.neighbourStrengths = vector<double>(currRef.currentStrengthEstimate, 1.0);
         toProcess.push({ (currRef.hasFortress ? 0.0 : 1.0), i });
     }
@@ -59,13 +59,13 @@ void Solver553D::run()
             continue;
 
         finalStrength[currCity.second] = currCity.first;
-        for (auto& pNei : graph.vertexNeighbors(currCity.second))
+        for (auto& pNei : graph.out_nbrs(currCity.second))
         {
             if (finalStrength[pNei.first] != -1.0)
                 continue;
 
-            auto& neiDataRef = graph.getVertexData(pNei.first);
-            auto neiDegree = graph.vertexNeighbors(pNei.first).size();
+            auto& neiDataRef = graph.get_vertex_data(pNei.first);
+            auto neiDegree = graph.out_nbrs(pNei.first).size();
             neiDataRef.neighboursProcessed++;
             neiDataRef.neighbourStrengths[neiDegree - neiDataRef.neighboursProcessed] = currCity.first;
             while (neiDataRef.currentStrengthEstimate > 0 &&
@@ -82,7 +82,7 @@ void Solver553D::run()
 
     vector<size_t> ans;
     for (size_t i = 0; i < nVertices; ++i)
-        if (finalStrength[i] == maxStrength && !graph.getVertexData(i).hasFortress)
+        if (finalStrength[i] == maxStrength && !graph.get_vertex_data(i).hasFortress)
             ans.push_back(i + 1);
 
     cout << ans.size() << "\n";

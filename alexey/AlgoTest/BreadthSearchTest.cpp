@@ -16,14 +16,14 @@
 TEST( BreadthFirstSearchTest, WorksOnSomeExample )
 {
     SimpleGraph g( 7 );
-    g.addEdge( 0, 1 );
-    g.addEdge( 0, 2 );
-    g.addEdge( 1, 3 );
-    g.addEdge( 2, 3 );
-    g.addEdge( 2, 6 );
-    g.addEdge( 3, 4 );
-    g.addEdge( 3, 5 );
-    g.addEdge( 6, 5 );
+    g.add_edge( 0, 1 );
+    g.add_edge( 0, 2 );
+    g.add_edge( 1, 3 );
+    g.add_edge( 2, 3 );
+    g.add_edge( 2, 6 );
+    g.add_edge( 3, 4 );
+    g.add_edge( 3, 5 );
+    g.add_edge( 6, 5 );
 
     std::vector<size_t> expected = { 0, 1, 2, 3, 6, 4, 5 };
     std::vector<size_t> actual;

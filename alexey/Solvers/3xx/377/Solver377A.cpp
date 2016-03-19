@@ -42,7 +42,7 @@ void Solver377A::run() {
                 auto xx = x + nn.first;
                 auto yy = y + nn.second;
                 if (isValid(xx, yy) && field[yy][xx] == '.')
-                    g.addEdge(pack(x, y), pack(xx, yy), 1);
+                    g.add_edge(pack(x, y), pack(xx, yy), 1);
             }
             empty = pack(x, y);
         }

@@ -15,11 +15,11 @@ public:
 
     CodeforcesResidue64 calc(int vInd, int vParentInd)
     {
-        if (graph->getVertexData(vInd) > currentAllowedMaximum)
+        if (graph->get_vertex_data(vInd) > currentAllowedMaximum)
             return 0;
 
         CodeforcesResidue64 res = 1;
-        for (auto& nei : graph->vertexNeighbors(vInd))
+        for (auto& nei : graph->out_nbrs(vInd))
         {
             if (nei.first == vParentInd)
                 continue;
@@ -47,7 +47,7 @@ void Solver486D::run()
     {
         int a, b;
         cin >> a >> b;
-        graph->addEdge(a - 1, b - 1);
+        graph->add_edge(a - 1, b - 1);
     }
 
     CodeforcesResidue64 ans = 0;
@@ -56,7 +56,7 @@ void Solver486D::run()
         int vInd = p.second;
         currentAllowedMaximum = p.first + maxAllowedDiff;
         ans += calc(vInd, -1);
-        graph->getVertexData(vInd) = numeric_limits<int>::max();
+        graph->get_vertex_data(vInd) = numeric_limits<int>::max();
     }
 
     cout << ans;
