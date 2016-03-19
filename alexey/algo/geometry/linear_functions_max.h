@@ -15,6 +15,8 @@ public:
     bool is_empty() const { return left_.empty(); }
 
 private:
+    bool try_to_eliminate(typename std::map<std::pair<T, T>, T>::iterator it);
+
     std::map<std::pair<T, T>, T> left_;
 };
 
@@ -36,41 +38,38 @@ T overtake_point( const std::pair<T, T>& fn1, const std::pair<T, T>& fn2 ) {
 }
 
 template<typename T>
+bool LinearFunctionsMaximum<T>::try_to_eliminate(typename std::map<std::pair<T, T>, T>::iterator it) {
+    if (it != begin(left_) && it != std::prev(end(left_))) {
+        auto nextIt = std::next(it);
+        if (nextIt->second <= it->second) {
+            left_.erase(it);
+            auto prevIt = std::prev(nextIt);
+            nextIt->second = internal::overtake_point(prevIt->first, nextIt->first);
+            return true;
+        }
+    }
+    return false;
+}
+
+template<typename T>
 void LinearFunctionsMaximum<T>::add_function( T a, T b ) {
     auto insertResult = left_.insert( { { a, b }, std::numeric_limits<T>::lowest() } );
     if ( !insertResult.second )
         return;
 
     auto insertedIt = insertResult.first;
-    while ( insertedIt != begin( left_ ) ) {
-        auto prevIt = std::prev( insertedIt );
-        insertedIt->second = internal::overtake_point( prevIt->first, insertedIt->first );
-        if ( insertedIt->second <= prevIt->second )
-            left_.erase( prevIt );
-        else
-            break;
-    }
+    if (insertedIt != begin(left_))
+        insertedIt->second = internal::overtake_point(std::prev(insertedIt)->first, insertedIt->first);
 
-    while ( std::next( insertedIt ) != end(left_) ) {
-        auto nextIt = std::next( insertedIt );
-        auto pt = internal::overtake_point( insertedIt->first, nextIt->first );
-        if ( nextIt->second >= pt ) {
-            left_.erase( insertedIt );
-            return;
-        }
-        else {
-            nextIt->second = pt;
-            auto nextNextIt = std::next( insertedIt, 2 );
-            if ( nextNextIt != end( left_ ) ) {
-                auto ptNext = internal::overtake_point( insertedIt->first, nextNextIt->first );
-                if ( ptNext >= nextIt->second ) {
-                    left_.erase( nextIt );
-                }
-                else
-                    break;
-            }
-        }
-    }
+    auto nextIt = std::next(insertedIt);
+    if (nextIt != end(left_))
+        nextIt->second = internal::overtake_point(insertedIt->first, nextIt->first);
+
+    if (try_to_eliminate(insertedIt))
+        return;
+
+    while (insertedIt != begin(left_) && try_to_eliminate(std::prev(insertedIt))) {}
+    while (insertedIt != std::prev(end(left_)) && try_to_eliminate(std::next(insertedIt))) {}
 }
 
 

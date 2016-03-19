@@ -53,9 +53,20 @@ TEST( LinearFunctionsMaximumTest, NotPreciseIntersection ) {
     EXPECT_DOUBLE_EQ( 9, lfm.get_value( 3 ) );
 }
 
-TEST( LinearFunctionsMaximumTest, DISABLED_RandomizedTestComparedWithBruteForce ) {
-    const int nFunctions = 3;
-    const int maxCoeff = 27;
+TEST(LinearFunctionsMaximumTest, SameSlope) {
+    LinearFunctionsMaximum<int> lfm;
+    lfm.add_function(1, 3); // y = x + 3
+    lfm.add_function(1, 4); // y = x + 4
+    EXPECT_DOUBLE_EQ(3, lfm.get_value(-1));
+    EXPECT_DOUBLE_EQ(4, lfm.get_value(0));
+    EXPECT_DOUBLE_EQ(5, lfm.get_value(1));
+    EXPECT_DOUBLE_EQ(6, lfm.get_value(2));
+    EXPECT_DOUBLE_EQ(7, lfm.get_value(3));
+}
+
+TEST( LinearFunctionsMaximumTest, RandomizedTestComparedWithBruteForce ) {
+    const int nFunctions = 100;
+    const int maxCoeff = 10000;
     std::vector<std::pair<int, int>> functions;
     LinearFunctionsMaximum<int> lfm;
     for ( auto i : range(nFunctions) ) {
