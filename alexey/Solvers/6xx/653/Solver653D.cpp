@@ -130,7 +130,7 @@ void Solver653D::run()
             r = m;
     }
 
-    cout << setprecision(8) << fixed << r;
+    cout << setprecision(7) << fixed << r;
 }
 
 class Solver653DTest : public ProblemTest {};
@@ -143,7 +143,7 @@ TEST_F(Solver653DTest, Example1)
 1 3 1
 3 4 2
 )";
-    string output = R"(1.5000000000
+    string output = R"(1.5000000
 )";
     output.pop_back();
     setInput(input);
@@ -167,7 +167,7 @@ TEST_F(Solver653DTest, Example2)
 1 5 2
 3 2 30
 )";
-    string output = R"(10.2222222222
+    string output = R"(10.2222222
 )";
     output.pop_back();
     setInput(input);
@@ -180,7 +180,7 @@ TEST_F(Solver653DTest, Example3) {
 1 3 1
 2 3 1
 )";
-    string output = R"(1.0000000000
+    string output = R"(1.0000000
 )";
     output.pop_back();
     setInput(input);
