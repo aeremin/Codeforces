@@ -3,8 +3,6 @@
 #include <utility>
 #include <algorithm>
 
-using namespace std;
-
 template<class PerEdgeData, class PerVertexData>
 class Graph
 {
@@ -20,7 +18,7 @@ public:
         int vertex;
     };
 
-    Graph( int nVertices, vector<PerVertexData> vertexData = {} )
+    Graph( int nVertices, std::vector<PerVertexData> vertexData = {} )
         :
         edges_(nVertices),
         vertexData_(move(vertexData))
@@ -55,14 +53,14 @@ public:
         return edges_.size();
     }
 
-    const vector<Edge>& out_nbrs( int v ) const
+    const std::vector<Edge>& out_nbrs( int v ) const
     {
         return edges_[v];
     }
 
 private:
-    vector<vector<Edge>> edges_;
-    vector<PerVertexData> vertexData_;
+    std::vector<std::vector<Edge>> edges_;
+    std::vector<PerVertexData> vertexData_;
 };
 
 struct EmptyStruct {};

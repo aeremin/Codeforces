@@ -19,7 +19,7 @@ public:
 private:
     const Graph<PerEdgeData, PerVertexData>& graph_;
     std::vector<int> depths_;
-    std::vector<vector<LiftData>> binaryLiftData_;
+    std::vector<std::vector<LiftData>> binaryLiftData_;
     
 public:
     TreePreprocessor( const Graph<PerEdgeData, PerVertexData>& graph )
@@ -58,7 +58,7 @@ public:
 
     int leastCommonAncestor( int vInd1, int vInd2 )
     {
-        if ( depths_[vInd1] < depths_[vInd2] ) swap( vInd1, vInd2 );
+        if ( depths_[vInd1] < depths_[vInd2] ) std::swap( vInd1, vInd2 );
         vInd1 = lift( vInd1, depths_[vInd1] - depths_[vInd2] ).parent;
         if ( vInd1 == vInd2 ) return vInd1;
         int maxJumpLog = 0;
@@ -66,7 +66,7 @@ public:
         return lcaInternal_( vInd1, vInd2, maxJumpLog );
     }
 
-    pair<PerEdgeData, PerVertexData> valueOnPath( int vInd1, int vInd2 )
+    std::pair<PerEdgeData, PerVertexData> valueOnPath( int vInd1, int vInd2 )
     {
         auto lca = leastCommonAncestor( vInd1, vInd2 );
         auto dist1 = depths_[vInd1] - depths_[lca];
@@ -121,7 +121,7 @@ private:
                     concatenated.parent = secondHalfJumpData.parent;
                     concatenated.edgeData = concatenate( firstHalfJumpData.edgeData, secondHalfJumpData.edgeData );
                     concatenated.vertexData = concatenate( firstHalfJumpData.vertexData, secondHalfJumpData.vertexData );
-                    binaryLiftData_[iVertex].push_back( move( concatenated ) );
+                    binaryLiftData_[iVertex].push_back( std::move( concatenated ) );
                 }
             }
         }

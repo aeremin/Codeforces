@@ -53,7 +53,7 @@ private:
 private:
     const Graph<PerEdgeData, PerVertexData>& graph_;
     bool isBipartite_ = true;
-    vector<int> part_;
+    std::vector<int> part_;
     int currentPart_ = 0;
 };
 
