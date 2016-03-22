@@ -141,6 +141,7 @@ std::istream& operator>>(std::istream& is, GeomVector<T, n>& a)
 template<typename T>
 using GeomVector2 = GeomVector<T, 2>;
 using GeomVector2I = GeomVector2<int>;
+using GeomVector3I = GeomVector<int, 3>;
 using GeomVector2I64 = GeomVector2<int64_t>;
 using GeomVector2F = GeomVector2<float>;
 using GeomVector2D = GeomVector2<double>;
