@@ -292,6 +292,7 @@ set(tests_srcs
     ${solvers_dir}/testutils/ProblemTest.cpp
     ${algotest_dir}/geometry/ConvexHullTest.cpp
     ${algotest_dir}/geometry/geomvectortest.cpp
+	${algotest_dir}/graph/max_flow_push_relabel_test.cpp
 	${algotest_dir}/geometry/linear_functions_max_test.cpp
     ${algotest_dir}/polynomial/polynomial_test.cpp
     ${algotest_dir}/polynomial/fast_fourier_transform_test.cpp
