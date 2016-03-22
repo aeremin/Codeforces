@@ -8,7 +8,7 @@ class Graph
 {
 
 public:
-    struct Edge : public pair<size_t, PerEdgeData> {
+    struct Edge : public std::pair<size_t, PerEdgeData> {
         using std::pair<size_t, PerEdgeData>::pair;
         int vertex() const { return this->first; }
     };
