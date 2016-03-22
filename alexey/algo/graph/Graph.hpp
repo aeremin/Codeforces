@@ -9,7 +9,7 @@ class Graph
 
 public:
     struct Edge : public pair<size_t, PerEdgeData> {
-        using pair<size_t, PerEdgeData>::pair;
+        using std::pair<size_t, PerEdgeData>::pair;
         int vertex() const { return this->first; }
     };
 
