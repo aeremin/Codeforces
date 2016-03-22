@@ -22,7 +22,12 @@ public:
                 capacity_[from][edge.vertex()] += edge.second;
     }
 
-    PerEdgeData GetMaxFlow( int source, int sink ) {
+    struct Flow {
+        PerEdgeData totalFlow;
+        Graph<PerEdgeData, EmptyStruct> flow;
+    };
+    
+    Flow GetMaxFlow( int source, int sink ) {
         InitializeQueue( source, sink );
         InitializePreflow( source, sink );
         InitializeHeight( source );
@@ -38,7 +43,12 @@ public:
             assert( i == source || i == sink || excess_[i] == 0 );
         
         assert( excess_[source] + excess_[sink] == 0 );
-        return excess_[sink];
+        Flow res = {excess_[sink], Graph<PerEdgeData, EmptyStruct>(graph_.num_vertices())};
+        for (int u : range( graph_.num_vertices() ))
+            for (int v : range( graph_.num_vertices() ))
+                if (currentPreflow_[u][v] > 0)
+                    res.flow.add_undirected_edge(u, v, currentPreflow_[u][v]);
+        return res;
     }
 
 private:

@@ -8,7 +8,7 @@ TEST( MaxFlowPushRelabelTest, OneDirectedEdge ) {
     Graph<int, EmptyStruct> g(2);
     g.add_undirected_edge( 0, 1, 7 );
     MaxFlowPushRelabel<int, EmptyStruct> calc( g );
-    EXPECT_EQ(7, calc.GetMaxFlow( 0, 1 ) );
+    EXPECT_EQ(7, calc.GetMaxFlow( 0, 1 ).totalFlow);
 }
 
 TEST( MaxFlowPushRelabelTest, ChainGraph ) {
@@ -19,7 +19,7 @@ TEST( MaxFlowPushRelabelTest, ChainGraph ) {
     g.add_undirected_edge( 3, 4, 4 );
 
     MaxFlowPushRelabel<int, EmptyStruct> calc( g );
-    EXPECT_EQ( 3, calc.GetMaxFlow( 0, 4 ) );
+    EXPECT_EQ( 3, calc.GetMaxFlow( 0, 4 ).totalFlow );
 }
 
 TEST( MaxFlowPushRelabelTest, FourVerticesExample ) {
@@ -30,9 +30,9 @@ TEST( MaxFlowPushRelabelTest, FourVerticesExample ) {
         g.add_undirected_edge( edge.first.first, edge.first.second, edge.second );
 
     MaxFlowPushRelabel<int, EmptyStruct> calc( g );
-    EXPECT_EQ( 240, calc.GetMaxFlow( 0, 3 ) );
-    EXPECT_EQ( 322, calc.GetMaxFlow( 0, 2 ) );
-    EXPECT_EQ( 0, calc.GetMaxFlow( 2, 0 ) );
+    EXPECT_EQ( 240, calc.GetMaxFlow( 0, 3 ).totalFlow);
+    EXPECT_EQ( 322, calc.GetMaxFlow( 0, 2 ).totalFlow);
+    EXPECT_EQ( 0, calc.GetMaxFlow( 2, 0 ).totalFlow);
 }
 
 TEST( MaxFlowPushRelabelTest, NotAccessibleSink ) {
@@ -40,5 +40,5 @@ TEST( MaxFlowPushRelabelTest, NotAccessibleSink ) {
     g.add_undirected_edge( 0, 1, 10 );
 
     MaxFlowPushRelabel<int, EmptyStruct> calc( g );
-    EXPECT_EQ( 0, calc.GetMaxFlow( 0, 2 ) );
+    EXPECT_EQ( 0, calc.GetMaxFlow( 0, 2 ).totalFlow);
 }

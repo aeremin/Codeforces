@@ -35,7 +35,7 @@ void Solver653D::run()
             g.add_undirected_edge(e.from - 1, e.to - 1, e.w / perBear);
 
         MaxFlowPushRelabel<int64_t, EmptyStruct> calc( g );
-        auto fl = calc.GetMaxFlow(0, nVertices - 1);
+        auto fl = calc.GetMaxFlow(0, nVertices - 1).totalFlow;
         if (fl >= nBears)
             l = m;
         else
