@@ -47,7 +47,7 @@ public:
         for (int u : range( graph_.num_vertices() ))
             for (int v : range( graph_.num_vertices() ))
                 if (currentPreflow_[u][v] > 0)
-                    res.flow.add_undirected_edge(u, v, currentPreflow_[u][v]);
+                    res.flow.add_directed_edge(u, v, currentPreflow_[u][v]);
         return res;
     }
 

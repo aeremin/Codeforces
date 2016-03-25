@@ -29,16 +29,16 @@ void Solver510E::run()
                 int u = i + 1;
                 int v = j + 1;
                 if (foxAges[i] % 2 == 0)
-                    g.add_undirected_edge(u, v, 1);
+                    g.add_directed_edge(u, v, 1);
             }
         }
     }
 
     for (int i : range(nFoxes))
         if (foxAges[i] % 2 == 0)
-            g.add_undirected_edge(0, i + 1, 2);
+            g.add_directed_edge(0, i + 1, 2);
         else
-            g.add_undirected_edge(i + 1, nFoxes + 1, 2);
+            g.add_directed_edge(i + 1, nFoxes + 1, 2);
 
     MaxFlowPushRelabel<int, EmptyStruct> maxFlowCalc(g);
     auto flow = maxFlowCalc.GetMaxFlow(0, nFoxes + 1);

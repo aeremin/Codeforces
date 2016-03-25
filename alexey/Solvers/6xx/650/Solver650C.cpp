@@ -68,7 +68,7 @@ void Solver650C::run() {
     for (auto perDirectionBuckets : { &perColumnBuckets, &perRowbuckets })
         for (const auto& buckets : *perDirectionBuckets)
             for (int i : range<int>(1, buckets.size()))
-                g.add_undirected_edge(ds.rep(buckets[i].front()), ds.rep(buckets[i - 1].front()));
+                g.add_directed_edge(ds.rep(buckets[i].front()), ds.rep(buckets[i - 1].front()));
 
     auto topsortorder = makeTopologicalSorter(g).getSortedOrder();
     reverse(begin(topsortorder), end(topsortorder));

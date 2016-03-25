@@ -25,14 +25,14 @@ void Solver546E::run()
         int a, b;
         cin >> a >> b;
         --a; --b;
-        g.add_undirected_edge( a, b + nCities, numeric_limits<int>::max() );
-        g.add_undirected_edge( b, a + nCities, numeric_limits<int>::max() );
+        g.add_directed_edge( a, b + nCities, numeric_limits<int>::max() );
+        g.add_directed_edge( b, a + nCities, numeric_limits<int>::max() );
     }
 
     for ( int i : range( nCities ) ) {
-        g.add_undirected_edge( i, i + nCities, numeric_limits<int>::max() );
-        g.add_undirected_edge( 2 * nCities, i, cntBefore[i] );
-        g.add_undirected_edge( i + nCities, 2 * nCities + 1, cntAfter[i] );
+        g.add_directed_edge( i, i + nCities, numeric_limits<int>::max() );
+        g.add_directed_edge( 2 * nCities, i, cntBefore[i] );
+        g.add_directed_edge( i + nCities, 2 * nCities + 1, cntAfter[i] );
     }
 
     auto neededFlow = max( accumulate( begin( cntBefore ), end( cntBefore ), 0 ),

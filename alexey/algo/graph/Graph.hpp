@@ -33,7 +33,7 @@ public:
         edges_[to].push_back( { from, data } );
     }
 
-    void add_undirected_edge(int from, int to, PerEdgeData data = {})
+    void add_directed_edge(int from, int to, PerEdgeData data = {})
     {
         edges_[from].push_back({ to, data });
     }

@@ -32,7 +32,7 @@ void Solver653D::run()
         
         Graph<int64_t, EmptyStruct> g(nVertices);
         for (auto& e : edges)
-            g.add_undirected_edge(e.from - 1, e.to - 1, e.w / perBear);
+            g.add_directed_edge(e.from - 1, e.to - 1, e.w / perBear);
 
         MaxFlowPushRelabel<int64_t, EmptyStruct> calc( g );
         auto fl = calc.GetMaxFlow(0, nVertices - 1).totalFlow;

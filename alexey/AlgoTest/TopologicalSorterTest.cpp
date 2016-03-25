@@ -35,9 +35,9 @@ public:
             int from = rand() % nVertices;
             int to = rand() % nVertices;
             if (order[to] < order[from])
-                result->add_undirected_edge(to, from);
+                result->add_directed_edge(to, from);
             else if (order[to] > order[from])
-                result->add_undirected_edge(from, to);
+                result->add_directed_edge(from, to);
         }
 
         return result;
@@ -77,7 +77,7 @@ public:
     {
         graph = new SimpleGraph( nEdges + 1 );
         for ( auto i : range( nEdges ) )
-            graph->add_undirected_edge( i, i + 1 );
+            graph->add_directed_edge( i, i + 1 );
     }
 
     static void TearDownTestCase()
