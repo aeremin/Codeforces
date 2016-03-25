@@ -288,6 +288,10 @@ set(tests_srcs
     ${solvers_dir}/6xx/650/Solver650C.cpp
     ${solvers_dir}/6xx/651/Solver651A.cpp
     ${solvers_dir}/6xx/651/Solver651B.cpp
+	${solvers_dir}/6xx/652/Solver652A.cpp
+    ${solvers_dir}/6xx/652/Solver652B.cpp
+    ${solvers_dir}/6xx/652/Solver652C.cpp
+    ${solvers_dir}/6xx/652/Solver652D.cpp
     ${solvers_dir}/6xx/653/Solver653A.cpp
     ${solvers_dir}/6xx/653/Solver653B.cpp
     ${solvers_dir}/6xx/653/Solver653C.cpp
