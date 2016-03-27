@@ -14,7 +14,7 @@ public:
     };
     
     SuffixAutomaton(const std::string& s) {
-        states_.push_back({ {}, 0, -1, 1, false });
+        states_.push_back(State{ {}, 0, -1, 1, false });
         int last = 0;
         for (auto c : s)
             last = append(c, last);
@@ -62,7 +62,7 @@ private:
         // We add new state corresponding to s + c
         // It will has index curr.
         int curr = states_.size();
-        states_.push_back({ {}, states_[last].len + 1, -2, 1, false });
+        states_.push_back(State{ {}, states_[last].len + 1, -2, 1, false });
         
         int p = last;
         while (p != -1 && states_[p].edges.count(c) == 0) {
