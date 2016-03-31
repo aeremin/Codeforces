@@ -7,7 +7,7 @@ using std::swap;
 class DisjointSet
 {
 public:
-    DisjointSet(int size) : rank_(size, 0), parent_(size)
+    DisjointSet( int size ) : rank_( size, 0 ), parent_( size ), compSize_(size, 1)
     {
         for (int i = 0; i < size; ++i)
             parent_[i] = i;
@@ -44,6 +44,8 @@ public:
             parent_[rep2] = rep1;
             if (rank_[rep1] == rank_[rep2])
                 rank_[rep1]++;
+            compSize_[rep1] += compSize_[rep2];
+            compSize_[rep2] = 0;
             --componentsCount_;
         }
     }
@@ -53,8 +55,13 @@ public:
         return componentsCount_;
     }
 
+    int componentSize( int elt ) {
+        return compSize_[rep( elt )];
+    }
+
 private:
     vector<int> rank_;
     vector<int> parent_;
+    vector<int> compSize_;
     int componentsCount_;
 };
