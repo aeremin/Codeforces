@@ -33,6 +33,7 @@ set(tests_srcs
     ${solvers_dir}/2xx/264/Solver264C.cpp
     ${solvers_dir}/2xx/292/Solver292D.cpp
     ${solvers_dir}/3xx/316/Solver316B.cpp
+    ${solvers_dir}/3xx/319/Solver319C.cpp
     ${solvers_dir}/3xx/321/Solver321B.cpp
     ${solvers_dir}/3xx/346/Solver346B.cpp
     ${solvers_dir}/3xx/351/Solver351B.cpp
