@@ -12,12 +12,15 @@ public:
     // returns max(a_i * x + b_i)
     T get_value( T x ) const;
 
-    bool is_empty() const { return left_.empty(); }
+    bool is_empty() const { return funcToOvertake_.empty(); }
 
 private:
     bool try_to_eliminate(typename std::map<std::pair<T, T>, T>::iterator it);
 
-    std::map<std::pair<T, T>, T> left_;
+    void set_overtake_point(typename std::map<std::pair<T, T>, T>::iterator it, T val);
+
+    std::set<std::pair<T, std::pair<T, T>>> overtakeToFunc_;
+    std::map<std::pair<T, T>, T> funcToOvertake_;
 };
 
 namespace internal
@@ -38,13 +41,23 @@ T overtake_point( const std::pair<T, T>& fn1, const std::pair<T, T>& fn2 ) {
 }
 
 template<typename T>
+void LinearFunctionsMaximum<T>::set_overtake_point(typename std::map<std::pair<T, T>, T>::iterator it, T val) {
+    overtakeToFunc_.erase({ it->second, it->first });
+    it->second = val;
+    overtakeToFunc_.insert({ it->second, it->first });
+}
+
+template<typename T>
 bool LinearFunctionsMaximum<T>::try_to_eliminate(typename std::map<std::pair<T, T>, T>::iterator it) {
-    if (it != begin(left_) && it != std::prev(end(left_))) {
+    if (it != std::prev(end(funcToOvertake_))) {
         auto nextIt = std::next(it);
         if (nextIt->second <= it->second) {
-            left_.erase(it);
-            auto prevIt = std::prev(nextIt);
-            nextIt->second = internal::overtake_point(prevIt->first, nextIt->first);
+            overtakeToFunc_.erase({ it->second, it->first });
+            funcToOvertake_.erase(it);
+            if (nextIt != begin(funcToOvertake_)) {
+                auto prevIt = std::prev(nextIt);
+                set_overtake_point(nextIt, internal::overtake_point(prevIt->first, nextIt->first));
+            }
             return true;
         }
     }
@@ -53,33 +66,35 @@ bool LinearFunctionsMaximum<T>::try_to_eliminate(typename std::map<std::pair<T, 
 
 template<typename T>
 void LinearFunctionsMaximum<T>::add_function( T a, T b ) {
-    auto insertResult = left_.insert( { { a, b }, std::numeric_limits<T>::lowest() } );
-    if ( !insertResult.second )
+    auto insertResult = funcToOvertake_.insert( { { a, b }, std::numeric_limits<T>::lowest() } );
+    if (!insertResult.second)
         return;
 
+    overtakeToFunc_.insert({ std::numeric_limits<T>::lowest(),{ a, b } });
+
     auto insertedIt = insertResult.first;
-    if (insertedIt != begin(left_))
-        insertedIt->second = internal::overtake_point(std::prev(insertedIt)->first, insertedIt->first);
+    if (insertedIt != begin(funcToOvertake_))
+        set_overtake_point(insertedIt, internal::overtake_point(std::prev(insertedIt)->first, insertedIt->first));
 
     auto nextIt = std::next(insertedIt);
-    if (nextIt != end(left_))
-        nextIt->second = internal::overtake_point(insertedIt->first, nextIt->first);
+    if (nextIt != end(funcToOvertake_))
+        set_overtake_point(nextIt, internal::overtake_point(insertedIt->first, nextIt->first));
 
     if (try_to_eliminate(insertedIt))
         return;
 
-    while (insertedIt != begin(left_) && try_to_eliminate(std::prev(insertedIt))) {}
-    while (insertedIt != std::prev(end(left_)) && try_to_eliminate(std::next(insertedIt))) {}
+    while (insertedIt != begin(funcToOvertake_) && try_to_eliminate(std::prev(insertedIt))) {}
+    while (insertedIt != std::prev(end(funcToOvertake_)) && try_to_eliminate(std::next(insertedIt))) {}
 }
 
 
 template<typename T>
 T LinearFunctionsMaximum<T>::get_value( T x ) const {
-    auto eltToFind = std::make_pair( std::make_pair( T(), T() ), x );
-    auto cmp = []( const std::pair<std::pair<T, T>, T>& lh, const std::pair<std::pair<T, T>, T>& rh ) {return lh.second < rh.second; };
-    auto it = std::upper_bound( begin( left_ ), end( left_ ), eltToFind, cmp );
+    auto it = overtakeToFunc_.upper_bound({ x, { std::numeric_limits<T>::max(), std::numeric_limits<T>::max() } });
+    assert(it != begin(overtakeToFunc_));
     --it;
-    auto& func = it->first;
+    assert(it != end(overtakeToFunc_));
+    auto& func = it->second;
     return func.first * x + func.second;
 }
 

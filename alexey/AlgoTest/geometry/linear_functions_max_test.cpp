@@ -55,7 +55,29 @@ TEST( LinearFunctionsMaximumTest, NotPreciseIntersection ) {
 
 TEST(LinearFunctionsMaximumTest, SameSlope) {
     LinearFunctionsMaximum<int> lfm;
-    lfm.add_function(1, 3); // y = x + 3
+    lfm.add_function(1, 4); // y = x + 3
+    lfm.add_function(1, 3); // y = x + 4
+    EXPECT_DOUBLE_EQ(3, lfm.get_value(-1));
+    EXPECT_DOUBLE_EQ(4, lfm.get_value(0));
+    EXPECT_DOUBLE_EQ(5, lfm.get_value(1));
+    EXPECT_DOUBLE_EQ(6, lfm.get_value(2));
+    EXPECT_DOUBLE_EQ(7, lfm.get_value(3));
+}
+
+TEST(LinearFunctionsMaximumTest, SameSlope2) {
+    LinearFunctionsMaximum<int> lfm;
+    lfm.add_function(1, 3); // y = x + 4
+    lfm.add_function(1, 4); // y = x + 3
+    EXPECT_DOUBLE_EQ(3, lfm.get_value(-1));
+    EXPECT_DOUBLE_EQ(4, lfm.get_value(0));
+    EXPECT_DOUBLE_EQ(5, lfm.get_value(1));
+    EXPECT_DOUBLE_EQ(6, lfm.get_value(2));
+    EXPECT_DOUBLE_EQ(7, lfm.get_value(3));
+}
+
+TEST(LinearFunctionsMaximumTest, SameFunction) {
+    LinearFunctionsMaximum<int> lfm;
+    lfm.add_function(1, 4); // y = x + 4
     lfm.add_function(1, 4); // y = x + 4
     EXPECT_DOUBLE_EQ(3, lfm.get_value(-1));
     EXPECT_DOUBLE_EQ(4, lfm.get_value(0));
@@ -78,7 +100,7 @@ TEST( LinearFunctionsMaximumTest, RandomizedTestComparedWithBruteForce ) {
             auto bruteForceValue = std::numeric_limits<int>::min();
             for ( auto fn : functions )
                 relax_max( bruteForceValue, fn.first * x + fn.second );
-            EXPECT_EQ( bruteForceValue, lfm.get_value( x ) );
+            ASSERT_EQ( bruteForceValue, lfm.get_value( x ) );
         }
     }
 }
