@@ -56,6 +56,11 @@ set(tests_srcs
     ${solvers_dir}/4xx/427/Solver427D.cpp
     ${solvers_dir}/4xx/431/Solver431D.cpp
     ${solvers_dir}/4xx/432/Solver432D.cpp
+    ${solvers_dir}/4xx/448/Solver448A.cpp
+    ${solvers_dir}/4xx/448/Solver448B.cpp
+    ${solvers_dir}/4xx/448/Solver448C.cpp
+    ${solvers_dir}/4xx/448/Solver448D.cpp
+    ${solvers_dir}/4xx/448/Solver448E.cpp
     ${solvers_dir}/4xx/464/Solver464C.cpp
     ${solvers_dir}/4xx/468/Solver468A.cpp
     ${solvers_dir}/4xx/468/Solver468B.cpp
