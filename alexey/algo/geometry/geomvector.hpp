@@ -151,3 +151,14 @@ T det(const GeomVector2<T>& a, const GeomVector2<T>& b)
 {
 	return a[0] * b[1] - a[1] * b[0];
 }
+
+template<size_t N>
+double angle(const GeomVector<double, N>& v1, const GeomVector<double, N>& v2) {
+    auto d12 = dot(v1, v2);
+    auto d11 = dot(v1, v1);
+    auto d22 = dot(v2, v2);
+    auto anglecos = d12 / sqrt(d11 * d22);
+    relax_max(anglecos, -1.);
+    relax_min(anglecos, 1.);
+    return acos(anglecos);
+}
