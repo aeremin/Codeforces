@@ -32,3 +32,12 @@ TEST(CyclicConvolutionTest, WorksForResidues) {
     for (auto i : range(expectedConvolution.size()))
         EXPECT_EQ(expectedConvolution[i], convolution[i]);
 }
+
+TEST(CyclicConvolutionTest, SpeedTest) {
+    const int nElements = 100000;
+    std::vector<double> a(nElements);
+    std::vector<double> b(nElements);
+    for (int i : range(nElements))
+        a[i] = b[i] = i;
+    auto convolution = CyclicConvolution(a, b);
+}
