@@ -331,6 +331,7 @@ set(tests_srcs
     ${algotest_dir}/geometry/geomvectortest.cpp
 	${algotest_dir}/graph/max_flow_push_relabel_test.cpp
 	${algotest_dir}/geometry/linear_functions_max_test.cpp
+    ${algotest_dir}/numbertheory/primary_root_test.cpp
     ${algotest_dir}/polynomial/polynomial_test.cpp
     ${algotest_dir}/polynomial/fast_fourier_transform_test.cpp
     ${algotest_dir}/strings/trie_test.cpp
