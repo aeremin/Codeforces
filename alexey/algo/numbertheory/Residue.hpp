@@ -35,10 +35,12 @@ public:
     }
 
     UnderlyingInt rep() const { return rep_; }
+    operator UnderlyingInt() const { return rep_; }
 
 private:
     UnderlyingInt rep_;
 };
+
 
 template<typename UnderlyingInt, UnderlyingInt MOD>
 Residue<UnderlyingInt, MOD> operator+(Residue<UnderlyingInt, MOD> a, Residue<UnderlyingInt, MOD> b) { return a += b; }

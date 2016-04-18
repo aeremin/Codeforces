@@ -129,7 +129,7 @@ void Solver582E::run()
     {
         auto fnHasProperValueOn = [&](pair<int, int> p) {return ((fn & (1 << p.first)) == p.second * (1 << p.first)); };
         bool fnIsAcceptable = all_of(begin(knownResults), end(knownResults), fnHasProperValueOn);
-        if (fnIsAcceptable && !(possibilitiesCounts[fn] == 0))
+        if (fnIsAcceptable && !(possibilitiesCounts[fn] == CodeforcesResidue64(0)))
             ans += possibilitiesCounts[fn];
     }
 

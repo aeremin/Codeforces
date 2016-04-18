@@ -327,6 +327,7 @@ set(tests_srcs
     ${solvers_dir}/pch.cpp
     ${solvers_dir}/SolverStub.cpp
     ${solvers_dir}/testutils/ProblemTest.cpp
+    ${algotest_dir}/algebra/cyclic_convolution_test.cpp
     ${algotest_dir}/geometry/ConvexHullTest.cpp
     ${algotest_dir}/geometry/geomvectortest.cpp
 	${algotest_dir}/graph/max_flow_push_relabel_test.cpp
