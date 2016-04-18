@@ -7,7 +7,13 @@
 #include "../numbertheory/Residue.hpp"
 
 namespace internal {
-    template<typename T> std::complex<double> toComplex(const T& v) { return v; }
+    template<typename T> struct ToComplex {
+        static std::complex<double> convert(const T& v) { return v; }
+    };
+
+    template<typename UnderlyingInt, UnderlyingInt MOD> struct ToComplex<Residue<UnderlyingInt, MOD>> {
+        static std::complex<double> convert(const Residue<UnderlyingInt, MOD>& v) { return v.rep(); }
+    };
     
     template<typename T> struct FromComplex {
         static T convert(const std::complex<double>& v) { return v; }
@@ -27,6 +33,11 @@ namespace internal {
         }
     };
 
+    template<> struct FromComplex<int64_t> {
+        static int convert(const std::complex<double>& v) {
+            return (v.real() > 0) ? v.real() + 0.5 : v.real() - 0.5;
+        }
+    };
 }
 
 // Complexity is O(n ln n)
@@ -37,8 +48,8 @@ std::vector<T> CyclicConvolution(const std::vector<T>& a, const std::vector<T>& 
 
     std::vector<std::complex<double>> aComplexified(n), bComplexified(2 * n);
     for (auto i : range(n)) {
-        aComplexified[i] = internal::toComplex<T>(a[i]);
-        bComplexified[i] = bComplexified[i + n] = internal::toComplex<T>(b[i]);
+        aComplexified[i] = internal::ToComplex<T>::convert(a[i]);
+        bComplexified[i] = bComplexified[i + n] = internal::ToComplex<T>::convert(b[i]);
     }
     Polynomial<std::complex<double>> p(std::move(aComplexified)), q(std::move(bComplexified));
     auto r = FastMultiplication(std::move(p), std::move(q));
