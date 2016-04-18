@@ -9,7 +9,7 @@ TEST(CyclicConvolutionTest, WorksForDoubles) {
     auto convolution = CyclicConvolution(a, b);
     ASSERT_EQ(expectedConvolution.size(), convolution.size());
     for (auto i : range(expectedConvolution.size()))
-        EXPECT_DOUBLE_EQ(expectedConvolution[i], convolution[i]);
+        EXPECT_NEAR(expectedConvolution[i], convolution[i], 1e-12);
 }
 
 TEST(CyclicConvolutionTest, WorksForIntegers) {
