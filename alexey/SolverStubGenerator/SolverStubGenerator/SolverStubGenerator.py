@@ -2,10 +2,6 @@ import urllib.request
 from html.parser import HTMLParser
 import os.path
 
-problemUrl = "http://codeforces.com/contest/653/problem/A"
-pageContent=str(urllib.request.urlopen(problemUrl).read())
-#print(pageContent)
-
 class CodeforcesParser(HTMLParser):
     def __init__(self):
         super(CodeforcesParser, self).__init__()
@@ -33,56 +29,84 @@ class CodeforcesParser(HTMLParser):
             if self.openedDivs[-1] == [('class', 'output')]:
                 self.outputs[-1].append(data)
 
-parser = CodeforcesParser()
-parser.feed(pageContent)
+while True:
+    problemUrl = input()
+    if (problemUrl == ''):
+        break
+    
+    pageContent=str(urllib.request.urlopen(problemUrl).read())
 
-print(parser.inputs)
-print(parser.outputs)
+    parser = CodeforcesParser()
+    parser.feed(pageContent)
 
-splittedUrl = problemUrl.split('/')
-problemNumber = splittedUrl[-3]
-problemLetter = splittedUrl[-1]
+    print(parser.inputs)
+    print(parser.outputs)
 
-solverName = 'Solver' + problemNumber + problemLetter
-solverFilePath = '../../Solvers/' + problemNumber[0] + 'xx/' + problemNumber
+    splittedUrl = problemUrl.split('/')
+    problemNumber = splittedUrl[-3]
+    problemLetter = splittedUrl[-1]
 
-try:
-    os.mkdir(solverFilePath)
-except Exception:
-    pass
+    solverName = 'Solver' + problemNumber + problemLetter
+    solverFilePath = '../../Solvers/' + problemNumber[0] + 'xx/' + problemNumber
 
-stubFile = open(os.path.join(solverFilePath, solverName + ".cpp"), "w")
+    try:
+        os.mkdir(solverFilePath)
+    except Exception:
+        pass
 
-print('#include <Solvers/pch.h>',
-      '#include "algo/io/baseio.hpp"',
-      '#include "iter/range.h"',
-      'using namespace std;',
-      '',
-      'class ' + solverName + ' {',
-      'public:',
-      '    void run();',
-      '};',
-      '',
-      'void ' + solverName + '::run() {',
-      '',
-      '}',
-      '',
-      '',
-      'class ' + solverName + 'Test : public ProblemTest {};',
-      '',
-      '',
-      file=stubFile, sep = '\n')
+    stubFile = open(os.path.join(solverFilePath, solverName + ".cpp"), "w")
 
-samplesCount = len(parser.inputs)
-for i in range(samplesCount):
-    print('TEST_F(%sTest, Example%d) {' % (solverName, i + 1),
-          '    string input = R"(' +  '\n'.join(parser.inputs[i]),
-          ')";',
-          '    string output = R"(' + '\n'.join(parser.outputs[i]),
-          ')";',
-          '    output.pop_back();',
-          '    setInput(input);',
-          '    %s().run();' % solverName,
-          '    EXPECT_EQ(output, getOutput());',
+    print('#include <Solvers/pch.h>',
+          '#include "algo/io/baseio.hpp"',
+          '#include "iter/range.h"',
+          'using namespace std;',
+          '',
+          'class ' + solverName + ' {',
+          'public:',
+          '    void run();',
+          '};',
+          '',
+          'void ' + solverName + '::run() {',
+          '',
           '}',
+          '',
+          '',
+          'class ' + solverName + 'Test : public ProblemTest {};',
+          '',
+          '',
           file=stubFile, sep = '\n')
+
+    samplesCount = len(parser.inputs)
+    for i in range(samplesCount):
+        print('TEST_F(%sTest, Example%d) {' % (solverName, i + 1),
+              '    string input = R"(' +  '\n'.join(parser.inputs[i]),
+              ')";',
+              '    string output = R"(' + '\n'.join(parser.outputs[i]),
+              ')";',
+              '    output.pop_back();',
+              '    setInput(input);',
+              '    %s().run();' % solverName,
+              '    EXPECT_EQ(output, getOutput());',
+              '}',
+              file=stubFile, sep = '\n')
+
+
+    cmakeLineToInsert = '    ${solvers_dir}/%s/%s/%s.cpp\n' % (problemNumber[0] + 'xx', problemNumber, solverName)
+    cmakeFileName = os.path.join('..', '..', 'CMakeLists.txt')
+    cmakeFile = open(cmakeFileName, 'r')
+    cmakeLines = cmakeFile.readlines()
+    cmakeFile.close()
+
+    foundFileList = False
+    for i in range(len(cmakeLines)):
+        if cmakeLines[i] == cmakeLineToInsert:
+            break
+        if foundFileList and cmakeLines[i] > cmakeLineToInsert:
+            cmakeLines.insert(i, cmakeLineToInsert)
+            break
+        if cmakeLines[i] == 'set(tests_srcs\n':
+            foundFileList = True
+
+    cmakeFile = open(cmakeFileName, 'w')
+    cmakeFile.writelines(cmakeLines)
+    cmakeFile.close()
