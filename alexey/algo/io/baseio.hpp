@@ -19,7 +19,7 @@ template<typename T> void print(const T& t)
   template<>  \
   TYPE_NAME read<TYPE_NAME>() {  \
     TYPE_NAME res;  \
-    scanf(FORMAT, &res); \
+    int cnt = scanf(FORMAT, &res); \
     return res; \
   }\
 \
