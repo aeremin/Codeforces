@@ -41,10 +41,17 @@ while True:
 
     print(parser.inputs)
     print(parser.outputs)
+    
+    # Links supported
+    # http://codeforces.com/contest/665/problem/C
+    # http://codeforces.com/problemset/problem/663/A
 
     splittedUrl = problemUrl.split('/')
     problemNumber = splittedUrl[-3]
+    if problemNumber == 'problem':
+        problemNumber = splittedUrl[-2]
     problemLetter = splittedUrl[-1]
+
 
     solverName = 'Solver' + problemNumber + problemLetter
     solverFilePath = '../../Solvers/' + problemNumber[0] + 'xx/' + problemNumber
