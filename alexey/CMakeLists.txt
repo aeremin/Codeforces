@@ -375,6 +375,7 @@ set(tests_srcs
     ${algotest_dir}/MaximalIncreasingSubsequenceTest.cpp
     ${algotest_dir}/MergeSortTest.cpp
     ${algotest_dir}/MoQueryProcessorTest.cpp
+    ${algotest_dir}/ordered_set_test.cpp
     ${algotest_dir}/PrimesTest.cpp
     ${algotest_dir}/ResidueTest.cpp
     ${algotest_dir}/SegmentTreeTest.cpp
