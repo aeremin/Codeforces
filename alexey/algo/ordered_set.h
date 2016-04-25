@@ -3,15 +3,14 @@
 #ifdef __GNUC__
 #include <ext/pb_ds/assoc_container.hpp>
 #include <ext/pb_ds/tree_policy.hpp>
-using namespace __gnu_pbds;
-using namespace std;
 
-template<T>
-using ordered_set =  tree<T,
-                          null_type,
-                          less<T>,
-                          rb_tree_tag,
-                          tree_order_statistics_node_update>;
+template<typename T>
+using ordered_set = __gnu_pbds::tree<T,
+                         __gnu_pbds::null_type,
+                                     std::less<T>,
+                         __gnu_pbds::rb_tree_tag,
+                         __gnu_pbds::tree_order_statistics_node_update>;
+
 #else
 // Very dumb version (complexity is too big to be actually used). 
 // Just for compilability check.
