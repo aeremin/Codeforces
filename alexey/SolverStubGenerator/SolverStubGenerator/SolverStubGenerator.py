@@ -95,6 +95,7 @@ while True:
               '    %s().run();' % solverName,
               '    EXPECT_EQ(output, getOutput());',
               '}',
+			  '',
               file=stubFile, sep = '\n')
 
 
