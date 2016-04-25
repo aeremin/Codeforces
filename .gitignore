@@ -7,3 +7,4 @@ build*
 *.kdev*
 *.user
 *.user.*
+alexey/Fused/main.cpp
