@@ -42,7 +42,9 @@ void Solver668C::run() {
         print('\n');
     }
 }
+ 
 
+#include "solution_tests/matchers.h"
 
 class Solver668CTest : public ProblemTest {};
 
@@ -57,7 +59,7 @@ TEST_F(Solver668CTest, Example1) {
 )";
     setInput(input);
     Solver668C().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_THAT(getOutput(), EqualsFuzzy(output));
 }
 TEST_F(Solver668CTest, Example2) {
     string input = R"(3
@@ -69,7 +71,7 @@ TEST_F(Solver668CTest, Example2) {
 )";
     setInput(input);
     Solver668C().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_THAT(getOutput(), EqualsFuzzy(output));
 }
 TEST_F(Solver668CTest, Example3) {
     string input = R"(2
@@ -81,7 +83,7 @@ TEST_F(Solver668CTest, Example3) {
 )";
     setInput(input);
     Solver668C().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_THAT(getOutput(), EqualsFuzzy(output));
 }
 TEST_F(Solver668CTest, Example4) {
     string input = R"(3
@@ -93,5 +95,5 @@ TEST_F(Solver668CTest, Example4) {
 )";
     setInput(input);
     Solver668C().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_THAT(getOutput(), EqualsFuzzy(output));
 }

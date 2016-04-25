@@ -21,6 +21,7 @@
 
 #include <regex>
 #include <gtest/gtest.h>
+#include <gmock/gmock.h>
 
 #include <Solvers/testutils/ProblemTest.h>
 
