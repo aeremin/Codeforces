@@ -342,6 +342,8 @@ set(tests_srcs
     ${solvers_dir}/6xx/670/Solver670D.cpp
     ${solvers_dir}/6xx/670/Solver670E.cpp
     ${solvers_dir}/6xx/670/Solver670F.cpp
+    ${solvers_dir}/6xx/674/Solver674A.cpp
+    ${solvers_dir}/6xx/674/Solver674B.cpp
     ${solvers_dir}/pch.cpp
     ${solvers_dir}/SolverStub.cpp
     ${solvers_dir}/testutils/ProblemTest.cpp
