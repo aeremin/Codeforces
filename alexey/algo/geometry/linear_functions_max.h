@@ -25,19 +25,32 @@ private:
 
 namespace internal
 {
+
 template<typename T>
-T overtake_point( const std::pair<T, T>& fn1, const std::pair<T, T>& fn2 ) {
+typename std::enable_if<std::is_integral<T>::value, T>::type overtake_point( const std::pair<T, T>& fn1, const std::pair<T, T>& fn2 ) {
     assert( fn2.first >= fn1.first );
     if ( fn2.first == fn1.first ) {
         assert( fn2.second > fn1.second );
         return std::numeric_limits<T>::lowest();
     }
-    auto res = ( fn1.second - fn2.second ) / ( fn2.first - fn1.first );
-    if ( fn2.first * res + fn2.second < fn1.first * res + fn1.second )
-        res += T( 1 );
+    auto res = ( fn1.second - fn2.second) / ( fn2.first - fn1.first );
+    if (fn2.first * res + fn2.second < fn1.first * res + fn1.second)
+        ++res;
     assert( fn2.first * res + fn2.second >= fn1.first * res + fn1.second );
     return res;
 }
+
+template<typename T>
+typename std::enable_if<std::is_floating_point<T>::value, T>::type overtake_point(const std::pair<T, T>& fn1, const std::pair<T, T>& fn2) {
+    assert(fn2.first >= fn1.first);
+    if (fn2.first == fn1.first) {
+        assert(fn2.second > fn1.second);
+        return std::numeric_limits<T>::lowest();
+    }
+    auto res = (fn1.second - fn2.second) / (fn2.first - fn1.first);
+    return res;
+}
+
 }
 
 template<typename T>
