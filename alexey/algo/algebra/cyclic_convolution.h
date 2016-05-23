@@ -4,7 +4,7 @@
 #include <complex>
 #include "algo/polynomial/polynomial.h"
 #include "algo/polynomial/fast_multiplication.h"
-#include "../numbertheory/Residue.hpp"
+#include "algo/numbertheory/Residue.hpp"
 
 namespace internal {
     template<typename T> struct ToComplex {
