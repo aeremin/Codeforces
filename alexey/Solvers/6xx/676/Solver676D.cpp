@@ -8,6 +8,61 @@ using namespace std;
 class Solver676D {
 public:
     void run();
+
+    class GridGraph {
+    public:
+        struct Vertex {
+            Vertex(int v) : v_(v) {}
+            int vertex() const { return v_; }
+            int v_;
+        };
+
+        GridGraph(vector<vector<int8_t>> zeroLevel) {
+            field[0] = move(zeroLevel);
+            for (int l : range(1, 4)) {
+                field[l] = vector<vector<int8_t>>(n(), vector<int8_t>(m()));
+                for (int x : range(n()))
+                    for (int y : range(m()))
+                        field[l][x][y] = ((field[l - 1][x][y] << 1) | (field[l - 1][x][y] >> 3)) & 15;
+            }
+        }
+
+        int n() const { return field[0].size(); }
+        int m() const { return field[0][0].size(); }
+        int num_vertices() const { return n() * m() * 4; }
+
+        vector<Vertex> out_nbrs(int v) const {
+            struct Nei {
+                int offsX, offsY;
+                int mask, neiMask;
+            };
+            static vector<Nei> neis = {
+                { 0, +1, 1, 4 },{ +1, 0, 2, 8 },{ 0, -1, 4, 1 },{ -1, 0, 8, 2 }
+            };
+            
+            int x = v % n();
+            int y = (v / n()) % m();
+            int level = v / (n() * m());
+
+            vector<Vertex> result = { pack(x, y, (level + 1) % 4) };
+
+            for (auto& nei : neis) {
+                int xx = x + nei.offsX;
+                int yy = y + nei.offsY;
+                if (xx >= n() || yy >= m() || xx < 0 || yy < 0) continue;
+                if ((field[level][x][y] & nei.mask) && (field[level][xx][yy] & nei.neiMask))
+                    result.push_back(pack(xx, yy, level));
+            }
+
+            return result;
+        }
+
+        int pack(int x, int y, int level) const { return level * n() * m() + y * n() + x; }
+
+    private:
+        vector<vector<int8_t>> field[4];
+    };
+
 };
 
 void Solver676D::run() {
@@ -31,41 +86,11 @@ void Solver676D::run() {
         for (int y : range(m))
             field[x][y] = charToMask[fieldIn[x][y]];
 
-    auto pack = [&](int x, int y, int level) {return level * n * m + y * n + x; };
-    SimpleGraph g(n * m * 4);
-    for (int x : range(n))
-        for (int y : range(m))
-            for (int l : range(4))
-                g.add_directed_edge(pack(x, y, l), pack(x, y, (l + 1) % 4));
+    GridGraph g(move(field));
 
-    struct Nei {
-        int offsX, offsY;
-        int mask, neiMask;
-    };
-
-    vector<Nei> neis = {
-        {0, +1, 1, 4}, {+1, 0, 2, 8}, {0, -1, 4, 1}, {-1, 0, 8, 2}
-    };
-
-    for (int l : range(4)) {
-        for (int x : range(n))
-             for (int y : range(m))
-                 for (auto& nei : neis) {
-                     int xx = x + nei.offsX;
-                     int yy = y + nei.offsY;
-                     if (xx >= n || yy >= m || xx < 0 || yy < 0) continue;
-                     if ((field[x][y] & nei.mask) && (field[xx][yy] & nei.neiMask))
-                         g.add_directed_edge(pack(x, y, l), pack(xx, yy, l));
-                 }
-
-        for (int x : range(n))
-            for (int y : range(m))
-                field[x][y] = ((field[x][y] << 1) | (field[x][y] >> 3)) & 15;
-    }
-
-    auto dr = getMinimalPathsFromUnweighted(g, pack(xt, yt, 0), numeric_limits<int>::max());
-    auto ans = min({ dr.minimalDistances[pack(xm, ym, 0)], dr.minimalDistances[pack(xm, ym, 1)], 
-                     dr.minimalDistances[pack(xm, ym, 2)], dr.minimalDistances[pack(xm, ym, 3)] });
+    auto dr = getMinimalPathsFromUnweighted(g, g.pack(xt, yt, 0), numeric_limits<int>::max());
+    auto ans = min({ dr.minimalDistances[g.pack(xm, ym, 0)], dr.minimalDistances[g.pack(xm, ym, 1)],
+                     dr.minimalDistances[g.pack(xm, ym, 2)], dr.minimalDistances[g.pack(xm, ym, 3)] });
     if (ans == numeric_limits<int>::max()) ans = -1;
     cout << ans;
 }
