@@ -4,15 +4,15 @@ template<class PerEdgeData>
 struct DijkstraResult
 {
     vector<PerEdgeData> minimalDistances;
-    vector<size_t> predecessors;
+    vector<int> predecessors;
 };
 
 
 template<class PerEdgeData, class PerVertexData>
-DijkstraResult<PerEdgeData> getMinimalPathsFrom(const Graph<PerEdgeData, PerVertexData>& graph, size_t startVertex, PerEdgeData inAccessibleValue)
+DijkstraResult<PerEdgeData> getMinimalPathsFrom(const Graph<PerEdgeData, PerVertexData>& graph, int startVertex, PerEdgeData inAccessibleValue)
 {
-    DijkstraResult<PerEdgeData> result = { vector<PerEdgeData>(graph.num_vertices(), inAccessibleValue), vector<size_t>(graph.num_vertices(), -1) };
-    using FullEdgeData = tuple<PerEdgeData, size_t, size_t>;
+    DijkstraResult<PerEdgeData> result = { vector<PerEdgeData>(graph.num_vertices(), inAccessibleValue), vector<int>(graph.num_vertices(), -1) };
+    using FullEdgeData = tuple<PerEdgeData, int, int>;
     priority_queue<FullEdgeData, vector<FullEdgeData>, greater<FullEdgeData>> nextVerticesData;
     nextVerticesData.push(make_tuple(PerEdgeData(), startVertex, startVertex));
     while (!nextVerticesData.empty())
@@ -34,9 +34,10 @@ DijkstraResult<PerEdgeData> getMinimalPathsFrom(const Graph<PerEdgeData, PerVert
     return result;
 }
 
-inline DijkstraResult<int> getMinimalPathsFromUnweighted(const SimpleGraph& graph, size_t startVertex, int inAccessibleValue) {
-    DijkstraResult<int> result = { vector<int>(graph.num_vertices(), inAccessibleValue), vector<size_t>(graph.num_vertices(), -1) };
-    queue<size_t> verticesQueue;
+template<class GraphType>
+DijkstraResult<int> getMinimalPathsFromUnweighted(const GraphType& graph, int startVertex, int inAccessibleValue) {
+    DijkstraResult<int> result = { vector<int>(graph.num_vertices(), inAccessibleValue), vector<int>(graph.num_vertices(), -1) };
+    queue<int> verticesQueue;
     verticesQueue.push( startVertex );
     result.minimalDistances[startVertex] = 0;
     result.predecessors[startVertex] = startVertex;

@@ -15,7 +15,7 @@ public:
 void Solver507E::run()
 {
     const double fixRoadCost = 1e-10;
-    size_t nCities, nRoads;
+    int nCities, nRoads;
     cin >> nCities >> nRoads;
     WeightedEdgeGraph graph(nCities);
     for (int i = 0; i < nRoads; ++i)
