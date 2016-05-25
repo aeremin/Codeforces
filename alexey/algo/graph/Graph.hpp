@@ -8,8 +8,8 @@ class Graph
 {
 
 public:
-    struct Edge : public std::pair<size_t, PerEdgeData> {
-        using std::pair<size_t, PerEdgeData>::pair;
+    struct Edge : public std::pair<int, PerEdgeData> {
+        using std::pair<int, PerEdgeData>::pair;
         int vertex() const { return this->first; }
     };
 
