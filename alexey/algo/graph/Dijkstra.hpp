@@ -33,3 +33,23 @@ DijkstraResult<PerEdgeData> getMinimalPathsFrom(const Graph<PerEdgeData, PerVert
 
     return result;
 }
+
+inline DijkstraResult<int> getMinimalPathsFromUnweighted(const SimpleGraph& graph, size_t startVertex, int inAccessibleValue) {
+    DijkstraResult<int> result = { vector<int>(graph.num_vertices(), inAccessibleValue), vector<size_t>(graph.num_vertices(), -1) };
+    queue<size_t> verticesQueue;
+    verticesQueue.push( startVertex );
+    result.minimalDistances[startVertex] = 0;
+    result.predecessors[startVertex] = startVertex;
+    while (!verticesQueue.empty()) {
+        auto v = verticesQueue.front();
+        verticesQueue.pop();
+        for (auto edge : graph.out_nbrs(v)) {
+            auto nei = edge.vertex();
+            if (result.predecessors[nei] != -1) continue;
+            result.predecessors[nei] = v;
+            result.minimalDistances[nei] = result.minimalDistances[v] + 1;
+            verticesQueue.push(nei);
+        }
+    }
+    return result;
+}
