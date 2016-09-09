@@ -31,6 +31,8 @@ public:
     IntegerType operator-(const FunctorIterator<IntegerType, Functor>& other) const { return i_ - other.i_; }
     bool operator==(const FunctorIterator<IntegerType, Functor>& other) const { return i_ == other.i_; }
     bool operator!=(const FunctorIterator<IntegerType, Functor>& other) const { return i_ != other.i_; }
+    bool operator<(const FunctorIterator<IntegerType, Functor>& other) const { return i_ < other.i_; }
+    bool operator>(const FunctorIterator<IntegerType, Functor>& other) const { return i_ > other.i_; }
 
     IntegerType getParameter() const { return i_;  }
 };
