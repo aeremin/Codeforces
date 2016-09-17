@@ -56,11 +56,7 @@ while True:
     solverName = 'Solver' + problemNumber + problemLetter
     solverFilePath = '../../Solvers/' + problemNumber[0] + 'xx/' + problemNumber
 
-    try:
-        os.mkdir(solverFilePath)
-    except Exception:
-        pass
-
+    os.makedirs(solverFilePath, exist_ok=True)
     stubFile = open(os.path.join(solverFilePath, solverName + ".cpp"), "w")
 
     print('#include <Solvers/pch.h>',
