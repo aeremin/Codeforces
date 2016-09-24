@@ -422,4 +422,4 @@ include_directories(${common_lib_dir})
 include_directories(${src_dir})
 include_directories(${root_dir}/andrei/lib)  # TODO FIXME (for fuser)
 
-add_definitions("-std=c++11 -DLOCAL_PC -DGTEST_USE_OWN_TR1_TUPLE=0")
+add_definitions("-std=c++11 -DLOCAL_PC")
