@@ -12,7 +12,7 @@
 namespace {
 
 #ifndef STACK_SIZE_MB
-#   define STACK_SIZE_MB  256
+#   define STACK_SIZE_MB  2000
 #endif
 
 class StackEnlarger {
