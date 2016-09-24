@@ -2,6 +2,7 @@
 #include <vector>
 #include <algorithm>
 #include <utility>
+#include <cmath>
 #include "algo/SortBy.hpp"
 
 // Slider should have following types defined:

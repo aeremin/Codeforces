@@ -19,7 +19,7 @@ public:
     int64_t n, k, b, c;
     
     struct BestSet {
-        multiset<int64_t> numbersTaken = {};
+        multiset<int64_t> numbersTaken;
         int64_t totalTime = 0;
         int64_t equalityValue;
     };

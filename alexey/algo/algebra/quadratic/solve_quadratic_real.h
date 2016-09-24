@@ -1,6 +1,7 @@
 #pragma once
 #include <utility>
 #include <cassert>
+#include <cmath>
 
 // Solves quadratic equation in field of real numbers.
 // result.first <= result.second
