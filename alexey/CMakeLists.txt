@@ -492,7 +492,7 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 endif()
 
 add_executable(${tests_exe}  ${tests_srcs})
-target_link_libraries(${tests_exe} "gtest" "gmock" "benchmark")
+target_link_libraries(${tests_exe} "gtest" "gmock" "benchmark" "algo_lib")
 
 include_directories(${common_dir})
 include_directories(${common_lib_dir})
