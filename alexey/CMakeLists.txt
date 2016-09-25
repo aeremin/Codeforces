@@ -79,12 +79,14 @@ target_sources(algo_lib INTERFACE
     ${algo_dir}/updateappliers/IncreaseByIdempotent.h
     ${algo_dir}/updateappliers/IncreaseBySum.h
     ${algo_dir}/updateappliers/LinearTransformIdempotent.h
+    ${algo_dir}/updateappliers/MultiplyByApplier.h
     ${algo_dir}/updateappliers/SetToIdempotent.h
     ${algo_dir}/updateappliers/SetToPlus.hpp
     ${algo_dir}/updateappliers/UpdateApplier.hpp
     ${algo_dir}/updatetypes/Id.hpp
     ${algo_dir}/updatetypes/IncreaseBy.hpp
     ${algo_dir}/updatetypes/LinearTransform.hpp
+    ${algo_dir}/updatetypes/MultiplyBy.hpp
     ${algo_dir}/updatetypes/SetTo.hpp
 )
 
@@ -434,6 +436,7 @@ set(tests_srcs
     ${solvers_dir}/6xx/676/Solver676C.cpp
     ${solvers_dir}/6xx/676/Solver676D.cpp
     ${solvers_dir}/6xx/676/Solver676E.cpp
+    ${solvers_dir}/7xx/718/Solver718C.cpp
     ${solvers_dir}/pch.cpp
     ${solvers_dir}/SolverStub.cpp
     ${solvers_dir}/testutils/ProblemTest.cpp
