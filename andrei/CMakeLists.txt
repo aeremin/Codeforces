@@ -17,6 +17,7 @@ set(tests_srcs
     ${lib_dir}/container/indexer_test.cpp
     ${lib_dir}/graph/dfs_test.cpp
     ${lib_dir}/solution_tests/matchers_test.cpp
+    ${lib_dir}/util/projected_test.cpp
 )
 add_executable(${tests_exe}  ${tests_srcs})
 target_link_libraries(${tests_exe} "gmock" "benchmark" "pthread")
