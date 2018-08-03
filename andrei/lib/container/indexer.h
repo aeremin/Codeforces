@@ -17,12 +17,12 @@ public:
     return int(index_to_value_.size());
   }
 
-  std::pair<int, bool> insert(const ValueT& value__) {
+  std::pair<int, bool> insert(ValueT value__) {
     int new_index = int(index_to_value_.size());
     auto res = value_to_index_.insert({value__, new_index});
     if (!res.second)
       return {res.first->second, false};
-    index_to_value_.push_back(value__);
+    index_to_value_.push_back(std::move(value__));
     return {new_index, true};
   }
 
