@@ -36,7 +36,7 @@ include_directories(${common_dir})
 include_directories(${common_lib_dir})
 include_directories(${lib_dir})
 
-add_definitions("-std=c++11 -DLOCAL_PC")
+add_definitions("-std=c++17 -DLOCAL_PC")
 set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wcast-align -Wfloat-conversion -Wunused -Wformat=2 -Wcast-qual -Wold-style-cast -Woverloaded-virtual -Wshadow -Wnon-virtual-dtor -Werror")
 set(CMAKE_CXX_FLAGS_DEBUG "-g")
 set(CMAKE_CXX_FLAGS_RELEASE "-O2 -DNDEBUG")
