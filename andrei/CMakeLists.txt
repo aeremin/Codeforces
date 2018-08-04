@@ -14,6 +14,7 @@ include(${common_dir}/external/CMakeLists.txt)
 set(tests_exe contest_lib_test)
 set(tests_srcs
     ${lib_dir}/test.cc
+    ${lib_dir}/container/container_alg_test.cpp
     ${lib_dir}/container/indexer_test.cpp
     ${lib_dir}/functional/dynamic_solve_test.cpp
     ${lib_dir}/graph/dfs_test.cpp
