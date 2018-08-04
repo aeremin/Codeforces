@@ -1,4 +1,4 @@
-// Macros to quickly define hash functions.
+// Defines hash for std::tuple and allows to quickly define hash functions.
 //
 // DEFINE_HASH_n(class, field_1, ... field_n) defines std::hash<class>.
 //
@@ -7,9 +7,6 @@
 // The hash function applies std::hash to each field and combines the results.
 // If STL doesn't provide hash function for one of the field, you can either
 // define it directly, or use another DEFINE_HASH_n.
-//
-// TODO: Compare my hash with boost::hash_combine.
-// TODO: Compare my hash with Cantor pairing function.
 
 #pragma once
 
@@ -19,23 +16,46 @@
 #include "util/macro.h"
 
 
-template<typename Arg>
-size_t mixed_hash(Arg&& arg) {
-    return std::hash<typename std::decay<Arg>::type>()(std::forward<Arg>(arg));
+namespace std {
+    namespace {
+        // Code from boost
+
+        template <class T>
+        inline void hash_combine(std::size_t& seed, T const& v) {
+            seed ^= std::hash<T>()(v) + 0x9e3779b9 + (seed<<6) + (seed>>2);
+        }
+
+        template <class Tuple, size_t Index = std::tuple_size<Tuple>::value - 1>
+        struct HashValueImpl {
+          static void apply(size_t& seed, Tuple const& tuple) {
+            HashValueImpl<Tuple, Index-1>::apply(seed, tuple);
+            hash_combine(seed, std::get<Index>(tuple));
+          }
+        };
+
+        template <class Tuple>
+        struct HashValueImpl<Tuple,0> {
+          static void apply(size_t& seed, Tuple const& tuple) {
+            hash_combine(seed, std::get<0>(tuple));
+          }
+        };
+    }
+
+    template <typename ... TT>
+    struct hash<std::tuple<TT...>> {
+        size_t operator()(std::tuple<TT...> const& tt) const {
+            size_t seed = 0;
+            HashValueImpl<std::tuple<TT...> >::apply(seed, tt);
+            return seed;
+        }
+
+    };
 }
 
-template<typename First, typename Second>
-size_t mixed_hash(First&& first, Second&& second) {
-    constexpr unsigned shift_left = 23;
-    constexpr unsigned shift_right = sizeof(size_t) * CHAR_BIT - shift_left;
-    const size_t first_hash = mixed_hash(std::forward<First>(first));
-    const size_t second_hash = mixed_hash(std::forward<Second>(second));
-    return first_hash ^ (second_hash << shift_left) ^ (second_hash >> shift_right) ^ 0x9e3779b9;
-}
 
-template<typename Head, typename... Tail>
-size_t mixed_hash(Head&& head, Tail&&... tail) {
-    return mixed_hash(std::forward<Head>(head), mixed_hash(std::forward<Tail>(tail)...));
+template<typename... Args>
+size_t mixed_hash(const Args&... args) {
+    return std::hash<std::tuple<const Args&...>>()(std::tie(args...));
 }
 
 
