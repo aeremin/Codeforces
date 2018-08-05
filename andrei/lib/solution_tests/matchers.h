@@ -88,3 +88,9 @@ MATCHER_P(EqualsFuzzy, expected, "") {
   }
   return arg_it == arg_str.end() && expected_it == expected_str.end();
 }
+
+#define EXPECT_EQ_TRIMMED(a, b) \
+  EXPECT_THAT(a, EqualsTrimmed(b))
+
+#define EXPECT_EQ_FUZZY(a, b) \
+  EXPECT_THAT(a, EqualsFuzzy(b))

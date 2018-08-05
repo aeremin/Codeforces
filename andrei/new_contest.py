@@ -79,6 +79,7 @@ solution_file_content_template="""
 #include "io/scan.h"
 #include "io/targets.h"
 #include "solution_tests/basic.h"
+#include "solution_tests/matchers.h"
 
 
 class `solver` {
@@ -106,7 +107,7 @@ TEST_F(`solver`_Test, `test_name`) {
   send_input(R"(
 `input`)");
   solver.run();
-  EXPECT_EQ(R"(
+  EXPECT_EQ_TRIMMED(R"(
 `output`)", get_output());
 }
 """.strip()
@@ -114,7 +115,7 @@ TEST_F(`solver`_Test, `test_name`) {
 
 cmake_executable_template="""
 add_executable(`lower`_solver ${src_dir}/`upper`/`lower`.cpp)
-target_link_libraries(`lower`_solver ${GTEST_LIBRARIES} "pthread")
+target_link_libraries(`lower`_solver ${GTEST_LIBRARIES} "gmock" "pthread")
 """.strip()
 
 
@@ -122,17 +123,22 @@ cmake_list_content_template="""
 cmake_minimum_required(VERSION 2.6)
 project(contest_`contest_name`)
 
-find_package(GTest REQUIRED)
-
 set(src_dir ${CMAKE_SOURCE_DIR})
-set(lib_dir ${CMAKE_SOURCE_DIR}/../../lib)
+set(root_dir ${src_dir}/../../..)
+set(common_dir ${root_dir}/common)
+set(common_lib_dir ${common_dir}/lib)
+set(lib_dir ${src_dir}/../../lib)
 
+include(${common_dir}/external/CMakeLists.txt)
+
+include_directories(${common_dir})
+include_directories(${common_lib_dir})
 include_directories(${lib_dir})
 
 `executables`
 
-add_definitions("-std=c++11 -DLOCAL_PC")
-set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wcast-align -Wconversion -Wunused -Wformat=2 -Wcast-qual -Wold-style-cast -Woverloaded-virtual -Wshadow -Wnon-virtual-dtor -Wsuggest-override -Werror")
+add_definitions("-std=c++17 -DLOCAL_PC")
+set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wcast-align -Wconversion -Wunused -Wformat=2 -Wcast-qual -Wold-style-cast -Woverloaded-virtual -Wshadow -Wnon-virtual-dtor -Wno-sign-compare")
 set(CMAKE_CXX_FLAGS_DEBUG "-g")
 set(CMAKE_CXX_FLAGS_RELEASE "-O2 -DNDEBUG")
 """.lstrip()
