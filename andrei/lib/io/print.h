@@ -22,11 +22,13 @@
 #include <iostream>
 #include <string>
 
+#include "util/macro.h"
+
 
 #define FLOAT_OUTPUT_PRECISION 12
 
 
-#define FLOAT_OUTPUT_PRECISION_STR #FLOAT_OUTPUT_PRECISION
+#define FLOAT_OUTPUT_PRECISION_STR STRINGIFY(FLOAT_OUTPUT_PRECISION)
 
 #define DEFINE_SIMPLE_PRINT_TYPE(TYPE_NAME, FORMAT)  \
     template<>  \
@@ -46,7 +48,7 @@ void print(const T& value) {
 #else
 
 template<typename T>
-void print<T>(const T& value);
+void print(const T& value);
 
 // Use stdio remotely, because it's faster
 DEFINE_SIMPLE_PRINT_TYPE(int, "%d");
