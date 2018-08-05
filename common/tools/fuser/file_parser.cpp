@@ -11,7 +11,7 @@ namespace {
 std::regex pragma_once_regex("#pragma +once");
 std::regex local_include_regex("#include *\"(.*)\"");
 std::regex system_include_regex("#include *<(.*)>");
-std::regex test_start_regex("class (.*)_?Test : public (?:SolverTest|ProblemTest).*");
+std::regex test_start_regex("class (.*[^_])_?Test : public (?:SolverTest|ProblemTest).*");
 
 }  // namespace
 

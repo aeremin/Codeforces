@@ -13,6 +13,8 @@ include(${common_dir}/external/CMakeLists.txt)
 
 set(tests_exe contest_lib_test)
 set(tests_srcs
+    ${common_dir}/tools/fuser/file_parser.cpp
+    ${src_dir}/fuser/fuser_test.cpp
     ${lib_dir}/test.cc
     ${lib_dir}/container/container_alg_test.cpp
     ${lib_dir}/container/indexer_test.cpp
