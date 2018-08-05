@@ -28,9 +28,9 @@
 #include <algorithm>
 #include <numeric>
 
+#include "container/span.h"
 #include "graph/dfs.h"
 #include "iter/range.h"
-#include "iter/view.h"
 #include "util/check.h"
 
 
@@ -44,7 +44,7 @@ public:
   TopologicalSortResult(Status status__, std::vector<GraphIndex> vertices__, size_t loop_length__)
       : status_(status__)
       , vertices_(std::move(vertices__))
-      , loop_begin_(vertices_.begin() + loop_length__) {
+      , loop_length_(loop_length__) {
   }
 
   Status status() const {
@@ -55,23 +55,23 @@ public:
     return vertices_;
   }
 
-  std::vector<GraphIndex>::const_iterator loop_begin() const {
-    return loop_begin_;
+  int loop_length() const {
+    return loop_length_;
   }
 
-  ContainterView<std::vector<GraphIndex>::const_iterator> preloop() const {
+  span<const GraphIndex> preloop() const {
     CHECK_DEFAULT(status_ == LoopDetected);
-    return {loop_begin_, vertices_.end()};
+    return {vertices_.data() + loop_length_, vertices_.data() + vertices_.size()};
   }
-  ContainterView<std::vector<GraphIndex>::const_iterator> loop() const {
+  span<const GraphIndex> loop() const {
     CHECK_DEFAULT(status_ == LoopDetected);
-    return {vertices_.begin(), loop_begin_};
+    return {vertices_.data(), vertices_.data() + loop_length_};
   }
 
 private:
   Status status_;
   std::vector<GraphIndex> vertices_;
-  std::vector<GraphIndex>::const_iterator loop_begin_;
+  int loop_length_;
 };
 
 

@@ -46,3 +46,27 @@ TEST(DfsTest, Payload) {
   auto graph = generate_full_graph<UndirectedGraph_AdjacencyList<std::string>>(1);
   dfs(graph, {0}, graph_traversal_noop_continue);
 }
+
+TEST(DfsTest, CallSequence) {
+  DirectedGraph_Nonloaded_AdjacencyList graph(20);
+  graph.add_arc(0, 1);
+  graph.add_arc(0, 10);
+  graph.add_arc(0, 11);
+  graph.add_arc(1, 5);
+  graph.add_arc(2, 1);
+  graph.add_arc(5, 4);
+  graph.add_arc(5, 3);
+  graph.add_arc(3, 2);
+  graph.add_arc(4, 2);
+  graph.add_arc(12, 13);
+  graph.add_arc(13, 14);
+  graph.add_arc(14, 0);
+  graph.add_arc(14, 2);
+
+  std::vector<GraphIndex> vertices;
+  dfs(graph, {3, 7}, [&vertices](const GraphTraversalState&, GraphIndex v){
+    vertices.push_back(v);
+    return IterationControl::Proceed;
+  });
+  EXPECT_THAT(vertices, ElementsAre(4, 5, 1, 2, 3, 7));
+}

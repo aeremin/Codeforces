@@ -98,7 +98,7 @@ void print_vector(const VectorT& vec, const SeparatorT& separator = ' ') {
         print(*it);
         print(separator);
     }
-    print(vec.back());
+    print(*end_it);
 }
 
 template<typename VectorT, typename SeparatorT = char>

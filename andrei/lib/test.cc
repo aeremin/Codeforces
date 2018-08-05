@@ -12,23 +12,6 @@
 #include "util/hash.h"
 
 
-void print_top_sorted_opt(const std::vector<GraphIndex>& top_sorted_opt) {
-  cout << "\ntop_sorted_opt:\n";
-  print_vector_ln(top_sorted_opt);
-}
-
-void print_top_sorted_chk(const TopologicalSortResult& top_sorted_chk) {
-  cout << "\ntop_sorted_chk vertices:\n";
-  print_vector_ln(top_sorted_chk.vertices());
-  if (top_sorted_chk.status() == TopologicalSortResult::LoopDetected) {
-    cout << "top_sorted_chk preloop:\n";
-    print_vector_ln(top_sorted_chk.preloop());
-    cout << "top_sorted_chk loop:\n";
-    print_vector_ln(top_sorted_chk.loop());
-  }
-}
-
-
 struct Simple {
   int value;
 };
@@ -73,83 +56,16 @@ DEFINE_LEXICOGRAPHICAL_COMPARISON_2(Foo2, bar, buz);
 
 
 int main(int argc, char* argv[]) {
-  // TODO: make all these unit tests
-
-  DirectedGraph_Nonloaded_AdjacencyList graph(20);
-  graph.add_arc(0, 1);
-  graph.add_arc(0, 10);
-  graph.add_arc(0, 11);
-  graph.add_arc(1, 5);
-  graph.add_arc(5, 4);
-  graph.add_arc(5, 3);
-  graph.add_arc(3, 2);
-  graph.add_arc(4, 2);
-  graph.add_arc(12, 13);
-  graph.add_arc(13, 14);
-  graph.add_arc(14, 0);
-  graph.add_arc(14, 2);
-
-  auto top_sorted_opt = topological_sort_reachable_optimistic(graph, {0});
-  auto top_sorted_chk = topological_sort_reachable_checked(graph, {0});
-
-  CHECK(top_sorted_chk.status() == TopologicalSortResult::Ok);
-
-  print_top_sorted_opt(top_sorted_opt);
-  print_top_sorted_chk(top_sorted_chk);
-
-  graph.add_arc(2, 1);  // bam!
-
-  top_sorted_opt = topological_sort_reachable_optimistic(graph, {0});
-  top_sorted_chk = topological_sort_reachable_checked(graph, {0});
-
-  CHECK(top_sorted_chk.status() == TopologicalSortResult::LoopDetected);
-
-  print_top_sorted_opt(top_sorted_opt);
-  print_top_sorted_chk(top_sorted_chk);
-
-  cout << "\ndfs:\n";
-  dfs(graph, {3, 7}, [](const GraphTraversalState&, GraphIndex vertex){
-    cout << vertex << " ";
-    return IterationControl::Proceed;
-  });
-  cout << "\n";
-
-
-  DirectedGraph_Nonloaded_AdjacencyList graph2(20);
-
-  graph2.add_arc(0, 1);
-  graph2.add_arc(2, 3);
-  graph2.add_arc(4, 5);
-  graph2.add_arc(5, 4);  // bam!
-  graph2.add_arc(6, 7);
-  graph2.add_arc(8, 9);
-
-  graph2.add_arc(10, 0);  // bam!
-  graph2.add_arc(10, 4);  // bam!
-  graph2.add_arc(10, 11);  // bam!
-
-  print_top_sorted_chk(topological_sort_reachable_checked(graph2, {0, 2, 4, 6, 8}));
-  print_top_sorted_chk(topological_sort_reachable_checked(graph2, {0, 2, 10, 6, 8}));
-  print_top_sorted_chk(topological_sort_reachable_checked(graph2, {0, 2, 5, 6, 8}));
-  print_top_sorted_chk(topological_sort_reachable_checked(graph2, {5}));
-  print_top_sorted_chk(topological_sort_reachable_checked(graph2, {10}));
-
-  cout << "\n";
-  cout << "d = " << find_distance_unweighted(graph2, 10, 5) << "\n";
-  cout << "d = " << find_distance_unweighted(graph2, 11, 10) << "\n";
-
-  print_ln(1.0);
-  print_ln(1000.0);
-  print_ln(1, ' ', 2);
-
-
-
-
   testing::InitGoogleTest(&argc, argv);
   // TODO: set library_tests__enable_checks from command line flags, add launch script
   return RUN_ALL_TESTS();
 
 
+  // TODO: make all these unit tests
+
+  print_ln(1.0);
+  print_ln(1000.0);
+  print_ln(1, ' ', 2);
 
   set_io_file_names(foo_in_foo_out("test"));
 

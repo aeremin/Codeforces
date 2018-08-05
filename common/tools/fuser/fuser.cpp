@@ -75,7 +75,7 @@ std::string Compile(const std::string& main_file, CompilerOptions& options) {
         case TopologicalSortResult::Ok:
             break;
         case TopologicalSortResult::LoopDetected:
-            GraphIndex loop_start = file_indices_sorted.loop().back();
+            GraphIndex loop_start = *(file_indices_sorted.loop().end() - 1);
             std::string inclusion_sequence = kIndent + file_indexer.value(loop_start);
             for (auto it = file_indices_sorted.vertices().begin();
                     it != file_indices_sorted.vertices().end(); ++it) {
