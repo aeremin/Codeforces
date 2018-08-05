@@ -15,13 +15,7 @@
 
 #include "graph/bfs.h"
 #include "util/check.h"
-
-
-// TODO: Move to math library; add 'max' and 'bound'
-template<typename T>
-void inplace_min(T& value, const T& other) {
-  value = std::min(value, other);
-}
+#include "util/relax.h"
 
 
 template<typename GraphT>
@@ -34,7 +28,7 @@ std::vector<GraphIndex> find_distance_unweighted(const GraphT& graph,
       [&](const GraphTraversalState& state, GraphIndex v) {
         if (state.previous_vertex != kInvalidGraphVertex) {
           CHECK_INTERNAL(distances[state.previous_vertex] != kMaxGraphIndex);
-          inplace_min(distances[v], distances[state.previous_vertex] + 1);
+          relax_min(distances[v], distances[state.previous_vertex] + 1);
         }
         return IterationControl::Proceed;
       });
@@ -52,7 +46,7 @@ GraphIndex find_distance_unweighted(const GraphT& graph,
       [&](const GraphTraversalState& state, GraphIndex v) {
         if (state.previous_vertex != kInvalidGraphVertex) {
           CHECK_INTERNAL(distances[state.previous_vertex] != kMaxGraphIndex);
-          inplace_min(distances[v], distances[state.previous_vertex] + 1);
+          relax_min(distances[v], distances[state.previous_vertex] + 1);
         }
         if (v == destination)
           return IterationControl::AbortBluntly;
