@@ -30,7 +30,7 @@
 
 
 namespace {
-bool fuzzy_compare(double expected, double arg) {
+[[maybe_unused]] bool fuzzy_compare(double expected, double arg) {
   return std::abs(arg - expected) / std::max(1., expected) < 1e-7;
 }
 }  // namespace
