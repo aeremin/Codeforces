@@ -80,6 +80,7 @@ solution_file_content_template="""
 #include "std.h"
 
 #include "io/scan.h"
+#include "io/print.h"
 #include "io/targets.h"
 #include "solution_tests/basic.h"
 #include "solution_tests/matchers.h"
@@ -141,7 +142,7 @@ include_directories(${lib_dir})
 `executables`
 
 add_definitions("-std=c++17 -DLOCAL_PC")
-set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wcast-align -Wconversion -Wunused -Wformat=2 -Wcast-qual -Wold-style-cast -Woverloaded-virtual -Wshadow -Wnon-virtual-dtor -Wno-sign-compare")
+set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wcast-align -Wfloat-conversion -Wunused -Wformat=2 -Wcast-qual -Wold-style-cast -Woverloaded-virtual -Wshadow -Wnon-virtual-dtor -Wno-sign-compare")
 set(CMAKE_CXX_FLAGS_DEBUG "-g")
 set(CMAKE_CXX_FLAGS_RELEASE "-O2 -DNDEBUG")
 """.lstrip()
