@@ -36,7 +36,7 @@
 
 #define DEFINE_SIMPLE_PRINT_TYPE(TYPE_NAME, FORMAT)  \
     template<>  \
-    void print<TYPE_NAME>(const TYPE_NAME& value) {  \
+    void print<TYPE_NAME>(TYPE_NAME value) {  \
         printf(FORMAT, value);  \
     }
 
@@ -57,7 +57,7 @@ void print(const T& value) {
 #else
 
 template<typename T>
-void print(const T& value);
+void print(T value);
 
 // Use stdio remotely, because it's faster
 DEFINE_SIMPLE_PRINT_TYPE(int, "%d");
@@ -67,9 +67,10 @@ DEFINE_SIMPLE_PRINT_TYPE(uint64, "%" PRIu64);
 DEFINE_SIMPLE_PRINT_TYPE(float, "%." FLOAT_OUTPUT_PRECISION_STR "f");
 DEFINE_SIMPLE_PRINT_TYPE(double, "%." FLOAT_OUTPUT_PRECISION_STR "lf");
 DEFINE_SIMPLE_PRINT_TYPE(char, "%c");
+DEFINE_SIMPLE_PRINT_TYPE(const char*, "%s");
 
 template<>  \
-void print<std::string>(const std::string& value) {
+void print<const std::string&>(const std::string& value) {
     printf("%s", value.c_str());
 }
 
