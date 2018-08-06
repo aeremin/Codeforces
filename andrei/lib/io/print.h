@@ -14,6 +14,10 @@
 // * print_vec_ln(vec, separator)
 //   Prints all elements in container 'vec', separated by 'separator',
 //   and a new line character.
+//
+// * LOG(<any valid print call>)  [thread-hostile!]
+//   Does debug logging: outputs to stderr, and only on local machine.
+//   E.g.: LOG(print(x))
 
 #pragma once
 
@@ -38,11 +42,16 @@
 
 #ifdef LOCAL_PC
 
+namespace internal {
+inline static bool redirect_to_cerr = false;
+}
+
 // Use iostream locally for redirections in unit tests
 // TODO: Add checks so that it doesn't compile for unsupported types.
 template<typename T>
 void print(const T& value) {
-    std::cout << std::fixed << std::setprecision(FLOAT_OUTPUT_PRECISION) << value;
+    auto& stream = internal::redirect_to_cerr ? std::cerr : std::cout;
+    stream << std::fixed << std::setprecision(FLOAT_OUTPUT_PRECISION) << value;
 }
 
 #else
@@ -108,3 +117,19 @@ void print_vector_ln(const VectorT& vec, const SeparatorT& separator = ' ') {
     print_vector(vec, separator);
     print_ln();
 }
+
+
+#ifdef LOCAL_PC
+
+#define LOG(print_call) \
+    do { \
+        internal::redirect_to_cerr = true; \
+        print_call; \
+        internal::redirect_to_cerr = false; \
+    } while (false)
+
+#else
+
+#define LOG(print_call)  do {} while (false)
+
+#endif
