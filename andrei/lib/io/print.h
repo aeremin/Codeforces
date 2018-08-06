@@ -3,10 +3,10 @@
 // Print values to the standard output.
 //
 // * print(value1, [value2, [...]])
-//   Prints one or more values.
+//   Prints one or more values separated by spaces.
 //
 // * print_ln([value1, [value2, [...]]])
-//   Prints zero or more values and a newline character.
+//   Prints zero or more values separated by spaces and a newline character.
 //
 // * print_vec(vec, separator)
 //   Prints all elements in container 'vec', separated by 'separator'.
@@ -90,12 +90,14 @@ void print_ln(const T& value) {
 template<typename HeadT, typename... TailT>
 void print(const HeadT& head, const TailT&... tail) {
     print(head);
+    print(' ');
     print(tail...);
 }
 
 template<typename HeadT, typename... TailT>
 void print_ln(const HeadT& head, const TailT&... tail) {
     print(head);
+    print(' ');
     print_ln(tail...);
 }
 
