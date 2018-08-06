@@ -160,8 +160,8 @@ for i_problem in range(args.num_problems if args.num_problems > 0 else 26):
   problem_name_lower = chr(ord('a') + i_problem)
   solver_name = 'Solver' + problem_name_upper
   if args.download_tests:
-    tests = download_tests(problem_name_upper)
-    if not list(tests) and args.num_problems == 0:
+    tests = list(download_tests(problem_name_upper))
+    if not tests and args.num_problems == 0:
       break
     test_bodies = [make_test(solver_name, 'Buildin' + str(test[0]), test[1][0], test[1][1]) for test in zip(itertools.count(), tests)]
   else:
