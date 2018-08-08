@@ -5,6 +5,7 @@ import html.parser
 import itertools
 import os
 import sys
+import subprocess
 import urllib.request
 
 parser = argparse.ArgumentParser(description='Generate solution template for a new contest.')
@@ -18,6 +19,10 @@ download_tests_parser = parser.add_mutually_exclusive_group(required=False)
 download_tests_parser.add_argument('--download-tests', dest='download_tests', action='store_true')
 download_tests_parser.add_argument('--no-download-tests', dest='download_tests', action='store_false')
 parser.set_defaults(download_tests=True)
+add_to_git_parser = parser.add_mutually_exclusive_group(required=False)
+add_to_git_parser.add_argument('--add-to-git', dest='add_to_git', action='store_true')
+add_to_git_parser.add_argument('--no-add-to-git', dest='add_to_git', action='store_false')
+parser.set_defaults(add_to_git=True)
 
 args = parser.parse_args()
 
@@ -29,6 +34,25 @@ assert 0 < args.num_problems or args.download_tests, (
 
 assert not args.download_tests or args.contest_family == 'codeforces', (
   'Don\'t know how to download tests for "{0}" contest'.format(args.contest_family))
+
+if args.add_to_git:
+  returncode = subprocess.run(['git', 'diff', '--cached', '--exit-code'],
+                              stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL).returncode
+  if returncode == 0:
+    pass
+  elif returncode == 1:
+    sys.exit('There are staged files in git. Commit them or use --no-add-to-git')
+  elif returncode == 129:
+    sys.exit('No git repo found. Run `git init` or use --no-add-to-git')
+  else:
+    sys.exit('Unknown error running `git diff`. Try  --no-add-to-git')
+
+
+def WriteFile(name, content):
+  with open(name, 'w') as f:
+    f.write(content)
+  if args.add_to_git:
+    assert subprocess.run(['git', 'add', name]).returncode == 0
 
 
 class CodeforcesHTMLParser(html.parser.HTMLParser):
@@ -171,11 +195,10 @@ for i_problem in range(args.num_problems if args.num_problems > 0 else 26):
   os.makedirs(problem_dir_path)
   cmake_list_executables.append(cmake_executable_template.strip().replace('`lower`', problem_name_lower).replace('`upper`', problem_name_upper))
   solution_file_content = solution_file_content_template.replace('`solver`', solver_name).replace('`tests`', '\n'.join(test_bodies))
-  with open(os.path.join(problem_dir_path, problem_name_lower + '.cpp'), 'w') as f:
-    f.write(solution_file_content)
-
+  WriteFile(os.path.join(problem_dir_path, problem_name_lower + '.cpp'), solution_file_content)
 
 cmake_list_content=cmake_list_content_template.replace('`contest_name`', args.contest_name).replace('`executables`', "\n\n".join(cmake_list_executables))
+WriteFile(os.path.join(contest_path, 'CMakeLists.txt'), cmake_list_content)
 
-with open(os.path.join(contest_path, 'CMakeLists.txt'), 'w') as f:
-  f.write(cmake_list_content)
+if args.add_to_git:
+  assert subprocess.run(['git', 'commit', '-m', 'Contest {0} stub'.format(args.contest_name)]).returncode == 0
