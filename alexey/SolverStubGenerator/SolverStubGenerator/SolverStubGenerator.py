@@ -24,6 +24,7 @@ class CodeforcesParser(HTMLParser):
 
     def handle_data(self, data):
         if len(self.openedDivs) >= 2 and self.openedDivs[-2] == [('class', 'sample-test')]:
+            data = data.replace(r'\n', '\n')
             if self.openedDivs[-1] == [('class', 'input')]:
                 self.inputs[-1].append(data)
             if self.openedDivs[-1] == [('class', 'output')]:
