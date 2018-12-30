@@ -136,32 +136,37 @@ void Solver582E::run()
     cout << ans;
 }
 
+// Tests below need a lot of stack memory to succeed.
+// If you see them failing, make sure to set Stack Reserve Size
+// (codeforces project Properties -> Linker -> System -> Stack Reserve Size)
+// to 256000000 (256mb, value used on Codeforces servers: https://codeforces.com/blog/entry/47003?#comment-313808)
+
 class Solver582ETest : public ProblemTest
 {
 };
 
-TEST_F( Solver582ETest, DISABLED_Example1 )
+TEST_F( Solver582ETest, Example1 )
 {
     setInput("?        2        1 0 1 0 1        0 1 1 0 1");
     Solver582E().run();
     EXPECT_EQ("2", getOutput());
 }
 
-TEST_F( Solver582ETest, DISABLED_Example2 )
+TEST_F( Solver582ETest, Example2 )
 {
     setInput("(A)?(?)     1        1 1 0 0 0");
     Solver582E().run();
     EXPECT_EQ("4", getOutput());
 }
 
-TEST_F(Solver582ETest, DISABLED_Example3)
+TEST_F(Solver582ETest, Example3)
 {
     setInput("((?)&(?))|((?)&(?))     0");
     Solver582E().run();
     EXPECT_EQ("4096", getOutput());
 }
 
-TEST_F(Solver582ETest, DISABLED_Example4)
+TEST_F(Solver582ETest, Example4)
 {
     setInput("b        1        1 0 1 1 1");
     Solver582E().run();

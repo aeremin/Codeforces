@@ -102,7 +102,11 @@ TEST_F( TopologicalSorterLinearGraphTest, AndreyTopologySortOptimistic )
     auto res = topological_sort_optimistic( *graph );
 }
 
-TEST_F( TopologicalSorterLinearGraphTest, DISABLED_AlexeyTopologySort )
+// This test needs a lot of stack memory to succeed.
+// If you see it failing, make sure to set Stack Reserve Size
+// (codeforces project Properties -> Linker -> System -> Stack Reserve Size)
+// to 256000000 (256mb, value used on Codeforces servers: https://codeforces.com/blog/entry/47003?#comment-313808)
+TEST_F( TopologicalSorterLinearGraphTest, AlexeyTopologySort )
 {
     auto ts = makeTopologicalSorter( *graph );
     EXPECT_TRUE( ts.isDAG() );
