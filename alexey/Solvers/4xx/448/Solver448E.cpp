@@ -117,7 +117,7 @@ TEST_F(Solver448ETest, Example3)
     EXPECT_EQ(output, getOutput());
 }
 
-TEST_F(Solver448ETest, DISABLED_Example4) {
+TEST_F(Solver448ETest, Example4) {
     string input = R"(963761198400 6553
 )";
     setInput(input);
