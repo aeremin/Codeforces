@@ -1,6 +1,9 @@
 #pragma once
 #include <string>
 
+std::string GetProblemNameFromGtestFilter(std::string arg);
+std::string GetSolverFileNameByProblemName(std::string arg);
+
 class CodeFuser
 {
 public:
@@ -8,7 +11,6 @@ public:
     void fuse();
 
 private:
-    std::string getSolverFileNameByProblemName_() const;
     std::string problemName_;
 };
 

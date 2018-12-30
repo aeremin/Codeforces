@@ -4,20 +4,11 @@
 
 int main(int argc, char *argv[])
 {
-	for ( int i = 0; i < argc; ++i )
+    for ( int i = 0; i < argc; ++i )
     {
-        std::string expectedFilterString( "--gtest_filter=*????*" );
         std::string arg = argv[i];
-        if ( arg.substr( 0, 16 ) == expectedFilterString.substr( 0, 16 ) && arg.length() == expectedFilterString.length() )
-        {
-            auto problemName = arg.substr( 16, 4 );
-            CodeFuser( problemName ).fuse();
-        }
-
-        expectedFilterString = "--gtest_filter=*FBHC??*";
-        if (arg.substr(0, 20) == expectedFilterString.substr(0, 20) && arg.length() == expectedFilterString.length())
-        {
-            auto problemName = arg.substr(16, 6);
+        auto problemName = GetProblemNameFromGtestFilter(arg);
+        if (problemName.length()) {
             CodeFuser(problemName).fuse();
         }
     }

@@ -46,6 +46,8 @@ while True:
     # Links supported
     # http://codeforces.com/contest/665/problem/C
     # http://codeforces.com/problemset/problem/663/A
+    # http://codeforces.com/contest/1065/problem/C
+    # http://codeforces.com/problemset/problem/1063/A
 
     splittedUrl = problemUrl.split('/')
     problemNumber = splittedUrl[-3]
@@ -55,7 +57,7 @@ while True:
 
 
     solverName = 'Solver' + problemNumber + problemLetter
-    solverFilePath = '../../Solvers/' + problemNumber[0] + 'xx/' + problemNumber
+    solverFilePath = '../../Solvers/' + problemNumber[:-2] + 'xx/' + problemNumber
 
     os.makedirs(solverFilePath, exist_ok=True)
     stubFile = open(os.path.join(solverFilePath, solverName + ".cpp"), "w")
@@ -96,7 +98,7 @@ while True:
               file=stubFile, sep = '\n')
 
 
-    cmakeLineToInsert = '    ${solvers_dir}/%s/%s/%s.cpp\n' % (problemNumber[0] + 'xx', problemNumber, solverName)
+    cmakeLineToInsert = '    ${solvers_dir}/%s/%s/%s.cpp\n' % (problemNumber[:-2] + 'xx', problemNumber, solverName)
     cmakeFileName = os.path.join('..', '..', 'CMakeLists.txt')
     cmakeFile = open(cmakeFileName, 'r')
     cmakeLines = cmakeFile.readlines()

@@ -2,6 +2,7 @@
 #include <cassert>
 #include <string>
 #include <fstream>
+#include <regex>
 
 #include "tools/fuser/fuser.h"
 
@@ -47,33 +48,44 @@ int main()
 )";
 }
 
+std::string GetProblemNameFromGtestFilter(std::string arg)
+{
+    std::regex normalRegex(R"(--gtest_filter=\*([1-9][0-9][0-9]+[A-Z])\*)");
+    std::smatch piecesMatch;
+    if (std::regex_match(arg, piecesMatch, normalRegex)) {
+        return piecesMatch[1].str();
+    }
+
+    std::regex fbhcRegex(R"(--gtest_filter=\*(FBHC[1-9][A-Z])\*)");
+    std::smatch piecesMatchFbhc;
+    if (std::regex_match(arg, piecesMatchFbhc, fbhcRegex)) {
+        return piecesMatchFbhc[1].str();
+    }
+
+    return "";
+}
+
+std::string GetSolverFileNameByProblemName(std::string problemName) {
+    if (problemName.substr(0, 4) == "FBHC") {
+        string roundName = string("Round") + problemName[4];
+        return "Solvers/FBHC/" + roundName + "/Solver" + problemName + ".cpp";
+    }
+
+    string problemSetName = problemName.substr(0, problemName.length() - 1);
+    string problemSetPrefix = problemSetName.substr(0, problemSetName.length() - 2);
+    return "Solvers/" + problemSetPrefix + "xx/" + problemSetName + "/Solver" + problemName + ".cpp";
+}
+
 CodeFuser::CodeFuser(std::string problemName) : problemName_(move(problemName))
 {}
 
-
-std::string CodeFuser::getSolverFileNameByProblemName_() const
-{
-    if (problemName_.length() == 4) // Codeforces
-    {
-        string problemSetName = problemName_.substr(0, 3);
-        return "Solvers/" + problemSetName.substr(0, 1) + "xx/" + problemSetName + "/Solver" + problemName_ + ".cpp";
-    }
-    else if (problemName_.length() == 6)
-    {
-        assert(problemName_.substr(0, 4) == "FBHC");
-        string roundName = string("Round") + problemName_[4];
-        return "Solvers/FBHC/" + roundName + "/Solver" + problemName_ + ".cpp";
-    }
-    assert(false);
-    return{};
-}
 
 void CodeFuser::fuse()
 {
     ofstream out( "Fused/main.cpp" );
     out << filePrefix;
    
-    string problemSolverPath = getSolverFileNameByProblemName_();
+    string problemSolverPath = GetSolverFileNameByProblemName(problemName_);
 
     CompilerOptions options;
     options.include_paths = {".", "../common/lib"};

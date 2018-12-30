@@ -97,6 +97,7 @@ set(tests_srcs
     ${launcher_dir}/main.cpp
     ${launcher_dir}/CodeFuser.h
     ${launcher_dir}/CodeFuser.cpp
+    ${launcher_dir}/CodeFuserTest.cpp
     ${solvers_dir}/0xx/014/Solver014D.cpp
     ${solvers_dir}/0xx/022/Solver022B.cpp
     ${solvers_dir}/0xx/067/Solver067A.cpp
