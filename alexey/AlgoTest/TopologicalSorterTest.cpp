@@ -1,5 +1,4 @@
 #include <gtest/gtest.h>
-#include <benchmark/benchmark.h>
 
 #include <memory>
 #include <numeric>
@@ -109,28 +108,3 @@ TEST_F( TopologicalSorterLinearGraphTest, AlexeyTopologySort )
     EXPECT_TRUE( ts.isDAG() );
 }
 
-class TopologicalSorterRandomBenchmark : public benchmark::Fixture
-{
-public:
-    TopologicalSorterRandomBenchmark()
-    {
-        graph = TopologicalSorterRandomTest::createRandomDAG();
-    }
-
-protected:
-    std::unique_ptr<SimpleGraph> graph;
-};
-
-/*
-BENCHMARK_F( TopologicalSorterRandomBenchmark, AlexeyTest )( benchmark::State& st )
-{
-    while ( st.KeepRunning() )
-        makeTopologicalSorter( *graph );
-}
-
-BENCHMARK_F( TopologicalSorterRandomBenchmark, AndreyTest )( benchmark::State& st )
-{
-    while ( st.KeepRunning() )
-        topological_sort_checked( *graph );
-}
-*/

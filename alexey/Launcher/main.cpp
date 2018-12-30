@@ -1,13 +1,9 @@
 #include <gtest/gtest.h>
-#include <benchmark/benchmark.h>
 #include "CodeFuser.h"
 #include <regex>
 
 int main(int argc, char *argv[])
 {
-	::benchmark::Initialize(&argc, argv);
-	::benchmark::RunSpecifiedBenchmarks();
-	
 	for ( int i = 0; i < argc; ++i )
     {
         std::string expectedFilterString( "--gtest_filter=*????*" );
