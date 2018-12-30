@@ -102,7 +102,7 @@ TEST_F( TopologicalSorterLinearGraphTest, AndreyTopologySortOptimistic )
     auto res = topological_sort_optimistic( *graph );
 }
 
-TEST_F( TopologicalSorterLinearGraphTest, AlexeyTopologySort )
+TEST_F( TopologicalSorterLinearGraphTest, DISABLED_AlexeyTopologySort )
 {
     auto ts = makeTopologicalSorter( *graph );
     EXPECT_TRUE( ts.isDAG() );
