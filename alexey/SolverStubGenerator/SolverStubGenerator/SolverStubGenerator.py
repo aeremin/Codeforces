@@ -85,14 +85,12 @@ while True:
     samplesCount = len(parser.inputs)
     for i in range(samplesCount):
         print('TEST_F(%sTest, Example%d) {' % (solverName, i + 1),
-              '    string input = R"(' +  '\n'.join(parser.inputs[i]),
-              ')";',
+              '    setInput(R"(' +  '\n'.join(parser.inputs[i]),
+              ')");',
               '    string output = R"(' + '\n'.join(parser.outputs[i]),
               ')";',
-              '    output.pop_back();',
-              '    setInput(input);',
               '    %s().run();' % solverName,
-              '    EXPECT_EQ(output, getOutput());',
+              '    EXPECT_EQ_FUZZY(getOutput(), output);',
               '}',
 			  '',
               file=stubFile, sep = '\n')

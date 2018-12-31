@@ -24,5 +24,6 @@
 #include <gmock/gmock.h>
 
 #include <Solvers/testutils/ProblemTest.h>
+#include "solution_tests/matchers.h"
 
 using namespace std;
