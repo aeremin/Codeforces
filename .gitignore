@@ -8,3 +8,4 @@ build*
 *.user
 *.user.*
 alexey/Fused/main.cpp
+.vs/
