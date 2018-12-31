@@ -71,7 +71,7 @@ TEST_F(Solver653CTest, Example1)
     output.pop_back();
     setInput(input);
     Solver653C().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -85,7 +85,7 @@ TEST_F(Solver653CTest, Example2)
     output.pop_back();
     setInput(input);
     Solver653C().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -99,7 +99,7 @@ TEST_F(Solver653CTest, Example3)
     output.pop_back();
     setInput(input);
     Solver653C().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -113,7 +113,7 @@ TEST_F(Solver653CTest, Example4)
     output.pop_back();
     setInput(input);
     Solver653C().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

@@ -60,7 +60,7 @@ TEST_F(Solver657ATest, Example1)
 )";
     setInput(input);
     Solver657A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -70,10 +70,9 @@ TEST_F(Solver657ATest, Example2)
 )";
     string output = R"(-1
 )";
-    output.pop_back();
     setInput(input);
     Solver657A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -91,7 +90,7 @@ TEST_F(Solver657ATest, Example3)
 )";
     setInput(input);
     Solver657A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

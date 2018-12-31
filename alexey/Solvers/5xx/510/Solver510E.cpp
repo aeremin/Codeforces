@@ -143,7 +143,7 @@ TEST_F(Solver510ETest, Example2)
     output.pop_back();
     setInput(input);
     Solver510E().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

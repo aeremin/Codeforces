@@ -42,10 +42,9 @@ TEST_F(Solver622DTest, Example1)
 )";
     string output = R"(1 1 2 2 
 )";
-    output.pop_back();
     setInput(input);
     Solver622D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -55,10 +54,9 @@ TEST_F(Solver622DTest, Example2)
 )";
     string output = R"(1 1 
 )";
-    output.pop_back();
     setInput(input);
     Solver622D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

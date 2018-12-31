@@ -58,10 +58,9 @@ TEST_F(Solver621DTest, Example1)
 )";
     string output = R"(z^y^x
 )";
-    output.pop_back();
     setInput(input);
     Solver621D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -71,10 +70,9 @@ TEST_F(Solver621DTest, Example2)
 )";
     string output = R"(x^y^z
 )";
-    output.pop_back();
     setInput(input);
     Solver621D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -84,10 +82,9 @@ TEST_F(Solver621DTest, Example3)
 )";
     string output = R"((x^y)^z
 )";
-    output.pop_back();
     setInput(input);
     Solver621D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

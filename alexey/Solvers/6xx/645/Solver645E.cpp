@@ -54,7 +54,7 @@ ac
     output.pop_back();
     setInput(input);
     Solver645E().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -68,5 +68,5 @@ aaba
     output.pop_back();
     setInput(input);
     Solver645E().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }

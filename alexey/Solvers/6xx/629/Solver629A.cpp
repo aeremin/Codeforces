@@ -43,10 +43,9 @@ C.C
 )";
     string output = R"(4
 )";
-    output.pop_back();
     setInput(input);
     Solver629A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -60,10 +59,9 @@ C..C
 )";
     string output = R"(9
 )";
-    output.pop_back();
     setInput(input);
     Solver629A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

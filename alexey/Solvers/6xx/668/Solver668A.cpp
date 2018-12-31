@@ -70,7 +70,7 @@ TEST_F(Solver668ATest, Example1) {
 )";
     setInput(input);
     Solver668A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 TEST_F(Solver668ATest, Example2) {
     string input = R"(3 3 2
@@ -83,5 +83,5 @@ TEST_F(Solver668ATest, Example2) {
 )";
     setInput(input);
     Solver668A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }

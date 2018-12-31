@@ -36,28 +36,25 @@ TEST_F(Solver665CTest, Example1) {
 )";
     string output = R"(acb
 )";
-    output.pop_back();
     setInput(input);
     Solver665C().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 TEST_F(Solver665CTest, Example2) {
     string input = R"(caaab
 )";
     string output = R"(cabab
 )";
-    output.pop_back();
     setInput(input);
     Solver665C().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 TEST_F(Solver665CTest, Example3) {
     string input = R"(zscoder
 )";
     string output = R"(zscoder
 )";
-    output.pop_back();
     setInput(input);
     Solver665C().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }

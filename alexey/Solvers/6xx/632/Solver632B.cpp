@@ -53,10 +53,9 @@ ABABA
 )";
     string output = R"(11
 )";
-    output.pop_back();
     setInput(input);
     Solver632B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -68,10 +67,9 @@ AAAAA
 )";
     string output = R"(15
 )";
-    output.pop_back();
     setInput(input);
     Solver632B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -83,10 +81,9 @@ B
 )";
     string output = R"(1
 )";
-    output.pop_back();
     setInput(input);
     Solver632B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

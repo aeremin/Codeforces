@@ -96,10 +96,9 @@ Note
 )";
     string output = R"(Kira is childish and he hates losing 
 )";
-    output.pop_back();
     setInput(input);
     Solver633C().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -116,10 +115,9 @@ hello
 )";
     string output = R"(HI there HeLLo 
 )";
-    output.pop_back();
     setInput(input);
     Solver633C().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F( Solver633CTest, MaxCase )

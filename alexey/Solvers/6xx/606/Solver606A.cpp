@@ -32,10 +32,9 @@ TEST_F(Solver606ATest, Example1)
 )";
     string output = R"(Yes
 )";
-    output.pop_back();
     setInput(input);
     Solver606A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -46,10 +45,9 @@ TEST_F(Solver606ATest, Example2)
 )";
     string output = R"(No
 )";
-    output.pop_back();
     setInput(input);
     Solver606A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -60,10 +58,9 @@ TEST_F(Solver606ATest, Example3)
 )";
     string output = R"(Yes
 )";
-    output.pop_back();
     setInput(input);
     Solver606A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

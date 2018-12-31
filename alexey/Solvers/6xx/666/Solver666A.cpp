@@ -67,7 +67,7 @@ ca
 )";
     setInput(input);
     Solver666A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver666ATest, Example2) {
@@ -77,6 +77,6 @@ TEST_F(Solver666ATest, Example2) {
 )";
     setInput(input);
     Solver666A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 

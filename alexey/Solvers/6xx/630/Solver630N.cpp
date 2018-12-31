@@ -31,7 +31,7 @@ TEST_F(Solver630NTest, Example1)
 -20.0000000000)";          
     setInput(input);
     Solver630N().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

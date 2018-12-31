@@ -49,10 +49,9 @@ TEST_F(Solver621CTest, Example1)
 )";
     string output = R"(4500.0000000000
 )";
-    output.pop_back();
     setInput(input);
     Solver621C().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -65,10 +64,9 @@ TEST_F(Solver621CTest, Example2)
 )";
     string output = R"(0.0000000000
 )";
-    output.pop_back();
     setInput(input);
     Solver621C().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

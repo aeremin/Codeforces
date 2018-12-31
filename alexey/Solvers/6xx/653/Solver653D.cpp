@@ -57,10 +57,9 @@ TEST_F(Solver653DTest, Example1)
 )";
     string output = R"(1.5000000
 )";
-    output.pop_back();
     setInput(input);
     Solver653D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -81,10 +80,9 @@ TEST_F(Solver653DTest, Example2)
 )";
     string output = R"(10.2222222
 )";
-    output.pop_back();
     setInput(input);
     Solver653D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver653DTest, Example3) {
@@ -94,9 +92,8 @@ TEST_F(Solver653DTest, Example3) {
 )";
     string output = R"(1.0000000
 )";
-    output.pop_back();
     setInput(input);
     Solver653D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 

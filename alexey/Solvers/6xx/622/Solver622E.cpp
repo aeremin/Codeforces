@@ -79,10 +79,9 @@ TEST_F(Solver622ETest, Example1)
 )";
     string output = R"(6
 )";
-    output.pop_back();
     setInput(input);
     Solver622E().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -93,10 +92,9 @@ TEST_F(Solver622ETest, Example2)
 )";
     string output = R"(1
 )";
-    output.pop_back();
     setInput(input);
     Solver622E().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

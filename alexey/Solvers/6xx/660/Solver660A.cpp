@@ -37,10 +37,9 @@ TEST_F(Solver660ATest, Example1)
     string output = R"(1
 2 7 1 28
 )";
-    output.pop_back();
     setInput(input);
     Solver660A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

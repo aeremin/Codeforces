@@ -105,7 +105,7 @@ YES
 )";
     setInput(input);
     Solver567E().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -121,7 +121,7 @@ CAN 81
 )";
     setInput(input);
     Solver567E().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -136,7 +136,7 @@ NO
 )";
     setInput(input);
     Solver567E().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

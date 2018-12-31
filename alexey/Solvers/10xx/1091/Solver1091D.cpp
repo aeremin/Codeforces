@@ -38,41 +38,35 @@ class Solver1091DTest : public ProblemTest {};
 
 
 TEST_F(Solver1091DTest, Example1) {
-    string input = R"(
+    setInput(R"(
 3
 
-)";
+)");
     string output = R"(9
 )";
-    output.pop_back();
-    setInput(input);
     Solver1091D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver1091DTest, Example2) {
-    string input = R"(
+    setInput(R"(
 4
 
-)";
+)");
     string output = R"(56
 )";
-    output.pop_back();
-    setInput(input);
     Solver1091D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver1091DTest, Example3) {
-    string input = R"(
+    setInput(R"(
 10
 
-)";
+)");
     string output = R"(30052700
 )";
-    output.pop_back();
-    setInput(input);
     Solver1091D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 

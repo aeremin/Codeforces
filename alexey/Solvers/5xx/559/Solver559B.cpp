@@ -64,7 +64,7 @@ abaa
     output.pop_back();
     setInput(input);
     Solver559B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -77,7 +77,7 @@ abab
     output.pop_back();
     setInput(input);
     Solver559B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -90,7 +90,7 @@ b
     output.pop_back();
     setInput(input);
     Solver559B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver559BTest, Example4) {
@@ -102,7 +102,7 @@ bbbaaa
     output.pop_back();
     setInput(input);
     Solver559B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver559BTest, MaxLen) {

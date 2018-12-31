@@ -85,10 +85,9 @@ TEST_F(Solver448ETest, Example1)
 )";
     string output = R"(1 2 3 6 
 )";
-    output.pop_back();
     setInput(input);
     Solver448E().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -98,10 +97,9 @@ TEST_F(Solver448ETest, Example2)
 )";
     string output = R"(1 1 2 1 2 4 
 )";
-    output.pop_back();
     setInput(input);
     Solver448E().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -111,10 +109,9 @@ TEST_F(Solver448ETest, Example3)
 )";
     string output = R"(1 1 1 2 1 1 5 1 1 2 1 5 1 2 5 10 
 )";
-    output.pop_back();
     setInput(input);
     Solver448E().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver448ETest, Example4) {

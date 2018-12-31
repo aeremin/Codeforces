@@ -31,10 +31,9 @@ TEST_F(Solver660BTest, Example1)
 )";
     string output = R"(5 1 6 2 7 3 4 
 )";
-    output.pop_back();
     setInput(input);
     Solver660B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -44,10 +43,9 @@ TEST_F(Solver660BTest, Example2)
 )";
     string output = R"(19 1 20 2 21 3 22 4 23 5 24 6 25 7 26 8 27 9 28 10 29 11 30 12 31 13 32 14 33 15 34 16 35 17 36 18 
 )";
-    output.pop_back();
     setInput(input);
     Solver660B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

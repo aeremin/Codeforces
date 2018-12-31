@@ -47,7 +47,7 @@ tell
     string output = R"(1)";
     setInput(input);
     Solver625B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -59,7 +59,7 @@ apple
     string output = R"(0)";
     setInput(input);
     Solver625B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -71,7 +71,7 @@ sir
     string output = R"(2)";
     setInput(input);
     Solver625B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver625BTest, Example4)
@@ -82,7 +82,7 @@ a
     string output = R"(7)";
     setInput(input);
     Solver625B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver625BTest, Example5)
@@ -93,7 +93,7 @@ aa
     string output = R"(3)";
     setInput(input);
     Solver625B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver625BTest, Example6)
@@ -104,5 +104,5 @@ aaaa
     string output = R"(0)";
     setInput(input);
     Solver625B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }

@@ -41,7 +41,7 @@ TEST_F(Solver598ATest, Example1)
 )";
     setInput(input);
     Solver598A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

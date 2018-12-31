@@ -49,10 +49,9 @@ abba
 )";
     string output = R"(4
 )";
-    output.pop_back();
     setInput(input);
     Solver676C().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver676CTest, Example2) {
@@ -61,9 +60,8 @@ aabaabaa
 )";
     string output = R"(5
 )";
-    output.pop_back();
     setInput(input);
     Solver676C().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 

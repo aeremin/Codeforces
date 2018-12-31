@@ -32,10 +32,9 @@ TEST_F(Solver645BTest, Example1)
 )";
     string output = R"(10
 )";
-    output.pop_back();
     setInput(input);
     Solver645B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -45,10 +44,9 @@ TEST_F(Solver645BTest, Example2)
 )";
     string output = R"(0
 )";
-    output.pop_back();
     setInput(input);
     Solver645B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver645BTest, Example3) {
@@ -56,10 +54,9 @@ TEST_F(Solver645BTest, Example3) {
 )";
     string output = R"(6
 )";
-    output.pop_back();
     setInput(input);
     Solver645B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver645BTest, Example4) {
@@ -67,10 +64,9 @@ TEST_F(Solver645BTest, Example4) {
 )";
     string output = R"(1
 )";
-    output.pop_back();
     setInput(input);
     Solver645B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver645BTest, Example5) {
@@ -78,8 +74,7 @@ TEST_F(Solver645BTest, Example5) {
 )";
     string output = R"(7
 )";
-    output.pop_back();
     setInput(input);
     Solver645B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }

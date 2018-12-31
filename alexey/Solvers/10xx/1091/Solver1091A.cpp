@@ -25,10 +25,9 @@ TEST_F(Solver1091ATest, Example1) {
 )";
     string output = R"(24
 )";
-    output.pop_back();
     setInput(input);
     Solver1091A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver1091ATest, Example2) {
@@ -38,9 +37,8 @@ TEST_F(Solver1091ATest, Example2) {
 )";
     string output = R"(9
 )";
-    output.pop_back();
     setInput(input);
     Solver1091A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 

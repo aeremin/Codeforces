@@ -66,10 +66,9 @@ RDLD
 )";
     string output = R"(()
 )";
-    output.pop_back();
     setInput(input);
     Solver670E().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver670ETest, Example2) {
@@ -79,10 +78,9 @@ RRDLD
 )";
     string output = R"((()(()))
 )";
-    output.pop_back();
     setInput(input);
     Solver670E().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver670ETest, Example3) {
@@ -92,9 +90,8 @@ LLLLLLDD
 )";
     string output = R"(()()
 )";
-    output.pop_back();
     setInput(input);
     Solver670E().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 

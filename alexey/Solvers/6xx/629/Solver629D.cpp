@@ -56,10 +56,9 @@ TEST_F(Solver629DTest, Example1)
 )";
     string output = R"(942477.796076938
 )";
-    output.pop_back();
     setInput(input);
     Solver629D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -73,10 +72,9 @@ TEST_F(Solver629DTest, Example2)
 )";
     string output = R"(3983.539484752
 )";
-    output.pop_back();
     setInput(input);
     Solver629D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver629DTest, SamePies)
@@ -89,8 +87,7 @@ TEST_F(Solver629DTest, SamePies)
 )";
     string output = R"(3.141592654
 )";
-    output.pop_back();
     setInput(input);
     Solver629D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }

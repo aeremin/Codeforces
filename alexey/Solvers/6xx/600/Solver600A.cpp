@@ -51,10 +51,9 @@ TEST_F(Solver600ATest, Example1)
     string output = R"("123,0"
 "aba,1a"
 )";
-    output.pop_back();
     setInput(input);
     Solver600A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -65,10 +64,9 @@ TEST_F(Solver600ATest, Example2)
     string output = R"("1"
 ",01,a0,"
 )";
-    output.pop_back();
     setInput(input);
     Solver600A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -79,10 +77,9 @@ TEST_F(Solver600ATest, Example3)
     string output = R"("1"
 -
 )";
-    output.pop_back();
     setInput(input);
     Solver600A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -93,10 +90,9 @@ TEST_F(Solver600ATest, Example4)
     string output = R"(-
 "a"
 )";
-    output.pop_back();
     setInput(input);
     Solver600A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

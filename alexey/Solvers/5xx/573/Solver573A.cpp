@@ -46,10 +46,9 @@ TEST_F(Solver573ATest, Example1)
 )";
     string output = R"(Yes
 )";
-    output.pop_back();
     setInput(input);
     Solver573A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -60,10 +59,9 @@ TEST_F(Solver573ATest, Example2)
 )";
     string output = R"(No
 )";
-    output.pop_back();
     setInput(input);
     Solver573A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

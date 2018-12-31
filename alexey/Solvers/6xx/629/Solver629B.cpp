@@ -55,10 +55,9 @@ M 24 128
 )";
     string output = R"(2
 )";
-    output.pop_back();
     setInput(input);
     Solver629B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -74,10 +73,9 @@ M 140 200
 )";
     string output = R"(4
 )";
-    output.pop_back();
     setInput(input);
     Solver629B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

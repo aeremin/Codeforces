@@ -52,10 +52,9 @@ TEST_F(Solver659DTest, Example1)
 )";
     string output = R"(1
 )";
-    output.pop_back();
     setInput(input);
     Solver659D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -82,10 +81,9 @@ TEST_F(Solver659DTest, Example2)
 )";
     string output = R"(6
 )";
-    output.pop_back();
     setInput(input);
     Solver659D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

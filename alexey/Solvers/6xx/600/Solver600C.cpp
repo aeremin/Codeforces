@@ -60,10 +60,9 @@ TEST_F(Solver600CTest, Example1)
 )";
     string output = R"(abba
 )";
-    output.pop_back();
     setInput(input);
     Solver600C().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -73,10 +72,9 @@ TEST_F(Solver600CTest, Example2)
 )";
     string output = R"(abcba
 )";
-    output.pop_back();
     setInput(input);
     Solver600C().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

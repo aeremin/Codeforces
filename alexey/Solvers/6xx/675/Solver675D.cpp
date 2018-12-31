@@ -34,10 +34,9 @@ TEST_F(Solver675DTest, Example1) {
 )";
     string output = R"(1 2 
 )";
-    output.pop_back();
     setInput(input);
     Solver675D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver675DTest, Example2) {
@@ -46,9 +45,8 @@ TEST_F(Solver675DTest, Example2) {
 )";
     string output = R"(4 2 2 4 
 )";
-    output.pop_back();
     setInput(input);
     Solver675D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 

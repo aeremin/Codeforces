@@ -39,10 +39,9 @@ aa
 )";
     string output = R"(1
 )";
-    output.pop_back();
     setInput(input);
     Solver672B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver672BTest, Example2) {
@@ -51,10 +50,9 @@ koko
 )";
     string output = R"(2
 )";
-    output.pop_back();
     setInput(input);
     Solver672B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver672BTest, Example3) {
@@ -63,9 +61,8 @@ murat
 )";
     string output = R"(0
 )";
-    output.pop_back();
     setInput(input);
     Solver672B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 

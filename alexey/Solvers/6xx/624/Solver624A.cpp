@@ -23,7 +23,7 @@ TEST_F(Solver624ATest, Example1)
     string output = R"(1.000000000000000)";
     setInput(input);
     Solver624A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -33,7 +33,7 @@ TEST_F(Solver624ATest, Example2)
     string output = R"(2.666666666666667)";
     setInput(input);
     Solver624A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

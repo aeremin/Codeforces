@@ -46,8 +46,7 @@ TEST_F(Solver665BTest, Example1) {
 )";
     string output = R"(14
 )";
-    output.pop_back();
     setInput(input);
     Solver665B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }

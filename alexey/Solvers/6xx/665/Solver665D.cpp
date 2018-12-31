@@ -72,10 +72,9 @@ TEST_F(Solver665DTest, Example1) {
     string output = R"(2
 3 2
 )";
-    output.pop_back();
     setInput(input);
     Solver665D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 TEST_F(Solver665DTest, Example2) {
     string input = R"(2
@@ -84,10 +83,9 @@ TEST_F(Solver665DTest, Example2) {
     string output = R"(1
 2
 )";
-    output.pop_back();
     setInput(input);
     Solver665D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 TEST_F(Solver665DTest, Example3) {
     string input = R"(3
@@ -96,10 +94,9 @@ TEST_F(Solver665DTest, Example3) {
     string output = R"(3
 1 1 2
 )";
-    output.pop_back();
     setInput(input);
     Solver665D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 TEST_F(Solver665DTest, Example4) {
     string input = R"(2
@@ -108,8 +105,7 @@ TEST_F(Solver665DTest, Example4) {
     string output = R"(2
 14 83
 )";
-    output.pop_back();
     setInput(input);
     Solver665D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }

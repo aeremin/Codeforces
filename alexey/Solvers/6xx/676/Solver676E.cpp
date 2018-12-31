@@ -87,10 +87,9 @@ TEST_F(Solver676ETest, Example1) {
 )";
     string output = R"(Yes
 )";
-    output.pop_back();
     setInput(input);
     Solver676E().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver676ETest, Example2) {
@@ -101,10 +100,9 @@ TEST_F(Solver676ETest, Example2) {
 )";
     string output = R"(Yes
 )";
-    output.pop_back();
     setInput(input);
     Solver676E().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver676ETest, Example3) {
@@ -117,9 +115,8 @@ TEST_F(Solver676ETest, Example3) {
 )";
     string output = R"(No
 )";
-    output.pop_back();
     setInput(input);
     Solver676E().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 

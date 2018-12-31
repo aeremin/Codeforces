@@ -79,7 +79,7 @@ TEST_F(Solver622CTest, Example1)
 )";
     setInput(input);
     Solver622C().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

@@ -84,7 +84,7 @@ TEST_F(Solver645DTest, Example1)
     output.pop_back();
     setInput(input);
     Solver645D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -99,7 +99,7 @@ TEST_F(Solver645DTest, Example2)
     output.pop_back();
     setInput(input);
     Solver645D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver645DTest, Example3) {
@@ -111,7 +111,7 @@ TEST_F(Solver645DTest, Example3) {
     output.pop_back();
     setInput(input);
     Solver645D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver645DTest, Example4) {
@@ -129,5 +129,5 @@ TEST_F(Solver645DTest, Example4) {
     output.pop_back();
     setInput(input);
     Solver645D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }

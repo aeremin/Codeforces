@@ -48,10 +48,9 @@ TEST_F(Solver670DTest, Example1) {
 )";
     string output = R"(2000000000
 )";
-    output.pop_back();
     setInput(input);
     Solver670D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver670DTest, Example2) {
@@ -61,10 +60,9 @@ TEST_F(Solver670DTest, Example2) {
 )";
     string output = R"(0
 )";
-    output.pop_back();
     setInput(input);
     Solver670D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver670DTest, Example3) {
@@ -74,10 +72,9 @@ TEST_F(Solver670DTest, Example3) {
 )";
     string output = R"(4
 )";
-    output.pop_back();
     setInput(input);
     Solver670D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver670DTest, Example4) {
@@ -87,9 +84,8 @@ TEST_F(Solver670DTest, Example4) {
 )";
     string output = R"(3
 )";
-    output.pop_back();
     setInput(input);
     Solver670D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 

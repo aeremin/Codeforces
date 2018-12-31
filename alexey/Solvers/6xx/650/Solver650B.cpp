@@ -57,7 +57,7 @@ wwhw
     output.pop_back();
     setInput(input);
     Solver650B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -71,7 +71,7 @@ hhwhh
     output.pop_back();
     setInput(input);
     Solver650B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -85,7 +85,7 @@ hhwhh
     output.pop_back();
     setInput(input);
     Solver650B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -99,7 +99,7 @@ whw
     output.pop_back();
     setInput(input);
     Solver650B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver650BTest, CanSeeJustOne) {
@@ -111,7 +111,7 @@ hhh
     output.pop_back();
     setInput(input);
     Solver650B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver650BTest, CanSeeEverything) {
@@ -123,7 +123,7 @@ hhhhhhhhhh
     output.pop_back();
     setInput(input);
     Solver650B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

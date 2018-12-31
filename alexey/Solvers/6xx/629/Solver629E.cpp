@@ -156,7 +156,7 @@ TEST_F(Solver629ETest, Example1)
 )";
     setInput(input);
     Solver629E().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -175,7 +175,7 @@ TEST_F(Solver629ETest, Example2)
 )";
     setInput(input);
     Solver629E().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -191,7 +191,7 @@ TEST_F(Solver629ETest, Example3)
 )";
     setInput(input);
     Solver629E().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

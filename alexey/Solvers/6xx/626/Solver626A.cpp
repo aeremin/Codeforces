@@ -43,10 +43,9 @@ URLLDR
 )";
     string output = R"(2
 )";
-    output.pop_back();
     setInput(input);
     Solver626A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -57,10 +56,9 @@ DLUU
 )";
     string output = R"(0
 )";
-    output.pop_back();
     setInput(input);
     Solver626A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -71,10 +69,9 @@ RLRLRLR
 )";
     string output = R"(12
 )";
-    output.pop_back();
     setInput(input);
     Solver626A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

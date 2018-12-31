@@ -28,7 +28,7 @@ TEST_F(Solver559ATest, Example1)
     output.pop_back();
     setInput(input);
     Solver559A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -41,7 +41,7 @@ TEST_F(Solver559ATest, Example2)
     output.pop_back();
     setInput(input);
     Solver559A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

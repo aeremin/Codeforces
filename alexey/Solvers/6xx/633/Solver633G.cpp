@@ -138,10 +138,9 @@ TEST_F(Solver633GTest, Example1)
 1
 1
 )";
-    output.pop_back();
     setInput(input);
     Solver633G().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -160,10 +159,9 @@ TEST_F(Solver633GTest, Example2)
 )";
     string output = R"(2
 )";
-    output.pop_back();
     setInput(input);
     Solver633G().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

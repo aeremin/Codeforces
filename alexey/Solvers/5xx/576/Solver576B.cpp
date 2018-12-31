@@ -79,7 +79,7 @@ TEST_F(Solver576BTest, Example1)
 )";
     setInput(input);
     Solver576B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -90,10 +90,9 @@ TEST_F(Solver576BTest, Example2)
 )";
     string output = R"(NO
 )";
-    output.pop_back();
     setInput(input);
     Solver576B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver576BTest, Example3)
@@ -106,7 +105,7 @@ TEST_F(Solver576BTest, Example3)
 )";
     setInput(input);
     Solver576B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver576BTest, Example4)
@@ -119,6 +118,6 @@ TEST_F(Solver576BTest, Example4)
 )";
     setInput(input);
     Solver576B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 

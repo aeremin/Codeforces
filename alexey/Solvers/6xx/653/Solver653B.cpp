@@ -45,7 +45,7 @@ ff d
     output.pop_back();
     setInput(input);
     Solver653B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -66,7 +66,7 @@ ff c
     output.pop_back();
     setInput(input);
     Solver653B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -81,7 +81,7 @@ ba a
     output.pop_back();
     setInput(input);
     Solver653B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

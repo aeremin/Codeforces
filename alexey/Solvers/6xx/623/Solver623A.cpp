@@ -76,10 +76,9 @@ TEST_F(Solver623ATest, Example1)
     string output = R"(Yes
 bb
 )";
-    output.pop_back();
     setInput(input);
     Solver623A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -92,10 +91,9 @@ TEST_F(Solver623ATest, Example2)
 )";
     string output = R"(No
 )";
-    output.pop_back();
     setInput(input);
     Solver623A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -109,5 +107,5 @@ TEST_F(Solver623ATest, Example3)
 abc)";
     setInput(input);
     Solver623A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }

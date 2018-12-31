@@ -87,10 +87,9 @@ TEST_F(Solver653ETest, Example1)
 )";
     string output = R"(possible
 )";
-    output.pop_back();
     setInput(input);
     Solver653E().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -105,10 +104,9 @@ TEST_F(Solver653ETest, Example2)
 )";
     string output = R"(impossible
 )";
-    output.pop_back();
     setInput(input);
     Solver653E().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver653ETest, Example3) {
@@ -120,10 +118,9 @@ TEST_F(Solver653ETest, Example3) {
 )";
     string output = R"(impossible
 )";
-    output.pop_back();
     setInput(input);
     Solver653E().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver653ETest, Example4) {
@@ -132,10 +129,9 @@ TEST_F(Solver653ETest, Example4) {
 )";
     string output = R"(impossible
 )";
-    output.pop_back();
     setInput(input);
     Solver653E().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver653ETest, Example5) {
@@ -146,8 +142,7 @@ TEST_F(Solver653ETest, Example5) {
 )";
     string output = R"(impossible
 )";
-    output.pop_back();
     setInput(input);
     Solver653E().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }

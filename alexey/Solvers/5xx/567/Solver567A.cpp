@@ -41,7 +41,7 @@ TEST_F(Solver567ATest, Example1)
 )";
     setInput(input);
     Solver567A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -55,7 +55,7 @@ TEST_F(Solver567ATest, Example2)
 )";
     setInput(input);
     Solver567A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

@@ -38,7 +38,7 @@ er
     output.pop_back();
     setInput(input);
     Solver632C().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -56,7 +56,7 @@ xxaaa
     output.pop_back();
     setInput(input);
     Solver632C().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -72,7 +72,7 @@ cba
     output.pop_back();
     setInput(input);
     Solver632C().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

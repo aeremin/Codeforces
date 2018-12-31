@@ -38,10 +38,9 @@ TEST_F(Solver608BTest, Example1)
 )";
     string output = R"(3
 )";
-    output.pop_back();
     setInput(input);
     Solver608B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -52,10 +51,9 @@ TEST_F(Solver608BTest, Example2)
 )";
     string output = R"(2
 )";
-    output.pop_back();
     setInput(input);
     Solver608B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

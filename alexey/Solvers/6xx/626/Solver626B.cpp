@@ -66,10 +66,9 @@ RB
 )";
     string output = R"(G
 )";
-    output.pop_back();
     setInput(input);
     Solver626B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -80,10 +79,9 @@ GRG
 )";
     string output = R"(BR
 )";
-    output.pop_back();
     setInput(input);
     Solver626B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -94,10 +92,9 @@ BBBBB
 )";
     string output = R"(B
 )";
-    output.pop_back();
     setInput(input);
     Solver626B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -108,10 +105,9 @@ RGB
 )";
     string output = R"(BGR
 )";
-    output.pop_back();
     setInput(input);
     Solver626B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver626BTest, Example5)
@@ -121,9 +117,8 @@ RGRG
 )";
     string output = R"(BGR
 )";
-    output.pop_back();
     setInput(input);
     Solver626B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 

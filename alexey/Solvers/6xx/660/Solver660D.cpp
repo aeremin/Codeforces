@@ -44,10 +44,9 @@ TEST_F(Solver660DTest, Example1)
 )";
     string output = R"(1
 )";
-    output.pop_back();
     setInput(input);
     Solver660D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

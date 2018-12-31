@@ -53,10 +53,9 @@ TEST_F( Solver644BTest, Example1 ) {
 )";
     string output = R"(11 19 -1 21 22
 )";
-    output.pop_back();
     setInput( input );
     Solver644B().run();
-    EXPECT_EQ( output, getOutput() );
+    EXPECT_EQ_FUZZY( output, getOutput() );
 }
 
 
@@ -69,10 +68,9 @@ TEST_F( Solver644BTest, Example2 ) {
 )";
     string output = R"(10 18 27 -1
 )";
-    output.pop_back();
     setInput( input );
     Solver644B().run();
-    EXPECT_EQ( output, getOutput() );
+    EXPECT_EQ_FUZZY( output, getOutput() );
 }
 
 TEST_F(Solver644BTest, Example3) {
@@ -85,7 +83,7 @@ TEST_F(Solver644BTest, Example3) {
 	string output = R"(5 8 -1 9)";
 	setInput(input);
 	Solver644B().run();
-	EXPECT_EQ(output, getOutput());
+	EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F( Solver644BTest, Example4 ) {
@@ -98,7 +96,7 @@ TEST_F( Solver644BTest, Example4 ) {
     string output = R"(5 10 14 24)";
     setInput( input );
     Solver644B().run();
-    EXPECT_EQ( output, getOutput() );
+    EXPECT_EQ_FUZZY( output, getOutput() );
 }
 
 TEST_F( Solver644BTest, InversedOutOrder ) {
@@ -111,5 +109,5 @@ TEST_F( Solver644BTest, InversedOutOrder ) {
     string output = R"(5 10 14 24)";
     setInput( input );
     Solver644B().run();
-    EXPECT_EQ( output, getOutput() );
+    EXPECT_EQ_FUZZY( output, getOutput() );
 }

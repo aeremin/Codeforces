@@ -43,10 +43,9 @@ TEST_F(Solver659CTest, Example1)
     string output = R"(2
 2 5
 )";
-    output.pop_back();
     setInput(input);
     Solver659C().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -58,10 +57,9 @@ TEST_F(Solver659CTest, Example2)
     string output = R"(4
 1 2 3 5
 )";
-    output.pop_back();
     setInput(input);
     Solver659C().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

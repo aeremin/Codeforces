@@ -49,10 +49,9 @@ halfplus
 )";
     string output = R"(15
 )";
-    output.pop_back();
     setInput(input);
     Solver632A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -65,10 +64,9 @@ halfplus
 )";
     string output = R"(55
 )";
-    output.pop_back();
     setInput(input);
     Solver632A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

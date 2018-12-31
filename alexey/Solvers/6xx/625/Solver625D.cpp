@@ -137,7 +137,7 @@ TEST_F(Solver625DTest, Example1)
     string output = R"(2)";
     setInput(input);
     Solver625D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -147,7 +147,7 @@ TEST_F(Solver625DTest, Example2)
     string output = R"(10)";
     setInput(input);
     Solver625D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -157,7 +157,7 @@ TEST_F(Solver625DTest, Example3)
     string output = R"(0)";
     setInput(input);
     Solver625D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -167,7 +167,7 @@ TEST_F(Solver625DTest, Example4)
     string output = R"(30)";
     setInput(input);
     Solver625D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver625DTest, Example5)
@@ -176,7 +176,7 @@ TEST_F(Solver625DTest, Example5)
     string output = R"(3920)";
     setInput(input);
     Solver625D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver625DTest, Example6)
@@ -185,7 +185,7 @@ TEST_F(Solver625DTest, Example6)
     string output = R"(0)";
     setInput(input);
     Solver625D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver625DTest, Example7)
@@ -194,7 +194,7 @@ TEST_F(Solver625DTest, Example7)
     string output = R"(950)";
     setInput(input);
     Solver625D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver625DTest, Example8)
@@ -203,7 +203,7 @@ TEST_F(Solver625DTest, Example8)
     string output = R"(9901)";
     setInput(input);
     Solver625D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 namespace

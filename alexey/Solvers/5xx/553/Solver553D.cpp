@@ -107,10 +107,9 @@ TEST_F(Solver553DTest, Example1)
     string output = R"(3
 1 4 5
 )";
-    output.pop_back();
     setInput(input);
     Solver553D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -130,9 +129,8 @@ TEST_F(Solver553DTest, Example2)
     string output = R"(8
 1 3 4 5 6 7 8 10
 )";
-    output.pop_back();
     setInput(input);
     Solver553D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 

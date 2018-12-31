@@ -96,7 +96,7 @@ TEST_F(Solver377ETest, Example1)
     output.pop_back();
     setInput(input);
     Solver377E().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -112,7 +112,7 @@ TEST_F(Solver377ETest, Example2)
     output.pop_back();
     setInput(input);
     Solver377E().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -128,7 +128,7 @@ TEST_F(Solver377ETest, Example3)
     output.pop_back();
     setInput(input);
     Solver377E().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -142,7 +142,7 @@ TEST_F(Solver377ETest, Example4)
     output.pop_back();
     setInput(input);
     Solver377E().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -157,7 +157,7 @@ TEST_F(Solver377ETest, Example5) {
     output.pop_back();
     setInput(input);
     Solver377E().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver377ETest, Example6) {
@@ -171,5 +171,5 @@ TEST_F(Solver377ETest, Example6) {
     output.pop_back();
     setInput(input);
     Solver377E().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }

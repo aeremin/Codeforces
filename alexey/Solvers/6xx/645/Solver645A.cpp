@@ -39,10 +39,9 @@ AC
 )";
     string output = R"(YES
 )";
-    output.pop_back();
     setInput(input);
     Solver645A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -55,10 +54,9 @@ BX
 )";
     string output = R"(NO
 )";
-    output.pop_back();
     setInput(input);
     Solver645A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

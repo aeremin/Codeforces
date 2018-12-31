@@ -45,10 +45,9 @@ TEST_F(Solver660FTest, Example1)
 )";
     string output = R"(16
 )";
-    output.pop_back();
     setInput(input);
     Solver660F().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -59,10 +58,9 @@ TEST_F(Solver660FTest, Example2)
 )";
     string output = R"(15003
 )";
-    output.pop_back();
     setInput(input);
     Solver660F().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver660FTest, Example3) {
@@ -71,10 +69,9 @@ TEST_F(Solver660FTest, Example3) {
 )";
     string output = R"(0
 )";
-    output.pop_back();
     setInput(input);
     Solver660F().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

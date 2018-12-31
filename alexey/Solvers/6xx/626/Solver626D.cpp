@@ -39,10 +39,9 @@ TEST_F(Solver626DTest, Example1)
 )";
     string output = R"(0.0000000000
 )";
-    output.pop_back();
     setInput(input);
     Solver626D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -53,10 +52,9 @@ TEST_F(Solver626DTest, Example2)
 )";
     string output = R"(0.0740740741
 )";
-    output.pop_back();
     setInput(input);
     Solver626D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

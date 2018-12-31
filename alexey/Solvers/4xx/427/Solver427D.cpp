@@ -48,7 +48,7 @@ pepperoni
     output.pop_back();
     setInput(input);
     Solver427D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -62,7 +62,7 @@ driver
     output.pop_back();
     setInput(input);
     Solver427D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -76,7 +76,7 @@ roy
     output.pop_back();
     setInput(input);
     Solver427D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -90,7 +90,7 @@ teeptes
     output.pop_back();
     setInput(input);
     Solver427D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

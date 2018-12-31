@@ -51,7 +51,7 @@ TEST_F(Solver650ATest, Example1)
     output.pop_back();
     setInput(input);
     Solver650A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -70,7 +70,7 @@ TEST_F(Solver650ATest, Example2)
     output.pop_back();
     setInput(input);
     Solver650A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

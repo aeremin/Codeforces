@@ -87,9 +87,8 @@ TEST_F(Solver666BTest, Example1) {
 )";
     string output = R"(2 1 8 7
 )";
-    output.pop_back();
     setInput(input);
     Solver666B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 

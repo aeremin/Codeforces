@@ -77,7 +77,7 @@ TEST_F(Solver546ETest, Example1)
 )";
     setInput(input);
     Solver546E().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -90,7 +90,7 @@ TEST_F(Solver546ETest, Example2)
     string output = "NO";
     setInput(input);
     Solver546E().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

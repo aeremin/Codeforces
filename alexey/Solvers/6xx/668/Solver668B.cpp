@@ -132,10 +132,9 @@ TEST_F(Solver668BTest, Example1) {
 )";
     string output = R"(4 3 6 5 2 1 
 )";
-    output.pop_back();
     setInput(input);
     Solver668B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -147,10 +146,9 @@ TEST_F(Solver668BTest, Example2) {
 )";
     string output = R"(1 2 
 )";
-    output.pop_back();
     setInput(input);
     Solver668B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver668BTest, Example3) {
@@ -160,8 +158,7 @@ TEST_F(Solver668BTest, Example3) {
 )";
     string output = R"(1 4 3 2 
 )";
-    output.pop_back();
     setInput(input);
     Solver668B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }

@@ -100,10 +100,9 @@ TEST_F(Solver670FTest, Example1) {
 )";
     string output = R"(30021
 )";
-    output.pop_back();
     setInput(input);
     Solver670F().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver670FTest, Example2) {
@@ -112,9 +111,8 @@ TEST_F(Solver670FTest, Example2) {
 )";
     string output = R"(3036366999
 )";
-    output.pop_back();
     setInput(input);
     Solver670F().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 

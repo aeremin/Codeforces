@@ -32,10 +32,9 @@ TEST_F(Solver651BTest, Example1)
 )";
     string output = R"(4
 )";
-    output.pop_back();
     setInput(input);
     Solver651B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -46,10 +45,9 @@ TEST_F(Solver651BTest, Example2)
 )";
     string output = R"(2
 )";
-    output.pop_back();
     setInput(input);
     Solver651B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

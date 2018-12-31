@@ -57,10 +57,9 @@ tomat
 )";
     string output = R"(automaton
 )";
-    output.pop_back();
     setInput(input);
     Solver448B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -71,10 +70,9 @@ arary
 )";
     string output = R"(array
 )";
-    output.pop_back();
     setInput(input);
     Solver448B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -85,10 +83,9 @@ hot
 )";
     string output = R"(both
 )";
-    output.pop_back();
     setInput(input);
     Solver448B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -99,10 +96,9 @@ tree
 )";
     string output = R"(need tree
 )";
-    output.pop_back();
     setInput(input);
     Solver448B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver448BTest, Example5) {
@@ -111,10 +107,9 @@ aaaaaa
 )";
     string output = R"(need tree
 )";
-    output.pop_back();
     setInput(input);
     Solver448B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

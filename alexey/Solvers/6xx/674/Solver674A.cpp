@@ -52,10 +52,9 @@ TEST_F(Solver674ATest, Example1) {
 )";
     string output = R"(7 3 0 0
 )";
-    output.pop_back();
     setInput(input);
     Solver674A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver674ATest, Example2) {
@@ -64,9 +63,8 @@ TEST_F(Solver674ATest, Example2) {
 )";
     string output = R"(6 0 0
 )";
-    output.pop_back();
     setInput(input);
     Solver674A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 

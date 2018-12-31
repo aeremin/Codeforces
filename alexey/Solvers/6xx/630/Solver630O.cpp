@@ -49,7 +49,7 @@ TEST_F(Solver630OTest, Example1)
 )";
     setInput(input);
     Solver630O().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

@@ -42,10 +42,9 @@ TEST_F(Solver630PTest, Example1)
     string input = R"(7 10
 )";
     string output = R"(108.395919545675)";
-    output.pop_back();
     setInput(input);
     Solver630P().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

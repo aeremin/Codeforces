@@ -61,10 +61,9 @@ TEST_F(Solver671ATest, Example1) {
 )";
     string output = R"(11.084259940083
 )";
-    output.pop_back();
     setInput(input);
     Solver671A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver671ATest, Example2) {
@@ -78,10 +77,9 @@ TEST_F(Solver671ATest, Example2) {
 )";
     string output = R"(33.121375178000
 )";
-    output.pop_back();
     setInput(input);
     Solver671A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver671ATest, Example3) {
@@ -91,8 +89,7 @@ TEST_F(Solver671ATest, Example3) {
 )";
     string output = R"(5.000000000000
 )";
-    output.pop_back();
     setInput(input);
     Solver671A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }

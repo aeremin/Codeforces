@@ -110,10 +110,9 @@ TEST_F(Solver676DTest, Example2) {
 )";
     string output = R"(4
 )";
-    output.pop_back();
     setInput(input);
     Solver676D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver676DTest, Example1) {
@@ -125,8 +124,7 @@ TEST_F(Solver676DTest, Example1) {
 )";
     string output = R"(-1
 )";
-    output.pop_back();
     setInput(input);
     Solver676D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }

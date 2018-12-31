@@ -50,7 +50,7 @@ TEST_F(Solver567BTest, Example1)
     string output = R"(3)";
     setInput(input);
     Solver567B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -63,7 +63,7 @@ TEST_F(Solver567BTest, Example2)
     string output = R"(2)";
     setInput(input);
     Solver567B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -76,7 +76,7 @@ TEST_F(Solver567BTest, Example3)
     string output = R"(1)";
     setInput(input);
     Solver567B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

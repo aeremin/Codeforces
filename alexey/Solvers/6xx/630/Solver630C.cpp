@@ -25,7 +25,7 @@ TEST_F(Solver630CTest, Example1)
     string output = R"(6)";
     setInput(input);
     Solver630C().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

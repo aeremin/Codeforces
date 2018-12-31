@@ -42,7 +42,7 @@ TEST_F(Solver633BTest, Example1)
 5 6 7 8 9 )";
     setInput(input);
     Solver633B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -54,7 +54,7 @@ TEST_F(Solver633BTest, Example2)
 )";
     setInput(input);
     Solver633B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

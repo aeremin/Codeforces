@@ -80,7 +80,7 @@ p 2
     output.pop_back();
     setInput(input);
     Solver377C().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -99,7 +99,7 @@ p 2
     output.pop_back();
     setInput(input);
     Solver377C().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -118,7 +118,7 @@ b 1
     output.pop_back();
     setInput(input);
     Solver377C().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

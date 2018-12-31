@@ -24,10 +24,9 @@ TEST_F(Solver651ATest, Example1)
 )";
     string output = R"(6
 )";
-    output.pop_back();
     setInput(input);
     Solver651A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -37,10 +36,9 @@ TEST_F(Solver651ATest, Example2)
 )";
     string output = R"(5
 )";
-    output.pop_back();
     setInput(input);
     Solver651A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

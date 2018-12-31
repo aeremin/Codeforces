@@ -38,10 +38,9 @@ TEST_F(Solver319CTest, Example1)
 )";
     string output = R"(25
 )";
-    output.pop_back();
     setInput(input);
     Solver319C().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -53,10 +52,9 @@ TEST_F(Solver319CTest, Example2)
 )";
     string output = R"(138
 )";
-    output.pop_back();
     setInput(input);
     Solver319C().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

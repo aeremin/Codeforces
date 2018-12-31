@@ -110,7 +110,7 @@ TEST_F(Solver659FTest, Example1)
 )";
     setInput(input);
     Solver659F().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -130,7 +130,7 @@ TEST_F(Solver659FTest, Example2)
 )";
     setInput(input);
     Solver659F().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -144,7 +144,7 @@ TEST_F(Solver659FTest, Example3)
 )";
     setInput(input);
     Solver659F().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

@@ -47,10 +47,9 @@ TEST_F(Solver576CTest, Example1)
 )";
     string output = R"(1 3 4 2 5 
 )";
-    output.pop_back();
     setInput(input);
     Solver576C().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

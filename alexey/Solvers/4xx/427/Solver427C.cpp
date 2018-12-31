@@ -101,10 +101,9 @@ TEST_F(Solver427CTest, Example1)
 )";
     string output = R"(3 1
 )";
-    output.pop_back();
     setInput(input);
     Solver427C().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -122,10 +121,9 @@ TEST_F(Solver427CTest, Example2)
 )";
     string output = R"(8 2
 )";
-    output.pop_back();
     setInput(input);
     Solver427C().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -149,10 +147,9 @@ TEST_F(Solver427CTest, Example3)
 )";
     string output = R"(15 6
 )";
-    output.pop_back();
     setInput(input);
     Solver427C().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -166,9 +163,8 @@ TEST_F(Solver427CTest, Example4)
 )";
     string output = R"(7 1
 )";
-    output.pop_back();
     setInput(input);
     Solver427C().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 

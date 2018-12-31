@@ -24,10 +24,9 @@ TEST_F(Solver630BTest, Example1)
 )";
     string output = R"(1011.060722
 )";
-    output.pop_back();
     setInput(input);
     Solver630B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

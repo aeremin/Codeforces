@@ -103,7 +103,7 @@ TEST_F(Solver623CTest, Example1)
     string output = R"(0)";
     setInput(input);
     Solver623C().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -116,7 +116,7 @@ TEST_F(Solver623CTest, Example2)
     string output = R"(2)";
     setInput(input);
     Solver623C().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

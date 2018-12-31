@@ -27,10 +27,9 @@ TEST_F(Solver675ATest, Example1) {
 )";
     string output = R"(YES
 )";
-    output.pop_back();
     setInput(input);
     Solver675A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver675ATest, Example2) {
@@ -38,10 +37,9 @@ TEST_F(Solver675ATest, Example2) {
 )";
     string output = R"(YES
 )";
-    output.pop_back();
     setInput(input);
     Solver675A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver675ATest, Example3) {
@@ -49,10 +47,9 @@ TEST_F(Solver675ATest, Example3) {
 )";
     string output = R"(NO
 )";
-    output.pop_back();
     setInput(input);
     Solver675A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver675ATest, Example4) {
@@ -60,9 +57,8 @@ TEST_F(Solver675ATest, Example4) {
 )";
     string output = R"(NO
 )";
-    output.pop_back();
     setInput(input);
     Solver675A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 

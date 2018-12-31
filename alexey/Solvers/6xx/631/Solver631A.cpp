@@ -35,7 +35,7 @@ TEST_F(Solver631ATest, Example1)
     string output = R"(22)";
     setInput(input);
     Solver631A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -48,7 +48,7 @@ TEST_F(Solver631ATest, Example2)
     string output = R"(46)";
     setInput(input);
     Solver631A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

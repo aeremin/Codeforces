@@ -56,10 +56,9 @@ TEST_F(Solver622FTest, Example1)
 )";
     string output = R"(10
 )";
-    output.pop_back();
     setInput(input);
     Solver622F().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -69,10 +68,9 @@ TEST_F(Solver622FTest, Example2)
 )";
     string output = R"(30
 )";
-    output.pop_back();
     setInput(input);
     Solver622F().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -82,10 +80,9 @@ TEST_F(Solver622FTest, Example3)
 )";
     string output = R"(100
 )";
-    output.pop_back();
     setInput(input);
     Solver622F().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -95,10 +92,9 @@ TEST_F(Solver622FTest, Example4)
 )";
     string output = R"(4
 )";
-    output.pop_back();
     setInput(input);
     Solver622F().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

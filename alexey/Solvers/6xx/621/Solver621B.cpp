@@ -44,10 +44,9 @@ TEST_F(Solver621BTest, Example1)
 )";
     string output = R"(6
 )";
-    output.pop_back();
     setInput(input);
     Solver621B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -60,10 +59,9 @@ TEST_F(Solver621BTest, Example2)
 )";
     string output = R"(0
 )";
-    output.pop_back();
     setInput(input);
     Solver621B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

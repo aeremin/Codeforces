@@ -54,7 +54,7 @@ Andreev Semenov
 )";
     setInput(input);
     Solver659B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -72,7 +72,7 @@ Andreev Semenov
 )";
     setInput(input);
     Solver659B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

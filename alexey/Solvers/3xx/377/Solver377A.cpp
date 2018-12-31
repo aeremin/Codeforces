@@ -75,7 +75,7 @@ X.#.
     output.pop_back();
     setInput(input);
     Solver377A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -97,7 +97,7 @@ X#.#
     output.pop_back();
     setInput(input);
     Solver377A().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

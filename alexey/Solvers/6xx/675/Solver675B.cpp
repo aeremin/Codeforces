@@ -26,10 +26,9 @@ TEST_F(Solver675BTest, Example1) {
 )";
     string output = R"(2
 )";
-    output.pop_back();
     setInput(input);
     Solver675B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver675BTest, Example2) {
@@ -37,9 +36,8 @@ TEST_F(Solver675BTest, Example2) {
 )";
     string output = R"(6
 )";
-    output.pop_back();
     setInput(input);
     Solver675B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 

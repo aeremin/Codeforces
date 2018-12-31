@@ -72,7 +72,7 @@ TEST_F(Solver377DTest, Example1)
 1 3 4 )";
     setInput(input);
     Solver377D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -90,7 +90,7 @@ TEST_F(Solver377DTest, Example2)
 1 2 3 5 )";
     setInput(input);
     Solver377D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

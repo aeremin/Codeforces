@@ -51,10 +51,9 @@ TEST_F(Solver604BTest, Example1)
 )";
     string output = R"(7
 )";
-    output.pop_back();
     setInput(input);
     Solver604B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -65,10 +64,9 @@ TEST_F(Solver604BTest, Example2)
 )";
     string output = R"(9
 )";
-    output.pop_back();
     setInput(input);
     Solver604B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -79,10 +77,9 @@ TEST_F(Solver604BTest, Example3)
 )";
     string output = R"(8
 )";
-    output.pop_back();
     setInput(input);
     Solver604B().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 

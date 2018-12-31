@@ -74,7 +74,7 @@ TEST_F(Solver631DTest, Example1) {
     string output = R"(1)";
     setInput(input);
     Solver631D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -86,7 +86,7 @@ TEST_F(Solver631DTest, Example2) {
     string output = R"(6)";
     setInput(input);
     Solver631D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 
@@ -98,7 +98,7 @@ TEST_F(Solver631DTest, Example3) {
     string output = R"(0)";
     setInput(input);
     Solver631D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver631DTest, PackingWorks) {
@@ -109,7 +109,7 @@ TEST_F(Solver631DTest, PackingWorks) {
     string output = R"(6)";
     setInput(input);
     Solver631D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver631DTest, TwoBlockPattern) {
@@ -120,7 +120,7 @@ TEST_F(Solver631DTest, TwoBlockPattern) {
     string output = R"(2)";
     setInput(input);
     Solver631D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
 TEST_F(Solver631DTest, LongPattern) {
@@ -131,5 +131,5 @@ TEST_F(Solver631DTest, LongPattern) {
     string output = R"(0)";
     setInput(input);
     Solver631D().run();
-    EXPECT_EQ(output, getOutput());
+    EXPECT_EQ_FUZZY(getOutput(), output);
 }
