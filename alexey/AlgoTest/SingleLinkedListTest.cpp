@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 #include "algo/SingleLinkedList.hpp"
 #include <algorithm>
+#include <random>
 
 using namespace std;
 
@@ -95,7 +96,9 @@ TEST(SingleLinkedListTest, InsertThenDeleteInRandomOrder)
     for (auto elt : eltsToInsert)
         nodePtrs.push_back(list.insert(elt));
 
-    random_shuffle(begin(nodePtrs), end(nodePtrs));
+    random_device rng;
+    mt19937 urng(rng());
+    shuffle(begin(nodePtrs), end(nodePtrs), urng);
 
     for (auto nodePtr : nodePtrs)
         EXPECT_TRUE(list.deleteNode(nodePtr));

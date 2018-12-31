@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 2.6)
 project(codeforces)
 
+set(CMAKE_CXX_STANDARD 17)
+# set(CMAKE_CXX_STANDARD_REQUIRED ON)
+# set(CMAKE_CXX_EXTENSIONS OFF)
+
 set(root_dir ${CMAKE_SOURCE_DIR}/..)
 set(common_dir ${root_dir}/common)
 set(common_lib_dir ${common_dir}/lib)
@@ -507,4 +511,4 @@ include_directories(${common_lib_dir})
 include_directories(${src_dir})
 include_directories(${root_dir}/andrei/lib)  # TODO FIXME (for fuser)
 
-add_definitions("-std=c++11 -DLOCAL_PC")
+add_definitions("-DLOCAL_PC -DGTEST_LANG_CXX11")

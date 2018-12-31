@@ -2,6 +2,7 @@
 
 #include <memory>
 #include <numeric>
+#include <random>
 
 #include "algo/graph/Graph.hpp"
 #include "iter/range.h"
@@ -26,7 +27,10 @@ public:
     {
         std::vector<int> order(nVertices);
         std::iota(begin(order), end(order), 0);
-        std::random_shuffle(begin(order), end(order));
+
+        std::random_device rng;
+        std::mt19937 urng(rng());
+        std::shuffle(begin(order), end(order), urng);
 
         std::unique_ptr<SimpleGraph> result(new SimpleGraph(nVertices));
         for (auto i : range(nEdges))
