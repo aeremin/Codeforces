@@ -2,33 +2,22 @@
 #include "algo/io/baseio.hpp"
 #include "iter/range.h"
 #include "algo/geometry/geomvector.hpp"
+#include "algo/io/readvector.hpp"
 using namespace std;
 
 class Solver1091B {
 public:
     void run();
-
-    int n;
-    vector<GeomVector2I> offsets, points;
 };
 
 void Solver1091B::run() {
-    cin >> n;
-    offsets.resize(n);
-    points.resize(n);
-    for (auto& p : points)
-        cin >> p;
+    auto n = read<int>();
+    auto offsets = readVector<GeomVector2I>(n);
+    auto points = readVector<GeomVector2I>(n);
 
-    for (auto& p : offsets) {
-        GeomVector2I t;
-        cin >> t;
-        p = -1 * t;
-    }
-
-    sort(begin(points), end(points));
-    sort(begin(offsets), end(offsets));
-    auto ans = points[0] - offsets[0];
-    cout << ans[0] << ' ' << ans[1];
+    auto p = *min_element(begin(points), end(points));
+    auto o = *max_element(begin(offsets), end(offsets));
+    cout << p + o;
 }
 
 
