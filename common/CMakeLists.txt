@@ -15,7 +15,7 @@ set(tests_srcs
     ${lib_tests_dir}/math/quick_power_test.cpp
 )
 add_executable(${tests_exe}  ${tests_srcs})
-target_link_libraries(${tests_exe} "gmock" "benchmark" "pthread")
+target_link_libraries(${tests_exe} "gmock" "pthread")
 
 include_directories(${lib_dir})
 
