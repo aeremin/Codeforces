@@ -25,7 +25,7 @@ void Solver644C::run() {
         perSitePaths[decomposed.first].push_back( decomposed.second );
     }
 
-    unordered_map<string, vector<string>> perPathSites;
+    map<string, vector<string>> perPathSites;
 
     for ( auto& paths : perSitePaths ) {
         sort( begin( paths.second ), end( paths.second ) );
