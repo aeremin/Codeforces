@@ -114,7 +114,7 @@ TEST_F(Solver448ETest, Example3)
     EXPECT_EQ_FUZZY(getOutput(), output);
 }
 
-TEST_F(Solver448ETest, Example4) {
+TEST_F(Solver448ETest, Example4_NoTravis) {
     string input = R"(963761198400 6553
 )";
     setInput(input);
