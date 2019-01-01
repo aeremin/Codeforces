@@ -55,8 +55,9 @@ MATCHER_P(EqualsFuzzy, expected, "") {
   auto expected_it = expected_str.begin();
   while (arg_it != arg_str.end() && expected_it != expected_str.end()) {
     {
-      auto arg_non_ws_it = std::find_if(arg_it, arg_str.end(), std::isspace);
-      auto expected_non_ws_it = std::find_if(expected_it, expected_str.end(), std::isspace);
+      auto is_space = [](char c){ return std::isspace(c); };
+      auto arg_non_ws_it = std::find_if(arg_it, arg_str.end(), is_space);
+      auto expected_non_ws_it = std::find_if(expected_it, expected_str.end(), is_space);
       std::string arg_token(arg_it, arg_non_ws_it);
       std::string expected_token(expected_it, expected_non_ws_it);
       std::smatch sm;
@@ -76,8 +77,9 @@ MATCHER_P(EqualsFuzzy, expected, "") {
       expected_it = expected_non_ws_it;
     }
     {
-      auto arg_ws_it = std::find_if(arg_it, arg_str.end(), std::not_fn(std::isspace));
-      auto expected_ws_it = std::find_if(expected_it, expected_str.end(), std::not_fn(std::isspace));
+      auto is_not_space = [](char c){ return !std::isspace(c); };
+      auto arg_ws_it = std::find_if(arg_it, arg_str.end(), is_not_space);
+      auto expected_ws_it = std::find_if(expected_it, expected_str.end(), is_not_space);
       std::string arg_token(arg_it, arg_ws_it);
       std::string expected_token(expected_it, expected_ws_it);
       if (arg_token != expected_token)
