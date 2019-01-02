@@ -4,6 +4,7 @@
 
 using Point = GeomVector2<int64_t>;
 
+// Solution for Codeforces problem http://codeforces.com/contest/605/problem/C
 class Solver605C
 {
 public:

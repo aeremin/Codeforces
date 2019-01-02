@@ -3,6 +3,7 @@
 
 using namespace std;
 
+// Solution for Codeforces problem http://codeforces.com/contest/596/problem/C
 class Solver596C
 {
 public:

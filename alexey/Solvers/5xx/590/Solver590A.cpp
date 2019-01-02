@@ -2,6 +2,7 @@
 
 using namespace std;
 
+// Solution for Codeforces problem http://codeforces.com/contest/590/problem/A
 class Solver590A
 {
 public:

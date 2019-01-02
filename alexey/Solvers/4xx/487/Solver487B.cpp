@@ -1,9 +1,16 @@
 #include <Solvers/pch.h>
 #include "algo/SlidingWindowMinFinder.h"
-#include "Solver487B.h"
+
 using namespace std;
 
-int Solver487B::main()
+// Solution for Codeforces problem http://codeforces.com/contest/487/problem/B
+class Solver487B
+{
+public:
+    void run();
+};
+
+void Solver487B::run()
 {
     int nNumbers, maxDif, minLen;
     cin >> nNumbers >> maxDif >> minLen;
@@ -78,8 +85,6 @@ int Solver487B::main()
     {
         cout << -1;
     }
-
-    return 0;
 }
 
 class Solver487BTest : public ProblemTest {};
@@ -87,13 +92,13 @@ class Solver487BTest : public ProblemTest {};
 TEST_F(Solver487BTest, Example1)
 {
     setInput("7 2 2     1 3 1 2 4 1 2");
-    Solver487B().main();
+    Solver487B().run();
     EXPECT_EQ("3", getOutput());
 }
 
 TEST_F(Solver487BTest, Example2)
 {
     setInput("7 2 2   1 100 1 100 1 100 1");
-    Solver487B().main();
+    Solver487B().run();
     EXPECT_EQ("-1", getOutput());
 }

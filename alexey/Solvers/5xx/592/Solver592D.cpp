@@ -4,6 +4,7 @@
 
 using namespace std;
 
+// Solution for Codeforces problem http://codeforces.com/contest/592/problem/D
 class Solver592D
 {
 public:

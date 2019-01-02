@@ -4,6 +4,7 @@
 #include "algo/strings/find_occurences.h"
 using namespace std;
 
+// Solution for Codeforces problem http://codeforces.com/contest/631/problem/D
 class Solver631D {
 public:
     void run();

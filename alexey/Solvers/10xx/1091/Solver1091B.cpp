@@ -5,6 +5,7 @@
 #include "algo/io/readvector.hpp"
 using namespace std;
 
+// Solution for Codeforces problem http://codeforces.com/contest/1091/problem/B
 class Solver1091B {
 public:
     void run();

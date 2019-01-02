@@ -6,6 +6,7 @@
 
 using namespace std;
 
+// Solution for Codeforces problem http://codeforces.com/contest/613/problem/B
 class Solver613B
 {
 public:

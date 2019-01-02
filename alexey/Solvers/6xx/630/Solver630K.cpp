@@ -4,6 +4,7 @@
 #include "algo/numbertheory/Coprimes.hpp"
 using namespace std;
 
+// Solution for Codeforces problem http://codeforces.com/contest/630/problem/K
 class Solver630K
 {
 public:

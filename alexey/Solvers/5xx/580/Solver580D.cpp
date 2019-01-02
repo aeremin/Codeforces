@@ -1,5 +1,11 @@
 #include "Solvers/pch.h"
-#include "Solver580D.h"
+
+// Solution for Codeforces problem http://codeforces.com/contest/580/problem/D
+class Solver580D
+{
+public:
+    void run();
+};
 
 static int64_t bitsSet(int64_t n)
 {

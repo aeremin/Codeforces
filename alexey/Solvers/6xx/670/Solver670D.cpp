@@ -5,6 +5,7 @@
 #include "algo/FunctorIterator.hpp"
 using namespace std;
 
+// Solution for Codeforces problem http://codeforces.com/contest/670/problem/D
 class Solver670D {
 public:
     void run();

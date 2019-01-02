@@ -1,5 +1,11 @@
 #include "Solvers/pch.h"
-#include "Solver581D.h"
+
+// Solution for Codeforces problem http://codeforces.com/contest/581/problem/D
+class Solver581D
+{
+public:
+    void run();
+};
 
 struct Rectange
 {

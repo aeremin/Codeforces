@@ -5,6 +5,7 @@
 #include "algo/numbertheory/Primes.hpp"
 using namespace std;
 
+// Solution for Codeforces problem http://codeforces.com/contest/665/problem/D
 class Solver665D {
 public:
     void run();

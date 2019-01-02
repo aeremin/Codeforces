@@ -3,6 +3,7 @@
 #include "iter/range.h"
 using namespace std;
 
+// Solution for Codeforces problem http://codeforces.com/contest/1091/problem/A
 class Solver1091A {
 public:
     void run();

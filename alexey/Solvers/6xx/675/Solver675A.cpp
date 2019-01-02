@@ -4,6 +4,7 @@
 #include "math/sign.h"
 using namespace std;
 
+// Solution for Codeforces problem http://codeforces.com/contest/675/problem/A
 class Solver675A {
 public:
     void run();

@@ -4,6 +4,7 @@
 #include "algo/io/readvector.hpp"
 using namespace std;
 
+// Solution for Codeforces problem http://codeforces.com/contest/675/problem/D
 class Solver675D {
 public:
     void run();

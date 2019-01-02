@@ -5,6 +5,7 @@
 #include "algo/algebra/quadratic/solve_quadratic_real.h"
 using namespace std;
 
+// Solution for Codeforces problem http://codeforces.com/contest/668/problem/C
 class Solver668C {
 public:
     void run();

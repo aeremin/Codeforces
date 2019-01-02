@@ -2,6 +2,7 @@
 #include "algo/graph/Graph.hpp"
 #include "algo/graph/TreePreprocessor.hpp"
 
+// Solution for Codeforces problem http://codeforces.com/contest/587/problem/C
 class Solver587C
 {
 public:

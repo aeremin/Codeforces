@@ -1,5 +1,11 @@
 #include "Solvers/pch.h"
-#include "Solver579B.h"
+
+// Solution for Codeforces problem http://codeforces.com/contest/579/problem/B
+class Solver579B
+{
+public:
+    void run();
+};
 
 struct TeamData
 {

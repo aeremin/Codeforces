@@ -3,6 +3,7 @@
 #include "algo/geometry/geomvector.hpp"
 #include "algo/geometry/convexhull.hpp"
 
+// Solution for Codeforces problem http://codeforces.com/contest/605/problem/A
 class Solver605A
 {
 public:

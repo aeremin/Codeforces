@@ -4,6 +4,7 @@
 #include "algo/FunctorIterator.hpp"
 using namespace std;
 
+// Solution for Codeforces problem http://codeforces.com/contest/448/problem/D
 class Solver448D
 {
 public:

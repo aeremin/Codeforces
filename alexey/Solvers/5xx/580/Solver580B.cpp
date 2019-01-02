@@ -1,6 +1,12 @@
 #include "Solvers/pch.h"
-#include "Solver580B.h"
 #include <cstdint>
+
+// Solution for Codeforces problem http://codeforces.com/contest/580/problem/B
+class Solver580B
+{
+public:
+    void run();
+};
 
 void Solver580B::run()
 {

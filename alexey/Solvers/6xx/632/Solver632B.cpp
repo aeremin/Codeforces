@@ -5,6 +5,7 @@
 #include "util/relax.h"
 using namespace std;
 
+// Solution for Codeforces problem http://codeforces.com/contest/632/problem/B
 class Solver632B
 {
 public:

@@ -31,6 +31,7 @@ struct Matrix2x2 {
     }
 };
 
+// Solution for Codeforces problem http://codeforces.com/contest/718/problem/C
 class Solver718C {
 public:
     void run();

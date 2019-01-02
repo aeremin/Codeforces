@@ -4,6 +4,7 @@
 #include "algo/numbertheory/Residue.hpp"
 using namespace std;
 
+// Solution for Codeforces problem http://codeforces.com/contest/630/problem/L
 class Solver630L
 {
 public:

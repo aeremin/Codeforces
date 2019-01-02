@@ -7,6 +7,7 @@
 #include "algo/io/printvector.h"
 using namespace std;
 
+// Solution for Codeforces problem http://codeforces.com/contest/377/problem/A
 class Solver377A
 {
 public:

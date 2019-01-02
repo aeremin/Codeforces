@@ -4,6 +4,7 @@
 #include "math/pi.h"
 using namespace std;
 
+// Solution for Codeforces problem http://codeforces.com/contest/630/problem/P
 class Solver630P
 {
 public:

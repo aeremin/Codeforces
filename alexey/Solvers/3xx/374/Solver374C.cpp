@@ -9,6 +9,7 @@ const vector<pair<int, int>> offsets = { { 1, 0 }, { -1, 0 }, { 0, 1 }, { 0, -1 
 const unordered_map<char, char> nextLetter = { { 'D', 'I' }, { 'I', 'M' }, { 'M', 'A' }, { 'A', 'D' } };
 }
 
+// Solution for Codeforces problem http://codeforces.com/contest/374/problem/C
 class Solver374C
 {
 public:

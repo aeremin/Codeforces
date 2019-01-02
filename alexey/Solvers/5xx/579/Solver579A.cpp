@@ -1,5 +1,11 @@
 #include "Solvers/pch.h"
-#include "Solver579A.h"
+
+// Solution for Codeforces problem http://codeforces.com/contest/579/problem/A
+class Solver579A
+{
+public:
+    void run();
+};
 
 int nBitsSet(int a)
 {

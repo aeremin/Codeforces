@@ -8,6 +8,7 @@
 
 using namespace std;
 
+// Solution for Codeforces problem http://codeforces.com/contest/627/problem/B
 class Solver627B
 {
 public:

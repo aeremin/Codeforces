@@ -5,6 +5,7 @@
 #include "algo/graph/Dijkstra.hpp"
 using namespace std;
 
+// Solution for Codeforces problem http://codeforces.com/contest/666/problem/B
 class Solver666B {
 public:
     void run();

@@ -1,5 +1,11 @@
 #include "Solvers/pch.h"
-#include "Solver603B.h"
+
+// Solution for Codeforces problem http://codeforces.com/contest/603/problem/B
+class Solver603B
+{
+public:
+    void run();
+};
 
 const int64_t cModulo = 1000000007;
 

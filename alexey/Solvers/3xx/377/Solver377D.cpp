@@ -9,6 +9,7 @@
 
 using namespace std;
 
+// Solution for Codeforces problem http://codeforces.com/contest/377/problem/D
 class Solver377D
 {
 public:

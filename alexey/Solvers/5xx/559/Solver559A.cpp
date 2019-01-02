@@ -4,6 +4,7 @@
 #include "math/sqr.h"
 using namespace std;
 
+// Solution for Codeforces problem http://codeforces.com/contest/559/problem/A
 class Solver559A
 {
 public:

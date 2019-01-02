@@ -5,6 +5,7 @@
 
 using namespace std;
 
+// Solution for Codeforces problem http://codeforces.com/contest/596/problem/B
 class Solver596B
 {
 public:

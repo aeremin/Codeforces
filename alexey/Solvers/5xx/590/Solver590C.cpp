@@ -1,5 +1,6 @@
 #include "Solvers/pch.h"
 
+// Solution for Codeforces problem http://codeforces.com/contest/590/problem/C
 class Solver590C
 {
 public:

@@ -5,6 +5,7 @@
 #include "math/quick_power.h"
 using namespace std;
 
+// Solution for Codeforces problem http://codeforces.com/contest/630/problem/I
 class Solver630I
 {
 public:

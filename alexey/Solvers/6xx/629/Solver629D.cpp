@@ -9,6 +9,7 @@
 #include "algo/SegmentTree.hpp"
 using namespace std;
 
+// Solution for Codeforces problem http://codeforces.com/contest/629/problem/D
 class Solver629D
 {
 public:

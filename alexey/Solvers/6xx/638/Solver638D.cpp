@@ -5,6 +5,7 @@
 #include "algo/geometry/geomvector.hpp"
 using namespace std;
 
+// Solution for Codeforces problem http://codeforces.com/contest/638/problem/D
 class Solver638D
 {
 public:

@@ -5,6 +5,7 @@
 #include "algo/SortWithMapping.hpp"
 using namespace std;
 
+// Solution for Codeforces problem http://codeforces.com/contest/645/problem/E
 class Solver645E
 {
 public:

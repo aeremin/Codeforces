@@ -1,7 +1,13 @@
 #include "Solvers/pch.h"
-#include "Solver580C.h"
 #include "algo/graph/Graph.hpp"
 #include "algo/graph/DepthFirstSearch.hpp"
+
+// Solution for Codeforces problem http://codeforces.com/contest/580/problem/C
+class Solver580C
+{
+public:
+    void run();
+};
 
 void Solver580C::run()
 {

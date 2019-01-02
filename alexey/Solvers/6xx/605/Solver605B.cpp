@@ -2,6 +2,7 @@
 #include <limits>
 #include "util/weight_comparator.h"
 
+// Solution for Codeforces problem http://codeforces.com/contest/605/problem/B
 class Solver605B
 {
 public:

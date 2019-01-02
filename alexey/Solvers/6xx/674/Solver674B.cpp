@@ -4,6 +4,7 @@
 #include "algo/io/printvector.h"
 using namespace std;
 
+// Solution for Codeforces problem http://codeforces.com/contest/674/problem/B
 class Solver674B {
 public:
     void run();

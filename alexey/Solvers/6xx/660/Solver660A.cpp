@@ -6,6 +6,7 @@
 #include "algo/io/printvector.h"
 using namespace std;
 
+// Solution for Codeforces problem http://codeforces.com/contest/660/problem/A
 class Solver660A
 {
 public:

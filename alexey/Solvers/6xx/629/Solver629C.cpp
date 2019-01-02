@@ -5,6 +5,7 @@
 #include "algo/numbertheory/Residue.hpp"
 using namespace std;
 
+// Solution for Codeforces problem http://codeforces.com/contest/629/problem/C
 class Solver629C
 {
 public:

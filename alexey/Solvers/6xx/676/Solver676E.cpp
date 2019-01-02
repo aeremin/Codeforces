@@ -4,6 +4,7 @@
 #include "algo/polynomial/polynomial.h"
 using namespace std;
 
+// Solution for Codeforces problem http://codeforces.com/contest/676/problem/E
 class Solver676E {
 public:
     void run();

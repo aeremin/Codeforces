@@ -12,6 +12,7 @@
 
 using namespace std;
 
+// Solution for Codeforces problem http://codeforces.com/contest/377/problem/B
 class Solver377B
 {
 public:

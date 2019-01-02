@@ -6,6 +6,7 @@ using namespace std;
 
 using ProblemResidue = Residue<int64_t, 998244353>;
 
+// Solution for Codeforces problem http://codeforces.com/contest/1091/problem/D
 class Solver1091D {
 public:
     void run();

@@ -1,5 +1,38 @@
 #include "Solvers/pch.h"
-#include "Solver487D.h"
+
+// Solution for Codeforces problem http://codeforces.com/contest/487/problem/D
+class Solver487D
+{
+public:
+    int main();
+
+private:
+
+    struct Place
+    {
+        int x, y;
+        int ind() const;
+        bool isFinal() const;
+        void apply(char c);
+        int block() const;
+    };
+
+    struct Query
+    {
+        char type;
+        Place place;
+        char dir;
+    };
+
+    vector<char> table;
+    vector<Place> to;
+    vector<Query> queries;
+
+    static int tableWidth, tableHeight;
+    static int blockHeight;
+
+    void update(const Place from);
+};
 
 // TODO: Get rid of static class members
 int Solver487D::tableHeight = 0;

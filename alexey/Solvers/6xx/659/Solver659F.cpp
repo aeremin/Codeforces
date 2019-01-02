@@ -5,6 +5,7 @@
 #include "algo/DisjointSet.hpp"
 using namespace std;
 
+// Solution for Codeforces problem http://codeforces.com/contest/659/problem/F
 class Solver659F
 {
 public:

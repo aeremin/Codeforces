@@ -5,6 +5,7 @@
 #include "util/weight_comparator.h"
 using namespace std;
 
+// Solution for Codeforces problem http://codeforces.com/contest/637/problem/B
 class Solver637B {
 public:
     void run();

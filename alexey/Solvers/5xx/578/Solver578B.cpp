@@ -1,6 +1,11 @@
 #include "Solvers/pch.h"
-#include "Solver578B.h"
 
+// Solution for Codeforces problem http://codeforces.com/contest/578/problem/B
+class Solver578B
+{
+public:
+    void run();
+};
 
 void Solver578B::run()
 {

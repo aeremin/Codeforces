@@ -8,6 +8,7 @@
 #include "algo/DisjointSet.hpp"
 using namespace std;
 
+// Solution for Codeforces problem http://codeforces.com/contest/650/problem/C
 class Solver650C
 {
 public:
