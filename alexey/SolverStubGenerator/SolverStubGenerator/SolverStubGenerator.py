@@ -67,6 +67,7 @@ while True:
           '#include "iter/range.h"',
           'using namespace std;',
           '',
+          '// Solution for Codeforces problem http://codeforces.com/contest/%s/problem/%s' % (problemNumber, problemLetter),
           'class ' + solverName + ' {',
           'public:',
           '    void run();',
