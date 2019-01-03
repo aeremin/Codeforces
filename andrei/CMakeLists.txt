@@ -22,7 +22,6 @@ set(tests_srcs
     ${lib_dir}/graph/dfs_test.cpp
     ${lib_dir}/graph/distance_unweighted_test.cpp
     ${lib_dir}/graph/topological_sort_test.cpp
-    ${lib_dir}/solution_tests/matchers_test.cpp
     ${lib_dir}/util/projected_test.cpp
 )
 add_executable(${tests_exe}  ${tests_srcs})
