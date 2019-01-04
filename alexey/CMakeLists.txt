@@ -31,6 +31,7 @@ target_sources(algo_lib INTERFACE
     ${algo_dir}/DPProcessor.hpp
     ${algo_dir}/FibonacciHeap.hpp
     ${algo_dir}/FunctorIterator.hpp
+    ${algo_dir}/combinatorics/combinatorics_helper.h
     ${algo_dir}/geometry/AngleSort.hpp
     ${algo_dir}/geometry/convexhull.hpp
     ${algo_dir}/geometry/geomvector.hpp
@@ -455,6 +456,7 @@ set(tests_srcs
     ${solvers_dir}/testutils/ProblemTest.cpp
     ${algotest_dir}/algebra/cyclic_convolution_test.cpp
     ${algotest_dir}/algebra/quadratic/solve_quadratic_test.cpp
+    ${algotest_dir}/combinatorics/combinatorics_helper_test.cpp
     ${algotest_dir}/geometry/ConvexHullTest.cpp
     ${algotest_dir}/geometry/geomvectortest.cpp
 	${algotest_dir}/graph/max_flow_push_relabel_test.cpp

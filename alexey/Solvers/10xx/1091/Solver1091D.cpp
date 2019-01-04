@@ -2,9 +2,8 @@
 #include "algo/io/baseio.hpp"
 #include "iter/range.h"
 #include "algo/numbertheory/Residue.hpp"
+#include "algo/combinatorics/combinatorics_helper.h"
 using namespace std;
-
-using ProblemResidue = Residue<int64_t, 998244353>;
 
 // Solution for Codeforces problem http://codeforces.com/contest/1091/problem/D
 class Solver1091D {
@@ -16,19 +15,12 @@ void Solver1091D::run() {
     int n;
     cin >> n;
 
-    vector<ProblemResidue> factorials(n + 1);
-    factorials[0] = 1;
-    for (int i : range(1, n + 1))
-        factorials[i] = factorials[i - 1] * int64_t(i);
+    using Helper = CombinatoricsHelper<int64_t, 998244353>;
+    Helper helper{ n };
 
-    vector<ProblemResidue> invertedFactorials(n + 1);
-    invertedFactorials[n] = factorials[n].inversed();
-    for (int i = n - 1; i >= 0; --i)
-        invertedFactorials[i] = invertedFactorials[i + 1] * int64_t(i + 1);
-
-    ProblemResidue res = factorials[n];
+    auto res = helper.factorial(n);
     for (int x = 1; x < n; ++x) {
-        res += factorials[n - 1 - x] * int64_t(n - 1 - x) * factorials[n] * invertedFactorials[x + 1] * invertedFactorials[n - x - 1] * int64_t(x);
+        res += Helper::ValueType(x) * Helper::ValueType(n - x - 1) * helper.factorial(n - x - 1) * helper.binomial_coefficient(n, x + 1);
     }
 
     cout << res;
