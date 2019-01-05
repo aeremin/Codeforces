@@ -74,12 +74,10 @@ target_sources(algo_lib INTERFACE
     ${algo_dir}/SlidingWindowMinFinder.h
     ${algo_dir}/SortBy.hpp
     ${algo_dir}/SortWithMapping.hpp
-    ${algo_dir}/stdafx.h
     ${algo_dir}/strings/find_occurences.h
     ${algo_dir}/strings/knutt_morris_pratt.h
     ${algo_dir}/strings/suffix_automaton.h
     ${algo_dir}/strings/trie.h
-    ${algo_dir}/targetver.h
     ${algo_dir}/updateappliers/IdApplier.hpp
     ${algo_dir}/updateappliers/IncreaseByIdempotent.h
     ${algo_dir}/updateappliers/IncreaseBySum.h
