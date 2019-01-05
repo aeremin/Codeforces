@@ -115,6 +115,8 @@ set(tests_srcs
     ${solvers_dir}/10xx/1097/Solver1097B.cpp
     ${solvers_dir}/10xx/1097/Solver1097C.cpp
     ${solvers_dir}/10xx/1097/Solver1097D.cpp
+    ${solvers_dir}/10xx/1098/Solver1098A.cpp
+    ${solvers_dir}/10xx/1098/Solver1098B.cpp
     ${solvers_dir}/1xx/107/Solver107B.cpp
     ${solvers_dir}/1xx/132/Solver132C.cpp
     ${solvers_dir}/1xx/158/Solver158E.cpp
