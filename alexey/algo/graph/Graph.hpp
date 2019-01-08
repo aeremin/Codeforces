@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <unordered_map>
 #include <utility>
 #include <algorithm>
 
@@ -8,16 +9,6 @@ class Graph
 {
 
 public:
-    struct Edge : public std::pair<int, PerEdgeData> {
-        using std::pair<int, PerEdgeData>::pair;
-        int vertex() const { return this->first; }
-    };
-
-    struct OutVertex
-    {
-        int vertex;
-    };
-
     Graph( int nVertices )
         :
         edges_(nVertices),
@@ -34,13 +25,13 @@ public:
 
     void add_edge( int from, int to, PerEdgeData data = {} )
     {
-        edges_[from].push_back( { to, data } );
-        edges_[to].push_back( { from, data } );
+        edges_[from].insert( { to, data } );
+        edges_[to].insert( { from, data } );
     }
 
     void add_directed_edge(int from, int to, PerEdgeData data = {})
     {
-        edges_[from].push_back({ to, data });
+        edges_[from].insert({ to, data });
     }
 
     const PerVertexData& get_vertex_data(int vInd) const
@@ -58,13 +49,13 @@ public:
         return edges_.size();
     }
 
-    const std::vector<Edge>& out_nbrs( int v ) const
+    const std::unordered_map<int, PerEdgeData>& out_nbrs( int v ) const
     {
         return edges_[v];
     }
 
 private:
-    std::vector<std::vector<Edge>> edges_;
+    std::vector<std::unordered_map<int, PerEdgeData>> edges_;
     std::vector<PerVertexData> vertexData_;
 };
 

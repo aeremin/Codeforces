@@ -18,10 +18,10 @@ public:
         if ( deg > roadsToFixPerDay.size() )
             roadsToFixPerDay.resize( deg );
         int day = ( forbiddenDay == 0 ) ? 1 : 0;
-        for ( auto edge : g->out_nbrs( v ) ) {
-            if ( edge.vertex() == p ) continue;
-            roadsToFixPerDay[day].push_back( edge.second );
-            dfs( edge.vertex(), v, day );
+        for ( auto[vertex, payload] : g->out_nbrs( v ) ) {
+            if ( vertex == p ) continue;
+            roadsToFixPerDay[day].push_back(payload);
+            dfs( vertex, v, day );
             ++day;
             if ( day == forbiddenDay ) ++day;
         }

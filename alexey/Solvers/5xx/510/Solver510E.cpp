@@ -54,10 +54,10 @@ void Solver510E::run()
     for (int i : range(nFoxes)) {
         auto outedges = flow.flow.out_nbrs(i + 1);
         if (outedges.size() == 2) {
-            neighbours[i].push_back(outedges[0].vertex() - 1);
-            neighbours[i].push_back(outedges[1].vertex() - 1);
-            neighbours[outedges[0].vertex() - 1].push_back(i);
-            neighbours[outedges[1].vertex() - 1].push_back(i);
+            for (auto[vertex, payload] : outedges) {
+                neighbours[i].push_back(vertex - 1);
+                neighbours[vertex - 1].push_back(i);
+            }
         }
     }
 

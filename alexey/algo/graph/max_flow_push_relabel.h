@@ -18,8 +18,8 @@ public:
         isQueued_        ( graph.num_vertices() )
     {
         for ( auto from : range( graph_.num_vertices() ) )
-            for ( auto edge : graph_.out_nbrs( from ) )
-                capacity_[from][edge.vertex()] += edge.second;
+            for ( auto [vertex, payload] : graph_.out_nbrs( from ) )
+                capacity_[from][vertex] += payload;
     }
 
     struct Flow {
@@ -63,8 +63,8 @@ private:
             std::fill( begin( row ), end( row ), PerEdgeData( 0 ) );
         std::fill( begin( excess_ ), end( excess_ ), PerEdgeData( 0 ) );
 
-        for ( auto edge : graph_.out_nbrs( source ) )
-            push_through_edge( source, edge.vertex(), edge.second );
+        for ( auto [vertex, payload] : graph_.out_nbrs( source ) )
+            push_through_edge( source, vertex, payload );
     }
 
     void InitializeHeight( int source ) {

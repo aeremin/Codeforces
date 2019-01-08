@@ -49,8 +49,8 @@ void Solver546E::run()
     cout << "YES\n";
     vector<vector<int>> ans( nCities, vector<int>( nCities ) );
     for ( auto u : range( nCities ) )
-        for ( auto edge : flow.flow.out_nbrs( u ) )
-            ans[u][edge.vertex() - nCities] += edge.second;
+        for ( auto[vertex, payload] : flow.flow.out_nbrs( u ) )
+            ans[u][vertex - nCities] += payload;
 
     for ( auto& line : ans ) {
         printVector( line );
