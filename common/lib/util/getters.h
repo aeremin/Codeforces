@@ -6,7 +6,7 @@
 //   instead of throwing exceptions.
 //
 // * value_or(container, key, default_value)
-//   Returs `container[key]` if 'key' is valid or 'default_value' otherwise.
+//   Returns `container[key]` if 'key' is valid or 'default_value' otherwise.
 //   Works similar std::experimental::optional::value_or.
 
 #pragma once
