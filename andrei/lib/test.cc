@@ -50,9 +50,6 @@ DEFINE_HASH_2(Foo2, bar, buz);
 DEFINE_HASH_2(IntPair, first, second);
 DEFINE_HASH_4(Foo4, a, b, c, d);
 
-DEFINE_LEXICOGRAPHICAL_COMPARISON_1(Fancy, value());
-DEFINE_LEXICOGRAPHICAL_COMPARISON_2(Foo2, bar, buz);
-
 
 
 int main(int argc, char* argv[]) {
@@ -70,14 +67,10 @@ int main(int argc, char* argv[]) {
 
   set_io_file_names(foo_in_foo_out("test"));
 
-  std::set<pair<int, int>> int_pair_set;
-  int_pair_set.insert({13, 17});
-  std::unordered_set<pair<int, int>> int_pair_uset;
-  int_pair_uset.insert({13, 17});
-  std::set<Foo2> my_set;
-  my_set.insert({});
-  std::unordered_set<Foo2> my_uset;
-  my_set.insert({});
+//   std::unordered_set<pair<int, int>> int_pair_uset;
+//   int_pair_uset.insert({13, 17});
+//   std::unordered_set<Foo2> my_uset;
+//   my_uset.insert({});
 
   auto k = scan<int>();
   printf("%d", k);

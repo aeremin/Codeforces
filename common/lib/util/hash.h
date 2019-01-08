@@ -66,6 +66,8 @@ size_t mixed_hash(const Args&... args) {
         };    \
     }
 
+// TODO: fix: still can't put into onordered_set without ==
+
 #define DEFINE_HASH_1(TYPE_NAME, FIELD1)    \
     DEFINE_HASH_ABSTRACT(TYPE_NAME, a.FIELD1)
 
