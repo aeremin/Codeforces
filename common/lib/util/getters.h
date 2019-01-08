@@ -52,7 +52,7 @@ typename MapT::mapped_type value_or(const MapT& map, const typename MapT::key_ty
 }
 
 template<typename MapT>
-typename std::optional<typename MapT::mapped_type> maybe_get(MapT& map, const typename MapT::key_type& key) {
+typename std::optional<typename MapT::mapped_type> maybe_get(const MapT& map, const typename MapT::key_type& key) {
   auto it = map.find(key);
   return (it != map.end()) ? it->second : std::optional<typename MapT::mapped_type>{};
 }
