@@ -1,4 +1,3 @@
-#pragma once
 #include <gtest/gtest.h>
 #include "algo/combinatorics/combinatorics_helper.h"
 
