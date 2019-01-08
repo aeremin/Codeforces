@@ -44,7 +44,7 @@ TEST(SingleLinkedListTest, ReversesEmpty)
 TEST(SingleLinkedListTest, ReversesSingleElt)
 {
     SingleLinkedList<int> list;
-    const int testElt = 17;
+    int testElt = 17;
     list.insert(testElt);
     list.reverse();
     int totalElts = 0;
