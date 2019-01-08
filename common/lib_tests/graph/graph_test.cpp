@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "algo/graph/Graph.hpp"
+#include "graph/graph.h"
 
 using namespace std;
 

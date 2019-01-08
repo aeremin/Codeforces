@@ -2,7 +2,7 @@
 #include "algo/io/baseio.hpp"
 #include "iter/range.h"
 #include "algo/io/readvector.hpp"
-#include "algo/graph/Graph.hpp"
+#include "graph/graph.h"
 #include "algo/graph/TopologicalSorter.hpp"
 #include "util/relax.h"
 #include "algo/DisjointSet.hpp"

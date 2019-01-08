@@ -1,7 +1,7 @@
 #include <Solvers/pch.h>
 #include <bitset>
 #include "algo/io/baseio.hpp"
-#include "algo/graph/Graph.hpp"
+#include "graph/graph.h"
 #include "algo/updateappliers/UpdateApplier.hpp"
 #include "algo/updatetypes/IncreaseBy.hpp"
 #include "algo/io/readvector.hpp"

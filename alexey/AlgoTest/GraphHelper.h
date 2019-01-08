@@ -1,5 +1,5 @@
 #pragma once
-#include "algo/graph/Graph.hpp"
+#include "graph/graph.h"
 
 namespace GraphHelper
 {

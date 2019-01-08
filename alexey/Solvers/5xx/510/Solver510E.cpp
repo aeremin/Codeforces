@@ -3,7 +3,7 @@
 #include "iter/range.h"
 #include "algo/io/readvector.hpp"
 #include "algo/numbertheory/Primes.hpp"
-#include "algo/graph/Graph.hpp"
+#include "graph/graph.h"
 #include "algo/graph/max_flow_push_relabel.h"
 #include "algo/DisjointSet.hpp"
 

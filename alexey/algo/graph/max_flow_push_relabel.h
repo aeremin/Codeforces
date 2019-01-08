@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #include <queue>
-#include "algo/graph/Graph.hpp"
+#include "graph/graph.h"
 #include "iter/range.h"
 #include "util/relax.h"
 

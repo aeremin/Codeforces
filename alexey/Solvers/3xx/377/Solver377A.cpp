@@ -1,7 +1,7 @@
 #include <Solvers/pch.h>
 #include "algo/io/baseio.hpp"
 #include "iter/range.h"
-#include "algo/graph/Graph.hpp"
+#include "graph/graph.h"
 #include "algo/graph/Dijkstra.hpp"
 #include "algo/SortWithMapping.hpp"
 #include "algo/io/printvector.h"

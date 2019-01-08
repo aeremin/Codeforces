@@ -1,6 +1,6 @@
 #include <Solvers/pch.h>
 #include "algo/DisjointSet.hpp"
-#include "algo/graph/Graph.hpp"
+#include "graph/graph.h"
 #include "algo/numbertheory/Residue.hpp"
 #include "algo/graph/BipartitionChecker.hpp"
 

@@ -41,7 +41,6 @@ target_sources(algo_lib INTERFACE
     ${algo_dir}/graph/ConnectedComponentsDecomposer.hpp
     ${algo_dir}/graph/DepthFirstSearch.hpp
     ${algo_dir}/graph/Dijkstra.hpp
-    ${algo_dir}/graph/Graph.hpp
     ${algo_dir}/graph/max_flow_push_relabel.h
     ${algo_dir}/graph/TopologicalSorter.hpp
     ${algo_dir}/graph/TreePreprocessor.hpp
@@ -459,7 +458,6 @@ set(tests_srcs
     ${algotest_dir}/combinatorics/combinatorics_helper_test.cpp
     ${algotest_dir}/geometry/ConvexHullTest.cpp
     ${algotest_dir}/geometry/geomvectortest.cpp
-	${algotest_dir}/graph/graph_test.cpp
     ${algotest_dir}/graph/max_flow_push_relabel_test.cpp
 	${algotest_dir}/geometry/linear_functions_max_test.cpp
     ${algotest_dir}/numbertheory/primary_root_test.cpp

@@ -1,5 +1,5 @@
 #include "Solvers/pch.h"
-#include "algo/graph/Graph.hpp"
+#include "graph/graph.h"
 #include "algo/graph/DepthFirstSearch.hpp"
 
 // Solution for Codeforces problem http://codeforces.com/contest/580/problem/C

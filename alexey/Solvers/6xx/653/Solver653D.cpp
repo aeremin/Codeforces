@@ -2,7 +2,7 @@
 #include "algo/io/baseio.hpp"
 #include "iter/range.h"
 #include "util/relax.h"
-#include "algo/graph/Graph.hpp"
+#include "graph/graph.h"
 #include "algo/graph/max_flow_push_relabel.h"
 using namespace std;
 

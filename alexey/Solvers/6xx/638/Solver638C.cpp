@@ -1,7 +1,7 @@
 #include <Solvers/pch.h>
 #include "algo/io/baseio.hpp"
 #include "iter/range.h"
-#include "algo/graph/Graph.hpp"
+#include "graph/graph.h"
 using namespace std;
 
 // Solution for Codeforces problem http://codeforces.com/contest/638/problem/C

@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #include <queue>
-#include "algo/graph/Graph.hpp"
+#include "graph/graph.h"
 
 template<class VertexProcessCallback, class PerEdgeData, class PerVertexData>
 void breadthFirstSearch( const UndirectedGraph<PerEdgeData, PerVertexData>& graph, VertexProcessCallback cbk, size_t startVertex = 0 )

@@ -1,6 +1,6 @@
 #pragma once
 #include <cassert>
-#include "algo/graph/Graph.hpp"
+#include "graph/graph.h"
 
 template<class PerEdgeData, class PerVertexData>
 class BipartitionChecker

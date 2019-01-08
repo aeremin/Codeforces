@@ -4,7 +4,7 @@
 #include <numeric>
 #include <random>
 
-#include "algo/graph/Graph.hpp"
+#include "graph/graph.h"
 #include "iter/range.h"
 #include "algo/graph/TopologicalSorter.hpp"
 #include "graph/topological_sort.h"

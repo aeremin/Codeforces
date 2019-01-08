@@ -3,7 +3,7 @@
 #include <utility>
 #include <functional>
 #include <limits>
-#include "Graph.hpp"
+#include "graph/graph.h"
 
 using std::vector;
 using std::pair;
