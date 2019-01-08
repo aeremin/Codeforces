@@ -11,7 +11,7 @@ using TreeCountingEdgesAndVertices = Graph<int, int>;
 
 TEST( TreePreprocessorTest, ConcreteExample )
 {
-    TreeCountingEdgesAndVertices tree( 4, { 1, 1, 1, 1 } );
+    TreeCountingEdgesAndVertices tree( { 1, 1, 1, 1 } );
     tree.add_edge( 0, 1, 1 );
     tree.add_edge( 1, 2, 1 );
     tree.add_edge( 0, 3, 1 );

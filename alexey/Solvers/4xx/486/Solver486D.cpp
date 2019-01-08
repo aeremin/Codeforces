@@ -43,7 +43,7 @@ void Solver486D::run()
         sortedVertices[i] = { verticesValues[i], i };
     sort(begin(sortedVertices), end(sortedVertices));
     
-    graph.reset(new Graph<EmptyStruct, int>(nVertices, move(verticesValues)));
+    graph.reset(new Graph<EmptyStruct, int>(verticesValues));
     for (int i = 0; i < nVertices - 1; ++i)
     {
         int a, b;

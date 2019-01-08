@@ -18,13 +18,18 @@ public:
         int vertex;
     };
 
-    Graph( int nVertices, std::vector<PerVertexData> vertexData = {} )
+    Graph( int nVertices )
         :
         edges_(nVertices),
+        vertexData_(nVertices)
+    {
+    };
+
+    Graph( std::vector<PerVertexData> vertexData )
+        :
+        edges_(vertexData.size()),
         vertexData_(move(vertexData))
     {
-        if (vertexData_.empty())
-            vertexData_.resize(nVertices);
     };
 
     void add_edge( int from, int to, PerEdgeData data = {} )

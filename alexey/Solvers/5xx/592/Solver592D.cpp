@@ -82,7 +82,7 @@ void Solver592D::run()
 {
     int nCities, nAttackedCities;
     cin >> nCities >> nAttackedCities;
-    graph.reset(new ProblemGraph(nCities, vector<VertexData>(nCities, { 0, 0 })));
+    graph.reset(new ProblemGraph(vector<VertexData>(nCities, { 0, 0 })));
     for (int i = 0; i < nCities - 1; ++i)
     {
         int from, to;
