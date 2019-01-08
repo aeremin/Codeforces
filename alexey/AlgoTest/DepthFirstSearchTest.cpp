@@ -58,7 +58,7 @@ TEST(DepthFirstSearchTest, WorksOnLinearGraph)
     EXPECT_FALSE(searcher.search(0));
 }
 
-TEST(DepthFirstSearchTest, WorksOnSimpleCycle)
+TEST(DepthFirstSearchTest, DISABLED_WorksOnSimpleCycle)
 {
     int nVertices = 20;
     auto graph = GraphHelper::createSimpleCycleGraph(nVertices);
@@ -100,7 +100,7 @@ TEST(DepthFirstSearchTest, WorksOnSimpleCycle)
 //          1 < 
 //      0 <---- 5
 //          2 - 3
-TEST(DepthFirstSearchTest, WorksOnConcreteCase)
+TEST(DepthFirstSearchTest, DISABLED_WorksOnConcreteCase)
 {
 
     UndirectedGraph<> g(6);

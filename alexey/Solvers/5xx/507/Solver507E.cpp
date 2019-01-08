@@ -50,6 +50,9 @@ void Solver507E::run()
         }
 
     cout << output.size() << "\n";
+    // Needed only to make output deterministic and testable
+    std::sort(begin(output), end(output));
+    
     for (auto& t : output)
         cout << get<0>(t) + 1 << " " << get<1>(t) + 1 << " " << get<2>(t) << "\n";
 }
