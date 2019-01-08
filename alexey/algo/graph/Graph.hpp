@@ -3,6 +3,8 @@
 #include <unordered_map>
 #include <utility>
 #include <algorithm>
+#include <optional>
+#include "util/getters.h"
 
 template<bool Directed, class PerEdgeData, class PerVertexData>
 class Graph
@@ -54,6 +56,14 @@ public:
     const std::unordered_map<int, PerEdgeData>& out_nbrs( int v ) const
     {
         return edges_[v];
+    }
+
+    bool has_edge(int from, int to) const {
+        return get_edge(from, to).has_value();
+    }
+    
+    std::optional<PerEdgeData> get_edge(int from, int to) const {
+        return maybe_get(out_nbrs(from), to);
     }
 
 private:
