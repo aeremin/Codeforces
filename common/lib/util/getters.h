@@ -11,8 +11,8 @@
 
 #pragma once
 
+#include <optional>
 #include "util/check.h"
-
 
 template<typename VectorT>
 typename VectorT::const_reference at(const VectorT& vec, size_t index) {
@@ -40,14 +40,19 @@ typename MapT::mapped_type& at(MapT& map, const typename MapT::key_type& key) {
 
 
 template<typename VectorT>
-typename VectorT::value_type value_or(VectorT& vec, size_t index,
+typename VectorT::value_type value_or(const VectorT& vec, size_t index,
                                       const typename VectorT::value_type& default_value = {}) {
   return (index < vec.size()) ? vec[index] : default_value;
 }
 
 template<typename MapT>
-typename MapT::mapped_type value_or(MapT& map, const typename MapT::key_type& key,
+typename MapT::mapped_type value_or(const MapT& map, const typename MapT::key_type& key,
                                     const typename MapT::mapped_type& default_value = {}) {
+  return maybe_get(map, key).value_or(default_value);
+}
+
+template<typename MapT>
+typename std::optional<typename MapT::mapped_type> maybe_get(MapT& map, const typename MapT::key_type& key) {
   auto it = map.find(key);
-  return (it != map.end()) ? it->second : default_value;
+  return (it != map.end()) ? it->second : std::optional<typename MapT::mapped_type>{};
 }
