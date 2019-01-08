@@ -11,7 +11,7 @@ public:
     void run();
 
     vector<int> leavesDepths;
-    unique_ptr<SimpleGraph> g;
+    unique_ptr<UndirectedGraph<>> g;
     int depth = 1;
     void dfs(int v, int p)
     {
@@ -34,7 +34,7 @@ void Solver622E::run()
 {
     int nVertices;
     cin >> nVertices;
-    g.reset(new SimpleGraph(nVertices));
+    g.reset(new UndirectedGraph<>(nVertices));
     for (int i = 0; i < nVertices - 1; ++i)
     {
         int a, b;

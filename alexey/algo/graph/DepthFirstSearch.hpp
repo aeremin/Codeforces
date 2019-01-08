@@ -20,7 +20,7 @@ public:
     typedef function<bool(int)> VertexCallback;
 
 public:
-    DepthFirstSearcher(const SimpleGraph& graph) : graph_(graph),
+    DepthFirstSearcher(const UndirectedGraph<>& graph) : graph_(graph),
         edgeProcessCallback_( [](int, int, bool)->bool {return false; } ),
         vertexPreprocessCallback_( [](int)->bool {return false; } ),
         vertexPostprocessCallback_( [](int)->bool {return false; } )
@@ -107,7 +107,7 @@ private:
     }
 
 private:
-    const SimpleGraph& graph_;
+    const UndirectedGraph<>& graph_;
     EdgeCallback edgeProcessCallback_;
     VertexCallback vertexPreprocessCallback_;
     VertexCallback vertexPostprocessCallback_;
@@ -124,7 +124,7 @@ private:
 /////////////////////////////////////////
 
 // Checks only component containing startVertex
-static bool hasCycle(const SimpleGraph& graph, vector<int>* cycle = nullptr, int startVertex = 0)
+static bool hasCycle(const UndirectedGraph<>& graph, vector<int>* cycle = nullptr, int startVertex = 0)
 {
     DepthFirstSearcher searcher(graph);
 

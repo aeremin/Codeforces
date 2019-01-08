@@ -15,7 +15,7 @@
 
 TEST( BreadthFirstSearchTest, WorksOnSomeExample )
 {
-    SimpleGraph g( 7 );
+    UndirectedGraph<> g( 7 );
     g.add_edge( 0, 1 );
     g.add_edge( 0, 2 );
     g.add_edge( 1, 3 );

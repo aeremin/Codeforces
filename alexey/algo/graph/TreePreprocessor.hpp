@@ -17,12 +17,12 @@ public:
         PerVertexData vertexData;
     };
 private:
-    const Graph<PerEdgeData, PerVertexData>& graph_;
+    const UndirectedGraph<PerEdgeData, PerVertexData>& graph_;
     std::vector<int> depths_;
     std::vector<std::vector<LiftData>> binaryLiftData_;
     
 public:
-    TreePreprocessor( const Graph<PerEdgeData, PerVertexData>& graph )
+    TreePreprocessor( const UndirectedGraph<PerEdgeData, PerVertexData>& graph )
         : graph_( graph ),
         depths_( graph.num_vertices(), -1 ),
         binaryLiftData_( graph.num_vertices() )

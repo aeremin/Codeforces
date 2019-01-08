@@ -4,7 +4,7 @@
 #include "algo/graph/Graph.hpp"
 
 template<class VertexProcessCallback, class PerEdgeData, class PerVertexData>
-void breadthFirstSearch( const Graph<PerEdgeData, PerVertexData>& graph, VertexProcessCallback cbk, size_t startVertex = 0 )
+void breadthFirstSearch( const UndirectedGraph<PerEdgeData, PerVertexData>& graph, VertexProcessCallback cbk, size_t startVertex = 0 )
 {
     enum class Status {Unprocessed, Queued, Processed };
     std::vector<Status> status( graph.num_vertices(), Status::Unprocessed );

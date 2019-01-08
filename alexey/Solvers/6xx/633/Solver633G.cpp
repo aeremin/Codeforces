@@ -21,7 +21,7 @@ public:
     vector<pair<int, int>> subtreeRange;
     int counter = 0;
 
-    unique_ptr<SimpleGraph> graph;
+    unique_ptr<UndirectedGraph<>> graph;
 
     void dfs(int v, int p)
     {
@@ -66,7 +66,7 @@ void Solver633G::run()
     int n;
     cin >> n >> m;
     auto vals = readVector<int>(n);
-    graph.reset(new SimpleGraph(n));
+    graph.reset(new UndirectedGraph<>(n));
     for (int i : range(1, n))
     {
         int a, b;

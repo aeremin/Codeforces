@@ -27,7 +27,7 @@ public:
         int l = 0;
     };
     
-    unique_ptr<Graph<EdgeData, EdgeData>> g; 
+    unique_ptr<UndirectedGraph<EdgeData, EdgeData>> g; 
     
     vector<VertexData> vdDn, vdUp;
     
@@ -94,7 +94,7 @@ void Solver629E::run()
     vdDn = vector<VertexData>(nVertices);
     vdUp = vector<VertexData>(nVertices);
 
-    g.reset(new Graph<EdgeData, EdgeData>(nVertices));
+    g.reset(new UndirectedGraph<EdgeData, EdgeData>(nVertices));
     EdgeData ed;
     ed.l = 1;
     for (int i : range(nVertices - 1))

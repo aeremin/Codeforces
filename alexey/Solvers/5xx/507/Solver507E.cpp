@@ -10,7 +10,7 @@ class Solver507E
 public:
     void run();
 
-    using WeightedEdgeGraph = Graph<double, EmptyStruct>;
+    using WeightedEdgeGraph = UndirectedGraph<double>;
 };
 
 void Solver507E::run()

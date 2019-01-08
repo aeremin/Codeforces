@@ -9,7 +9,7 @@ class Solver014D
 public:
     void run();
 
-    unique_ptr<SimpleGraph> graph;
+    unique_ptr<UndirectedGraph<>> graph;
 
     vector<int> vertexDepths;
     vector<int> halfTreeDiameters;
@@ -44,7 +44,7 @@ void Solver014D::run()
 {
     int nCities;
     cin >> nCities;
-    graph.reset(new SimpleGraph(nCities));
+    graph.reset(new UndirectedGraph<>(nCities));
     for (int i = 0; i < nCities - 1; ++i)
     {
         int a, b;

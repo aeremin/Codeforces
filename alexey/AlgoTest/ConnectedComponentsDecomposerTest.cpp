@@ -22,7 +22,7 @@ TEST(ConnectedComponentsDecomposerTest, WorksOnConcreteTwoComponentsGraph)
     // 0 - 1  2
     //  \ /   |
     //   3    4
-    SimpleGraph g( 5 );
+    UndirectedGraph<> g( 5 );
     g.add_edge(0, 1);
     g.add_edge(3, 1);
     g.add_edge(3, 0);

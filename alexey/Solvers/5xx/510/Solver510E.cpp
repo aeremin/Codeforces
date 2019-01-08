@@ -23,7 +23,7 @@ void Solver510E::run()
     auto foxAges = readVector<int>(nFoxes);
     auto possiblePrimesVec = generatePrimesUntil(20000);
     unordered_set<int> possiblePrimes(begin(possiblePrimesVec), end(possiblePrimesVec));
-    Graph<int, EmptyStruct> g(nFoxes + 2);
+    DirectedGraph<int, EmptyStruct> g(nFoxes + 2);
     for (int i : range(nFoxes)) {
         for (int j : range(nFoxes)) {
             if (possiblePrimes.count(foxAges[i] + foxAges[j])) {
@@ -41,7 +41,7 @@ void Solver510E::run()
         else
             g.add_directed_edge(i + 1, nFoxes + 1, 2);
 
-    MaxFlowPushRelabel<int, EmptyStruct> maxFlowCalc(g);
+    MaxFlowPushRelabel<true, int, EmptyStruct> maxFlowCalc(g);
     auto flow = maxFlowCalc.GetMaxFlow(0, nFoxes + 1);
     if (flow.totalFlow != nFoxes) {
         cout << "Impossible";

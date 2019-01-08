@@ -10,7 +10,7 @@ class Solver638C
 public:
     void run();
 
-    std::unique_ptr<Graph<int, EmptyStruct>> g;
+    std::unique_ptr<UndirectedGraph<int, EmptyStruct>> g;
     vector<vector<int>> roadsToFixPerDay;
 
     void dfs( int v, int p, int forbiddenDay ) {
@@ -32,7 +32,7 @@ void Solver638C::run()
 {
     int nVertices;
     cin >> nVertices;
-    g.reset(new Graph<int, EmptyStruct>( nVertices ));
+    g.reset(new UndirectedGraph<int, EmptyStruct>( nVertices ));
     for ( int i : range( nVertices - 1 ) ) {
         int a, b;
         cin >> a >> b;

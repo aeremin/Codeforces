@@ -21,7 +21,7 @@ void Solver546E::run()
     auto cntBefore = readVector<int>( nCities );
     auto cntAfter = readVector<int>( nCities );
 
-    Graph<int, EmptyStruct> g( 2 * nCities + 2 );
+    DirectedGraph<int, EmptyStruct> g( 2 * nCities + 2 );
     for ( int i : range( nRoads ) ) {
         int a, b;
         cin >> a >> b;
@@ -39,7 +39,7 @@ void Solver546E::run()
     auto neededFlow = max( accumulate( begin( cntBefore ), end( cntBefore ), 0 ),
                            accumulate( begin( cntAfter ), end( cntAfter ), 0 ) );
 
-    MaxFlowPushRelabel<int, EmptyStruct> flowCalc( g );
+    MaxFlowPushRelabel<true, int, EmptyStruct> flowCalc( g );
     auto flow = flowCalc.GetMaxFlow( 2 * nCities, 2 * nCities + 1 );
     if ( flow.totalFlow != neededFlow ) {
         cout << "NO";

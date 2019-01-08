@@ -10,7 +10,7 @@ class Solver486D
 public:
     void run();
 
-    unique_ptr<Graph<EmptyStruct, int>> graph;
+    unique_ptr<UndirectedGraph<EmptyStruct, int>> graph;
 
     int currentAllowedMaximum = 0;
 
@@ -43,7 +43,7 @@ void Solver486D::run()
         sortedVertices[i] = { verticesValues[i], i };
     sort(begin(sortedVertices), end(sortedVertices));
     
-    graph.reset(new Graph<EmptyStruct, int>(verticesValues));
+    graph.reset(new UndirectedGraph<EmptyStruct, int>(verticesValues));
     for (int i = 0; i < nVertices - 1; ++i)
     {
         int a, b;

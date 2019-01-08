@@ -24,7 +24,7 @@ void Solver553D::run()
 {
     int nVertices, nEdges, nFortresses;
     cin >> nVertices >> nEdges >> nFortresses;
-    Graph<EmptyStruct, City> graph(nVertices);
+    UndirectedGraph<EmptyStruct, City> graph(nVertices);
     for (int i = 0; i < nFortresses; ++i)
     {
         int a;

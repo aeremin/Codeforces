@@ -6,7 +6,7 @@ template<class PerEdgeData, class PerVertexData>
 class BipartitionChecker
 {
 public:
-    BipartitionChecker( const Graph<PerEdgeData, PerVertexData>& graph ) 
+    BipartitionChecker( const UndirectedGraph<PerEdgeData, PerVertexData>& graph ) 
         : 
         graph_(graph),
         part_( graph_.num_vertices(), -1 )
@@ -51,14 +51,14 @@ private:
     }
 
 private:
-    const Graph<PerEdgeData, PerVertexData>& graph_;
+    const UndirectedGraph<PerEdgeData, PerVertexData>& graph_;
     bool isBipartite_ = true;
     std::vector<int> part_;
     int currentPart_ = 0;
 };
 
 template<class PerEdgeData, class PerVertexData>
-BipartitionChecker<PerEdgeData, PerVertexData> makeBipartitionChecker(const Graph<PerEdgeData, PerVertexData>& graph)
+BipartitionChecker<PerEdgeData, PerVertexData> makeBipartitionChecker(const UndirectedGraph<PerEdgeData, PerVertexData>& graph)
 {
     return BipartitionChecker<PerEdgeData, PerVertexData>(graph);
 }

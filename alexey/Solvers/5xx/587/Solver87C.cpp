@@ -69,7 +69,7 @@ void Solver587C::run()
     for ( auto& people : peoplePerCity )
         peoplePerCitySorted.push_back( MinPeopleOnPath( people ) );
 
-    Graph<MyEmptyStruct, MinPeopleOnPath> tree( peoplePerCitySorted );
+    UndirectedGraph<MyEmptyStruct, MinPeopleOnPath> tree( peoplePerCitySorted );
     for ( auto& p : edges )
         tree.add_edge( p.first - 1, p.second - 1);
 

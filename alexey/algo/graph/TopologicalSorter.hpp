@@ -12,7 +12,7 @@ private:
     };
 
 public:
-    TopologicalSorter(const Graph<PerEdgeData, PerVertexData>& graph)
+    TopologicalSorter(const DirectedGraph<PerEdgeData, PerVertexData>& graph)
         :
         graph_(graph),
         statuses_(graph_.num_vertices(), Status::Unprocessed)
@@ -48,7 +48,7 @@ private:
         return res;
     }
 
-    const Graph<PerEdgeData, PerVertexData>& graph_;
+    const DirectedGraph<PerEdgeData, PerVertexData>& graph_;
     std::vector<Status> statuses_;
     std::vector<size_t> sorted_;
     bool isDAG_ = true;
@@ -56,7 +56,7 @@ private:
 };
 
 template<class PerEdgeData, class PerVertexData>
-TopologicalSorter<PerEdgeData, PerVertexData> makeTopologicalSorter(const Graph<PerEdgeData, PerVertexData>& graph)
+TopologicalSorter<PerEdgeData, PerVertexData> makeTopologicalSorter(const DirectedGraph<PerEdgeData, PerVertexData>& graph)
 {
     return TopologicalSorter<PerEdgeData, PerVertexData>(graph);
 }

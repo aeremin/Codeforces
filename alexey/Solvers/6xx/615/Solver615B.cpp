@@ -15,7 +15,7 @@ void Solver615B::run()
 {
     int nVertices, nEdges;
     cin >> nVertices >> nEdges;
-    SimpleGraph g(nVertices);
+    UndirectedGraph<> g(nVertices);
     for (int i = 0; i < nEdges; ++i)
     {
         int a, b;

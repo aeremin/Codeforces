@@ -24,7 +24,7 @@ void Solver623A::run()
         connected[b - 1][a - 1] = true;
     }
 
-    SimpleGraph g(nVertices);
+    UndirectedGraph<> g(nVertices);
     for (int i = 0; i < nVertices; ++i)
         for (int j = 0; j < i; ++j)
             if (!connected[i][j])

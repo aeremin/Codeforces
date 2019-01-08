@@ -25,7 +25,7 @@ void Solver567E::run()
     cin >> nVertices >> nEdges >> startVertice >> endVertice;
     --startVertice;
     --endVertice;
-    Graph<int64_t, EmptyStruct> gForward(nVertices), gBackward(nVertices);
+    DirectedGraph<int64_t> gForward(nVertices), gBackward(nVertices);
     vector<EdgeInfo> edgeInfos;
     for (int i : range(nEdges)) {
         int a, b;

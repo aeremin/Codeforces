@@ -4,7 +4,7 @@
 #include <utility>
 #include <algorithm>
 
-template<class PerEdgeData, class PerVertexData>
+template<bool Directed, class PerEdgeData, class PerVertexData>
 class Graph
 {
 
@@ -23,12 +23,14 @@ public:
     {
     };
 
+    template<bool IsDirected = Directed, typename = typename std::enable_if<!IsDirected>::type>
     void add_edge( int from, int to, PerEdgeData data = {} )
     {
         edges_[from].insert( { to, data } );
         edges_[to].insert( { from, data } );
     }
 
+    template<bool IsDirected = Directed, typename = typename std::enable_if<IsDirected>::type>
     void add_directed_edge(int from, int to, PerEdgeData data = {})
     {
         edges_[from].insert({ to, data });
@@ -61,4 +63,8 @@ private:
 
 struct EmptyStruct {};
 
-using SimpleGraph = Graph<EmptyStruct, EmptyStruct>;
+template<class PerEdgeData = EmptyStruct, class PerVertexData = EmptyStruct>
+using DirectedGraph = Graph<true, PerEdgeData, PerVertexData>;
+
+template<class PerEdgeData = EmptyStruct, class PerVertexData = EmptyStruct>
+using UndirectedGraph = Graph<false, PerEdgeData, PerVertexData>;

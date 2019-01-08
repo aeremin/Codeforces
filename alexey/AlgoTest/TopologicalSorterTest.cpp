@@ -23,7 +23,7 @@ public:
         graph.reset();
     }
 
-    static std::unique_ptr<SimpleGraph> createRandomDAG()
+    static std::unique_ptr<DirectedGraph<>> createRandomDAG()
     {
         std::vector<int> order(nVertices);
         std::iota(begin(order), end(order), 0);
@@ -32,7 +32,7 @@ public:
         std::mt19937 urng(rng());
         std::shuffle(begin(order), end(order), urng);
 
-        std::unique_ptr<SimpleGraph> result(new SimpleGraph(nVertices));
+        std::unique_ptr<DirectedGraph<>> result(new DirectedGraph<>(nVertices));
         for (auto i : range(nEdges))
         {
             int from = rand() % nVertices;
@@ -47,12 +47,12 @@ public:
     }
 
 protected:
-    static std::unique_ptr<SimpleGraph> graph;
+    static std::unique_ptr<DirectedGraph<>> graph;
     static const int nVertices = 10000;
     static const int nEdges = 50000000;
 };
 
-std::unique_ptr<SimpleGraph> TopologicalSorterRandomTest::graph = nullptr;
+std::unique_ptr<DirectedGraph<>> TopologicalSorterRandomTest::graph = nullptr;
 
 // TODO: Remove test or fix compilation
 /*
@@ -81,7 +81,7 @@ class TopologicalSorterLinearGraphTest : public testing::Test
 public:
     static void SetUpTestCase()
     {
-        graph = new SimpleGraph( nEdges + 1 );
+        graph = new DirectedGraph<>( nEdges + 1 );
         for ( auto i : range( nEdges ) )
             graph->add_directed_edge( i, i + 1 );
     }
@@ -92,11 +92,11 @@ public:
     }
 
 protected:
-    static SimpleGraph* graph;
+    static DirectedGraph<>* graph;
     static const int nEdges = 2000000;
 };
 
-SimpleGraph* TopologicalSorterLinearGraphTest::graph = nullptr;
+DirectedGraph<>* TopologicalSorterLinearGraphTest::graph = nullptr;
 
 // TODO: Remove test or fix compilation
 /*

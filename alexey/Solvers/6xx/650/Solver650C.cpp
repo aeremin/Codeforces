@@ -64,7 +64,7 @@ void Solver650C::run() {
                 for (auto elt : bucket)
                     ds.unionSets(bucket.front(), elt);
 
-    SimpleGraph g(h * w);
+    DirectedGraph<> g(h * w);
 
     for (auto perDirectionBuckets : { &perColumnBuckets, &perRowbuckets })
         for (const auto& buckets : *perDirectionBuckets)

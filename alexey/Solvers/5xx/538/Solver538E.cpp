@@ -16,7 +16,7 @@ public:
         int distanceToRoot;
     };
     
-    using ProblemGraph = Graph<EmptyStruct, VertexData>;
+    using ProblemGraph = UndirectedGraph<EmptyStruct, VertexData>;
     unique_ptr<ProblemGraph> graph;
     int leafCount = 0;
 

@@ -8,8 +8,8 @@ struct DijkstraResult
 };
 
 
-template<class PerEdgeData, class PerVertexData>
-DijkstraResult<PerEdgeData> getMinimalPathsFrom(const Graph<PerEdgeData, PerVertexData>& graph, int startVertex, PerEdgeData inAccessibleValue)
+template<bool Directed, class PerEdgeData, class PerVertexData>
+DijkstraResult<PerEdgeData> getMinimalPathsFrom(const Graph<Directed, PerEdgeData, PerVertexData>& graph, int startVertex, PerEdgeData inAccessibleValue)
 {
     DijkstraResult<PerEdgeData> result = { vector<PerEdgeData>(graph.num_vertices(), inAccessibleValue), vector<int>(graph.num_vertices(), -1) };
     using FullEdgeData = tuple<PerEdgeData, int, int>;

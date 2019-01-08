@@ -7,7 +7,7 @@ int concatenate( int a, int b )
 
 #include "algo/graph/TreePreprocessor.hpp"
 
-using TreeCountingEdgesAndVertices = Graph<int, int>;
+using TreeCountingEdgesAndVertices = UndirectedGraph<int, int>;
 
 TEST( TreePreprocessorTest, ConcreteExample )
 {

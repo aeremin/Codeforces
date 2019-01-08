@@ -33,7 +33,7 @@ void Solver554E::run()
     for ( auto& p : love )
         ds.unionSets( p.first, p.second );
 
-    SimpleGraph graph( n );
+    UndirectedGraph<> graph( n );
     for ( auto& p : hate )
         graph.add_edge( ds.rep( p.first ), ds.rep( p.second ) );
 

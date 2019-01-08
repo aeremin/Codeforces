@@ -19,7 +19,7 @@ public:
         int minSubtreeCyclicPathLength;
     };
     
-    using ProblemGraph = Graph<EmptyStruct, VertexData>;
+    using ProblemGraph = UndirectedGraph<EmptyStruct, VertexData>;
     unique_ptr<ProblemGraph> graph;
 
     void dfs(int vInd, int parentInd)

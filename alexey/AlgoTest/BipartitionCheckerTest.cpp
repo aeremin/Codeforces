@@ -23,7 +23,7 @@ TEST(BipartitionCheckerTest, OddCycleIsNotBipartite)
 
 TEST(BipartitionCheckerTest, GraphWithSelfLoopIsNotBipartite)
 {
-    SimpleGraph graph(10);
+    UndirectedGraph<> graph(10);
     graph.add_edge(5, 5);
     auto checker = makeBipartitionChecker(graph);
     EXPECT_FALSE(checker.isBipartite());

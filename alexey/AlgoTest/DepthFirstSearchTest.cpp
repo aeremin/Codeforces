@@ -4,7 +4,7 @@
 
 TEST(DepthFirstSearchTest, WorksOnSingleVertex)
 {
-    SimpleGraph graph(1);
+    UndirectedGraph<> graph(1);
     DepthFirstSearcher searcher(graph);
     int verticesCount = 0;
     auto increaseVerticesCount = [&](int)
@@ -103,7 +103,7 @@ TEST(DepthFirstSearchTest, WorksOnSimpleCycle)
 TEST(DepthFirstSearchTest, WorksOnConcreteCase)
 {
 
-    SimpleGraph g(6);
+    UndirectedGraph<> g(6);
     g.add_edge(0, 1);
     g.add_edge(0, 5);
     g.add_edge(0, 2);

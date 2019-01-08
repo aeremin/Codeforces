@@ -33,7 +33,7 @@ void Solver377A::run() {
         cin >> s;
 
     vector<pair<int, int>> nei = { {-1, 0}, {1, 0}, {0, 1}, {0, -1} };
-    Graph<int, EmptyStruct> g(h * w);
+    UndirectedGraph<int> g(h * w);
     
     int empty = -1;
     for (int y : range(h))

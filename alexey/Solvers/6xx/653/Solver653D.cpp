@@ -31,11 +31,11 @@ void Solver653D::run()
         auto m = (r + l) / 2.0;
         auto perBear = m / nBears;
         
-        Graph<int64_t, EmptyStruct> g(nVertices);
+        DirectedGraph<int64_t, EmptyStruct> g(nVertices);
         for (auto& e : edges)
             g.add_directed_edge(e.from - 1, e.to - 1, e.w / perBear);
 
-        MaxFlowPushRelabel<int64_t, EmptyStruct> calc( g );
+        MaxFlowPushRelabel<true, int64_t, EmptyStruct> calc( g );
         auto fl = calc.GetMaxFlow(0, nVertices - 1).totalFlow;
         if (fl >= nBears)
             l = m;

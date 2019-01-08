@@ -12,7 +12,7 @@ class Solver620E
 public:
     void run();
 
-    unique_ptr<SimpleGraph> graph;
+    unique_ptr<UndirectedGraph<>> graph;
 
     vector<uint64_t> colors;
     vector<uint64_t> orderedColors;
@@ -47,7 +47,7 @@ void Solver620E::run()
         elt = uint64_t(1) << a;
     }
 
-    graph.reset(new SimpleGraph(nVertices));
+    graph.reset(new UndirectedGraph<>(nVertices));
     for (int i = 1; i < nVertices; ++i)
     {
         int a, b;

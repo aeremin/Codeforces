@@ -9,7 +9,7 @@ class Solver618D
 public:
     void run();
 
-    unique_ptr<SimpleGraph> graph;
+    unique_ptr<UndirectedGraph<>> graph;
 
     vector<pair<int, int>> maxToTake;
 
@@ -46,7 +46,7 @@ void Solver618D::run()
     int64_t x, y;
     cin >> n >> x >> y;
 
-    graph.reset(new SimpleGraph(n));
+    graph.reset(new UndirectedGraph<>(n));
     for (int i = 0; i < n - 1; ++i)
     {
         int a, b;

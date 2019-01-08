@@ -30,7 +30,7 @@ public:
 void Solver666B::run() {
     int nCities, nRoads;
     cin >> nCities >> nRoads;
-    Graph<int, EmptyStruct> g(nCities);
+    DirectedGraph<int, EmptyStruct> g(nCities);
 
     for (int i : range(nRoads)) {
         int from, to;

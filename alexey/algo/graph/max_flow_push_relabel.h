@@ -5,10 +5,10 @@
 #include "iter/range.h"
 #include "util/relax.h"
 
-template<class PerEdgeData, class PerVertexData>
+template<bool Directed, class PerEdgeData, class PerVertexData>
 class MaxFlowPushRelabel {
 public:
-    MaxFlowPushRelabel( const Graph<PerEdgeData, PerVertexData>& graph )
+    MaxFlowPushRelabel( const Graph<Directed, PerEdgeData, PerVertexData>& graph )
         : graph_( graph ),
         currentPreflow_  ( graph.num_vertices(), std::vector<PerEdgeData>( graph.num_vertices() ) ),
         capacity_        ( graph.num_vertices(), std::vector<PerEdgeData>( graph.num_vertices() ) ),
@@ -24,7 +24,7 @@ public:
 
     struct Flow {
         PerEdgeData totalFlow;
-        Graph<PerEdgeData, EmptyStruct> flow;
+        Graph<Directed, PerEdgeData, EmptyStruct> flow;
     };
     
     Flow GetMaxFlow( int source, int sink ) {
@@ -43,7 +43,7 @@ public:
             assert( i == source || i == sink || excess_[i] == 0 );
         
         assert( excess_[source] + excess_[sink] == 0 );
-        Flow res = {excess_[sink], Graph<PerEdgeData, EmptyStruct>(graph_.num_vertices())};
+        Flow res = {excess_[sink], Graph<Directed, PerEdgeData, EmptyStruct>(graph_.num_vertices())};
         for (int u : range( graph_.num_vertices() ))
             for (int v : range( graph_.num_vertices() ))
                 if (currentPreflow_[u][v] > 0)
@@ -138,7 +138,7 @@ private:
     }
 
 private:
-    const Graph<PerEdgeData, PerVertexData>& graph_;
+    const Graph<Directed, PerEdgeData, PerVertexData>& graph_;
 
     std::vector<std::vector<PerEdgeData>> currentPreflow_;
     std::vector<std::vector<PerEdgeData>> capacity_;
