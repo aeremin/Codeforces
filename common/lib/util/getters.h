@@ -38,6 +38,11 @@ typename MapT::mapped_type& at(MapT& map, const typename MapT::key_type& key) {
   return it->second;
 }
 
+template<typename MapT>
+typename std::optional<typename MapT::mapped_type> maybe_get(const MapT& map, const typename MapT::key_type& key) {
+    auto it = map.find(key);
+    return (it != map.end()) ? it->second : std::optional<typename MapT::mapped_type>{};
+}
 
 template<typename VectorT>
 typename VectorT::value_type value_or(const VectorT& vec, size_t index,
@@ -51,8 +56,3 @@ typename MapT::mapped_type value_or(const MapT& map, const typename MapT::key_ty
   return maybe_get(map, key).value_or(default_value);
 }
 
-template<typename MapT>
-typename std::optional<typename MapT::mapped_type> maybe_get(const MapT& map, const typename MapT::key_type& key) {
-  auto it = map.find(key);
-  return (it != map.end()) ? it->second : std::optional<typename MapT::mapped_type>{};
-}
