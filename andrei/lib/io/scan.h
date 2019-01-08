@@ -180,12 +180,12 @@ inline std::string scan_line() {
 }
 
 
+namespace internal {
+
 class ScanResult {
 public:
     ScanResult(const ScanResult&) = delete;
     ScanResult& operator=(const ScanResult&) = delete;
-    ScanResult(ScanResult&&) = delete;
-    ScanResult& operator=(ScanResult&&) = delete;
 
     template<typename T>
     operator T() && {
@@ -193,7 +193,9 @@ public:
     }
 };
 
-ScanResult scan() {
+}  // namespace internal
+
+internal::ScanResult scan() {
     return {};
 }
 
