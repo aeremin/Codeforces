@@ -2,7 +2,7 @@
 #include <vector>
 #include <algorithm>
 
-#include "Graph.hpp"
+#include "graph/graph.h"
 #include "DepthFirstSearch.hpp"
 
 using std::vector;
