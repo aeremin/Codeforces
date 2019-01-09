@@ -7,7 +7,8 @@
 #include "graph/graph.h"
 #include "iter/range.h"
 #include "algo/graph/TopologicalSorter.hpp"
-#include "graph/topological_sort.h"
+#include "../../andrei/lib/graph/topological_sort_checked.h"
+#include "../../andrei/lib/graph/topological_sort_optimistic.h"
 
 
 class TopologicalSorterRandomTest : public testing::Test
@@ -54,8 +55,6 @@ protected:
 
 std::unique_ptr<DirectedGraph<>> TopologicalSorterRandomTest::graph = nullptr;
 
-// TODO: Remove test or fix compilation
-/*
 TEST_F( TopologicalSorterRandomTest, AndreyTopologySort )
 {
     auto res = topological_sort_checked( *graph );
@@ -66,7 +65,6 @@ TEST_F( TopologicalSorterRandomTest, AndreyTopologySortOptimistic )
 {
     auto res = topological_sort_optimistic( *graph );
 }
-*/
 
 TEST_F( TopologicalSorterRandomTest, AlexeyTopologySort )
 {
