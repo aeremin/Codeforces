@@ -1,6 +1,7 @@
 // NOTE. Some tests here are overspecified (they expect a particular order).
 
-#include "graph/topological_sort.h"
+#include "graph/topological_sort_checked.h"
+#include "graph/topological_sort_optimistic.h"
 
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>

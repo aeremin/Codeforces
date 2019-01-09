@@ -3,13 +3,8 @@
 // Returns directed graph vertices in such order {v_1, v_2, ..., v_n} that
 // there is no edge (v_i, v_j) for any (j < i).
 //
-// * topological_sort_reachable_optimistic(graph, [starting_vertices])
-//   Assumes that graph is acyclic.
-//   If graph does contain a cycle, the behavior is undefined
-//   (It's actually completely deterministic and most likely stable,
-//   but undefined in the sense that I'm too lazy to define it.)
-//
-// * topological_sort_reachable_checked(graph, [starting_vertices])
+// * topological_sort_reachable_checked(graph, starting_vertices)
+// * topological_sort_checked(graph)
 //   Checks if graph contains a cycle. Returns TopologicalSortResult, which is:
 //   - Ok, if there are no cycles.
 //     In this case content of `vertices()` is the same as the result of
@@ -22,6 +17,8 @@
 //           traverse order to match the successful case.
 //     Note. Each vertex is listed only once, including loop starting vertex,
 //           which is `loop().back()`.
+//
+// See also: topological_sort_optimistic
 
 #pragma once
 
@@ -74,31 +71,6 @@ private:
   std::vector<int> vertices_;
   int loop_length_;
 };
-
-
-template<typename DirectedGraphT, typename VertexListT>
-std::vector<int> topological_sort_reachable_optimistic(const DirectedGraphT& graph,
-                                                       const VertexListT& starting_vertices) {
-  std::vector<int> result;
-  dfs(graph,
-      starting_vertices,
-      [&result](const GraphTraversalState&, int v) {
-        result.push_back(v);
-        return IterationControl::Proceed;
-      });
-  return result;
-}
-
-template<typename DirectedGraphT>
-std::vector<int> topological_sort_reachable_optimistic(const DirectedGraphT& graph,
-                                                       const std::initializer_list<int>& starting_vertices) {
-  return topological_sort_reachable_optimistic<DirectedGraphT, std::initializer_list<int>>(graph, starting_vertices);
-}
-
-template<typename DirectedGraphT>
-std::vector<int> topological_sort_optimistic(const DirectedGraphT& graph) {
-  return topological_sort_reachable_optimistic(graph, range(graph.num_vertices()));
-}
 
 
 template<typename DirectedGraphT, typename VertexListT>

@@ -10,7 +10,7 @@
 
 #include "graph/graph.h"
 #include "../../andrei/lib/container/indexer.h"
-#include "../../andrei/lib/graph/topological_sort.h"
+#include "../../andrei/lib/graph/topological_sort_checked.h"
 
 const std::string kIndent = "  ";
 const std::string kIncludedFromPrefix = kIndent + "from ";

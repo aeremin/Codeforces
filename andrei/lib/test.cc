@@ -2,13 +2,10 @@
 
 #include <gtest/gtest.h>
 
-#include "graph/graph.h"
-#include "graph/topological_sort.h"
-#include "graph/distance_unweighted.h"
 #include "io/scan.h"
 #include "io/print.h"
 #include "io/targets.h"
-#include "util/lexicographical_compare.h"
+#include "util/getters.h"
 #include "util/hash.h"
 
 
