@@ -8,8 +8,8 @@
 #include <string>
 #include <vector>
 
+#include "graph/graph.h"
 #include "../../andrei/lib/container/indexer.h"
-#include "../../andrei/lib/graph/adjacency_list.h"
 #include "../../andrei/lib/graph/topological_sort.h"
 
 const std::string kIndent = "  ";
@@ -20,7 +20,7 @@ std::string Compile(const std::string& main_file, CompilerOptions& options) {
     Indexer<std::string> file_indexer;
     std::vector<ParsedFile> files;
     std::set<std::string> system_includes;
-    DirectedGraph_Nonloaded_AdjacencyList include_graph;
+    DirectedGraph<> include_graph(0);
 
     std::function<int(const std::string&, bool)> process_file =
             [&](const std::string& file_name, bool is_header) {
@@ -61,7 +61,9 @@ std::string Compile(const std::string& main_file, CompilerOptions& options) {
         for (const std::string& dependency : current_file.local_includes) {
             try {
                 int dependency_index = process_file(dependency, true);
-                include_graph.add_arc_with_vertices(file_index, dependency_index);
+                include_graph.expand_to_num_vertices(file_index + 1);
+                include_graph.expand_to_num_vertices(dependency_index + 1);
+                include_graph.add_directed_edge(file_index, dependency_index);
             } catch (const std::runtime_error& err) {
                 throw std::runtime_error(std::string(err.what()) + "\n" + kIncludedFromPrefix + file_name);
             }
@@ -75,7 +77,7 @@ std::string Compile(const std::string& main_file, CompilerOptions& options) {
         case TopologicalSortResult::Ok:
             break;
         case TopologicalSortResult::LoopDetected:
-            GraphIndex loop_start = *(file_indices_sorted.loop().end() - 1);
+            int loop_start = *(file_indices_sorted.loop().end() - 1);
             std::string inclusion_sequence = kIndent + file_indexer.value(loop_start);
             for (auto it = file_indices_sorted.vertices().begin();
                     it != file_indices_sorted.vertices().end(); ++it) {
@@ -89,7 +91,7 @@ std::string Compile(const std::string& main_file, CompilerOptions& options) {
     for (const std::string& s : system_includes)
         output << "#include <" << s << ">\n";
     output << "\n\n";
-    for (GraphIndex file_index : file_indices_sorted.vertices()) {
+    for (int file_index : file_indices_sorted.vertices()) {
         output << "\n" << "// From " << file_indexer.value(file_index) << "\n\n";
         for (const std::string& l : files.at(file_index).code_lines)
             output << l << "\n";

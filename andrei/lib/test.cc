@@ -2,7 +2,7 @@
 
 #include <gtest/gtest.h>
 
-#include "graph/adjacency_list.h"
+#include "graph/graph.h"
 #include "graph/topological_sort.h"
 #include "graph/distance_unweighted.h"
 #include "io/scan.h"

@@ -16,18 +16,18 @@ IterationResult dfs(const GraphT& graph,
                     const OnSeeT& on_see,
                     const OnEnterT& on_enter,
                     const OnExitT& on_exit) {
-  using GraphTraversalStack = std::stack<GraphTraversalExecutionItem, std::vector<GraphTraversalExecutionItem>>;
+  using GraphTraversalStack = std::stack<GraphTraversalExecutionItem<GraphT>, std::vector<GraphTraversalExecutionItem<GraphT>>>;
   return traverse_graph<GraphTraversalStack, GraphT, VertexListT, OnSeeT, OnEnterT, OnExitT>(
       graph, starting_vertices, on_see, on_enter, on_exit);
 }
 
 template<typename GraphT, typename OnSeeT, typename OnEnterT, typename OnExitT>
 IterationResult dfs(const GraphT& graph,
-                    const std::initializer_list<GraphIndex>& starting_vertices,
+                    const std::initializer_list<int>& starting_vertices,
                     const OnSeeT& on_see,
                     const OnEnterT& on_enter,
                     const OnExitT& on_exit) {
-  return dfs<GraphT, std::initializer_list<GraphIndex>, OnSeeT, OnEnterT, OnExitT>(
+  return dfs<GraphT, std::initializer_list<int>, OnSeeT, OnEnterT, OnExitT>(
       graph, starting_vertices, on_see, on_enter, on_exit);
 }
 
@@ -40,8 +40,8 @@ IterationResult dfs(const GraphT& graph,
 
 template<typename GraphT, typename VisitorT>
 IterationResult dfs(const GraphT& graph,
-                    const std::initializer_list<GraphIndex>& starting_vertices,
+                    const std::initializer_list<int>& starting_vertices,
                     const VisitorT& visitor) {
-  return dfs<GraphT, std::initializer_list<GraphIndex>, VisitorT>(
+  return dfs<GraphT, std::initializer_list<int>, VisitorT>(
       graph, starting_vertices, visitor);
 }

@@ -41,7 +41,7 @@ public:
     LoopDetected,
   };
 
-  TopologicalSortResult(Status status__, std::vector<GraphIndex> vertices__, size_t loop_length__)
+  TopologicalSortResult(Status status__, std::vector<int> vertices__, size_t loop_length__)
       : status_(status__)
       , vertices_(std::move(vertices__))
       , loop_length_(loop_length__) {
@@ -51,7 +51,7 @@ public:
     return status_;
   }
 
-  const std::vector<GraphIndex>& vertices() const {
+  const std::vector<int>& vertices() const {
     return vertices_;
   }
 
@@ -59,29 +59,29 @@ public:
     return loop_length_;
   }
 
-  span<const GraphIndex> preloop() const {
+  span<const int> preloop() const {
     CHECK_DEFAULT(status_ == LoopDetected);
     return {vertices_.data() + loop_length_, vertices_.data() + vertices_.size()};
   }
-  span<const GraphIndex> loop() const {
+  span<const int> loop() const {
     CHECK_DEFAULT(status_ == LoopDetected);
     return {vertices_.data(), vertices_.data() + loop_length_};
   }
 
 private:
   Status status_;
-  std::vector<GraphIndex> vertices_;
+  std::vector<int> vertices_;
   int loop_length_;
 };
 
 
 template<typename DirectedGraphT, typename VertexListT>
-std::vector<GraphIndex> topological_sort_reachable_optimistic(const DirectedGraphT& graph,
+std::vector<int> topological_sort_reachable_optimistic(const DirectedGraphT& graph,
                                                               const VertexListT& starting_vertices) {
-  std::vector<GraphIndex> result;
+  std::vector<int> result;
   dfs(graph,
       starting_vertices,
-      [&result](const GraphTraversalState&, GraphIndex v) {
+      [&result](const GraphTraversalState&, int v) {
         result.push_back(v);
         return IterationControl::Proceed;
       });
@@ -89,13 +89,13 @@ std::vector<GraphIndex> topological_sort_reachable_optimistic(const DirectedGrap
 }
 
 template<typename DirectedGraphT>
-std::vector<GraphIndex> topological_sort_reachable_optimistic(const DirectedGraphT& graph,
-                                                              const std::initializer_list<GraphIndex>& starting_vertices) {
-  return topological_sort_reachable_optimistic<DirectedGraphT, std::initializer_list<GraphIndex>>(graph, starting_vertices);
+std::vector<int> topological_sort_reachable_optimistic(const DirectedGraphT& graph,
+                                                              const std::initializer_list<int>& starting_vertices) {
+  return topological_sort_reachable_optimistic<DirectedGraphT, std::initializer_list<int>>(graph, starting_vertices);
 }
 
 template<typename DirectedGraphT>
-std::vector<GraphIndex> topological_sort_optimistic(const DirectedGraphT& graph) {
+std::vector<int> topological_sort_optimistic(const DirectedGraphT& graph) {
   return topological_sort_reachable_optimistic(graph, range(graph.num_vertices()));
 }
 
@@ -103,13 +103,13 @@ std::vector<GraphIndex> topological_sort_optimistic(const DirectedGraphT& graph)
 template<typename DirectedGraphT, typename VertexListT>
 TopologicalSortResult topological_sort_reachable_checked(const DirectedGraphT& graph,
                                                          const VertexListT& starting_vertices) {
-  std::vector<GraphIndex> result;
+  std::vector<int> result;
   std::vector<char> in_current_chain(graph.num_vertices(), false);
-  GraphIndex loop_start_vertex = kInvalidGraphVertex;
+  int loop_start_vertex = kInvalidGraphVertex;
   IterationResult dfs_result =
       dfs(graph,
           starting_vertices,
-          [&](const GraphTraversalState&, GraphIndex v) {  // on seen
+          [&](const GraphTraversalState&, int v) {  // on seen
             if (in_current_chain[v]) {
               loop_start_vertex = v;
               result.clear();
@@ -118,12 +118,12 @@ TopologicalSortResult topological_sort_reachable_checked(const DirectedGraphT& g
               return IterationControl::Proceed;
             }
           },
-          [&](const GraphTraversalState&, GraphIndex v) {  // on enter
+          [&](const GraphTraversalState&, int v) {  // on enter
             CHECK_INTERNAL(!in_current_chain[v]);
             in_current_chain[v] = true;
             return IterationControl::Proceed;
           },
-          [&](const GraphTraversalState&, GraphIndex v) {  // on exit
+          [&](const GraphTraversalState&, int v) {  // on exit
             CHECK_INTERNAL(in_current_chain[v]);
             in_current_chain[v] = false;
             result.push_back(v);
@@ -143,8 +143,8 @@ TopologicalSortResult topological_sort_reachable_checked(const DirectedGraphT& g
 
 template<typename DirectedGraphT>
 TopologicalSortResult topological_sort_reachable_checked(const DirectedGraphT& graph,
-                                                         const std::initializer_list<GraphIndex>& starting_vertices) {
-  return topological_sort_reachable_checked<DirectedGraphT, std::initializer_list<GraphIndex>>(graph, starting_vertices);
+                                                         const std::initializer_list<int>& starting_vertices) {
+  return topological_sort_reachable_checked<DirectedGraphT, std::initializer_list<int>>(graph, starting_vertices);
 }
 
 template<typename DirectedGraphT>

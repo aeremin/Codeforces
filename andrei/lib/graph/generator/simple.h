@@ -1,27 +1,39 @@
 #pragma once
 
-#include "graph/adjacency_list.h"
+#include "graph/graph.h"
 #include "internal_tests/random.h"
 #include "iter/range.h"
 
 
 template<typename GraphT>
-GraphT generate_empty_graph(GraphIndex num_vertices) {
+GraphT generate_empty_graph(int num_vertices) {
   return GraphT(num_vertices);
 }
 
 template<typename GraphT>
-GraphT generate_full_graph(GraphIndex num_vertices) {
+GraphT generate_full_undirected_graph(int num_vertices) {
   GraphT graph(num_vertices);
   for (int i : range(num_vertices)) {
     for (int j : range(i))
-      graph.add_bilateral_edge(i, j);
+      graph.add_edge(i, j);
   }
   return graph;
 }
 
 template<typename GraphT>
-GraphT generate_random_graph_independent_edges(GraphIndex num_vertices, double edge_probability) {
+GraphT generate_full_directed_graph(int num_vertices) {
+  GraphT graph(num_vertices);
+  for (int i : range(num_vertices)) {
+    for (int j : range(num_vertices)) {
+      if (i != j)
+        graph.add_directed_edge(i, j);
+    }
+  }
+  return graph;
+}
+
+template<typename GraphT>
+GraphT generate_random_graph_independent_edges(int num_vertices, double edge_probability) {
   GraphT graph(num_vertices);
   for (int i : range(num_vertices)) {
     for (int j : range(i)) {

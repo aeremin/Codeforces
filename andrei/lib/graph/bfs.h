@@ -16,9 +16,9 @@ IterationResult bfs(const GraphT& graph,
                     const OnSeeT& on_see,
                     const OnEnterT& on_enter,
                     const OnExitT& on_exit) {
-  class GraphTraversalQueue : public std::queue<GraphTraversalExecutionItem> {
+  class GraphTraversalQueue : public std::queue<GraphTraversalExecutionItem<GraphT>> {
   public:
-    reference top()  { return front(); }
+    typename std::queue<GraphTraversalExecutionItem<GraphT>>::reference top()  { return this->front(); }
   };
   return traverse_graph<GraphTraversalQueue, GraphT, VertexListT, OnSeeT, OnEnterT, OnExitT>(
       graph, starting_vertices, on_see, on_enter, on_exit);
@@ -26,11 +26,11 @@ IterationResult bfs(const GraphT& graph,
 
 template<typename GraphT, typename OnSeeT, typename OnEnterT, typename OnExitT>
 IterationResult bfs(const GraphT& graph,
-                    const std::initializer_list<GraphIndex>& starting_vertices,
+                    const std::initializer_list<int>& starting_vertices,
                     const OnSeeT& on_see,
                     const OnEnterT& on_enter,
                     const OnExitT& on_exit) {
-  return bfs<GraphT, std::initializer_list<GraphIndex>, OnSeeT, OnEnterT, OnExitT>(
+  return bfs<GraphT, std::initializer_list<int>, OnSeeT, OnEnterT, OnExitT>(
       graph, starting_vertices, on_see, on_enter, on_exit);
 }
 
@@ -43,8 +43,8 @@ IterationResult bfs(const GraphT& graph,
 
 template<typename GraphT, typename VisitorT>
 IterationResult bfs(const GraphT& graph,
-                    const std::initializer_list<GraphIndex>& starting_vertices,
+                    const std::initializer_list<int>& starting_vertices,
                     const VisitorT& visitor) {
-  return bfs<GraphT, std::initializer_list<GraphIndex>, VisitorT>(
+  return bfs<GraphT, std::initializer_list<int>, VisitorT>(
       graph, starting_vertices, visitor);
 }

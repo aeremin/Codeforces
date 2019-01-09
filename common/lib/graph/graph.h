@@ -6,24 +6,28 @@
 #include <optional>
 #include "util/getters.h"
 
+constexpr int kInvalidGraphVertex = -1;
+
 template<bool Directed, class PerEdgeData, class PerVertexData>
 class Graph
 {
 
 public:
+    using NeighborMap = std::unordered_map<int, PerEdgeData>;
+
     Graph( int nVertices )
         :
         edges_(nVertices),
         vertexData_(nVertices)
     {
-    };
+    }
 
     Graph( std::vector<PerVertexData> vertexData )
         :
         edges_(vertexData.size()),
         vertexData_(move(vertexData))
     {
-    };
+    }
 
     template<bool IsDirected = Directed, typename = typename std::enable_if<!IsDirected>::type>
     void add_edge( int from, int to, PerEdgeData data = {} )
@@ -53,7 +57,14 @@ public:
         return edges_.size();
     }
 
-    const std::unordered_map<int, PerEdgeData>& out_nbrs( int v ) const
+    void expand_to_num_vertices(int new_num_vertices) {
+        if (new_num_vertices <= num_vertices())
+            return;
+        edges_.resize(new_num_vertices);
+        vertexData_.resize(new_num_vertices);
+    }
+
+    const NeighborMap& out_nbrs( int v ) const
     {
         return edges_[v];
     }
@@ -67,7 +78,7 @@ public:
     }
 
 private:
-    std::vector<std::unordered_map<int, PerEdgeData>> edges_;
+    std::vector<NeighborMap> edges_;
     std::vector<PerVertexData> vertexData_;
 };
 

@@ -1,10 +1,9 @@
-// Generalized graph traversal. (Not intended to be used directly.)
+// Generalized graph traversal. Not intended to be used directly.
 //
 // Signature:
 //   traverse_graph(graph, starting_vertices, [on_see, on_enter], on_exit)
 //
-// Supports all graphs, directed or non-directed. Only needs to know the
-// outer neighbourhood.
+// Supports all graphs, directed or non-directed.
 //
 // ExecutionControllerT must provide these function with obvious semantics:
 //   - push;
@@ -13,12 +12,12 @@
 //   - empty.
 // Substituting stack corresponds to DFS; queue - to BFS.
 //
-// starting_vertices is any iterable collection of GraphIndex'es, e.g.
+// starting_vertices is any iterable collection of ints, e.g.
 // std::vector, initializer_list or a range (see iter/range.h).
 // To start with one vertex use `{vertex}`.
 //
 // All callbacks must have the following signature:
-// ` IterationControl callback(const GraphTraversalState&, GraphIndex);
+// ` IterationControl callback(const GraphTraversalState&, int /*vertex*/);
 //
 // Callback types:
 //   - on_see: a vertex is being considered as a candidate to go to;
@@ -29,7 +28,7 @@
 //   - Aborted if any callback returned Abort, and
 //   - Done otherwise.
 //
-// Call sequence for each vertex, if no aborts:
+// Call sequence for each vertex, if there are no aborts:
 //   (on_see? on_enter on_see* on_exit on_see*)?
 // After AbortGently:
 //   - no more on_see or on_enter are issued;
@@ -44,13 +43,13 @@
 #include <queue>
 #include <stack>
 
-#include "graph/basic.h"
+#include "graph/graph.h"
 #include "util/callbacks.h"
 
 
 struct GraphTraversalState {
-  GraphIndex starting_vertex = kInvalidGraphVertex;
-  GraphIndex previous_vertex = kInvalidGraphVertex;
+  int starting_vertex = kInvalidGraphVertex;
+  int previous_vertex = kInvalidGraphVertex;
   std::vector<char> visited;
   bool aborting = false;
 };
@@ -59,11 +58,16 @@ struct GraphTraversalState {
 //       under gcc with "-O2". Even with "__attribute__((always_inline))".
 //       I assume, inlining happens too late or doesn't happen at all.
 #define graph_traversal_noop_continue  \
-  [](const GraphTraversalState&, GraphIndex) { return IterationControl::Proceed; }
+  [](const GraphTraversalState&, int) { return IterationControl::Proceed; }
 
+template<typename GraphT>
 struct GraphTraversalExecutionItem {
-  GraphIndex vertex;
-  GraphIndex i_neighbour;
+  GraphTraversalExecutionItem(int v, const GraphT& graph) :
+      vertex(v),
+      neighbour_it(graph.out_nbrs(v).begin()) {}
+
+  int vertex;
+  typename GraphT::NeighborMap::const_iterator neighbour_it;
 };
 
 
@@ -80,14 +84,14 @@ IterationResult traverse_graph(const GraphT& graph,
   const GraphTraversalState& const_state = state;
   state.visited.resize(graph.num_vertices(), false);
   ExecutionControllerT execution_controller;
-  for (GraphIndex start : starting_vertices) {
+  for (int start : starting_vertices) {
     state.starting_vertex = start;
     state.previous_vertex = kInvalidGraphVertex;
     if (!state.visited[start]) {
       switch (on_enter(const_state, start)) {
         case IterationControl::Proceed:
           state.visited[start] = true;
-          execution_controller.push({start, 0});
+          execution_controller.push({start, graph});
           break;
         case IterationControl::AbortGently:
           state.aborting = true;
@@ -101,9 +105,8 @@ IterationResult traverse_graph(const GraphT& graph,
       state.previous_vertex = top.vertex;
       bool we_need_to_go_deeper = false;
       if (!state.aborting) {
-        const auto& neighbourhood = graph.out_nbrs(top.vertex);
-        while (top.i_neighbour < GraphIndex(neighbourhood.size())) {
-          GraphIndex neighbour = neighbourhood[top.i_neighbour].vertex();
+        while (top.neighbour_it != graph.out_nbrs(top.vertex).end()) {
+          int neighbour = top.neighbour_it->first;
           switch (on_see(const_state, neighbour)) {
             case IterationControl::Proceed:
               break;
@@ -116,12 +119,12 @@ IterationResult traverse_graph(const GraphT& graph,
           }
           if (state.aborting)
             break;
-          ++top.i_neighbour;
+          ++top.neighbour_it;
           if (!state.visited[neighbour]) {
             switch (on_enter(const_state, neighbour)) {
               case IterationControl::Proceed:
                 state.visited[neighbour] = true;
-                execution_controller.push({neighbour, 0});
+                execution_controller.push({neighbour, graph});
                 we_need_to_go_deeper = true;
                 break;
               case IterationControl::AbortGently:

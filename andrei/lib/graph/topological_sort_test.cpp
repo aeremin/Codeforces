@@ -5,25 +5,25 @@
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 
-#include "graph/adjacency_list.h"
+#include "graph/graph.h"
 
 using testing::ElementsAre;
 
 
 TEST(TopologicalSortTest, Basic) {
-  DirectedGraph_Nonloaded_AdjacencyList graph(20);
-  graph.add_arc(0, 1);
-  graph.add_arc(0, 10);
-  graph.add_arc(0, 11);
-  graph.add_arc(1, 5);
-  graph.add_arc(5, 4);
-  graph.add_arc(5, 3);
-  graph.add_arc(3, 2);
-  graph.add_arc(4, 2);
-  graph.add_arc(12, 13);
-  graph.add_arc(13, 14);
-  graph.add_arc(14, 0);
-  graph.add_arc(14, 2);
+  DirectedGraph<> graph(20);
+  graph.add_directed_edge(0, 1);
+  graph.add_directed_edge(0, 10);
+  graph.add_directed_edge(0, 11);
+  graph.add_directed_edge(1, 5);
+  graph.add_directed_edge(5, 4);
+  graph.add_directed_edge(5, 3);
+  graph.add_directed_edge(3, 2);
+  graph.add_directed_edge(4, 2);
+  graph.add_directed_edge(12, 13);
+  graph.add_directed_edge(13, 14);
+  graph.add_directed_edge(14, 0);
+  graph.add_directed_edge(14, 2);
 
   {
     auto top_sorted_opt = topological_sort_reachable_optimistic(graph, {0});
@@ -34,7 +34,7 @@ TEST(TopologicalSortTest, Basic) {
     EXPECT_THAT(top_sorted_opt, ElementsAre(2, 4, 3, 5, 1, 10, 11, 0));
   }
 
-  graph.add_arc(2, 1);  // bam!
+  graph.add_directed_edge(2, 1);  // bam!
 
   {
     auto top_sorted_opt = topological_sort_reachable_optimistic(graph, {0});
@@ -48,18 +48,18 @@ TEST(TopologicalSortTest, Basic) {
     EXPECT_THAT(top_sorted_chk.loop(), ElementsAre(2, 4, 5, 1));
   }
 
-  DirectedGraph_Nonloaded_AdjacencyList graph2(20);
+  DirectedGraph<> graph2(20);
 
-  graph2.add_arc(0, 1);
-  graph2.add_arc(2, 3);
-  graph2.add_arc(4, 5);
-  graph2.add_arc(5, 4);  // bam!
-  graph2.add_arc(6, 7);
-  graph2.add_arc(8, 9);
+  graph2.add_directed_edge(0, 1);
+  graph2.add_directed_edge(2, 3);
+  graph2.add_directed_edge(4, 5);
+  graph2.add_directed_edge(5, 4);  // bam!
+  graph2.add_directed_edge(6, 7);
+  graph2.add_directed_edge(8, 9);
 
-  graph2.add_arc(10, 0);  // bam!
-  graph2.add_arc(10, 4);  // bam!
-  graph2.add_arc(10, 11);  // bam!
+  graph2.add_directed_edge(10, 0);  // bam!
+  graph2.add_directed_edge(10, 4);  // bam!
+  graph2.add_directed_edge(10, 11);  // bam!
 
   {
     auto top_sorted_chk = topological_sort_reachable_checked(graph2, {0, 2, 4, 6, 8});

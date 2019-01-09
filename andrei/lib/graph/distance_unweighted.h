@@ -4,7 +4,7 @@
 //   Returns an array containing distance from source to each vertex:
 //   result[v] = / 0, if v == source;
 //               | 1, 2, 3, ..., if v is reachable from source;
-//               \ kMaxGraphIndex, otherwise.
+//               \ max_int, otherwise.
 //
 // * find_distance_unweighted(graph, source, destination)
 //   Returns distance from source to destination.
@@ -19,15 +19,15 @@
 
 
 template<typename GraphT>
-std::vector<GraphIndex> find_distance_unweighted(const GraphT& graph,
-                                                 GraphIndex source) {
-  std::vector<GraphIndex> distances(graph.num_vertices(), kMaxGraphIndex);
+std::vector<int> find_distance_unweighted(const GraphT& graph,
+                                                 int source) {
+  std::vector<int> distances(graph.num_vertices(), std::numeric_limits<int>().max());
   distances[source] = 0;
   bfs(graph,
       {source},
-      [&](const GraphTraversalState& state, GraphIndex v) {
+      [&](const GraphTraversalState& state, int v) {
         if (state.previous_vertex != kInvalidGraphVertex) {
-          CHECK_INTERNAL(distances[state.previous_vertex] != kMaxGraphIndex);
+          CHECK_INTERNAL(distances[state.previous_vertex] != std::numeric_limits<int>().max());
           relax_min(distances[v], distances[state.previous_vertex] + 1);
         }
         return IterationControl::Proceed;
@@ -36,16 +36,16 @@ std::vector<GraphIndex> find_distance_unweighted(const GraphT& graph,
 }
 
 template<typename GraphT>
-GraphIndex find_distance_unweighted(const GraphT& graph,
-                                    GraphIndex source,
-                                    GraphIndex destination) {
-  std::vector<GraphIndex> distances(graph.num_vertices(), kMaxGraphIndex);
+int find_distance_unweighted(const GraphT& graph,
+                                    int source,
+                                    int destination) {
+  std::vector<int> distances(graph.num_vertices(), std::numeric_limits<int>().max());
   distances[source] = 0;
   bfs(graph,
       {source},
-      [&](const GraphTraversalState& state, GraphIndex v) {
+      [&](const GraphTraversalState& state, int v) {
         if (state.previous_vertex != kInvalidGraphVertex) {
-          CHECK_INTERNAL(distances[state.previous_vertex] != kMaxGraphIndex);
+          CHECK_INTERNAL(distances[state.previous_vertex] != std::numeric_limits<int>().max());
           relax_min(distances[v], distances[state.previous_vertex] + 1);
         }
         if (v == destination)
