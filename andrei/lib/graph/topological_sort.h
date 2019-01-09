@@ -18,7 +18,7 @@
 //     In this case `vertices()` contain one of the loops (also accessible
 //     via `loop()`) alongaside with the path from one of the starting vertices
 //     to the loop (`preloop()`).
-//     Note. Vertices in the loop and preloop are listed in the insersed
+//     Note. Vertices in the loop and preloop are listed in the inversed
 //           traverse order to match the successful case.
 //     Note. Each vertex is listed only once, including loop starting vertex,
 //           which is `loop().back()`.
@@ -56,6 +56,7 @@ public:
   }
 
   int loop_length() const {
+    CHECK_DEFAULT(status_ == LoopDetected);
     return loop_length_;
   }
 
@@ -77,7 +78,7 @@ private:
 
 template<typename DirectedGraphT, typename VertexListT>
 std::vector<int> topological_sort_reachable_optimistic(const DirectedGraphT& graph,
-                                                              const VertexListT& starting_vertices) {
+                                                       const VertexListT& starting_vertices) {
   std::vector<int> result;
   dfs(graph,
       starting_vertices,
@@ -90,7 +91,7 @@ std::vector<int> topological_sort_reachable_optimistic(const DirectedGraphT& gra
 
 template<typename DirectedGraphT>
 std::vector<int> topological_sort_reachable_optimistic(const DirectedGraphT& graph,
-                                                              const std::initializer_list<int>& starting_vertices) {
+                                                       const std::initializer_list<int>& starting_vertices) {
   return topological_sort_reachable_optimistic<DirectedGraphT, std::initializer_list<int>>(graph, starting_vertices);
 }
 
@@ -131,13 +132,13 @@ TopologicalSortResult topological_sort_reachable_checked(const DirectedGraphT& g
           });
   if (dfs_result == IterationResult::Done) {
     CHECK_INTERNAL(loop_start_vertex == kInvalidGraphVertex);
-    return {TopologicalSortResult::Ok, result, result.size()};
+    return {TopologicalSortResult::Ok, std::move(result), 0};
   } else {
     CHECK_INTERNAL(loop_start_vertex != kInvalidGraphVertex);
     auto loop_start_it = std::find(result.begin(), result.end(), loop_start_vertex);
     CHECK_INTERNAL(loop_start_it != result.end());
     size_t loop_length = (loop_start_it + 1) - result.begin();
-    return {TopologicalSortResult::LoopDetected, result, loop_length};
+    return {TopologicalSortResult::LoopDetected, std::move(result), loop_length};
   }
 }
 
