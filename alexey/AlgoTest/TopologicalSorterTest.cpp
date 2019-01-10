@@ -96,8 +96,6 @@ protected:
 
 DirectedGraph<>* TopologicalSorterLinearGraphTest::graph = nullptr;
 
-// TODO: Remove test or fix compilation
-/*
 TEST_F( TopologicalSorterLinearGraphTest, AndreyTopologySort )
 {
     auto res = topological_sort_checked( *graph );
@@ -108,7 +106,6 @@ TEST_F( TopologicalSorterLinearGraphTest, AndreyTopologySortOptimistic )
 {
     auto res = topological_sort_optimistic( *graph );
 }
-*/
 
 // This test needs a lot of stack memory to succeed.
 // If you see it failing, make sure to set Stack Reserve Size
