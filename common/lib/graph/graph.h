@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include <unordered_map>
+#include <map>
 #include <utility>
 #include <algorithm>
 #include <optional>
@@ -13,7 +13,7 @@ class Graph
 {
 
 public:
-    using NeighborMap = std::unordered_map<int, PerEdgeData>;
+    using NeighborMap = std::map<int, PerEdgeData>;
 
     Graph( int nVertices )
         :
