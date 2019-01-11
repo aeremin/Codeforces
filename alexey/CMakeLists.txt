@@ -17,7 +17,7 @@ set(algotest_dir ${CMAKE_SOURCE_DIR}/AlgoTest)
 include(${common_dir}/external/CMakeLists.txt)
 
 add_library(algo_lib INTERFACE)
-target_sources(algo_lib INTERFACE 
+target_sources(algo_lib INTERFACE
     ${algo_dir}/algebra/cyclic_convolution.h
     ${algo_dir}/algebra/quadratic/solve_quadratic_real.h
     ${algo_dir}/BinaryCubePrefix.h
@@ -126,6 +126,11 @@ set(tests_srcs
     ${solvers_dir}/11xx/1101/Solver1101C.cpp
     ${solvers_dir}/11xx/1101/Solver1101D.cpp
     ${solvers_dir}/11xx/1101/Solver1101E.cpp
+    ${solvers_dir}/11xx/1102/Solver1102A.cpp
+    ${solvers_dir}/11xx/1102/Solver1102B.cpp
+    ${solvers_dir}/11xx/1102/Solver1102C.cpp
+    ${solvers_dir}/11xx/1102/Solver1102D.cpp
+    ${solvers_dir}/11xx/1102/Solver1102E.cpp
     ${solvers_dir}/1xx/107/Solver107B.cpp
     ${solvers_dir}/1xx/132/Solver132C.cpp
     ${solvers_dir}/1xx/158/Solver158E.cpp
