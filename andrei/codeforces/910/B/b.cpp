@@ -16,7 +16,7 @@ int calc(int n, int a, int b) {
     return 1;
   else if ((4*a <= n && 2*b <= n) || (2*a + b <= n))
     return 2;
-  else if ((a + b) <= n && 2*a <= n || (4*a <= n && b <= n))
+  else if (((a + b) <= n && 2*a <= n) || (4*a <= n && b <= n))
     return 3;
   else if ((2*a <= n && b <= n) || (a + b) <= n)
     return 4;
