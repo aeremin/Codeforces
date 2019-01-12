@@ -1,3 +1,5 @@
+# TODO: update CMakeLists generator
+
 #!/usr/bin/python3
 
 import argparse
