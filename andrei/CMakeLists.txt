@@ -22,6 +22,8 @@ set(tests_srcs
     ${lib_dir}/graph/dfs_test.cpp
     ${lib_dir}/graph/distance_unweighted_test.cpp
     ${lib_dir}/graph/topological_sort_test.cpp
+    ${lib_dir}/io/print_test.cpp
+    ${lib_dir}/io/scan_test.cpp
     ${lib_dir}/util/projected_test.cpp
     ${lib_dir}/util/limits_test.cpp
 )

@@ -74,6 +74,7 @@
 #include <limits>
 #include <string>
 #include <tuple>
+#include <vector>
 
 #include "iter/for_times.h"
 #include "util/check.h"
