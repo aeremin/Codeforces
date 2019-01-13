@@ -11,7 +11,7 @@
 #include <vector>
 
 #include "graph/graph.h"
-#include "../../andrei/lib/container/indexer.h"
+#include "container/indexer.h"
 #include "graph/topological_sort_checked.h"
 
 const std::string kIndent = "  ";

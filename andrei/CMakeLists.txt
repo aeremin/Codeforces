@@ -17,7 +17,6 @@ set(tests_srcs
     ${src_dir}/fuser/fuser_test.cpp
     ${lib_dir}/test.cc
     ${lib_dir}/container/container_alg_test.cpp
-    ${lib_dir}/container/indexer_test.cpp
     ${lib_dir}/functional/dynamic_solve_test.cpp
     ${lib_dir}/graph/distance_unweighted_test.cpp
     ${lib_dir}/io/print_test.cpp

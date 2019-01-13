@@ -10,6 +10,7 @@ include(${src_dir}/external/CMakeLists.txt)
 set(tests_exe common_lib_tests)
 set(tests_srcs
     ${lib_tests_dir}/test.cpp
+    ${lib_tests_dir}/container/indexer_test.cpp
     ${lib_tests_dir}/graph/dfs_test.cpp
     ${lib_tests_dir}/graph/graph_test.cpp
     ${lib_tests_dir}/graph/topological_sort_test.cpp
