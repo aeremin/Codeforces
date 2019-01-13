@@ -23,6 +23,7 @@ public:
             if (bracketBalance == 0)
                 return make_tuple(expression.substr(1, i - 1), expression[i + 1], expression.substr(i + 3, expression.length() - i - 4));
         }
+        assert(false);
     }
 
     static constexpr uint64_t nPossibleInputs = 1 << 4;
