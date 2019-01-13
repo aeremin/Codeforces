@@ -2,6 +2,7 @@
 #include <vector>
 #include <deque>
 #include <queue>
+#include <stack>
 #include <set>
 #include <valarray>
 #include <unordered_set>
