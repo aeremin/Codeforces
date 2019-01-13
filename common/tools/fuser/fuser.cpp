@@ -1,5 +1,7 @@
 #include "fuser.h"
 
+#include <algorithm>
+#include <locale>
 #include <fstream>
 #include <functional>
 #include <iostream>
@@ -29,9 +31,10 @@ std::string Compile(const std::string& main_file, CompilerOptions& options) {
         int file_index = it.first;
         if (!it.second)
             return file_index;    // already parsed
-        const std::string file_name_normalized = std::tolower(file_name, std::locale());
+        std::string file_name_normalized = file_name;
+        std::transform(file_name_normalized.begin(), file_name_normalized.end(), file_name_normalized.begin(), ::tolower);
         auto it_normalized = file_indexer_normalized.insert(file_name_normalized);
-        if (it_normalized.second)
+        if (!it_normalized.second)
             throw std::runtime_error("Include case mismatch: " + file_name_normalized);
         const auto& include_paths = is_header ? options.include_paths : std::vector<std::string>{"."};
         bool file_found = false;
