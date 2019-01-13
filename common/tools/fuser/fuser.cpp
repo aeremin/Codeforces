@@ -18,6 +18,7 @@ const std::string kIncludedFromPrefix = kIndent + "from ";
 
 std::string Compile(const std::string& main_file, CompilerOptions& options) {
     Indexer<std::string> file_indexer;
+    Indexer<std::string> file_indexer_normalized;
     std::vector<ParsedFile> files;
     std::set<std::string> system_includes;
     DirectedGraph<> include_graph(0);
@@ -28,6 +29,10 @@ std::string Compile(const std::string& main_file, CompilerOptions& options) {
         int file_index = it.first;
         if (!it.second)
             return file_index;    // already parsed
+        const std::string file_name_normalized = std::tolower(file_name, std::locale());
+        auto it_normalized = file_indexer_normalized.insert(file_name_normalized);
+        if (it_normalized.second)
+            throw std::runtime_error("Include case mismatch: " + file_name_normalized);
         const auto& include_paths = is_header ? options.include_paths : std::vector<std::string>{"."};
         bool file_found = false;
         for (const auto& include_path : include_paths) {
@@ -53,7 +58,6 @@ std::string Compile(const std::string& main_file, CompilerOptions& options) {
                 case ParsingProblem::Error:
                     std::cerr << "Error in " << location << ": " << problem.message << "\n";
                     throw std::runtime_error("Fatal error parsing " + file_name);
-                    break;
             }
         }
         system_includes.insert(current_file.system_includes.begin(),
