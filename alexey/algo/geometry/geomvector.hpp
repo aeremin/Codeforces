@@ -14,23 +14,23 @@ public:
     }
 
     template<typename... Args>
-    GeomVector(Args... args) 
-    { 
-        fill_<0, Args...>(args...); 
+    GeomVector(Args... args)
+    {
+        fill_<0, Args...>(args...);
     }
 
 	T& operator[](size_t ind) { return comps_[ind]; }
 	const T& operator[](size_t ind) const { return comps_[ind]; }
-	
+
 	bool operator==(const GeomVector& other) const { return comps_ == other.comps_; }
-	
-	T lengthSquared() const	
+
+	T lengthSquared() const
 	{
 		return std::accumulate(begin(comps_), end(comps_), T(), [](const T& a, const T& b) {
 			return a + b * b;
 		});
 	}
-	
+
 	const GeomVector& operator+=(const GeomVector& other)
 	{
 		for (int i = 0; i < n; ++i)
@@ -62,7 +62,7 @@ private:
 
     template<size_t Offset>
     typename std::enable_if<Offset==n>::type fill_() {}
-    
+
     std::array<T, n> comps_;
 };
 
