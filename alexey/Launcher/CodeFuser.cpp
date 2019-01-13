@@ -89,7 +89,8 @@ void CodeFuser::fuse()
     string problemSolverPath = GetSolverFileNameByProblemName(problemName_);
 
     CompilerOptions options;
-    options.include_paths = {".", "../common/lib"};
+    // TODO: don't depend on andrei/...
+    options.include_paths = {".", "../common/lib", "../andrei/lib"};
     auto fused = Compile(problemSolverPath, options);
     string pchToDelete = "#include <Solvers/pch.h>";
     fused.erase(fused.find(pchToDelete), pchToDelete.length());
