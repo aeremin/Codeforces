@@ -7,8 +7,8 @@
 #include "graph/graph.h"
 #include "iter/range.h"
 #include "algo/graph/TopologicalSorter.hpp"
-#include "../../andrei/lib/graph/topological_sort_checked.h"
-#include "../../andrei/lib/graph/topological_sort_optimistic.h"
+#include "graph/topological_sort_checked.h"
+#include "graph/topological_sort_optimistic.h"
 
 
 class TopologicalSorterRandomTest : public testing::Test
