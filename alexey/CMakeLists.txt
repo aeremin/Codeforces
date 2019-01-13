@@ -518,6 +518,5 @@ target_link_libraries(${tests_exe} "gtest" "gmock" "algo_lib")
 include_directories(${common_dir})
 include_directories(${common_lib_dir})
 include_directories(${src_dir})
-include_directories(${root_dir}/andrei/lib)  # TODO FIXME (for fuser)
 
 add_definitions("-DLOCAL_PC -DGTEST_LANG_CXX11")
