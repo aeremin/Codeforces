@@ -19,7 +19,6 @@ set(tests_srcs
     ${lib_dir}/container/container_alg_test.cpp
     ${lib_dir}/container/indexer_test.cpp
     ${lib_dir}/functional/dynamic_solve_test.cpp
-    ${lib_dir}/graph/dfs_test.cpp
     ${lib_dir}/graph/distance_unweighted_test.cpp
     ${lib_dir}/graph/topological_sort_test.cpp
     ${lib_dir}/io/print_test.cpp
