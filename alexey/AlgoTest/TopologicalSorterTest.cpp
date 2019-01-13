@@ -50,7 +50,7 @@ public:
 protected:
     static std::unique_ptr<DirectedGraph<>> graph;
     static const int nVertices = 10000;
-    static const int nEdges = 50000000;
+    static const int nEdges = 5000000;
 };
 
 std::unique_ptr<DirectedGraph<>> TopologicalSorterRandomTest::graph = nullptr;
