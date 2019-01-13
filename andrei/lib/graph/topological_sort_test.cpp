@@ -11,13 +11,25 @@ using testing::ElementsAre;
 using testing::Eq;
 
 static void CheckOrder(const DirectedGraph<>& graph, const std::vector<int>& v) {
-  for (int i = 0; i < v.size() - 1; ++i) {
-    ASSERT_TRUE(graph.has_edge(v[i], v[i+1]));
-  }
-  for (int i = 0; i < v.size() - 1; ++i) {
-    for (int j = 0; j < i; ++i)
+  for (int i = 0; i < v.size(); ++i) {
+    for (int j = 0; j < i; ++j)
       ASSERT_TRUE(!graph.has_edge(v[i], v[j]));
   }
+}
+
+TEST(TopologicalSortTest, OneEdge) {
+    DirectedGraph<> graph(2);
+    graph.add_directed_edge(0, 1);
+    {
+        auto top_sorted_opt = topological_sort_reachable_optimistic(graph, { 0 });
+        EXPECT_THAT(top_sorted_opt, ElementsAre(0, 1));
+    }
+
+    {
+        auto top_sorted_checked = topological_sort_reachable_checked(graph, { 0 });
+        ASSERT_EQ(top_sorted_checked.status(), TopologicalSortResult::Ok);
+        EXPECT_THAT(top_sorted_checked.vertices(), ElementsAre(0, 1));
+    }
 }
 
 
@@ -96,7 +108,7 @@ TEST(TopologicalSortTest, Loop) {
   {
     auto top_sorted_chk = topological_sort_reachable_checked(graph2, {10});
     ASSERT_EQ(top_sorted_chk.status(), TopologicalSortResult::LoopDetected);
-    EXPECT_THAT(top_sorted_chk.vertices(), ElementsAre(4, 5, 10));
+    EXPECT_THAT(top_sorted_chk.vertices(), ElementsAre(10, 4, 5));
     EXPECT_THAT(top_sorted_chk.preloop(), ElementsAre(10));
     EXPECT_THAT(top_sorted_chk.loop(), ElementsAre(4, 5));
   }
@@ -125,13 +137,13 @@ TEST(TopologicalSortTest, Tree) {
   graph.add_directed_edge(0, 5);
 
   {
-    auto v = topological_sort_reachable_optimistic(graph, {0});
+    auto v = topological_sort_reachable_optimistic(graph, {3});
     EXPECT_EQ(v.size(), 7);
     EXPECT_EQ(v[0], 3);
     EXPECT_THAT(v[1], AnyOf(Eq(0), Eq(1)));
   }
   {
-    auto top_sorted_chk = topological_sort_reachable_checked(graph, {0});
+    auto top_sorted_chk = topological_sort_reachable_checked(graph, {3});
     ASSERT_EQ(top_sorted_chk.status(), TopologicalSortResult::Ok);
     const auto& v = top_sorted_chk.vertices();
     EXPECT_EQ(v.size(), 7);

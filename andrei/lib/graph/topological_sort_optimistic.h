@@ -1,7 +1,7 @@
 // Graph topological sort.
 //
 // Returns directed graph vertices in such order {v_1, v_2, ..., v_n} that
-// there is no edge (v_i, v_j) for any (j < i).
+// there is no edge (v_i, v_j) for any (i > j).
 //
 // * topological_sort_reachable_optimistic(graph, starting_vertices)
 // * topological_sort_optimistic(graph)
@@ -12,6 +12,7 @@
 
 #pragma once
 
+#include <algorithm>
 #include "graph/dfs.h"
 
 
@@ -25,6 +26,7 @@ std::vector<int> topological_sort_reachable_optimistic(const DirectedGraphT& gra
         result.push_back(v);
         return IterationControl::Proceed;
     });
+    std::reverse(begin(result), end(result));
     return result;
 }
 

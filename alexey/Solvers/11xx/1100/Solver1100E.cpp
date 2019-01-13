@@ -58,7 +58,7 @@ void Solver1100E::run() {
     }
     vector<int> changes;
     for (auto i : range(e)) {
-        if (index_to_order[roads[i].from] < index_to_order[roads[i].to]) changes.push_back(i + 1);
+        if (index_to_order[roads[i].from] > index_to_order[roads[i].to]) changes.push_back(i + 1);
     }
 
     cout << changes.size() << "\n";

@@ -1,7 +1,7 @@
 // Graph topological sort.
 //
 // Returns directed graph vertices in such order {v_1, v_2, ..., v_n} that
-// there is no edge (v_i, v_j) for any (j < i).
+// there is no edge (v_i, v_j) for any (i > j).
 //
 // * topological_sort_reachable_checked(graph, starting_vertices)
 // * topological_sort_checked(graph)
@@ -13,8 +13,6 @@
 //     In this case `vertices()` contain one of the loops (also accessible
 //     via `loop()`) alongaside with the path from one of the starting vertices
 //     to the loop (`preloop()`).
-//     Note. Vertices in the loop and preloop are listed in the inversed
-//           traverse order to match the successful case.
 //     Note. Each vertex is listed only once, including loop starting vertex,
 //           which is `loop().back()`.
 //
@@ -24,6 +22,7 @@
 
 #include <algorithm>
 #include <numeric>
+#include <iostream>
 
 #include "container/span.h"
 #include "graph/dfs.h"
@@ -41,7 +40,8 @@ public:
     TopologicalSortResult(Status status_arg, std::vector<int> vertices_arg, size_t loop_length_arg)
         : status_(status_arg)
         , vertices_(std::move(vertices_arg))
-        , loop_length_(loop_length_arg) {
+        , preloop_length_(vertices_.size() - loop_length_arg) {
+        std::reverse(begin(vertices_), end(vertices_));
     }
 
     Status status() const {
@@ -52,24 +52,19 @@ public:
         return vertices_;
     }
 
-    int loop_length() const {
-        CHECK_DEFAULT(status_ == LoopDetected);
-        return loop_length_;
-    }
-
     span<const int> preloop() const {
         CHECK_DEFAULT(status_ == LoopDetected);
-        return { vertices_.data() + loop_length_, vertices_.data() + vertices_.size() };
+        return { vertices_.data(), vertices_.data() + preloop_length_ };
     }
     span<const int> loop() const {
         CHECK_DEFAULT(status_ == LoopDetected);
-        return { vertices_.data(), vertices_.data() + loop_length_ };
+        return { vertices_.data() + preloop_length_, vertices_.data() + vertices_.size() };
     }
 
 private:
     Status status_;
     std::vector<int> vertices_;
-    int loop_length_;
+    int preloop_length_;
 };
 
 
