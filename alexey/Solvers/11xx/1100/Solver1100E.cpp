@@ -2,7 +2,7 @@
 #include "algo/io/baseio.hpp"
 #include "iter/range.h"
 #include "algo/io/readvector.hpp"
-#include "graph/Graph.h"
+#include "graph/graph.h"
 #include "algo/io/printvector.h"
 #include "graph/topological_sort_optimistic.h"
 #include "graph/topological_sort_checked.h"
