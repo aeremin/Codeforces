@@ -33,94 +33,96 @@
 
 class TopologicalSortResult {
 public:
-  enum Status {
-    Ok,
-    LoopDetected,
-  };
+    enum Status {
+        Ok,
+        LoopDetected,
+    };
 
-  TopologicalSortResult(Status status__, std::vector<int> vertices__, size_t loop_length__)
-      : status_(status__)
-      , vertices_(std::move(vertices__))
-      , loop_length_(loop_length__) {
-  }
+    TopologicalSortResult(Status status__, std::vector<int> vertices__, size_t loop_length__)
+        : status_(status__)
+        , vertices_(std::move(vertices__))
+        , loop_length_(loop_length__) {
+    }
 
-  Status status() const {
-    return status_;
-  }
+    Status status() const {
+        return status_;
+    }
 
-  const std::vector<int>& vertices() const {
-    return vertices_;
-  }
+    const std::vector<int>& vertices() const {
+        return vertices_;
+    }
 
-  int loop_length() const {
-    CHECK_DEFAULT(status_ == LoopDetected);
-    return loop_length_;
-  }
+    int loop_length() const {
+        CHECK_DEFAULT(status_ == LoopDetected);
+        return loop_length_;
+    }
 
-  span<const int> preloop() const {
-    CHECK_DEFAULT(status_ == LoopDetected);
-    return {vertices_.data() + loop_length_, vertices_.data() + vertices_.size()};
-  }
-  span<const int> loop() const {
-    CHECK_DEFAULT(status_ == LoopDetected);
-    return {vertices_.data(), vertices_.data() + loop_length_};
-  }
+    span<const int> preloop() const {
+        CHECK_DEFAULT(status_ == LoopDetected);
+        return { vertices_.data() + loop_length_, vertices_.data() + vertices_.size() };
+    }
+    span<const int> loop() const {
+        CHECK_DEFAULT(status_ == LoopDetected);
+        return { vertices_.data(), vertices_.data() + loop_length_ };
+    }
 
 private:
-  Status status_;
-  std::vector<int> vertices_;
-  int loop_length_;
+    Status status_;
+    std::vector<int> vertices_;
+    int loop_length_;
 };
 
 
 template<typename DirectedGraphT, typename VertexListT>
 TopologicalSortResult topological_sort_reachable_checked(const DirectedGraphT& graph,
                                                          const VertexListT& starting_vertices) {
-  std::vector<int> result;
-  std::vector<char> in_current_chain(graph.num_vertices(), false);
-  int loop_start_vertex = kInvalidGraphVertex;
-  IterationResult dfs_result =
-      dfs(graph,
-          starting_vertices,
-          [&](const GraphTraversalState&, int v) {  // on seen
-            if (in_current_chain[v]) {
-              loop_start_vertex = v;
-              result.clear();
-              return IterationControl::AbortGently;
-            } else {
-              return IterationControl::Proceed;
-            }
-          },
-          [&](const GraphTraversalState&, int v) {  // on enter
-            CHECK_INTERNAL(!in_current_chain[v]);
-            in_current_chain[v] = true;
+    std::vector<int> result;
+    std::vector<char> in_current_chain(graph.num_vertices(), false);
+    int loop_start_vertex = kInvalidGraphVertex;
+    IterationResult dfs_result =
+        dfs(graph,
+            starting_vertices,
+            [&](const GraphTraversalState&, int v) {  // on seen
+        if (in_current_chain[v]) {
+            loop_start_vertex = v;
+            result.clear();
+            return IterationControl::AbortGently;
+        }
+        else {
             return IterationControl::Proceed;
-          },
-          [&](const GraphTraversalState&, int v) {  // on exit
-            CHECK_INTERNAL(in_current_chain[v]);
-            in_current_chain[v] = false;
-            result.push_back(v);
-            return IterationControl::Proceed;
-          });
-  if (dfs_result == IterationResult::Done) {
-    CHECK_INTERNAL(loop_start_vertex == kInvalidGraphVertex);
-    return {TopologicalSortResult::Ok, std::move(result), 0};
-  } else {
-    CHECK_INTERNAL(loop_start_vertex != kInvalidGraphVertex);
-    auto loop_start_it = std::find(result.begin(), result.end(), loop_start_vertex);
-    CHECK_INTERNAL(loop_start_it != result.end());
-    size_t loop_length = (loop_start_it + 1) - result.begin();
-    return {TopologicalSortResult::LoopDetected, std::move(result), loop_length};
-  }
+        }
+    },
+            [&](const GraphTraversalState&, int v) {  // on enter
+        CHECK_INTERNAL(!in_current_chain[v]);
+        in_current_chain[v] = true;
+        return IterationControl::Proceed;
+    },
+        [&](const GraphTraversalState&, int v) {  // on exit
+        CHECK_INTERNAL(in_current_chain[v]);
+        in_current_chain[v] = false;
+        result.push_back(v);
+        return IterationControl::Proceed;
+    });
+    if (dfs_result == IterationResult::Done) {
+        CHECK_INTERNAL(loop_start_vertex == kInvalidGraphVertex);
+        return { TopologicalSortResult::Ok, std::move(result), 0 };
+    }
+    else {
+        CHECK_INTERNAL(loop_start_vertex != kInvalidGraphVertex);
+        auto loop_start_it = std::find(result.begin(), result.end(), loop_start_vertex);
+        CHECK_INTERNAL(loop_start_it != result.end());
+        size_t loop_length = (loop_start_it + 1) - result.begin();
+        return { TopologicalSortResult::LoopDetected, std::move(result), loop_length };
+    }
 }
 
 template<typename DirectedGraphT>
 TopologicalSortResult topological_sort_reachable_checked(const DirectedGraphT& graph,
                                                          const std::initializer_list<int>& starting_vertices) {
-  return topological_sort_reachable_checked<DirectedGraphT, std::initializer_list<int>>(graph, starting_vertices);
+    return topological_sort_reachable_checked<DirectedGraphT, std::initializer_list<int>>(graph, starting_vertices);
 }
 
 template<typename DirectedGraphT>
 TopologicalSortResult topological_sort_checked(const DirectedGraphT& graph) {
-  return topological_sort_reachable_checked(graph, range(graph.num_vertices()));
+    return topological_sort_reachable_checked(graph, range(graph.num_vertices()));
 }
