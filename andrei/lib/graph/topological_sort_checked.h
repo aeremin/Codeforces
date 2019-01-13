@@ -38,10 +38,10 @@ public:
         LoopDetected,
     };
 
-    TopologicalSortResult(Status status__, std::vector<int> vertices__, size_t loop_length__)
-        : status_(status__)
-        , vertices_(std::move(vertices__))
-        , loop_length_(loop_length__) {
+    TopologicalSortResult(Status status_arg, std::vector<int> vertices_arg, size_t loop_length_arg)
+        : status_(status_arg)
+        , vertices_(std::move(vertices_arg))
+        , loop_length_(loop_length_arg) {
     }
 
     Status status() const {
