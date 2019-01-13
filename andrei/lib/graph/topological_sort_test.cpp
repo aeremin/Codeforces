@@ -1,5 +1,3 @@
-// NOTE. Some tests here are overspecified (they expect a particular order).
-
 #include "graph/topological_sort_checked.h"
 #include "graph/topological_sort_optimistic.h"
 
@@ -8,10 +6,22 @@
 
 #include "graph/graph.h"
 
+using testing::AnyOf;
 using testing::ElementsAre;
+using testing::Eq;
+
+static void CheckOrder(const DirectedGraph<>& graph, const std::vector<int>& v) {
+  for (int i = 0; i < v.size() - 1; ++i) {
+    ASSERT_TRUE(graph.has_edge(v[i], v[i+1]));
+  }
+  for (int i = 0; i < v.size() - 1; ++i) {
+    for (int j = 0; j < i; ++i)
+      ASSERT_TRUE(!graph.has_edge(v[i], v[j]));
+  }
+}
 
 
-TEST(TopologicalSortTest, Basic) {
+TEST(TopologicalSortTest, Ok) {
   DirectedGraph<> graph(20);
   graph.add_directed_edge(0, 1);
   graph.add_directed_edge(0, 10);
@@ -26,33 +36,18 @@ TEST(TopologicalSortTest, Basic) {
   graph.add_directed_edge(14, 0);
   graph.add_directed_edge(14, 2);
 
-#if 0  // TODO: make the check order-independent and re-enable
   {
     auto top_sorted_opt = topological_sort_reachable_optimistic(graph, {0});
-    EXPECT_THAT(top_sorted_opt, ElementsAre(2, 4, 3, 5, 1, 10, 11, 0));
-
+    CheckOrder(graph, top_sorted_opt);
+  }
+  {
     auto top_sorted_chk = topological_sort_reachable_checked(graph, {0});
     ASSERT_EQ(top_sorted_chk.status(), TopologicalSortResult::Ok);
-    EXPECT_THAT(top_sorted_opt, ElementsAre(2, 4, 3, 5, 1, 10, 11, 0));
+    CheckOrder(graph, top_sorted_chk.vertices());
   }
-#endif
+}
 
-  graph.add_directed_edge(2, 1);  // bam!
-
-#if 0  // TODO: make the check order-independent and re-enable
-  {
-    auto top_sorted_opt = topological_sort_reachable_optimistic(graph, {0});
-    EXPECT_THAT(top_sorted_opt, ElementsAre(2, 4, 3, 5, 1, 10, 11, 0));
-
-    auto top_sorted_chk = topological_sort_reachable_checked(graph, {0});
-    ASSERT_EQ(top_sorted_chk.status(), TopologicalSortResult::LoopDetected);
-    EXPECT_EQ(top_sorted_chk.loop_length(), 4);
-    EXPECT_THAT(top_sorted_chk.vertices(), ElementsAre(2, 4, 5, 1, 0));
-    EXPECT_THAT(top_sorted_chk.preloop(), ElementsAre(0));
-    EXPECT_THAT(top_sorted_chk.loop(), ElementsAre(2, 4, 5, 1));
-  }
-#endif
-
+TEST(TopologicalSortTest, Loop) {
   DirectedGraph<> graph2(20);
 
   graph2.add_directed_edge(0, 1);
@@ -69,40 +64,78 @@ TEST(TopologicalSortTest, Basic) {
   {
     auto top_sorted_chk = topological_sort_reachable_checked(graph2, {0, 2, 4, 6, 8});
     ASSERT_EQ(top_sorted_chk.status(), TopologicalSortResult::LoopDetected);
+    EXPECT_THAT(top_sorted_chk.vertices(), ElementsAre(4, 5));
+    EXPECT_THAT(top_sorted_chk.preloop(), ElementsAre());
+    EXPECT_THAT(top_sorted_chk.loop(), ElementsAre(4, 5));
+  }
+
+  {
+    auto top_sorted_chk = topological_sort_reachable_checked(graph2, {0, 2, 10, 6, 8});
+    ASSERT_EQ(top_sorted_chk.status(), TopologicalSortResult::LoopDetected);
+    EXPECT_THAT(top_sorted_chk.vertices(), ElementsAre(10, 4, 5));
+    EXPECT_THAT(top_sorted_chk.preloop(), ElementsAre(10));
+    EXPECT_THAT(top_sorted_chk.loop(), ElementsAre(4, 5));
+  }
+
+  {
+    auto top_sorted_chk = topological_sort_reachable_checked(graph2, {0, 2, 5, 6, 8});
+    ASSERT_EQ(top_sorted_chk.status(), TopologicalSortResult::LoopDetected);
     EXPECT_THAT(top_sorted_chk.vertices(), ElementsAre(5, 4));
     EXPECT_THAT(top_sorted_chk.preloop(), ElementsAre());
     EXPECT_THAT(top_sorted_chk.loop(), ElementsAre(5, 4));
   }
 
   {
-    auto top_sorted_chk = topological_sort_reachable_checked(graph2, {0, 2, 10, 6, 8});
-    ASSERT_EQ(top_sorted_chk.status(), TopologicalSortResult::LoopDetected);
-    EXPECT_THAT(top_sorted_chk.vertices(), ElementsAre(5, 4, 10));
-    EXPECT_THAT(top_sorted_chk.preloop(), ElementsAre(10));
-    EXPECT_THAT(top_sorted_chk.loop(), ElementsAre(5, 4));
-  }
-
-  {
-    auto top_sorted_chk = topological_sort_reachable_checked(graph2, {0, 2, 5, 6, 8});
-    ASSERT_EQ(top_sorted_chk.status(), TopologicalSortResult::LoopDetected);
-    EXPECT_THAT(top_sorted_chk.vertices(), ElementsAre(4, 5));
-    EXPECT_THAT(top_sorted_chk.preloop(), ElementsAre());
-    EXPECT_THAT(top_sorted_chk.loop(), ElementsAre(4, 5));
-  }
-
-  {
     auto top_sorted_chk = topological_sort_reachable_checked(graph2, {5});
     ASSERT_EQ(top_sorted_chk.status(), TopologicalSortResult::LoopDetected);
-    EXPECT_THAT(top_sorted_chk.vertices(), ElementsAre(4, 5));
+    EXPECT_THAT(top_sorted_chk.vertices(), ElementsAre(5, 4));
     EXPECT_THAT(top_sorted_chk.preloop(), ElementsAre());
-    EXPECT_THAT(top_sorted_chk.loop(), ElementsAre(4, 5));
+    EXPECT_THAT(top_sorted_chk.loop(), ElementsAre(5, 4));
   }
 
   {
     auto top_sorted_chk = topological_sort_reachable_checked(graph2, {10});
     ASSERT_EQ(top_sorted_chk.status(), TopologicalSortResult::LoopDetected);
-    EXPECT_THAT(top_sorted_chk.vertices(), ElementsAre(5, 4, 10));
+    EXPECT_THAT(top_sorted_chk.vertices(), ElementsAre(4, 5, 10));
     EXPECT_THAT(top_sorted_chk.preloop(), ElementsAre(10));
-    EXPECT_THAT(top_sorted_chk.loop(), ElementsAre(5, 4));
+    EXPECT_THAT(top_sorted_chk.loop(), ElementsAre(4, 5));
+  }
+}
+
+//                   3
+//             ______|_____
+//            v            v
+//            1            0
+//         ___|___         |
+//        v       v        |
+//        2       6        v
+//                |        5
+//                v
+//                4
+//
+TEST(TopologicalSortTest, Tree) {
+  DirectedGraph<> graph(7);
+
+  graph.add_directed_edge(3, 1);
+  graph.add_directed_edge(3, 1);
+  graph.add_directed_edge(1, 2);
+  graph.add_directed_edge(1, 6);
+  graph.add_directed_edge(6, 4);
+  graph.add_directed_edge(3, 0);
+  graph.add_directed_edge(0, 5);
+
+  {
+    auto v = topological_sort_reachable_optimistic(graph, {0});
+    EXPECT_EQ(v.size(), 7);
+    EXPECT_EQ(v[0], 3);
+    EXPECT_THAT(v[1], AnyOf(Eq(0), Eq(1)));
+  }
+  {
+    auto top_sorted_chk = topological_sort_reachable_checked(graph, {0});
+    ASSERT_EQ(top_sorted_chk.status(), TopologicalSortResult::Ok);
+    const auto& v = top_sorted_chk.vertices();
+    EXPECT_EQ(v.size(), 7);
+    EXPECT_EQ(v[0], 3);
+    EXPECT_THAT(v[1], AnyOf(Eq(0), Eq(1)));
   }
 }
