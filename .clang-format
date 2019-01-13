@@ -1,0 +1,14 @@
+BasedOnStyle: Google
+IndentWidth: 4
+AccessModifierOffset: -2
+ColumnLimit: 120
+MaxEmptyLinesToKeep: 3
+PointerAlignment: Left
+DerivePointerAlignment: false
+AllowShortIfStatementsOnASingleLine: false
+IncludeBlocks: Regroup
+IncludeCategories:
+  - Regex:           '<.+>'
+    Priority:        1
+  - Regex:           '.*'
+    Priority:        2
