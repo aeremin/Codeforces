@@ -72,7 +72,7 @@ public:
     bool has_edge(int from, int to) const {
         return get_edge(from, to).has_value();
     }
-    
+
     std::optional<PerEdgeData> get_edge(int from, int to) const {
         return maybe_get(out_nbrs(from), to);
     }
