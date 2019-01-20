@@ -38,9 +38,11 @@ target_sources(algo_lib INTERFACE
     ${algo_dir}/geometry/linear_functions_max.h
     ${algo_dir}/graph/BipartitionChecker.hpp
     ${algo_dir}/graph/BreadthFirstSearch.hpp
+    ${algo_dir}/graph/complement.h
     ${algo_dir}/graph/ConnectedComponentsDecomposer.hpp
     ${algo_dir}/graph/DepthFirstSearch.hpp
     ${algo_dir}/graph/Dijkstra.hpp
+    ${algo_dir}/graph/max_clique.h
     ${algo_dir}/graph/max_flow_push_relabel.h
     ${algo_dir}/graph/TopologicalSorter.hpp
     ${algo_dir}/graph/TreePreprocessor.hpp
@@ -131,6 +133,11 @@ set(tests_srcs
     ${solvers_dir}/11xx/1102/Solver1102C.cpp
     ${solvers_dir}/11xx/1102/Solver1102D.cpp
     ${solvers_dir}/11xx/1102/Solver1102E.cpp
+    ${solvers_dir}/11xx/1105/Solver1105A.cpp
+    ${solvers_dir}/11xx/1105/Solver1105B.cpp
+    ${solvers_dir}/11xx/1105/Solver1105C.cpp
+    ${solvers_dir}/11xx/1105/Solver1105D.cpp
+    ${solvers_dir}/11xx/1105/Solver1105E.cpp
     ${solvers_dir}/1xx/107/Solver107B.cpp
     ${solvers_dir}/1xx/132/Solver132C.cpp
     ${solvers_dir}/1xx/158/Solver158E.cpp
