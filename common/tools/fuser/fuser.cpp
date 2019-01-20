@@ -70,7 +70,7 @@ std::string Compile(const std::string& main_file, CompilerOptions& options) {
                 int dependency_index = process_file(dependency, true);
                 include_graph.expand_to_num_vertices(file_index + 1);
                 include_graph.expand_to_num_vertices(dependency_index + 1);
-                include_graph.add_directed_edge(file_index, dependency_index);
+                include_graph.add_directed_edge(dependency_index, file_index);
             } catch (const std::runtime_error& err) {
                 throw std::runtime_error(std::string(err.what()) + "\n" + kIncludedFromPrefix + file_name);
             }
@@ -79,7 +79,7 @@ std::string Compile(const std::string& main_file, CompilerOptions& options) {
     };
 
     int main_file_index = process_file(main_file, false);
-    const auto file_indices_sorted = topological_sort_reachable_checked(include_graph, {main_file_index});
+    const auto file_indices_sorted = topological_sort_checked(include_graph);
     switch (file_indices_sorted.status()) {
         case TopologicalSortResult::Ok:
             break;
