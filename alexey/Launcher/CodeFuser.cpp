@@ -35,6 +35,7 @@ R"(#include <vector>
 #include <memory>
 #include <complex>
 #include <regex>
+#include <optional>
 
 using namespace std;
 )";
