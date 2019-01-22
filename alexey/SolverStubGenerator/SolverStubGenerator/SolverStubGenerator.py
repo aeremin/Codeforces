@@ -8,6 +8,7 @@ class CodeforcesParser(HTMLParser):
         self.openedDivs = []
         self.inputs = []
         self.outputs = []
+        self.isInteractive = False
 
     def handle_starttag(self, tag, attrs):
         if tag == 'div':
@@ -29,13 +30,16 @@ class CodeforcesParser(HTMLParser):
                 self.inputs[-1].append(data)
             if self.openedDivs[-1] == [('class', 'output')]:
                 self.outputs[-1].append(data)
+        if len(self.openedDivs) >= 2 and self.openedDivs[-2] == [('class', 'problem-statement')]:
+            data = data.replace(r'\n', '\n')
+            if 'This is an interactive problem' in data:
+                self.isInteractive = True
 
 while True:
     problemUrl = input()
     if (problemUrl == ''):
         break
-    
-    pageContent=str(urllib.request.urlopen(problemUrl).read())
+    pageContent=str(urllib.request.urlopen(problemUrl + '?locale=en').read())
 
     parser = CodeforcesParser()
     parser.feed(pageContent)
@@ -61,27 +65,84 @@ while True:
 
     os.makedirs(solverFilePath, exist_ok=True)
     stubFile = open(os.path.join(solverFilePath, solverName + ".cpp"), "w")
+    
+    isInteractive = parser.isInteractive
+    interactiveSolverName = 'Interactive' + solverName
+    solutionHeader = '''
+#include <Solvers/pch.h>
+#include "algo/io/baseio.hpp"
+#include "iter/range.h"
+using namespace std;
 
-    print('#include <Solvers/pch.h>',
-          '#include "algo/io/baseio.hpp"',
-          '#include "iter/range.h"',
-          'using namespace std;',
-          '',
-          '// Solution for Codeforces problem http://codeforces.com/contest/%s/problem/%s' % (problemNumber, problemLetter),
-          'class ' + solverName + ' {',
-          'public:',
-          '    void run();',
-          '};',
-          '',
-          'void ' + solverName + '::run() {',
-          '',
-          '}',
-          '',
-          '',
-          'class ' + solverName + 'Test : public ProblemTest {};',
-          '',
-          '',
-          file=stubFile, sep = '\n')
+// Solution for Codeforces problem http://codeforces.com/contest/%s/problem/%s
+    ''' % (problemNumber, problemLetter)
+
+    runImplementation = ''
+    interactiveSolverPart = ''
+    interactiveTestPart = ''
+
+    if isInteractive:
+        runImplementation = '    %s().Run();' % interactiveSolverName
+        interactiveSolverPart = '''
+class %s {
+  public:
+    void Run();
+    virtual string GetResponse(/* TODO */);
+    virtual void PrintAnswer(/* TODO */);
+};
+
+string %s::GetResponse(/* TODO */) {
+    cout << /*TODO << */ endl;
+    return read<string>();
+}
+
+void %s::PrintAnswer(/* TODO */) { cout << /* TODO << */ endl; }
+
+void %s::Run() {
+
+}
+        ''' % (interactiveSolverName, interactiveSolverName, interactiveSolverName, interactiveSolverName)
+        
+        interactiveSolverForTestName = interactiveSolverName + 'ForTest'
+        interactiveTestPart = '''
+class %s : public %s {
+  public:
+    %s() {}
+    string GetResponse(/* TODO */) override;
+    void PrintAnswer(/* TODO */) override;
+};
+
+string %s::GetResponse(/* TODO */) {
+    // TODO
+    return "";
+}
+
+void %s::PrintAnswer(/* TODO */) {
+    // TODO
+}
+
+TEST(%sTest, Example1) {
+    %s().Run();
+}
+        ''' % (interactiveSolverForTestName, interactiveSolverName, 
+               interactiveSolverForTestName, interactiveSolverForTestName, 
+               interactiveSolverForTestName, interactiveSolverName, interactiveSolverForTestName)
+
+    solutionRunner = '''
+class %s {
+  public:
+    void run();
+};
+
+void %s::run() {
+%s
+}
+
+
+class %sTest : public ProblemTest {};
+    ''' % (solverName, solverName, runImplementation ,solverName)
+
+    print(solutionHeader, interactiveSolverPart, solutionRunner, file=stubFile)
 
     samplesCount = len(parser.inputs)
     for i in range(samplesCount):
@@ -95,7 +156,8 @@ while True:
               '}',
 			  '',
               file=stubFile, sep = '\n')
-
+    
+    print(interactiveTestPart, file=stubFile)
 
     cmakeLineToInsert = '    ${solvers_dir}/%s/%s/%s.cpp\n' % (problemNumber[:-2] + 'xx', problemNumber, solverName)
     cmakeFileName = os.path.join('..', '..', 'CMakeLists.txt')
