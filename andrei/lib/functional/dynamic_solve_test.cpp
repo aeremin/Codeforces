@@ -1,18 +1,16 @@
 #include "functional/dynamic_solve.h"
 
-#include "util/hash.h"
-
 #include <algorithm>
 
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 
+#include "util/hash.h"
+
 
 TEST(DynamicSolveTest, Fibonacci) {
     using Solver = DynamicSolver<int(int)>;
-    Solver fibonacci_solver([](Solver& solver, int x) {
-        return (x <= 2) ? 1 : solver(x - 1) + solver(x - 2);
-    });
+    Solver fibonacci_solver([](Solver& solver, int x) { return (x <= 2) ? 1 : solver(x - 1) + solver(x - 2); });
     EXPECT_EQ(fibonacci_solver(6), 8);
 }
 

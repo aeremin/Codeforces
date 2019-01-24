@@ -4,7 +4,7 @@
 
 
 class TestWithIORedirection : public ::testing::Test {
-public:
+  public:
     TestWithIORedirection() {
         original_cin = std::cin.rdbuf();
         original_cout = std::cout.rdbuf();
@@ -16,14 +16,10 @@ public:
         std::cout.rdbuf(original_cout);
     }
 
-    void send_input(const std::string& in) {
-        in_buf << in;
-    }
-    std::string get_output() {
-        return out_buf.str();
-    }
+    void send_input(const std::string& in) { in_buf << in; }
+    std::string get_output() { return out_buf.str(); }
 
-private:
+  private:
     std::streambuf* original_cin = nullptr;
     std::streambuf* original_cout = nullptr;
     std::stringstream in_buf;

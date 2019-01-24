@@ -1,5 +1,5 @@
 #pragma once
 
 
-template<typename... Args>
+template <typename... Args>
 void FIX_UNUSED(const Args&...) {}

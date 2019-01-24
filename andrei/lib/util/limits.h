@@ -6,22 +6,22 @@
 namespace internal {
 
 class LimitLowest {
-public:
-    LimitLowest(const LimitLowest &) = delete;
-    LimitLowest& operator=(const LimitLowest &) = delete;
+  public:
+    LimitLowest(const LimitLowest&) = delete;
+    LimitLowest& operator=(const LimitLowest&) = delete;
 
-    template<typename T>
+    template <typename T>
     operator T() && {
         return std::numeric_limits<T>().lowest();
     }
 };
 
 class LimitMax {
-public:
-    LimitMax(const LimitMax &) = delete;
-    LimitMax& operator=(const LimitMax &) = delete;
+  public:
+    LimitMax(const LimitMax&) = delete;
+    LimitMax& operator=(const LimitMax&) = delete;
 
-    template<typename T>
+    template <typename T>
     operator T() && {
         return std::numeric_limits<T>().max();
     }
@@ -30,10 +30,6 @@ public:
 }  // namespace internal
 
 
-internal::LimitLowest limit_lowest() {
-    return {};
-}
+internal::LimitLowest limit_lowest() { return {}; }
 
-internal::LimitMax limit_max() {
-    return {};
-}
+internal::LimitMax limit_max() { return {}; }

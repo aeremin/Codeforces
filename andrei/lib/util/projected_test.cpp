@@ -17,8 +17,7 @@ TEST(ProjectedTest, NoComparator) {
 
 TEST(ProjectedTest, WithComparator) {
     std::vector<int> v = {10, 30, 24, 90, 77, 54};
-    std::sort(v.begin(), v.end(), projected([](int a) { return a / 10; },
-                                            [](int a, int b) { return a > b; }));
+    std::sort(v.begin(), v.end(), projected([](int a) { return a / 10; }, [](int a, int b) { return a > b; }));
     EXPECT_THAT(v, ElementsAre(90, 77, 54, 30, 24, 10));
 }
 

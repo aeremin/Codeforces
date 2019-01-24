@@ -83,19 +83,19 @@
 #include "util/types.h"
 
 
-#define DEFINE_SIMPLE_SCAN_TYPE(TYPE_NAME, FORMAT)  \
-  template<>  \
-  TYPE_NAME try_scan<TYPE_NAME>(bool& success) {  \
-    TYPE_NAME result;  \
-    success = (scanf(FORMAT, &result) > 0);  \
-    return result;  \
-  }
+#define DEFINE_SIMPLE_SCAN_TYPE(TYPE_NAME, FORMAT) \
+    template <>                                    \
+    TYPE_NAME try_scan<TYPE_NAME>(bool& success) { \
+        TYPE_NAME result;                          \
+        success = (scanf(FORMAT, &result) > 0);    \
+        return result;                             \
+    }
 
 #ifdef LOCAL_PC
 
 // Use iostream locally for redirections in unit tests
 // TODO: Add checks so that it doesn't compile for unsupported types.
-template<typename T>
+template <typename T>
 T try_scan(bool& success) {
     T result;
     success = bool(std::cin >> result);
@@ -104,7 +104,7 @@ T try_scan(bool& success) {
 
 #else
 
-template<typename T>
+template <typename T>
 T try_scan(bool& success);
 
 // Use stdio remotely, because it's faster
@@ -116,7 +116,7 @@ DEFINE_SIMPLE_SCAN_TYPE(float, "%f");
 DEFINE_SIMPLE_SCAN_TYPE(double, "%lf");
 DEFINE_SIMPLE_SCAN_TYPE(char, "%c");  // TODO: sync with iostream (in terms of whitespace treatment)
 
-template<>
+template <>
 std::string try_scan<std::string>(bool& success) {
     std::string result;
     success = bool(std::cin >> result);
@@ -141,13 +141,13 @@ std::tuple<Head, Tail> try_scan<std::tuple<Head, Tail>>(bool& success) {
 }
 #endif
 
-inline int try_scan_int(bool& success)          { return try_scan<int>(success);    }
-inline uint try_scan_uint(bool& success)        { return try_scan<uint>(success);   }
-inline int64 try_scan_int64(bool& success)      { return try_scan<int64>(success);  }
-inline uint64 try_scan_uint64(bool& success)    { return try_scan<uint64>(success); }
-inline float try_scan_float(bool& success)      { return try_scan<float>(success);  }
-inline double try_scan_double(bool& success)    { return try_scan<double>(success); }
-inline char try_scan_char(bool& success)        { return try_scan<char>(success);   }
+inline int try_scan_int(bool& success) { return try_scan<int>(success); }
+inline uint try_scan_uint(bool& success) { return try_scan<uint>(success); }
+inline int64 try_scan_int64(bool& success) { return try_scan<int64>(success); }
+inline uint64 try_scan_uint64(bool& success) { return try_scan<uint64>(success); }
+inline float try_scan_float(bool& success) { return try_scan<float>(success); }
+inline double try_scan_double(bool& success) { return try_scan<double>(success); }
+inline char try_scan_char(bool& success) { return try_scan<char>(success); }
 inline std::string try_scan_word(bool& success) { return try_scan<std::string>(success); }
 
 inline std::string try_scan_line(bool& success) {
@@ -158,7 +158,7 @@ inline std::string try_scan_line(bool& success) {
 }
 
 
-template<typename T>
+template <typename T>
 T scan() {
     bool success = false;
     T result = try_scan<T>(success);
@@ -166,14 +166,14 @@ T scan() {
     return result;
 }
 
-inline int scan_int()           { return scan<int>();    }
-inline uint scan_uint()         { return scan<uint>();   }
-inline int64 scan_int64()       { return scan<int64>();  }
-inline uint64 scan_uint64()     { return scan<uint64>(); }
-inline float scan_float()       { return scan<float>();  }
-inline double scan_double()     { return scan<double>(); }
-inline char scan_char()         { return scan<char>();   }
-inline std::string scan_word()  { return scan<std::string>(); }
+inline int scan_int() { return scan<int>(); }
+inline uint scan_uint() { return scan<uint>(); }
+inline int64 scan_int64() { return scan<int64>(); }
+inline uint64 scan_uint64() { return scan<uint64>(); }
+inline float scan_float() { return scan<float>(); }
+inline double scan_double() { return scan<double>(); }
+inline char scan_char() { return scan<char>(); }
+inline std::string scan_word() { return scan<std::string>(); }
 
 inline std::string scan_line() {
     bool success = false;
@@ -186,11 +186,11 @@ inline std::string scan_line() {
 namespace internal {
 
 class ScanResult {
-public:
+  public:
     ScanResult(const ScanResult&) = delete;
     ScanResult& operator=(const ScanResult&) = delete;
 
-    template<typename T>
+    template <typename T>
     operator T() && {
         return scan<T>();
     }
@@ -198,42 +198,45 @@ public:
 
 }  // namespace internal
 
-internal::ScanResult scan() {
-    return {};
-}
+internal::ScanResult scan() { return {}; }
 
 // TODO: fix for std::string
-#define SCAN_2()  {scan(), scan()}
-#define SCAN_3()  {scan(), scan(), scan()}
-#define SCAN_4()  {scan(), scan(), scan(), scan()}
-#define SCAN_5()  {scan(), scan(), scan(), scan(), scan()}
-#define SCAN_6()  {scan(), scan(), scan(), scan(), scan(), scan()}
-#define SCAN_7()  {scan(), scan(), scan(), scan(), scan(), scan(), scan()}
-#define SCAN_8()  {scan(), scan(), scan(), scan(), scan(), scan(), scan(), scan()}
+#define SCAN_2() \
+    { scan(), scan() }
+#define SCAN_3() \
+    { scan(), scan(), scan() }
+#define SCAN_4() \
+    { scan(), scan(), scan(), scan() }
+#define SCAN_5() \
+    { scan(), scan(), scan(), scan(), scan() }
+#define SCAN_6() \
+    { scan(), scan(), scan(), scan(), scan(), scan() }
+#define SCAN_7() \
+    { scan(), scan(), scan(), scan(), scan(), scan(), scan() }
+#define SCAN_8() \
+    { scan(), scan(), scan(), scan(), scan(), scan(), scan(), scan() }
 
 
-template<typename Arg>
+template <typename Arg>
 void scan(Arg& arg) {
     arg = scan<Arg>();
 }
 
-template<typename Head, typename... Tail>
+template <typename Head, typename... Tail>
 void scan(Head& head, Tail&... tail) {
     scan(head);
     scan(tail...);
 }
 
-#define DEFINE_SCAN_VECTOR_N(NAME, SCAN_FUNCTION)  \
-template<typename ElementT>  \
-std::vector<ElementT> NAME(size_t n_elements) {  \
-    CHECK(ssize_t(n_elements) >= 0);  \
-    std::vector<ElementT> result;  \
-    result.reserve(n_elements);  \
-    FOR_TIMES(n_elements) {  \
-        result.push_back(SCAN_FUNCTION);  \
-    }  \
-    return result;  \
-}
+#define DEFINE_SCAN_VECTOR_N(NAME, SCAN_FUNCTION)                  \
+    template <typename ElementT>                                   \
+    std::vector<ElementT> NAME(size_t n_elements) {                \
+        CHECK(ssize_t(n_elements) >= 0);                           \
+        std::vector<ElementT> result;                              \
+        result.reserve(n_elements);                                \
+        FOR_TIMES(n_elements) { result.push_back(SCAN_FUNCTION); } \
+        return result;                                             \
+    }
 
 DEFINE_SCAN_VECTOR_N(scan_vector, scan())
 DEFINE_SCAN_VECTOR_N(scan_vector_2, SCAN_2())

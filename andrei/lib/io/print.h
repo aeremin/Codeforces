@@ -34,10 +34,10 @@
 
 #define FLOAT_OUTPUT_PRECISION_STR STRINGIFY(FLOAT_OUTPUT_PRECISION)
 
-#define DEFINE_SIMPLE_PRINT_TYPE(TYPE_NAME, FORMAT)  \
-    template<>  \
-    void print<TYPE_NAME>(TYPE_NAME value) {  \
-        printf(FORMAT, value);  \
+#define DEFINE_SIMPLE_PRINT_TYPE(TYPE_NAME, FORMAT) \
+    template <>                                     \
+    void print<TYPE_NAME>(TYPE_NAME value) {        \
+        printf(FORMAT, value);                      \
     }
 
 #ifdef LOCAL_PC
@@ -48,7 +48,7 @@ inline static bool redirect_to_cerr = false;
 
 // Use iostream locally for redirections in unit tests
 // TODO: Add checks so that it doesn't compile for unsupported types.
-template<typename T>
+template <typename T>
 void print(const T& value) {
     auto& stream = internal::redirect_to_cerr ? std::cerr : std::cout;
     stream << std::fixed << std::setprecision(FLOAT_OUTPUT_PRECISION) << value;
@@ -56,7 +56,7 @@ void print(const T& value) {
 
 #else
 
-template<typename T>
+template <typename T>
 void print(T value);
 
 // Use stdio remotely, because it's faster
@@ -69,7 +69,7 @@ DEFINE_SIMPLE_PRINT_TYPE(double, "%." FLOAT_OUTPUT_PRECISION_STR "lf");
 DEFINE_SIMPLE_PRINT_TYPE(char, "%c");
 DEFINE_SIMPLE_PRINT_TYPE(const char*, "%s");
 
-template<>  \
+template <>
 void print<const std::string&>(const std::string& value) {
     printf("%s", value.c_str());
 }
@@ -77,25 +77,23 @@ void print<const std::string&>(const std::string& value) {
 #endif
 
 
-inline void print_ln() {
-    print('\n');
-}
+inline void print_ln() { print('\n'); }
 
-template<typename T>
+template <typename T>
 void print_ln(const T& value) {
     print(value);
     print_ln();
 }
 
 
-template<typename HeadT, typename... TailT>
+template <typename HeadT, typename... TailT>
 void print(const HeadT& head, const TailT&... tail) {
     print(head);
     print(' ');
     print(tail...);
 }
 
-template<typename HeadT, typename... TailT>
+template <typename HeadT, typename... TailT>
 void print_ln(const HeadT& head, const TailT&... tail) {
     print(head);
     print(' ');
@@ -103,7 +101,7 @@ void print_ln(const HeadT& head, const TailT&... tail) {
 }
 
 
-template<typename VectorT, typename SeparatorT = char>
+template <typename VectorT, typename SeparatorT = char>
 void print_vector(const VectorT& vec, const SeparatorT& separator = ' ') {
     if (vec.empty())
         return;
@@ -115,7 +113,7 @@ void print_vector(const VectorT& vec, const SeparatorT& separator = ' ') {
     print(*end_it);
 }
 
-template<typename VectorT, typename SeparatorT = char>
+template <typename VectorT, typename SeparatorT = char>
 void print_vector_ln(const VectorT& vec, const SeparatorT& separator = ' ') {
     print_vector(vec, separator);
     print_ln();
@@ -124,15 +122,17 @@ void print_vector_ln(const VectorT& vec, const SeparatorT& separator = ' ') {
 
 #ifdef LOCAL_PC
 
-#define LOG(print_call) \
-    do { \
-        internal::redirect_to_cerr = true; \
-        print_call; \
+#define LOG(print_call)                     \
+    do {                                    \
+        internal::redirect_to_cerr = true;  \
+        print_call;                         \
         internal::redirect_to_cerr = false; \
     } while (false)
 
 #else
 
-#define LOG(print_call)  do {} while (false)
+#define LOG(print_call) \
+    do {                \
+    } while (false)
 
 #endif

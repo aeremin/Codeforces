@@ -7,17 +7,17 @@
 
 
 struct IOFileNames {
-public:
+  public:
     std::string input_file_name;
     std::string output_file_name;
 };
 
-IOFileNames input_txt_output_txt() {
-    return {"input.txt", "output.txt"};
-}
+IOFileNames input_txt_output_txt() { return {"input.txt", "output.txt"}; }
+
 IOFileNames foo_in_foo_out(const std::string& file_name_base) {
     return {file_name_base + ".in", file_name_base + ".out"};
 }
+
 IOFileNames custom_file_names(const std::string& input_file_name, const std::string& output_file_name) {
     return {input_file_name, output_file_name};
 }
