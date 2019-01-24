@@ -67,14 +67,12 @@ enum class IterationControl {
 // NOTE. This could've been a normal function, but that makes traversal slower
 //       under gcc with "-O2". Even with "__attribute__((always_inline))".
 //       I assume, inlining happens too late or doesn't happen at all.
-#define graph_traversal_noop_continue  \
-  [](const GraphTraversalState&, int) { return IterationControl::Proceed; }
+#define graph_traversal_noop_continue [](const GraphTraversalState&, int) { return IterationControl::Proceed; }
 
-template<typename GraphT>
+template <typename GraphT>
 struct GraphTraversalExecutionItem {
-    explicit GraphTraversalExecutionItem(int v, const GraphT& graph) :
-        vertex(v),
-        neighbour_it(graph.out_nbrs(v).begin()) {}
+    explicit GraphTraversalExecutionItem(int v, const GraphT& graph)
+        : vertex(v), neighbour_it(graph.out_nbrs(v).begin()) {}
 
     int vertex;
     typename GraphT::NeighborMap::const_iterator neighbour_it;
@@ -83,12 +81,10 @@ struct GraphTraversalExecutionItem {
 
 // TODO: Test.
 // TODO: Benchmark.
-template<typename ExecutionControllerT, typename GraphT, typename VertexListT, typename OnSeeT, typename OnEnterT, typename OnExitT>
-IterationResult traverse_graph(const GraphT& graph,
-                               const VertexListT& starting_vertices,
-                               const OnSeeT& on_see,
-                               const OnEnterT& on_enter,
-                               const OnExitT& on_exit) {
+template <typename ExecutionControllerT, typename GraphT, typename VertexListT, typename OnSeeT, typename OnEnterT,
+          typename OnExitT>
+IterationResult traverse_graph(const GraphT& graph, const VertexListT& starting_vertices, const OnSeeT& on_see,
+                               const OnEnterT& on_enter, const OnExitT& on_exit) {
     GraphTraversalState state;
     const GraphTraversalState& const_state = state;
     state.visited.resize(graph.num_vertices(), false);
@@ -100,15 +96,15 @@ IterationResult traverse_graph(const GraphT& graph,
             continue;
 
         switch (on_enter(const_state, start)) {
-        case IterationControl::Proceed:
-            state.visited[start] = true;
-            execution_controller.push(GraphTraversalExecutionItem<GraphT>{ start, graph });
-            break;
-        case IterationControl::AbortGently:
-            state.aborting = true;
-            break;
-        case IterationControl::AbortBluntly:
-            return IterationResult::Aborted;
+            case IterationControl::Proceed:
+                state.visited[start] = true;
+                execution_controller.push(GraphTraversalExecutionItem<GraphT>{start, graph});
+                break;
+            case IterationControl::AbortGently:
+                state.aborting = true;
+                break;
+            case IterationControl::AbortBluntly:
+                return IterationResult::Aborted;
         }
         while (!execution_controller.empty()) {
             auto& top = execution_controller.top();
@@ -118,30 +114,30 @@ IterationResult traverse_graph(const GraphT& graph,
                 while (top.neighbour_it != graph.out_nbrs(top.vertex).end()) {
                     int neighbour = top.neighbour_it->first;
                     switch (on_see(const_state, neighbour)) {
-                    case IterationControl::Proceed:
-                        break;
-                    case IterationControl::AbortGently:
-                        we_need_to_go_deeper = false;
-                        state.aborting = true;
-                        break;
-                    case IterationControl::AbortBluntly:
-                        return IterationResult::Aborted;
+                        case IterationControl::Proceed:
+                            break;
+                        case IterationControl::AbortGently:
+                            we_need_to_go_deeper = false;
+                            state.aborting = true;
+                            break;
+                        case IterationControl::AbortBluntly:
+                            return IterationResult::Aborted;
                     }
                     if (state.aborting)
                         break;
                     ++top.neighbour_it;
                     if (!state.visited[neighbour]) {
                         switch (on_enter(const_state, neighbour)) {
-                        case IterationControl::Proceed:
-                            state.visited[neighbour] = true;
-                            execution_controller.push(GraphTraversalExecutionItem<GraphT>{ neighbour, graph });
-                            we_need_to_go_deeper = true;
-                            break;
-                        case IterationControl::AbortGently:
-                            state.aborting = true;
-                            break;
-                        case IterationControl::AbortBluntly:
-                            return IterationResult::Aborted;
+                            case IterationControl::Proceed:
+                                state.visited[neighbour] = true;
+                                execution_controller.push(GraphTraversalExecutionItem<GraphT>{neighbour, graph});
+                                we_need_to_go_deeper = true;
+                                break;
+                            case IterationControl::AbortGently:
+                                state.aborting = true;
+                                break;
+                            case IterationControl::AbortBluntly:
+                                return IterationResult::Aborted;
                         }
                         break;
                     }
@@ -149,13 +145,13 @@ IterationResult traverse_graph(const GraphT& graph,
             }
             if (!we_need_to_go_deeper) {
                 switch (on_exit(const_state, top.vertex)) {
-                case IterationControl::Proceed:
-                    break;
-                case IterationControl::AbortGently:
-                    state.aborting = true;
-                    break;
-                case IterationControl::AbortBluntly:
-                    return IterationResult::Aborted;
+                    case IterationControl::Proceed:
+                        break;
+                    case IterationControl::AbortGently:
+                        state.aborting = true;
+                        break;
+                    case IterationControl::AbortBluntly:
+                        return IterationResult::Aborted;
                 }
                 execution_controller.pop();
             }

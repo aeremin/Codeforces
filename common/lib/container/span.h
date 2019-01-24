@@ -8,9 +8,9 @@
 #include "util/check.h"
 
 
-template<typename T>
+template <typename T>
 class span {
-public:
+  public:
     using element_type = T;
     using value_type = std::remove_cv_t<T>;
     using index_type = std::ptrdiff_t;
@@ -30,17 +30,17 @@ public:
 
     reference operator[](index_type index) const { *(begin_ + index); }
 
-    iterator begin() const        { return begin_; }
-    iterator end() const          { return end_; }
+    iterator begin() const { return begin_; }
+    iterator end() const { return end_; }
 
-    bool empty() const            { return end_ == begin_; }
-    index_type size() const       { return end_ - begin_; }
+    bool empty() const { return end_ == begin_; }
+    index_type size() const { return end_ - begin_; }
 
-    span first(index_type count) const                      { return {begin_, begin_ + count}; }
-    span last(index_type count) const                       { return {end_ - count, end_}; }
+    span first(index_type count) const { return {begin_, begin_ + count}; }
+    span last(index_type count) const { return {end_ - count, end_}; }
     span subspan(index_type offset, index_type count) const { return {begin_ + offset, count}; }
 
-private:
+  private:
     pointer begin_ = nullptr;
     pointer end_ = nullptr;
 };

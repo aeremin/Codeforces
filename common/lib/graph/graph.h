@@ -1,61 +1,39 @@
 #pragma once
-#include <vector>
-#include <map>
-#include <utility>
 #include <algorithm>
+#include <map>
 #include <optional>
+#include <utility>
+#include <vector>
+
 #include "util/getters.h"
 
 constexpr int kInvalidGraphVertex = -1;
 
-template<bool Directed, class PerEdgeData, class PerVertexData>
-class Graph
-{
-
-public:
+template <bool Directed, class PerEdgeData, class PerVertexData>
+class Graph {
+  public:
     using NeighborMap = std::map<int, PerEdgeData>;
 
-    Graph( int nVertices )
-        :
-        edges_(nVertices),
-        vertexData_(nVertices)
-    {
+    Graph(int nVertices) : edges_(nVertices), vertexData_(nVertices) {}
+
+    Graph(std::vector<PerVertexData> vertexData) : edges_(vertexData.size()), vertexData_(move(vertexData)) {}
+
+    template <bool IsDirected = Directed, typename = typename std::enable_if<!IsDirected>::type>
+    void add_edge(int from, int to, PerEdgeData data = {}) {
+        edges_[from].insert({to, data});
+        edges_[to].insert({from, data});
     }
 
-    Graph( std::vector<PerVertexData> vertexData )
-        :
-        edges_(vertexData.size()),
-        vertexData_(move(vertexData))
-    {
+    template <bool IsDirected = Directed, typename = typename std::enable_if<IsDirected>::type>
+    void add_directed_edge(int from, int to, PerEdgeData data = {}) {
+        edges_[from].insert({to, data});
     }
 
-    template<bool IsDirected = Directed, typename = typename std::enable_if<!IsDirected>::type>
-    void add_edge( int from, int to, PerEdgeData data = {} )
-    {
-        edges_[from].insert( { to, data } );
-        edges_[to].insert( { from, data } );
-    }
+    const PerVertexData& get_vertex_data(int vInd) const { return vertexData_[vInd]; }
 
-    template<bool IsDirected = Directed, typename = typename std::enable_if<IsDirected>::type>
-    void add_directed_edge(int from, int to, PerEdgeData data = {})
-    {
-        edges_[from].insert({ to, data });
-    }
+    PerVertexData& get_vertex_data(int vInd) { return vertexData_[vInd]; }
 
-    const PerVertexData& get_vertex_data(int vInd) const
-    {
-        return vertexData_[vInd];
-    }
-
-    PerVertexData& get_vertex_data(int vInd)
-    {
-        return vertexData_[vInd];
-    }
-
-    int num_vertices() const
-    {
-        return edges_.size();
-    }
+    int num_vertices() const { return edges_.size(); }
 
     void expand_to_num_vertices(int new_num_vertices) {
         if (new_num_vertices <= num_vertices())
@@ -64,28 +42,21 @@ public:
         vertexData_.resize(new_num_vertices);
     }
 
-    const NeighborMap& out_nbrs( int v ) const
-    {
-        return edges_[v];
-    }
+    const NeighborMap& out_nbrs(int v) const { return edges_[v]; }
 
-    bool has_edge(int from, int to) const {
-        return get_edge(from, to).has_value();
-    }
+    bool has_edge(int from, int to) const { return get_edge(from, to).has_value(); }
 
-    std::optional<PerEdgeData> get_edge(int from, int to) const {
-        return maybe_get(out_nbrs(from), to);
-    }
+    std::optional<PerEdgeData> get_edge(int from, int to) const { return maybe_get(out_nbrs(from), to); }
 
-private:
+  private:
     std::vector<NeighborMap> edges_;
     std::vector<PerVertexData> vertexData_;
 };
 
 struct EmptyStruct {};
 
-template<class PerEdgeData = EmptyStruct, class PerVertexData = EmptyStruct>
+template <class PerEdgeData = EmptyStruct, class PerVertexData = EmptyStruct>
 using DirectedGraph = Graph<true, PerEdgeData, PerVertexData>;
 
-template<class PerEdgeData = EmptyStruct, class PerVertexData = EmptyStruct>
+template <class PerEdgeData = EmptyStruct, class PerVertexData = EmptyStruct>
 using UndirectedGraph = Graph<false, PerEdgeData, PerVertexData>;

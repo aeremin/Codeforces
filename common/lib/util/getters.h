@@ -12,47 +12,47 @@
 #pragma once
 
 #include <optional>
+
 #include "util/check.h"
 
-template<typename VectorT>
+template <typename VectorT>
 typename VectorT::const_reference at(const VectorT& vec, size_t index) {
     CHECK_DEFAULT(index < vec.size());
     return vec[index];
 }
-template<typename VectorT>
+template <typename VectorT>
 typename VectorT::reference at(VectorT& vec, size_t index) {
     CHECK_DEBUG(index < vec.size());
     return vec[index];
 }
 
-template<typename MapT>
+template <typename MapT>
 const typename MapT::mapped_type& at(const MapT& map, const typename MapT::key_type& key) {
     auto it = map.find(key);
     CHECK_DEBUG(it != map.end());
     return it->second;
 }
-template<typename MapT>
+template <typename MapT>
 typename MapT::mapped_type& at(MapT& map, const typename MapT::key_type& key) {
     auto it = map.find(key);
     CHECK_DEBUG(it != map.end());
     return it->second;
 }
 
-template<typename MapT>
+template <typename MapT>
 typename std::optional<typename MapT::mapped_type> maybe_get(const MapT& map, const typename MapT::key_type& key) {
     auto it = map.find(key);
     return (it != map.end()) ? it->second : std::optional<typename MapT::mapped_type>{};
 }
 
-template<typename VectorT>
+template <typename VectorT>
 typename VectorT::value_type value_or(const VectorT& vec, size_t index,
                                       const typename VectorT::value_type& default_value = {}) {
     return (index < vec.size()) ? vec[index] : default_value;
 }
 
-template<typename MapT>
+template <typename MapT>
 typename MapT::mapped_type value_or(const MapT& map, const typename MapT::key_type& key,
                                     const typename MapT::mapped_type& default_value = {}) {
     return maybe_get(map, key).value_or(default_value);
 }
-

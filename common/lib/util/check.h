@@ -34,19 +34,20 @@ bool library_tests__enable_checks();
 }  // namespace internal
 
 // TODO: Print line and file, as assert does.
-#define CHECK(EXPRESSION)     \
-    do {                      \
-      if (!(EXPRESSION))      \
-        abort();              \
+#define CHECK(EXPRESSION)  \
+    do {                   \
+        if (!(EXPRESSION)) \
+            abort();       \
     } while (false)
 
-#define INTERNAL_CHECK_CONDITIONALLY(EXPRESSION)  \
-    do {                                          \
-      if (library_tests__enable_checks())         \
-        CHECK(EXPRESSION);                        \
+#define INTERNAL_CHECK_CONDITIONALLY(EXPRESSION) \
+    do {                                         \
+        if (library_tests__enable_checks())      \
+            CHECK(EXPRESSION);                   \
     } while (false)
 
 
+// clang-format off
 #ifndef CHECK_LEVEL
 #  if defined LIBRARY_TEST
 #    define CHECK_LEVEL 3
@@ -56,7 +57,9 @@ bool library_tests__enable_checks();
 #    define CHECK_LEVEL 1
 #  endif
 #endif
+// clang-format on
 
+// clang-format off
 #if CHECK_LEVEL == 0
 #  define CHECK_DEFAULT(EXPRESSION)   NOOP()
 #  define CHECK_DEBUG(EXPRESSION)     NOOP()
@@ -74,3 +77,4 @@ bool library_tests__enable_checks();
 #  define CHECK_DEBUG(EXPRESSION)     INTERNAL_CHECK_CONDITIONALLY(EXPRESSION)
 #  define CHECK_INTERNAL(EXPRESSION)  INTERNAL_CHECK_CONDITIONALLY(EXPRESSION)
 #endif
+// clang-format on

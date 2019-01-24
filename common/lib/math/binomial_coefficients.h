@@ -4,9 +4,8 @@
 
 #include "util/types.h"
 
-template<typename T>
-T BinomialCoefficient(int64 n, int64 k)
-{
+template <typename T>
+T BinomialCoefficient(int64 n, int64 k) {
     if (n < 0)
         return T(0);
 

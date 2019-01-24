@@ -5,12 +5,12 @@
 #include "iter/range.h"
 
 
-template<typename GraphT>
+template <typename GraphT>
 GraphT generate_empty_graph(int num_vertices) {
     return GraphT(num_vertices);
 }
 
-template<typename GraphT>
+template <typename GraphT>
 GraphT generate_full_undirected_graph(int num_vertices) {
     GraphT graph(num_vertices);
     for (int i : range(num_vertices)) {
@@ -20,7 +20,7 @@ GraphT generate_full_undirected_graph(int num_vertices) {
     return graph;
 }
 
-template<typename GraphT>
+template <typename GraphT>
 GraphT generate_full_directed_graph(int num_vertices) {
     GraphT graph(num_vertices);
     for (int i : range(num_vertices)) {
@@ -32,7 +32,7 @@ GraphT generate_full_directed_graph(int num_vertices) {
     return graph;
 }
 
-template<typename GraphT>
+template <typename GraphT>
 GraphT generate_random_graph_independent_edges(int num_vertices, double edge_probability) {
     GraphT graph(num_vertices);
     for (int i : range(num_vertices)) {

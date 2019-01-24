@@ -10,5 +10,4 @@
 #pragma once
 
 
-#define FOR_TIMES(N_TIMES) \
-    for (auto __counter = (N_TIMES); __counter > 0; --__counter)
+#define FOR_TIMES(N_TIMES) for (auto __counter = (N_TIMES); __counter > 0; --__counter)

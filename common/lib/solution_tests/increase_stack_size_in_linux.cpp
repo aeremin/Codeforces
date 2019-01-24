@@ -12,11 +12,11 @@
 namespace {
 
 #ifndef STACK_SIZE_MB
-#   define STACK_SIZE_MB  2000
+#define STACK_SIZE_MB 2000
 #endif
 
 class StackEnlarger {
-public:
+  public:
     StackEnlarger() {
         constexpr rlim_t desired_stack_size = STACK_SIZE_MB * 1024 * 1024;
         rlimit rl;
