@@ -7,6 +7,8 @@
 // The hash function applies std::hash to each field and combines the results.
 // If STL doesn't provide hash function for one of the field, you can either
 // define it directly, or use another DEFINE_HASH_n.
+//
+// TODO: Add hash functions resistant to attacks.
 
 #pragma once
 
@@ -66,7 +68,7 @@ size_t mixed_hash(const Args&... args) {
         };    \
     }
 
-// TODO: fix: still can't put into onordered_set without ==
+// TODO: fix: still can't put into unordered_set without ==
 
 #define DEFINE_HASH_1(TYPE_NAME, FIELD1)    \
     DEFINE_HASH_ABSTRACT(TYPE_NAME, a.FIELD1)

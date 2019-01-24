@@ -1,3 +1,17 @@
+// Utilities to easily sort/merge/compare/... values based on a function of input.
+//
+// * projected(f)
+//   Returns predicate `p' such that
+//       p(a, b) == f(a) < f(b)
+//   Sample usage:
+//       std::sort(v.begin(), v.end(), projected([](int a) { return a.weight; }));
+//
+// * projected(f, comp)
+//   Returns predicate `p' such that
+//       p(a, b) == comp(f(a), f(b))
+//
+// TODO: Unify names for this concept. It has been called 'projection', 'weight', etc.
+
 #pragma once
 
 #include <utility>

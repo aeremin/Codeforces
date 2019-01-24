@@ -62,6 +62,8 @@
 //
 // TODO: Execution order warning.
 //
+// TODO: Leverage C++17 structured binding declaration
+//
 // WARNING. Scan functions rely both on cstdio (for chars, integers and floats)
 //          and iostream (for strings), so std::ios_base::sync_with_stdio must
 //          remain true!

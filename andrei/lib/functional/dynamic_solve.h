@@ -1,3 +1,21 @@
+// Generic solver for dynamic programming problems.
+//
+// * DynamicSolver<Result(Arg1, Arg2, ...)>
+//
+//   Sample usage:
+//
+//       using Solver = DynamicSolver<int(int)>;
+//       Solver fibonacci_solver([](Solver& solver, int x) {
+//           return (x <= 2) ? 1 : solver(x - 1) + solver(x - 2);
+//       });
+//       int x = fibonacci_solver(6);      // x == 8
+//
+//   The solver caches results internally. The cache is persistent across calls:
+//
+//       Solver fibonacci_solver(...);
+//       int a = fibonacci_solver(n);      // O(n)
+//       int b = fibonacci_solver(n + 1);  // O(1)
+
 #pragma once
 
 #include <functional>
