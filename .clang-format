@@ -6,6 +6,7 @@ MaxEmptyLinesToKeep: 3
 PointerAlignment: Left
 DerivePointerAlignment: false
 AllowShortIfStatementsOnASingleLine: false
+AllowShortLoopsOnASingleLine: false
 IncludeBlocks: Regroup
 IncludeCategories:
   - Regex:           '<.+/.+>'
