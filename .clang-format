@@ -8,7 +8,9 @@ DerivePointerAlignment: false
 AllowShortIfStatementsOnASingleLine: false
 IncludeBlocks: Regroup
 IncludeCategories:
+  - Regex:           '<.+/.+>'
+    Priority:        2
   - Regex:           '<.+>'
     Priority:        1
   - Regex:           '.*'
-    Priority:        2
+    Priority:        3
