@@ -18,6 +18,7 @@ set(tests_srcs
     ${lib_tests_dir}/math/binomial_coefficient_test.cpp
     ${lib_tests_dir}/math/quick_power_test.cpp
     ${lib_tests_dir}/solution_tests/matchers_test.cpp
+    ${lib_tests_dir}/util/hash_test.cpp
     ${lib_tests_dir}/util/lexicographical_compare_test.cpp
 )
 add_executable(${tests_exe}  ${tests_srcs})
