@@ -6,13 +6,14 @@
 #include <vector>
 
 #include "util/getters.h"
+#include "util/hash.h"
 
 constexpr int kInvalidGraphVertex = -1;
 
 template <bool Directed, class PerEdgeData, class PerVertexData>
 class Graph {
   public:
-    using NeighborMap = std::map<int, PerEdgeData>;
+    using NeighborMap = hash_map<int, PerEdgeData>;
 
     Graph(int nVertices) : edges_(nVertices), vertexData_(nVertices) {}
 
