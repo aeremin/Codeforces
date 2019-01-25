@@ -5,9 +5,6 @@
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 
-#include "util/hash.h"
-
-
 TEST(DynamicSolveTest, Fibonacci) {
     using Solver = DynamicSolver<int(int)>;
     Solver fibonacci_solver([](Solver& solver, int x) { return (x <= 2) ? 1 : solver(x - 1) + solver(x - 2); });

@@ -23,6 +23,7 @@
 #include <type_traits>
 #include <unordered_map>
 
+#include "util/mixed_hash.h"
 
 template <typename>
 class DynamicSolver;
