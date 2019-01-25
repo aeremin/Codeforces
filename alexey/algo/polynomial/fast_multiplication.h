@@ -1,7 +1,8 @@
 #pragma once
 #include <complex>
+
 #include "algo/polynomial/fast_fourier_transform.h"
-template<typename T>
+template <typename T>
 inline Polynomial<std::complex<T>> FastMultiplication(Polynomial<std::complex<T>> lh, Polynomial<std::complex<T>> rh) {
     auto maxDegree = lh.formal_degree() + rh.formal_degree();
     int lgDegree = 0;

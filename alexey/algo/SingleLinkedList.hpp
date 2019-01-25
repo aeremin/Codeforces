@@ -1,40 +1,32 @@
 #pragma once
 
-template<class T> 
-struct Node
-{
+template <class T>
+struct Node {
     T data;
     Node<T>* next;
 };
 
-template<class T> 
-class SingleLinkedList
-{
-public:
-    typedef Node<T>  NodeType;
+template <class T>
+class SingleLinkedList {
+  public:
+    typedef Node<T> NodeType;
     typedef Node<T>* NodePtr;
 
-public:
+  public:
     SingleLinkedList() : head(nullptr) {}
 
-    ~SingleLinkedList()
-    {
+    ~SingleLinkedList() {
         auto curr = head;
-        while (curr)
-        {
+        while (curr) {
             auto next = curr->next;
             delete curr;
             curr = next;
         }
     }
 
-    bool isEmpty() const
-    {
-        return head == nullptr;
-    }
+    bool isEmpty() const { return head == nullptr; }
 
-    NodePtr insert(const T& elt)
-    {
+    NodePtr insert(const T& elt) {
         auto node = new NodeType();
         node->data = elt;
         node->next = head;
@@ -45,21 +37,15 @@ public:
     }
 
     // Returns false if no such node found
-    bool deleteNode(NodePtr nodePtr)
-    {
+    bool deleteNode(NodePtr nodePtr) {
         auto curr = head;
         NodePtr prev = nullptr;
-        while (curr)
-        {
-            if (curr == nodePtr)
-            {
-                if (prev)
-                {
+        while (curr) {
+            if (curr == nodePtr) {
+                if (prev) {
                     prev->next = curr->next;
                     delete curr;
-                }
-                else
-                {
+                } else {
                     // Deleting head node
                     head = curr->next;
                     delete curr;
@@ -73,21 +59,15 @@ public:
         return false;
     }
 
-    template<class Callable>
-    void forEach(Callable callable)
-    {
-        forEachNode([callable](NodePtr node)
-        {
-            callable(node->data);
-        });
+    template <class Callable>
+    void forEach(Callable callable) {
+        forEachNode([callable](NodePtr node) { callable(node->data); });
     }
 
-    void reverse()
-    {
+    void reverse() {
         NodePtr prevNode = nullptr;
         NodePtr currNode = head;
-        while (currNode)
-        {
+        while (currNode) {
             auto nextNode = currNode->next;
             currNode->next = prevNode;
             prevNode = currNode;
@@ -96,19 +76,16 @@ public:
         head = prevNode;
     }
 
-private:
-    template<class Callable>
-    void forEachNode(Callable callable)
-    {
+  private:
+    template <class Callable>
+    void forEachNode(Callable callable) {
         auto currNode = head;
-        while (currNode)
-        {
+        while (currNode) {
             callable(currNode);
             currNode = currNode->next;
         }
     }
 
-private:
+  private:
     NodePtr head;
 };
-

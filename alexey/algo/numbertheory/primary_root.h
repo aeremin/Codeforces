@@ -1,6 +1,6 @@
 #pragma once
-#include "iter/range.h"
 #include "algo/numbertheory/Primes.hpp"
+#include "iter/range.h"
 #include "math/quick_power.h"
 
 int64_t PrimeRoot(int64_t primeModulo) {
@@ -9,9 +9,9 @@ int64_t PrimeRoot(int64_t primeModulo) {
 
     auto check = [&](int64_t r) -> bool {
         for (auto pr : dec) {
-            if (quick_power(r, (primeModulo - 1) / pr.first, int64_t(1), [&](int64_t a, int64_t b) {
-                return (a * b) % primeModulo;
-            }) == 1) return false;
+            if (quick_power(r, (primeModulo - 1) / pr.first, int64_t(1),
+                            [&](int64_t a, int64_t b) { return (a * b) % primeModulo; }) == 1)
+                return false;
         }
         return true;
     };

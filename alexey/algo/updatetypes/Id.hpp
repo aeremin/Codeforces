@@ -2,13 +2,11 @@
 
 #pragma once
 
-namespace updateTypes
-{
+namespace updateTypes {
 
-struct Id
-{
-public:
-    friend Id operator*(const Id& lh, const Id& rh) { return{}; }
+struct Id {
+  public:
+    friend Id operator*(const Id& lh, const Id& rh) { return {}; }
 };
 
-}
+}  // namespace updateTypes

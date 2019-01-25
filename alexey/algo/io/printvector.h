@@ -1,10 +1,9 @@
 #pragma once
-#include <vector>
 #include <iostream>
+#include <vector>
 
-template<typename T>
-void printVector(const std::vector<T>& out, std::string delimiter = " ")
-{
+template <typename T>
+void printVector(const std::vector<T>& out, std::string delimiter = " ") {
     if (out.empty())
         return;
     for (size_t i = 0; i < out.size() - 1; ++i)

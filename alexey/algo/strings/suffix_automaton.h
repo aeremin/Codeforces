@@ -1,20 +1,21 @@
 #pragma once
 #include <string>
-#include <vector>
 #include <unordered_map>
+#include <vector>
+
 #include "iter/range.h"
 
 class SuffixAutomaton {
-public:
+  public:
     struct State {
         std::unordered_map<char, int> edges;
         int len, link;
         int size;
         bool isFinal;
     };
-    
+
     SuffixAutomaton(const std::string& s) {
-        states_.push_back(State{ std::unordered_map<char, int>{}, 0, -1, 1, false });
+        states_.push_back(State{std::unordered_map<char, int>{}, 0, -1, 1, false});
         int last = 0;
         for (auto c : s)
             last = append(c, last);
@@ -36,34 +37,33 @@ public:
             stateIndex = traverse(c, stateIndex);
         return stateIndex;
     }
-    
+
     int traverse(char c, int stateIndex) const {
-        if (stateIndex == -1) return -1;
+        if (stateIndex == -1)
+            return -1;
         auto itNext = states_[stateIndex].edges.find(c);
         if (itNext != end(states_[stateIndex].edges))
             return itNext->second;
         else
             return -1;
     }
-    
-    int getSize(int stateIndex) const              {    return states_[stateIndex].size;                           }
 
-    bool isFinal(int stateIndex) const             {    return stateIndex != -1 && states_[stateIndex].isFinal;    }
+    int getSize(int stateIndex) const { return states_[stateIndex].size; }
 
-    const std::vector<State>& getStates() const    {    return states_;              }
+    bool isFinal(int stateIndex) const { return stateIndex != -1 && states_[stateIndex].isFinal; }
 
-    bool isSubstring(const std::string& s) const   {    return traverse(s) != -1;    }
-    bool isSuffix(const std::string& s) const      {    return isFinal(traverse(s)); }
+    const std::vector<State>& getStates() const { return states_; }
 
-private:
+    bool isSubstring(const std::string& s) const { return traverse(s) != -1; }
+    bool isSuffix(const std::string& s) const { return isFinal(traverse(s)); }
 
-
+  private:
     int append(char c, int last) {
         // We add new state corresponding to s + c
         // It will has index curr.
         int curr = states_.size();
-        states_.push_back(State{ std::unordered_map<char, int>{}, states_[last].len + 1, -2, 1, false });
-        
+        states_.push_back(State{std::unordered_map<char, int>{}, states_[last].len + 1, -2, 1, false});
+
         int p = last;
         while (p != -1 && states_[p].edges.count(c) == 0) {
             states_[p].edges[c] = curr;
@@ -73,11 +73,11 @@ private:
             states_[curr].link = 0;
         else {
             int q = states_[p].edges.at(c);
-            if (states_[p].len + 1 == states_[q].len) // (p, q) is solid edge
+            if (states_[p].len + 1 == states_[q].len)  // (p, q) is solid edge
                 states_[curr].link = q;
             else {
-                int clone = states_.size();           // (p, q) is not solid,
-                states_.push_back(states_[q]);        // we do a split q ---> clone, q
+                int clone = states_.size();     // (p, q) is not solid,
+                states_.push_back(states_[q]);  // we do a split q ---> clone, q
                 states_[clone].len = states_[p].len + 1;
                 states_[clone].size = 0;
                 states_[curr].link = clone;

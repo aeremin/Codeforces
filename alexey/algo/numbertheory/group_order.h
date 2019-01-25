@@ -12,4 +12,3 @@ int GroupOrder(int elt, int modulo) {
     assert(false);
     return -1;
 }
-

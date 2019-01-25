@@ -7,15 +7,14 @@
 // void inser(InType), void erast(InType) and OutType value(),
 // and void reset();
 
-template<class MultiSetCalculator>
-class OrderIndependentSlider
-{
-public:
+template <class MultiSetCalculator>
+class OrderIndependentSlider {
+  public:
     using OutType = typename MultiSetCalculator::OutType;
     using InType = typename MultiSetCalculator::InType;
 
-    OrderIndependentSlider(MultiSetCalculator calc = {}) : calc_(calc) {};
-    
+    OrderIndependentSlider(MultiSetCalculator calc = {}) : calc_(calc){};
+
     void push_back(const InType& a) { calc_.insert(a); }
     void push_front(const InType& a) { calc_.insert(a); }
     void pop_front(const InType& a) { calc_.erase(a); }
@@ -24,6 +23,6 @@ public:
 
     void reset() { calc_.reset(); }
 
-private:
+  private:
     MultiSetCalculator calc_;
 };

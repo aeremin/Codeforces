@@ -1,27 +1,20 @@
 #pragma once
-#include <vector>
 #include <numeric>
+#include <vector>
+
 #include "iter/range.h"
 
 class BigInteger {
-public:
+  public:
     BigInteger() {}
-    
-    BigInteger(uint64_t a) {
-        add_to_front(a);
-    }
 
-    int len() const {
-        return digits_.size();
-    }
-    
-    int at(int position) const {
-        return (position < digits_.size() && position >= 0) ? digits_[position] : 0;
-    }
-    
-    int DigitsSum() const {
-        return std::accumulate(begin(digits_), end(digits_), 0);
-    }
+    BigInteger(uint64_t a) { add_to_front(a); }
+
+    int len() const { return digits_.size(); }
+
+    int at(int position) const { return (position < digits_.size() && position >= 0) ? digits_[position] : 0; }
+
+    int DigitsSum() const { return std::accumulate(begin(digits_), end(digits_), 0); }
 
     const BigInteger& operator+=(const BigInteger& other) {
         if (other.digits_.size() > digits_.size())
@@ -35,7 +28,7 @@ public:
         add_to_front(over);
         return *this;
     }
-    
+
     friend BigInteger operator*(const BigInteger& lh, const BigInteger& rh) {
         BigInteger res;
         uint64_t over = 0;
@@ -49,9 +42,7 @@ public:
         return res;
     }
 
-    bool operator==(const BigInteger& other) const {
-        return digits_ == other.digits_;
-    }
+    bool operator==(const BigInteger& other) const { return digits_ == other.digits_; }
 
     friend std::ostream& operator<<(std::ostream& outStream, const BigInteger& a) {
         for (auto it = a.digits_.rbegin(); it != a.digits_.rend(); ++it)
@@ -59,7 +50,7 @@ public:
         return outStream;
     }
 
-private:
+  private:
     void add_to_front(uint64_t a) {
         while (a) {
             digits_.push_back(a % 10);
@@ -67,6 +58,6 @@ private:
         }
     }
 
-private:
+  private:
     std::vector<uint8_t> digits_;
 };

@@ -1,20 +1,20 @@
 #pragma once
-#include <set>
-#include <limits>
 #include <cassert>
+#include <limits>
+#include <set>
 
-template<typename T>
+template <typename T>
 class LinearFunctionsMaximum {
-public:
+  public:
     // adds function y = ax + b.
-    void add_function( T a, T b );
+    void add_function(T a, T b);
 
     // returns max(a_i * x + b_i)
-    T get_value( T x ) const;
+    T get_value(T x) const;
 
     bool is_empty() const { return funcToOvertake_.empty(); }
 
-private:
+  private:
     bool try_to_eliminate(typename std::map<std::pair<T, T>, T>::iterator it);
 
     void set_overtake_point(typename std::map<std::pair<T, T>, T>::iterator it, T val);
@@ -23,25 +23,26 @@ private:
     std::map<std::pair<T, T>, T> funcToOvertake_;
 };
 
-namespace internal
-{
+namespace internal {
 
-template<typename T>
-typename std::enable_if<std::is_integral<T>::value, T>::type overtake_point( const std::pair<T, T>& fn1, const std::pair<T, T>& fn2 ) {
-    assert( fn2.first >= fn1.first );
-    if ( fn2.first == fn1.first ) {
-        assert( fn2.second > fn1.second );
+template <typename T>
+typename std::enable_if<std::is_integral<T>::value, T>::type overtake_point(const std::pair<T, T>& fn1,
+                                                                            const std::pair<T, T>& fn2) {
+    assert(fn2.first >= fn1.first);
+    if (fn2.first == fn1.first) {
+        assert(fn2.second > fn1.second);
         return std::numeric_limits<T>::lowest();
     }
-    auto res = ( fn1.second - fn2.second) / ( fn2.first - fn1.first );
+    auto res = (fn1.second - fn2.second) / (fn2.first - fn1.first);
     if (fn2.first * res + fn2.second < fn1.first * res + fn1.second)
         ++res;
-    assert( fn2.first * res + fn2.second >= fn1.first * res + fn1.second );
+    assert(fn2.first * res + fn2.second >= fn1.first * res + fn1.second);
     return res;
 }
 
-template<typename T>
-typename std::enable_if<std::is_floating_point<T>::value, T>::type overtake_point(const std::pair<T, T>& fn1, const std::pair<T, T>& fn2) {
+template <typename T>
+typename std::enable_if<std::is_floating_point<T>::value, T>::type overtake_point(const std::pair<T, T>& fn1,
+                                                                                  const std::pair<T, T>& fn2) {
     assert(fn2.first >= fn1.first);
     if (fn2.first == fn1.first) {
         assert(fn2.second > fn1.second);
@@ -51,21 +52,21 @@ typename std::enable_if<std::is_floating_point<T>::value, T>::type overtake_poin
     return res;
 }
 
-}
+}  // namespace internal
 
-template<typename T>
+template <typename T>
 void LinearFunctionsMaximum<T>::set_overtake_point(typename std::map<std::pair<T, T>, T>::iterator it, T val) {
-    overtakeToFunc_.erase({ it->second, it->first });
+    overtakeToFunc_.erase({it->second, it->first});
     it->second = val;
-    overtakeToFunc_.insert({ it->second, it->first });
+    overtakeToFunc_.insert({it->second, it->first});
 }
 
-template<typename T>
+template <typename T>
 bool LinearFunctionsMaximum<T>::try_to_eliminate(typename std::map<std::pair<T, T>, T>::iterator it) {
     if (it != std::prev(end(funcToOvertake_))) {
         auto nextIt = std::next(it);
         if (nextIt->second <= it->second) {
-            overtakeToFunc_.erase({ it->second, it->first });
+            overtakeToFunc_.erase({it->second, it->first});
             funcToOvertake_.erase(it);
             if (nextIt != begin(funcToOvertake_)) {
                 auto prevIt = std::prev(nextIt);
@@ -77,13 +78,13 @@ bool LinearFunctionsMaximum<T>::try_to_eliminate(typename std::map<std::pair<T, 
     return false;
 }
 
-template<typename T>
-void LinearFunctionsMaximum<T>::add_function( T a, T b ) {
-    auto insertResult = funcToOvertake_.insert( { { a, b }, std::numeric_limits<T>::lowest() } );
+template <typename T>
+void LinearFunctionsMaximum<T>::add_function(T a, T b) {
+    auto insertResult = funcToOvertake_.insert({{a, b}, std::numeric_limits<T>::lowest()});
     if (!insertResult.second)
         return;
 
-    overtakeToFunc_.insert({ std::numeric_limits<T>::lowest(),{ a, b } });
+    overtakeToFunc_.insert({std::numeric_limits<T>::lowest(), {a, b}});
 
     auto insertedIt = insertResult.first;
     if (insertedIt != begin(funcToOvertake_))
@@ -96,19 +97,19 @@ void LinearFunctionsMaximum<T>::add_function( T a, T b ) {
     if (try_to_eliminate(insertedIt))
         return;
 
-    while (insertedIt != begin(funcToOvertake_) && try_to_eliminate(std::prev(insertedIt))) {}
-    while (insertedIt != std::prev(end(funcToOvertake_)) && try_to_eliminate(std::next(insertedIt))) {}
+    while (insertedIt != begin(funcToOvertake_) && try_to_eliminate(std::prev(insertedIt))) {
+    }
+    while (insertedIt != std::prev(end(funcToOvertake_)) && try_to_eliminate(std::next(insertedIt))) {
+    }
 }
 
 
-template<typename T>
-T LinearFunctionsMaximum<T>::get_value( T x ) const {
-    auto it = overtakeToFunc_.upper_bound({ x, { std::numeric_limits<T>::max(), std::numeric_limits<T>::max() } });
+template <typename T>
+T LinearFunctionsMaximum<T>::get_value(T x) const {
+    auto it = overtakeToFunc_.upper_bound({x, {std::numeric_limits<T>::max(), std::numeric_limits<T>::max()}});
     assert(it != begin(overtakeToFunc_));
     --it;
     assert(it != end(overtakeToFunc_));
     auto& func = it->second;
     return func.first * x + func.second;
 }
-
-

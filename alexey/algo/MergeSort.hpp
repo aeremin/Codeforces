@@ -4,12 +4,11 @@
 #include <utility>
 #include <vector>
 
-using std::distance;
 using std::copy;
+using std::distance;
 
-template<class RandomAccessIterator>
-void mergeSort(RandomAccessIterator first, RandomAccessIterator last)
-{
+template <class RandomAccessIterator>
+void mergeSort(RandomAccessIterator first, RandomAccessIterator last) {
     size_t dist = distance(first, last);
     if (dist <= 1)
         return;
@@ -18,7 +17,7 @@ void mergeSort(RandomAccessIterator first, RandomAccessIterator last)
     mergeSort(first, center);
     mergeSort(center, last);
 
-    //We need to "backup" left part as it will be rewritten
+    // We need to "backup" left part as it will be rewritten
     std::vector<typename RandomAccessIterator::value_type> backup(dist / 2);
     copy(first, center, begin(backup));
 
@@ -27,19 +26,13 @@ void mergeSort(RandomAccessIterator first, RandomAccessIterator last)
     auto rightPartIter = center;
     auto rightPartEnd = last;
 
-    for (auto resultIter = first; resultIter != last; ++resultIter)
-    {
-        if (leftPartIter != leftPartEnd && 
-            (rightPartIter == rightPartEnd || *leftPartIter < *rightPartIter))
-        {
+    for (auto resultIter = first; resultIter != last; ++resultIter) {
+        if (leftPartIter != leftPartEnd && (rightPartIter == rightPartEnd || *leftPartIter < *rightPartIter)) {
             *resultIter = *leftPartIter;
             ++leftPartIter;
-        }
-        else
-        {
+        } else {
             *resultIter = *rightPartIter;
             ++rightPartIter;
         }
     }
 }
-

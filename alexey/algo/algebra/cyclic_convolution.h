@@ -1,47 +1,51 @@
 #pragma once
-#include <vector>
 #include <cassert>
 #include <complex>
-#include "algo/polynomial/polynomial.h"
-#include "algo/polynomial/fast_multiplication.h"
+#include <vector>
+
 #include "algo/numbertheory/Residue.hpp"
+#include "algo/polynomial/fast_multiplication.h"
+#include "algo/polynomial/polynomial.h"
 
 namespace internal {
-    template<typename T> struct ToComplex {
-        static std::complex<double> convert(const T& v) { return v; }
-    };
+template <typename T>
+struct ToComplex {
+    static std::complex<double> convert(const T& v) { return v; }
+};
 
-    template<typename UnderlyingInt, UnderlyingInt MOD> struct ToComplex<Residue<UnderlyingInt, MOD>> {
-        static std::complex<double> convert(const Residue<UnderlyingInt, MOD>& v) { return v.rep(); }
-    };
-    
-    template<typename T> struct FromComplex {
-        static T convert(const std::complex<double>& v) { return v; }
-    };
+template <typename UnderlyingInt, UnderlyingInt MOD>
+struct ToComplex<Residue<UnderlyingInt, MOD>> {
+    static std::complex<double> convert(const Residue<UnderlyingInt, MOD>& v) { return v.rep(); }
+};
 
-    template<> struct FromComplex<double> {
-        static double convert(const std::complex<double>& v) { return v.real(); }
-    };
+template <typename T>
+struct FromComplex {
+    static T convert(const std::complex<double>& v) { return v; }
+};
 
-    template<typename UnderlyingInt, UnderlyingInt MOD> struct FromComplex<Residue<UnderlyingInt, MOD>> {
-        static Residue<UnderlyingInt, MOD> convert(const std::complex<double>& v) { return v.real() + 0.5; }
-    };
+template <>
+struct FromComplex<double> {
+    static double convert(const std::complex<double>& v) { return v.real(); }
+};
 
-    template<> struct FromComplex<int> {
-        static int convert(const std::complex<double>& v) { 
-            return (v.real() > 0) ? v.real() + 0.5 : v.real() - 0.5; 
-        }
-    };
+template <typename UnderlyingInt, UnderlyingInt MOD>
+struct FromComplex<Residue<UnderlyingInt, MOD>> {
+    static Residue<UnderlyingInt, MOD> convert(const std::complex<double>& v) { return v.real() + 0.5; }
+};
 
-    template<> struct FromComplex<int64_t> {
-        static int convert(const std::complex<double>& v) {
-            return (v.real() > 0) ? v.real() + 0.5 : v.real() - 0.5;
-        }
-    };
-}
+template <>
+struct FromComplex<int> {
+    static int convert(const std::complex<double>& v) { return (v.real() > 0) ? v.real() + 0.5 : v.real() - 0.5; }
+};
+
+template <>
+struct FromComplex<int64_t> {
+    static int convert(const std::complex<double>& v) { return (v.real() > 0) ? v.real() + 0.5 : v.real() - 0.5; }
+};
+}  // namespace internal
 
 // Complexity is O(n ln n)
-template<typename T>
+template <typename T>
 std::vector<T> CyclicConvolution(const std::vector<T>& a, const std::vector<T>& b) {
     assert(a.size() == b.size());
     auto n = a.size();

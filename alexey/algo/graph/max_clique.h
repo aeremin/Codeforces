@@ -24,7 +24,8 @@ inline CliqueInfo MaximumCliqueInternal(const UndirectedGraph<>& g, std::vector<
         return cache[mask];
     int max_bit = MaxBit(mask);
     uint64_t limited_mask = 0;
-    for (auto [neighbour, unused] : g.out_nbrs(max_bit)) limited_mask += (uint64_t(1) << neighbour) & mask;
+    for (auto [neighbour, unused] : g.out_nbrs(max_bit))
+        limited_mask += (uint64_t(1) << neighbour) & mask;
     const auto result_with_vertice_used = MaximumCliqueInternal(g, cache, limited_mask);
     const auto res =
         std::max(MaximumCliqueInternal(g, cache, mask - (uint64_t(1) << max_bit)),

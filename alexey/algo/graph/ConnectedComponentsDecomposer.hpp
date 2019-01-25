@@ -1,34 +1,30 @@
 #pragma once
-#include <vector>
 #include <algorithm>
+#include <vector>
 
-#include "graph/graph.h"
 #include "DepthFirstSearch.hpp"
+#include "graph/graph.h"
 
-using std::vector;
 using std::fill;
+using std::vector;
 
-class ConnectedComponentsDecomposer
-{
-public:
+class ConnectedComponentsDecomposer {
+  public:
     explicit ConnectedComponentsDecomposer(const UndirectedGraph<>& g) : graph_(g), searcher_(g) {}
 
-    void run()
-    {
+    void run() {
         int nVertices = graph_.num_vertices();
         vertexToComponent_.clear();
         vertexToComponent_.resize(nVertices);
         fill(begin(vertexToComponent_), end(vertexToComponent_), -1);
-        
+
         int iComponent = 0;
-        for (int i = 0; i < nVertices; ++i)
-        {
+        for (int i = 0; i < nVertices; ++i) {
             if (vertexToComponent_[i] >= 0)
-                continue; // Lies in processed component
-            
+                continue;  // Lies in processed component
+
             components_.push_back(vector<int>());
-            searcher_.setVertexPreprocessCallback([&](int index) -> bool
-            {
+            searcher_.setVertexPreprocessCallback([&](int index) -> bool {
                 components_.back().push_back(index);
                 vertexToComponent_[index] = iComponent;
                 return false;
@@ -37,18 +33,12 @@ public:
             iComponent++;
         }
     }
-   
-    const vector<int>& getVertexToComponentMap() const
-    {
-        return vertexToComponent_;
-    }
 
-    const vector<vector<int>>& getComponents() const
-    {
-        return components_;
-    }
+    const vector<int>& getVertexToComponentMap() const { return vertexToComponent_; }
 
-private:
+    const vector<vector<int>>& getComponents() const { return components_; }
+
+  private:
     const UndirectedGraph<>& graph_;
     DepthFirstSearcher searcher_;
 

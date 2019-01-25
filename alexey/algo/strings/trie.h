@@ -1,10 +1,10 @@
-#pragma  once
-#include <vector>
-#include <unordered_map>
+#pragma once
 #include <string>
+#include <unordered_map>
+#include <vector>
 
 class Trie {
-public:
+  public:
     enum { InvalidIndex = -1 };
 
     Trie() : nodes_(1) {}
@@ -18,19 +18,19 @@ public:
             if (next == InvalidIndex) {
                 next = nodes_.size();
                 nodes_.emplace_back();
-                nodes_[curr].insert({ c, next });
+                nodes_[curr].insert({c, next});
             }
             curr = next;
         }
         return curr;
     }
-    
+
     // Average complexity is O(1).
     size_t traverse(size_t from, char c) const {
         auto iter = nodes_[from].find(c);
         return (iter == end(nodes_[from])) ? InvalidIndex : iter->second;
     }
 
-private:
+  private:
     std::vector<std::unordered_map<char, size_t>> nodes_;
 };

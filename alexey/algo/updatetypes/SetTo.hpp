@@ -1,22 +1,20 @@
 #pragma once
 
-namespace updateTypes
-{
+namespace updateTypes {
 
-template<typename T>
-struct SetTo
-{
-public:
+template <typename T>
+struct SetTo {
+  public:
     typedef T ValueType;
 
-    SetTo() : isId_(true) {};
+    SetTo() : isId_(true){};
     SetTo(T value) : isId_(false), value_(std::move(value)) {}
 
     friend SetTo<T> operator*(const SetTo<T>& lh, const SetTo<T>& rh) { return lh.isId_ ? rh : lh; }
 
-public:
+  public:
     bool isId_;
     T value_;
 };
 
-}
+}  // namespace updateTypes
