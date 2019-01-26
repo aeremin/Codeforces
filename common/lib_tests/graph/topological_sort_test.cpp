@@ -149,3 +149,69 @@ TEST(TopologicalSortTest, Tree) {
         EXPECT_THAT(v[1], AnyOf(Eq(0), Eq(1)));
     }
 }
+
+class TopologicalSorterRandomTest : public testing::Test {
+  public:
+    static void SetUpTestCase() { graph = createRandomDAG(); }
+
+    static void TearDownTestCase() { graph.reset(); }
+
+    static std::unique_ptr<DirectedGraph<>> createRandomDAG() {
+        std::vector<int> order(nVertices);
+        std::iota(begin(order), end(order), 0);
+
+        std::random_device rng;
+        std::mt19937 urng(rng());
+        std::shuffle(begin(order), end(order), urng);
+
+        std::unique_ptr<DirectedGraph<>> result(new DirectedGraph<>(nVertices));
+        for ([[maybe_unused]] auto i : range(nEdges)) {
+            int from = rand() % nVertices;
+            int to = rand() % nVertices;
+            if (order[to] < order[from])
+                result->add_directed_edge(to, from);
+            else if (order[to] > order[from])
+                result->add_directed_edge(from, to);
+        }
+
+        return result;
+    }
+
+  protected:
+    static std::unique_ptr<DirectedGraph<>> graph;
+    static const int nVertices = 10000;
+    static const int nEdges = 5000000;
+};
+
+std::unique_ptr<DirectedGraph<>> TopologicalSorterRandomTest::graph = nullptr;
+
+TEST_F(TopologicalSorterRandomTest, TopologySort) {
+    auto res = topological_sort_checked(*graph);
+    EXPECT_EQ(res.status(), TopologicalSortResult::Ok);
+}
+
+TEST_F(TopologicalSorterRandomTest, TopologySortOptimistic) { auto res = topological_sort_optimistic(*graph); }
+
+class TopologicalSorterLinearGraphTest : public testing::Test {
+  public:
+    static void SetUpTestCase() {
+        graph = new DirectedGraph<>(nEdges + 1);
+        for (auto i : range(nEdges))
+            graph->add_directed_edge(i, i + 1);
+    }
+
+    static void TearDownTestCase() { delete graph; }
+
+  protected:
+    static DirectedGraph<>* graph;
+    static const int nEdges = 2000000;
+};
+
+DirectedGraph<>* TopologicalSorterLinearGraphTest::graph = nullptr;
+
+TEST_F(TopologicalSorterLinearGraphTest, TopologySort) {
+    auto res = topological_sort_checked(*graph);
+    EXPECT_EQ(res.status(), TopologicalSortResult::Ok);
+}
+
+TEST_F(TopologicalSorterLinearGraphTest, TopologySortOptimistic) { auto res = topological_sort_optimistic(*graph); }

@@ -3,9 +3,9 @@
 #include "iter/range.h"
 #include "algo/io/readvector.hpp"
 #include "graph/graph.h"
-#include "algo/graph/TopologicalSorter.hpp"
 #include "util/relax.h"
 #include "algo/DisjointSet.hpp"
+#include "graph/topological_sort_optimistic.h"
 using namespace std;
 
 // Solution for Codeforces problem http://codeforces.com/contest/650/problem/C
@@ -71,7 +71,7 @@ void Solver650C::run() {
             for (int i : range<int>(1, buckets.size()))
                 g.add_directed_edge(ds.rep(buckets[i].front()), ds.rep(buckets[i - 1].front()));
 
-    auto topsortorder = makeTopologicalSorter(g).getSortedOrder();
+    auto topsortorder = topological_sort_optimistic(g);
     reverse(begin(topsortorder), end(topsortorder));
     vector<int> mArchived(m.size(), 1);
     for (auto ind : topsortorder)
