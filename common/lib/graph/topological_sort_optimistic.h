@@ -15,7 +15,7 @@
 #include <algorithm>
 
 #include "graph/dfs.h"
-
+#include "iter/range.h"
 
 template <typename DirectedGraphT, typename VertexListT>
 std::vector<int> topological_sort_reachable_optimistic(const DirectedGraphT& graph,
