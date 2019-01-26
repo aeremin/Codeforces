@@ -78,7 +78,7 @@ std::string Compile(const std::string& main_file, CompilerOptions& options) {
         return file_index;
     };
 
-    int main_file_index = process_file(main_file, false);
+    process_file(main_file, false);
     const auto file_indices_sorted = topological_sort_checked(include_graph);
     switch (file_indices_sorted.status()) {
         case TopologicalSortResult::Ok:
