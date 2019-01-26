@@ -37,7 +37,6 @@ target_sources(algo_lib INTERFACE
     ${algo_dir}/geometry/geomvector.hpp
     ${algo_dir}/geometry/linear_functions_max.h
     ${algo_dir}/graph/BipartitionChecker.hpp
-    ${algo_dir}/graph/BreadthFirstSearch.hpp
     ${algo_dir}/graph/complement.h
     ${algo_dir}/graph/ConnectedComponentsDecomposer.hpp
     ${algo_dir}/graph/DepthFirstSearch.hpp
@@ -502,7 +501,6 @@ set(tests_srcs
     ${algotest_dir}/BinaryCubePrefixTest.cpp
     ${algotest_dir}/BinarySearchTest.cpp
     ${algotest_dir}/BipartitionCheckerTest.cpp
-    ${algotest_dir}/BreadthSearchTest.cpp
     ${algotest_dir}/ConnectedComponentsDecomposerTest.cpp
     ${algotest_dir}/CoprimeTest.cpp
     ${algotest_dir}/DepthFirstSearchTest.cpp
