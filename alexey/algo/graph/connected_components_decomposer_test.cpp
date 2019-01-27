@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "algo/graph/ConnectedComponentsDecomposer.hpp"
+#include "algo/graph/connected_components_decomposer.hpp"
 #include "GraphHelper.h"
 
 TEST(ConnectedComponentsDecomposerTest, WorksOnSimpleCycle)

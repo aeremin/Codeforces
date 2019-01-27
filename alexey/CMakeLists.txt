@@ -37,7 +37,7 @@ target_sources(algo_lib INTERFACE
     ${algo_dir}/geometry/linear_functions_max.h
     ${algo_dir}/graph/BipartitionChecker.hpp
     ${algo_dir}/graph/complement.h
-    ${algo_dir}/graph/ConnectedComponentsDecomposer.hpp
+    ${algo_dir}/graph/connected_components_decomposer.hpp
     ${algo_dir}/graph/DepthFirstSearch.hpp
     ${algo_dir}/graph/Dijkstra.hpp
     ${algo_dir}/graph/max_clique.h
@@ -488,7 +488,7 @@ set(tests_srcs
 	${algo_dir}/geometry/linear_functions_max_test.cpp
     ${algo_dir}/graph/BipartitionCheckerTest.cpp
     ${algo_dir}/graph/complement_test.cpp
-    ${algo_dir}/graph/ConnectedComponentsDecomposerTest.cpp
+    ${algo_dir}/graph/connected_components_decomposer_test.cpp
     ${algo_dir}/graph/DepthFirstSearchTest.cpp
     ${algo_dir}/graph/GraphHelper.cpp
     ${algo_dir}/graph/HasCycleTest.cpp
