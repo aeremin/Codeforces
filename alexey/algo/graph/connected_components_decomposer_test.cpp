@@ -1,6 +1,9 @@
 #include <gtest/gtest.h>
+#include <gmock/gmock.h>
 #include "algo/graph/connected_components_decomposer.hpp"
 #include "GraphHelper.h"
+
+using testing::UnorderedElementsAre;
 
 TEST(ConnectedComponentsDecomposerTest, WorksOnSimpleCycle)
 {
@@ -13,8 +16,8 @@ TEST(ConnectedComponentsDecomposerTest, WorksOnSimpleCycle)
         EXPECT_EQ(0, elt);
 
     auto components = decomposer.getComponents();
-    EXPECT_EQ(1, (int)components.size());
-    EXPECT_EQ(nVertices, (int)components[0].size());
+    EXPECT_EQ(1, components.size());
+    EXPECT_THAT(components[0], UnorderedElementsAre(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 }
 
 TEST(ConnectedComponentsDecomposerTest, WorksOnConcreteTwoComponentsGraph)
@@ -37,7 +40,7 @@ TEST(ConnectedComponentsDecomposerTest, WorksOnConcreteTwoComponentsGraph)
         EXPECT_EQ(expectedComponent[i], decomposer.getVertexToComponentMap()[i]);
 
     auto components = decomposer.getComponents();
-    EXPECT_EQ(2, (int)components.size());
-    EXPECT_EQ(3, (int)components[0].size());
-    EXPECT_EQ(2, (int)components[1].size());
+    EXPECT_EQ(2, components.size());
+    EXPECT_THAT(components[0], UnorderedElementsAre(0, 1, 3));
+    EXPECT_THAT(components[1], UnorderedElementsAre(2, 4));
 }
