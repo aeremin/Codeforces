@@ -6,6 +6,7 @@
 #include "graph/graph.h"
 #include "algo/graph/DepthFirstSearch.hpp"
 #include "util/relax.h"
+#include "algo/graph/rooted_graph.h"
 using namespace std;
 
 // Solution for Codeforces problem http://codeforces.com/contest/1101/problem/D
@@ -24,18 +25,8 @@ void Solver1101D::run() {
         g.add_edge(x, y);
     }
 
-    vector<int> depths(n);
-    depths[0] = 0;
+    RootedGraph rooted(g, 0);
     
-    DepthFirstSearcher searcher(g);
-    searcher.setEdgePostprocessCallback([&](int parent, int child, bool discovered) {
-        if (discovered) {
-            depths[child] = depths[parent] + 1;
-        }
-        return false;
-    });
-    searcher.search(0);
-
     map<int, set<int>> primeToVertices;
     for (int i : range(n)) {
         auto dec = decomposeToPrimePowers(nums[i]);
@@ -47,7 +38,7 @@ void Solver1101D::run() {
     for (const auto&[p, vertices] : primeToVertices) {
         set<int> skip;
         vector<pair<int, int>> depthAndVertice;
-        for (auto v : vertices) depthAndVertice.emplace_back(depths[v], v);
+        for (auto v : vertices) depthAndVertice.emplace_back(rooted.depth(v), v);
         sort(rbegin(depthAndVertice), rend(depthAndVertice));
         map<int, int> verticeToMaxChildDistance;
         for (auto [d, v]: depthAndVertice) {
@@ -56,9 +47,9 @@ void Solver1101D::run() {
             skip.insert(v);
             relax_max(ans, steps + verticeToMaxChildDistance[v] + 1);
             verticeToMaxChildDistance[v] = steps;
-            while (v != 0 && vertices.count(searcher.getParent(v))) {
+            while (v != 0 && vertices.count(*rooted.parent(v))) {
                 ++steps;
-                v = searcher.getParent(v);
+                v = *rooted.parent(v);
                 if (skip.count(v)) {
                     relax_max(ans, steps + verticeToMaxChildDistance[v] + 1);
                     break;
