@@ -2,15 +2,16 @@
 #include <algorithm>
 #include <vector>
 
-#include "DepthFirstSearch.hpp"
+#include "graph/dfs.h"
 #include "graph/graph.h"
+#include "graph/traversal.h"
 
 using std::fill;
 using std::vector;
 
 class ConnectedComponentsDecomposer {
   public:
-    explicit ConnectedComponentsDecomposer(const UndirectedGraph<>& g) : graph_(g), searcher_(g) {}
+    explicit ConnectedComponentsDecomposer(const UndirectedGraph<>& g) : graph_(g) {}
 
     void run() {
         int nVertices = graph_.num_vertices();
@@ -24,12 +25,12 @@ class ConnectedComponentsDecomposer {
                 continue;  // Lies in processed component
 
             components_.push_back(vector<int>());
-            searcher_.setVertexPreprocessCallback([&](int index) -> bool {
-                components_.back().push_back(index);
-                vertexToComponent_[index] = iComponent;
-                return false;
-            });
-            searcher_.search(i);
+            dfs(graph_, {i}, 
+                [&](const GraphTraversalState& state, int index) {
+                    components_.back().push_back(index);
+                    vertexToComponent_[index] = iComponent;
+                    return IterationControl::Proceed;
+                });
             iComponent++;
         }
     }
@@ -40,7 +41,6 @@ class ConnectedComponentsDecomposer {
 
   private:
     const UndirectedGraph<>& graph_;
-    DepthFirstSearcher searcher_;
 
     vector<int> vertexToComponent_;
     vector<vector<int>> components_;
