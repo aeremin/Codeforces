@@ -42,6 +42,7 @@ target_sources(algo_lib INTERFACE
     ${algo_dir}/graph/Dijkstra.hpp
     ${algo_dir}/graph/max_clique.h
     ${algo_dir}/graph/max_flow_push_relabel.h
+    ${algo_dir}/graph/rooted_graph.h
     ${algo_dir}/graph/TreePreprocessor.hpp
     ${algo_dir}/Heap.hpp
     ${algo_dir}/Indicator.hpp
@@ -494,6 +495,7 @@ set(tests_srcs
     ${algo_dir}/graph/HasCycleTest.cpp
     ${algo_dir}/graph/max_flow_push_relabel_test.cpp
     ${algo_dir}/graph/max_clique_test.cpp
+    ${algo_dir}/graph/rooted_graph_test.cpp
     ${algo_dir}/graph/TreePreprocessorTest.cpp
     ${algo_dir}/numbertheory/big_integer_test.cpp
     ${algo_dir}/numbertheory/CoprimeTest.cpp
