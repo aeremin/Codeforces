@@ -6,9 +6,6 @@
 #include "graph/graph.h"
 #include "graph/traversal.h"
 
-using std::fill;
-using std::vector;
-
 class ConnectedComponentsDecomposer {
   public:
     explicit ConnectedComponentsDecomposer(const UndirectedGraph<>& g) : graph_(g) {}
@@ -24,7 +21,7 @@ class ConnectedComponentsDecomposer {
             if (vertexToComponent_[i] >= 0)
                 continue;  // Lies in processed component
 
-            components_.push_back(vector<int>());
+            components_.push_back(std::vector<int>());
             dfs(graph_, {i}, 
                 [&](const GraphTraversalState& state, int index) {
                     components_.back().push_back(index);
@@ -35,13 +32,13 @@ class ConnectedComponentsDecomposer {
         }
     }
 
-    const vector<int>& getVertexToComponentMap() const { return vertexToComponent_; }
+    const std::vector<int>& getVertexToComponentMap() const { return vertexToComponent_; }
 
-    const vector<vector<int>>& getComponents() const { return components_; }
+    const std::vector<std::vector<int>>& getComponents() const { return components_; }
 
   private:
     const UndirectedGraph<>& graph_;
 
-    vector<int> vertexToComponent_;
-    vector<vector<int>> components_;
+    std::vector<int> vertexToComponent_;
+    std::vector<std::vector<int>> components_;
 };

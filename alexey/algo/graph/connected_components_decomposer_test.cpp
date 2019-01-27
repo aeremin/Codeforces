@@ -35,7 +35,7 @@ TEST(ConnectedComponentsDecomposerTest, WorksOnConcreteTwoComponentsGraph)
     ConnectedComponentsDecomposer decomposer(g);
     decomposer.run();
 
-    vector<int> expectedComponent = { 0, 0, 1, 0, 1 };
+    std::vector<int> expectedComponent = { 0, 0, 1, 0, 1 };
     for (int i = 0; i < 5; ++i)
         EXPECT_EQ(expectedComponent[i], decomposer.getVertexToComponentMap()[i]);
 
