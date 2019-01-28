@@ -40,6 +40,7 @@ target_sources(algo_lib INTERFACE
     ${algo_dir}/graph/connected_components_decomposer.hpp
     ${algo_dir}/graph/DepthFirstSearch.hpp
     ${algo_dir}/graph/Dijkstra.hpp
+    ${algo_dir}/graph/has_cycle.h
     ${algo_dir}/graph/max_clique.h
     ${algo_dir}/graph/max_flow_push_relabel.h
     ${algo_dir}/graph/rooted_graph.h
@@ -492,7 +493,7 @@ set(tests_srcs
     ${algo_dir}/graph/connected_components_decomposer_test.cpp
     ${algo_dir}/graph/DepthFirstSearchTest.cpp
     ${algo_dir}/graph/GraphHelper.cpp
-    ${algo_dir}/graph/HasCycleTest.cpp
+    ${algo_dir}/graph/has_cycle_test.cpp
     ${algo_dir}/graph/max_flow_push_relabel_test.cpp
     ${algo_dir}/graph/max_clique_test.cpp
     ${algo_dir}/graph/rooted_graph_test.cpp

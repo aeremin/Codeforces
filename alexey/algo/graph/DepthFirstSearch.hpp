@@ -92,36 +92,3 @@ class DepthFirstSearcher {
     vector<int> parent_;
     int currProccessTime_;
 };
-
-
-/////////////////////////////////////////
-// Depth-first search based algorithms //
-/////////////////////////////////////////
-
-// Checks only component containing startVertex
-static bool hasCycle(const UndirectedGraph<>& graph, vector<int>* cycle = nullptr, int startVertex = 0) {
-    DepthFirstSearcher searcher(graph);
-
-    int backEdgeFrom = 0;
-    int backEdgeTo = 0;
-
-    searcher.setEdgePostprocessCallback([&](int from, int to, bool discovery) -> bool {
-        if (!discovery) {
-            backEdgeFrom = from;
-            backEdgeTo = to;
-            return true;
-        }
-        return false;
-    });
-
-    bool result = searcher.search(startVertex);
-
-    if (result && cycle) {
-        cycle->clear();
-        cycle->push_back(backEdgeTo);
-        for (int vertex = backEdgeFrom; vertex != backEdgeTo; vertex = searcher.getParent(vertex))
-            cycle->push_back(vertex);
-    }
-
-    return result;
-}
