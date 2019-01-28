@@ -1,6 +1,5 @@
 #include <Solvers/pch.h>
 #include "graph/graph.h"
-#include "algo/graph/DepthFirstSearch.hpp"
 #include "algo/graph/rooted_graph.h"
 #include "iter/range.h"
 

@@ -4,7 +4,6 @@
 #include "algo/numbertheory/Primes.hpp"
 #include "algo/io/readvector.hpp"
 #include "graph/graph.h"
-#include "algo/graph/DepthFirstSearch.hpp"
 #include "util/relax.h"
 #include "algo/graph/rooted_graph.h"
 using namespace std;
