@@ -138,6 +138,11 @@ set(tests_srcs
     ${solvers_dir}/11xx/1105/Solver1105C.cpp
     ${solvers_dir}/11xx/1105/Solver1105D.cpp
     ${solvers_dir}/11xx/1105/Solver1105E.cpp
+    ${solvers_dir}/11xx/1106/Solver1106A.cpp
+    ${solvers_dir}/11xx/1106/Solver1106B.cpp
+    ${solvers_dir}/11xx/1106/Solver1106C.cpp
+    ${solvers_dir}/11xx/1106/Solver1106D.cpp
+    ${solvers_dir}/11xx/1106/Solver1106E.cpp
     ${solvers_dir}/11xx/1107/Solver1107A.cpp
     ${solvers_dir}/11xx/1107/Solver1107B.cpp
     ${solvers_dir}/11xx/1107/Solver1107C.cpp
