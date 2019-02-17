@@ -29,7 +29,7 @@ void Solver1109D::run() {
 
     CodeforcesResidue64 ans = 0;
     for (int l : range(min(m, n - 1))) {
-        auto mu = (l + 2 == n) ? CodeforcesResidue64(1) : (l + 2) * powers_n[n - l - 3];
+        auto mu = (l + 2 == n) ? CodeforcesResidue64(1) : CodeforcesResidue64(l + 2) * powers_n[n - l - 3];
         ans += h.factorial(n - 2) * h.inverted_factorial(n - l - 2) * h.binomial_coefficient(m - 1, l) * powers_m[n - l - 2] * mu;
     }
 
