@@ -106,8 +106,7 @@ TEST_F(Solver1129BTest, Example4) {
     rng.seed(std::random_device()());
     std::uniform_int_distribution<std::mt19937::result_type> dist(1, 1000000000);
 
-    for (int i : range(100000)) {
-        cerr << i << endl;
+    for (int i : range(1000)) {
         Check(dist(rng));
     }
 }
