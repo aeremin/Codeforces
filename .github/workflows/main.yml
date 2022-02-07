@@ -11,6 +11,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Install Boost
+        run: |
+          sudo apt update
+          sudo apt install -y libboost-all-dev
+
       - uses: actions/checkout@v2
 
       - name: Build and run tests
