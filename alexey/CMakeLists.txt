@@ -542,6 +542,8 @@ set(tests_srcs
 
 add_executable(${tests_exe}  ${tests_srcs})
 target_link_libraries(${tests_exe} "gtest" "gmock" "algo_lib")
+set_target_properties(${tests_exe} PROPERTIES LINK_FLAGS -Wl,--stack,256000000)
+
 
 include_directories(${common_dir})
 include_directories(${common_lib_dir})
