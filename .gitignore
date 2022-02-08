@@ -9,3 +9,4 @@ build*
 *.user.*
 alexey/Fused/main.cpp
 .vs/
+alexey/cmake-build-*
