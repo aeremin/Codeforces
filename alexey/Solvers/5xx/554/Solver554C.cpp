@@ -1,6 +1,6 @@
 #include <Solvers/pch.h>
-#include "algo/numbertheory/Residue.hpp"
-#include "algo/io/readvector.hpp"
+#include "algo/number_theory/residue.h"
+#include "algo/io/readvector.h"
 #include "math/binomial_coefficients.h"
 
 using namespace std;

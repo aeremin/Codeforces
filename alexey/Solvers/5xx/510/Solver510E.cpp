@@ -1,11 +1,11 @@
 #include <Solvers/pch.h>
-#include "algo/io/baseio.hpp"
+#include "algo/io/baseio.h"
 #include "iter/range.h"
-#include "algo/io/readvector.hpp"
-#include "algo/numbertheory/Primes.hpp"
+#include "algo/io/readvector.h"
+#include "algo/number_theory/primes.h"
 #include "graph/graph.h"
 #include "algo/graph/max_flow_push_relabel.h"
-#include "algo/DisjointSet.hpp"
+#include "algo/disjoint_set.h"
 
 using namespace std;
 

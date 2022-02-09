@@ -1,8 +1,8 @@
 #include <Solvers/pch.h>
-#include "algo/io/baseio.hpp"
+#include "algo/io/baseio.h"
 #include "iter/range.h"
-#include "algo/numbertheory/Residue.hpp"
-#include "algo/SortWithMapping.hpp"
+#include "algo/number_theory/residue.h"
+#include "algo/sort_with_mapping.h"
 using namespace std;
 
 // Solution for Codeforces problem http://codeforces.com/contest/645/problem/E

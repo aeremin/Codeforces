@@ -1,5 +1,5 @@
 #include <Solvers/pch.h>
-#include "algo/io/baseio.hpp"
+#include "algo/io/baseio.h"
 #include "iter/range.h"
 #include "algo/strings/suffix_automaton.h"
 #include "util/relax.h"

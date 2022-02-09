@@ -1,5 +1,5 @@
 #include <Solvers/pch.h>
-#include "algo/geometry/geomvector.hpp"
+#include "algo/geometry/geomvector.h"
 #include "util/relax.h"
 
 using namespace std;

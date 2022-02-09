@@ -1,7 +1,7 @@
 #include <Solvers/pch.h>
-#include "algo/io/baseio.hpp"
+#include "algo/io/baseio.h"
 #include "iter/range.h"
-#include "algo/io/readvector.hpp"
+#include "algo/io/readvector.h"
 #include "graph/graph.h"
 #include "algo/io/printvector.h"
 #include "graph/topological_sort_optimistic.h"

@@ -1,5 +1,5 @@
 #include <Solvers/pch.h>
-#include "algo/SlidingWindowMinFinder.h"
+#include "algo/sliding_window_min_finder.h"
 
 using namespace std;
 

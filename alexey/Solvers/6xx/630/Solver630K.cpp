@@ -1,7 +1,7 @@
 #include <Solvers/pch.h>
-#include "algo/io/baseio.hpp"
+#include "algo/io/baseio.h"
 #include "iter/range.h"
-#include "algo/numbertheory/Coprimes.hpp"
+#include "algo/number_theory/coprimes.h"
 using namespace std;
 
 // Solution for Codeforces problem http://codeforces.com/contest/630/problem/K

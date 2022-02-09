@@ -1,7 +1,5 @@
 #include "Solvers/pch.h"
-#include "algo/MaximaIncreasingSubsequence.hpp"
-#include "algo/geometry/geomvector.hpp"
-#include "algo/geometry/convexhull.hpp"
+#include "algo/maximal_increasing_subsequence.h"
 
 // Solution for Codeforces problem http://codeforces.com/contest/605/problem/A
 class Solver605A

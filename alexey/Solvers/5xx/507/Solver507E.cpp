@@ -1,6 +1,6 @@
 #include <Solvers/pch.h>
 #include "graph/graph.h"
-#include "algo/graph/Dijkstra.hpp"
+#include "algo/graph/dijkstra.h"
 
 using namespace std;
 

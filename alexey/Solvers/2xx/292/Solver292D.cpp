@@ -1,5 +1,5 @@
 #include <Solvers/pch.h>
-#include "algo/DisjointSet.hpp"
+#include "algo/disjoint_set.h"
 
 using namespace std;
 

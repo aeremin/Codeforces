@@ -1,11 +1,11 @@
 #include <Solvers/pch.h>
 
-#include "algo/FunctorIterator.hpp"
-#include "algo/SortWithMapping.hpp"
+#include "algo/functor_iterator.h"
+#include "algo/sort_with_mapping.h"
 #include "algo/segment_tree/binary_functors/min.h"
-#include "algo/io/baseio.hpp"
+#include "algo/io/baseio.h"
 #include "algo/io/printvector.h"
-#include "algo/io/readvector.hpp"
+#include "algo/io/readvector.h"
 #include "algo/segment_tree/segment_tree.h"
 #include "algo/segment_tree/update_appliers/set_to_idempotent.h"
 #include "algo/segment_tree/update_types/set_to.h"

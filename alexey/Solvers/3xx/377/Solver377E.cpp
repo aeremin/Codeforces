@@ -1,7 +1,7 @@
 #include <Solvers/pch.h>
-#include "algo/io/baseio.hpp"
+#include "algo/io/baseio.h"
 #include "iter/range.h"
-#include "algo/geometry/geomvector.hpp"
+#include "algo/geometry/geomvector.h"
 using namespace std;
 
 // Solution for Codeforces problem http://codeforces.com/contest/377/problem/E

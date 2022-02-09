@@ -1,7 +1,7 @@
 #include <Solvers/pch.h>
-#include "algo/numbertheory/Residue.hpp"
+#include "algo/number_theory/residue.h"
 #include "math/quick_power.h"
-#include "algo/numbertheory/Primes.hpp"
+#include "algo/number_theory/primes.h"
 
 using namespace std;
 

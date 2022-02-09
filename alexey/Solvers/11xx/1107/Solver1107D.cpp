@@ -1,10 +1,10 @@
 
 #include <Solvers/pch.h>
-#include "algo/io/baseio.hpp"
+#include "algo/io/baseio.h"
 #include "iter/range.h"
-#include "algo/numbertheory/Divisors.hpp"
+#include "algo/number_theory/divisors.h"
 #include "util/relax.h"
-#include "algo/io/readvector.hpp"
+#include "algo/io/readvector.h"
 using namespace std;
 
 // Solution for Codeforces problem http://codeforces.com/contest/1107/problem/D

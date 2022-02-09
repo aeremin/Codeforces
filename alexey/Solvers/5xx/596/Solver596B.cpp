@@ -1,6 +1,6 @@
 #include <Solvers/pch.h>
 #include "util/relax.h"
-#include "algo/io/readvector.hpp"
+#include "algo/io/readvector.h"
 #include "iter/range.h"
 
 using namespace std;

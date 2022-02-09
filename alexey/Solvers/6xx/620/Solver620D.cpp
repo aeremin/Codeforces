@@ -1,5 +1,5 @@
 #include <Solvers/pch.h>
-#include "algo/SortWithMapping.hpp"
+#include "algo/sort_with_mapping.h"
 
 using namespace std;
 

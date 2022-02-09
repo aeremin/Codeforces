@@ -1,8 +1,8 @@
 #include <Solvers/pch.h>
-#include "algo/io/baseio.hpp"
+#include "algo/io/baseio.h"
 #include "iter/range.h"
-#include "algo/numbertheory/Primes.hpp"
-#include "algo/numbertheory/Residue.hpp"
+#include "algo/number_theory/primes.h"
+#include "algo/number_theory/residue.h"
 #include "math/quick_power.h"
 using namespace std;
 

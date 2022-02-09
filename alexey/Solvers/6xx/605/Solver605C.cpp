@@ -1,6 +1,6 @@
 #include "Solvers/pch.h"
-#include "algo/geometry/geomvector.hpp"
-#include "algo/geometry/convexhull.hpp"
+#include "algo/geometry/geomvector.h"
+#include "algo/geometry/convexhull.h"
 
 using Point = GeomVector2<int64_t>;
 

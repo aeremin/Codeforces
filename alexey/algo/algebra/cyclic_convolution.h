@@ -3,7 +3,7 @@
 #include <complex>
 #include <vector>
 
-#include "algo/numbertheory/Residue.hpp"
+#include "algo/number_theory/residue.h"
 #include "algo/polynomial/fast_multiplication.h"
 #include "algo/polynomial/polynomial.h"
 

@@ -1,8 +1,8 @@
 #include <Solvers/pch.h>
-#include "algo/io/baseio.hpp"
+#include "algo/io/baseio.h"
 #include "iter/range.h"
-#include "algo/io/readvector.hpp"
-#include "algo/numbertheory/Residue.hpp"
+#include "algo/io/readvector.h"
+#include "algo/number_theory/residue.h"
 using namespace std;
 
 // Solution for Codeforces problem http://codeforces.com/contest/659/problem/G

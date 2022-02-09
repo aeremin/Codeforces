@@ -1,7 +1,7 @@
 #include <Solvers/pch.h>
-#include "algo/numbertheory/Primes.hpp"
-#include "algo/io/readvector.hpp"
-#include "algo/DPProcessor.hpp"
+#include "algo/number_theory/primes.h"
+#include "algo/io/readvector.h"
+#include "algo/dynamic_programming_processor.h"
 
 using namespace std;
 

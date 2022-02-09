@@ -1,7 +1,7 @@
 #include <Solvers/pch.h>
-#include "algo/io/baseio.hpp"
+#include "algo/io/baseio.h"
 #include "iter/range.h"
-#include "algo/FunctorIterator.hpp"
+#include "algo/functor_iterator.h"
 using namespace std;
 
 // Solution for Codeforces problem http://codeforces.com/contest/633/problem/B

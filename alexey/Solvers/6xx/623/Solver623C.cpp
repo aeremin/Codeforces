@@ -1,7 +1,7 @@
 #include <Solvers/pch.h>
-#include "algo/geometry/geomvector.hpp"
-#include "algo/io/readvector.hpp"
-#include "algo/FunctorIterator.hpp"
+#include "algo/geometry/geomvector.h"
+#include "algo/io/readvector.h"
+#include "algo/functor_iterator.h"
 #include "math/sqr.h"
 
 using namespace std;

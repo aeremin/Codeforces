@@ -1,9 +1,9 @@
 #include <Solvers/pch.h>
 
-#include "algo/SortWithMapping.hpp"
-#include "algo/io/baseio.hpp"
+#include "algo/sort_with_mapping.h"
+#include "algo/io/baseio.h"
 #include "algo/io/printvector.h"
-#include "algo/io/readvector.hpp"
+#include "algo/io/readvector.h"
 #include "algo/segment_tree/segment_tree.h"
 #include "algo/segment_tree/update_appliers/increase_by_sum.h"
 #include "algo/segment_tree/update_types/increase_by.h"

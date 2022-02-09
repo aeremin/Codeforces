@@ -1,8 +1,8 @@
 #include <Solvers/pch.h>
-#include "algo/io/baseio.hpp"
+#include "algo/io/baseio.h"
 #include "iter/range.h"
-#include "algo/io/readvector.hpp"
-#include "algo/numbertheory/Residue.hpp"
+#include "algo/io/readvector.h"
+#include "algo/number_theory/residue.h"
 #include "util/relax.h"
 using namespace std;
 

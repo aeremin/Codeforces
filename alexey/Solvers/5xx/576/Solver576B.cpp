@@ -1,6 +1,6 @@
 #include <Solvers/pch.h>
-#include "algo/io/readvector.hpp"
-#include "algo/SortBy.hpp"
+#include "algo/io/readvector.h"
+#include "algo/sort_by.h"
 
 using namespace std;
 

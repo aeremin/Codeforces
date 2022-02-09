@@ -1,6 +1,6 @@
 #include <Solvers/pch.h>
-#include "algo/io/readvector.hpp"
-#include "algo/numbertheory/Residue.hpp"
+#include "algo/io/readvector.h"
+#include "algo/number_theory/residue.h"
 #include "math/quick_power.h"
 
 using namespace std;

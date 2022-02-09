@@ -1,7 +1,7 @@
 #include <Solvers/pch.h>
-#include "algo/io/baseio.hpp"
+#include "algo/io/baseio.h"
 #include "iter/range.h"
-#include "algo/io/readvector.hpp"
+#include "algo/io/readvector.h"
 #include "algo/algebra/quadratic/solve_quadratic_real.h"
 using namespace std;
 

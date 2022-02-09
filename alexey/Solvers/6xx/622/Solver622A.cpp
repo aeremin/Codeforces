@@ -1,6 +1,6 @@
 #include <Solvers/pch.h>
-#include "algo/FunctorIterator.hpp"
-#include "algo/io/baseio.hpp"
+#include "algo/functor_iterator.h"
+#include "algo/io/baseio.h"
 
 using namespace std;
 

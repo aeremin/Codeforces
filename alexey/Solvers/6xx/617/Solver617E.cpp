@@ -1,8 +1,8 @@
 #include <Solvers/pch.h>
-#include "algo/query/MoQueryProcessor.hpp"
-#include "algo/query/OrderIndependentSlider.hpp"
+#include "algo/query/mo_query_processor.h"
+#include "algo/query/order_independent_slider.h"
 #include "algo/io/printvector.h"
-#include "algo/io/readvector.hpp"
+#include "algo/io/readvector.h"
 
 using namespace std;
 

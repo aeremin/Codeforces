@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "algo/graph/GraphHelper.h"
+#include "algo/graph/graph_helper.h"
 #include "algo/graph/has_cycle.h"
 
 TEST(HasCycleTest, WorksOnLinearGraph)

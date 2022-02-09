@@ -1,8 +1,8 @@
 #include <Solvers/pch.h>
-#include "algo/io/baseio.hpp"
+#include "algo/io/baseio.h"
 #include "iter/range.h"
 #include "graph/graph.h"
-#include "algo/graph/TreePreprocessor.hpp"
+#include "algo/graph/tree_preprocessor.h"
 using namespace std;
 
 // Solution for Codeforces problem http://codeforces.com/contest/629/problem/E

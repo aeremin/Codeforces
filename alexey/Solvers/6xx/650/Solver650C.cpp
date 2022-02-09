@@ -1,10 +1,10 @@
 #include <Solvers/pch.h>
-#include "algo/io/baseio.hpp"
+#include "algo/io/baseio.h"
 #include "iter/range.h"
-#include "algo/io/readvector.hpp"
+#include "algo/io/readvector.h"
 #include "graph/graph.h"
 #include "util/relax.h"
-#include "algo/DisjointSet.hpp"
+#include "algo/disjoint_set.h"
 #include "graph/topological_sort_optimistic.h"
 using namespace std;
 

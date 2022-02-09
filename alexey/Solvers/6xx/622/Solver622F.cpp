@@ -1,5 +1,5 @@
 #include <Solvers/pch.h>
-#include "algo/numbertheory/Residue.hpp"
+#include "algo/number_theory/residue.h"
 #include "math/quick_power.h"
 
 using namespace std;

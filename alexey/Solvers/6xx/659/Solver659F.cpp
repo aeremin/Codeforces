@@ -1,8 +1,8 @@
 #include <Solvers/pch.h>
-#include "algo/io/baseio.hpp"
+#include "algo/io/baseio.h"
 #include "iter/range.h"
-#include "algo/io/readvector.hpp"
-#include "algo/DisjointSet.hpp"
+#include "algo/io/readvector.h"
+#include "algo/disjoint_set.h"
 using namespace std;
 
 // Solution for Codeforces problem http://codeforces.com/contest/659/problem/F

@@ -1,6 +1,6 @@
 #include <Solvers/pch.h>
 #include "graph/graph.h"
-#include "algo/graph/BipartitionChecker.hpp"
+#include "algo/graph/bipartition_checker.h"
 
 using namespace std;
 

@@ -1,8 +1,8 @@
 #include <Solvers/pch.h>
 
-#include "algo/geometry/geomvector.hpp"
-#include "algo/io/baseio.hpp"
-#include "algo/io/readvector.hpp"
+#include "algo/geometry/geomvector.h"
+#include "algo/io/baseio.h"
+#include "algo/io/readvector.h"
 #include "iter/range.h"
 #include "algo/io/printvector.h"
 using namespace std;

@@ -2,10 +2,10 @@
 
 #include <Solvers/pch.h>
 
-#include "algo/io/baseio.hpp"
+#include "algo/io/baseio.h"
 #include "algo/io/printvector.h"
-#include "algo/io/readvector.hpp"
-#include "algo/numbertheory/Primes.hpp"
+#include "algo/io/readvector.h"
+#include "algo/number_theory/primes.h"
 #include "algo/segment_tree/segment_tree.h"
 #include "algo/segment_tree/update_appliers/update_applier.h"
 #include "algo/segment_tree/update_types/increase_by.h"

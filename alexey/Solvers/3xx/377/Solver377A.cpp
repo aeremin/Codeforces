@@ -1,9 +1,9 @@
 #include <Solvers/pch.h>
-#include "algo/io/baseio.hpp"
+#include "algo/io/baseio.h"
 #include "iter/range.h"
 #include "graph/graph.h"
-#include "algo/graph/Dijkstra.hpp"
-#include "algo/SortWithMapping.hpp"
+#include "algo/graph/dijkstra.h"
+#include "algo/sort_with_mapping.h"
 #include "algo/io/printvector.h"
 using namespace std;
 

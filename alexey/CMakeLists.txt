@@ -19,55 +19,55 @@ add_library(algo_lib INTERFACE)
 target_sources(algo_lib INTERFACE
     ${algo_dir}/algebra/cyclic_convolution.h
     ${algo_dir}/algebra/quadratic/solve_quadratic_real.h
-    ${algo_dir}/BinaryCubePrefix.h
+    ${algo_dir}/binary_cube_prefix.h
     ${algo_dir}/segment_tree/binary_functors/first_argument.h
     ${algo_dir}/segment_tree/binary_functors/max.h
     ${algo_dir}/segment_tree/binary_functors/min.h
-    ${algo_dir}/BinarySearch.hpp
-    ${algo_dir}/bits/FullBinaryTrie.hpp
+    ${algo_dir}/binary_search.h
+    ${algo_dir}/bits/full_binary_trie.h
     ${algo_dir}/borrower.h
-    ${algo_dir}/DisjointSet.hpp
-    ${algo_dir}/DPProcessor.hpp
-    ${algo_dir}/FunctorIterator.hpp
+    ${algo_dir}/disjoint_set.h
+    ${algo_dir}/dynamic_programming_processor.h
+    ${algo_dir}/functor_iterator.h
     ${algo_dir}/combinatorics/combinatorics_helper.h
-    ${algo_dir}/geometry/AngleSort.hpp
-    ${algo_dir}/geometry/convexhull.hpp
-    ${algo_dir}/geometry/geomvector.hpp
+    ${algo_dir}/geometry/angle_sort.h
+    ${algo_dir}/geometry/convexhull.h
+    ${algo_dir}/geometry/geomvector.h
     ${algo_dir}/geometry/linear_functions_max.h
-    ${algo_dir}/graph/BipartitionChecker.hpp
+    ${algo_dir}/graph/bipartition_checker.h
     ${algo_dir}/graph/complement.h
-    ${algo_dir}/graph/connected_components_decomposer.hpp
-    ${algo_dir}/graph/Dijkstra.hpp
+    ${algo_dir}/graph/connected_components_decomposer.h
+    ${algo_dir}/graph/dijkstra.h
     ${algo_dir}/graph/has_cycle.h
     ${algo_dir}/graph/max_clique.h
     ${algo_dir}/graph/max_flow_push_relabel.h
     ${algo_dir}/graph/rooted_graph.h
-    ${algo_dir}/graph/TreePreprocessor.hpp
-    ${algo_dir}/Indicator.hpp
-    ${algo_dir}/io/baseio.hpp
+    ${algo_dir}/graph/tree_preprocessor.h
+    ${algo_dir}/indicator.h
+    ${algo_dir}/io/baseio.h
     ${algo_dir}/io/printvector.h
-    ${algo_dir}/io/readvector.hpp
-    ${algo_dir}/MaximaIncreasingSubsequence.hpp
-    ${algo_dir}/numbertheory/big_integer.h
-    ${algo_dir}/numbertheory/Coprimes.hpp
-    ${algo_dir}/numbertheory/Divisors.hpp
-    ${algo_dir}/numbertheory/GreatestCommonDivisor.hpp
-    ${algo_dir}/numbertheory/group_order.h
-    ${algo_dir}/numbertheory/number_of_divisors.h
-    ${algo_dir}/numbertheory/primary_root.h
-    ${algo_dir}/numbertheory/Primes.hpp
-    ${algo_dir}/numbertheory/Residue.hpp
-    ${algo_dir}/numbertheory/sum_of_divisors.h
+    ${algo_dir}/io/readvector.h
+    ${algo_dir}/maximal_increasing_subsequence.h
+    ${algo_dir}/number_theory/big_integer.h
+    ${algo_dir}/number_theory/coprimes.h
+    ${algo_dir}/number_theory/divisors.h
+    ${algo_dir}/number_theory/greatest_common_divisor.h
+    ${algo_dir}/number_theory/group_order.h
+    ${algo_dir}/number_theory/number_of_divisors.h
+    ${algo_dir}/number_theory/primary_root.h
+    ${algo_dir}/number_theory/primes.h
+    ${algo_dir}/number_theory/residue.h
+    ${algo_dir}/number_theory/sum_of_divisors.h
     ${algo_dir}/ordered_set.h
     ${algo_dir}/polynomial/fast_fourier_transform.h
     ${algo_dir}/polynomial/fast_multiplication.h
     ${algo_dir}/polynomial/polynomial.h
-    ${algo_dir}/query/MoQueryProcessor.hpp
-    ${algo_dir}/query/OrderIndependentSlider.hpp
+    ${algo_dir}/query/mo_query_processor.h
+    ${algo_dir}/query/order_independent_slider.h
     ${algo_dir}/segment_tree/segment_tree.h
-    ${algo_dir}/SlidingWindowMinFinder.h
-    ${algo_dir}/SortBy.hpp
-    ${algo_dir}/SortWithMapping.hpp
+    ${algo_dir}/sliding_window_min_finder.h
+    ${algo_dir}/sort_by.h
+    ${algo_dir}/sort_with_mapping.h
     ${algo_dir}/strings/find_occurences.h
     ${algo_dir}/strings/knutt_morris_pratt.h
     ${algo_dir}/strings/suffix_automaton.h
@@ -489,46 +489,46 @@ set(tests_srcs
     ${solvers_dir}/testutils/ProblemTest.cpp
     ${algo_dir}/algebra/cyclic_convolution_test.cpp
     ${algo_dir}/algebra/quadratic/solve_quadratic_test.cpp
-    ${algo_dir}/bits/FullBinaryTrieTest.cpp
+    ${algo_dir}/bits/full_binary_trie_test.cpp
     ${algo_dir}/combinatorics/combinatorics_helper_test.cpp
-    ${algo_dir}/geometry/AngleSortTest.cpp
-    ${algo_dir}/geometry/ConvexHullTest.cpp
-    ${algo_dir}/geometry/geomvectortest.cpp
+    ${algo_dir}/geometry/angle_sort_test.cpp
+    ${algo_dir}/geometry/convex_hull_test.cpp
+    ${algo_dir}/geometry/geomvector_test.cpp
 	${algo_dir}/geometry/linear_functions_max_test.cpp
-    ${algo_dir}/graph/BipartitionCheckerTest.cpp
+    ${algo_dir}/graph/bipartition_checker_test.cpp
     ${algo_dir}/graph/complement_test.cpp
     ${algo_dir}/graph/connected_components_decomposer_test.cpp
-    ${algo_dir}/graph/GraphHelper.cpp
+    ${algo_dir}/graph/graph_helper.cpp
     ${algo_dir}/graph/has_cycle_test.cpp
     ${algo_dir}/graph/max_flow_push_relabel_test.cpp
     ${algo_dir}/graph/max_clique_test.cpp
     ${algo_dir}/graph/rooted_graph_test.cpp
-    ${algo_dir}/graph/TreePreprocessorTest.cpp
-    ${algo_dir}/numbertheory/big_integer_test.cpp
-    ${algo_dir}/numbertheory/CoprimeTest.cpp
-    ${algo_dir}/numbertheory/DivisorsTest.cpp
-    ${algo_dir}/numbertheory/GreatestCommonDivisorTest.cpp
-    ${algo_dir}/numbertheory/primary_root_test.cpp
-    ${algo_dir}/numbertheory/PrimesTest.cpp
-    ${algo_dir}/numbertheory/ResidueTest.cpp
+    ${algo_dir}/graph/tree_preprocessor_test.cpp
+    ${algo_dir}/number_theory/big_integer_test.cpp
+    ${algo_dir}/number_theory/coprime_test.cpp
+    ${algo_dir}/number_theory/divisors_test.cpp
+    ${algo_dir}/number_theory/greatest_common_divisor_test.cpp
+    ${algo_dir}/number_theory/primary_root_test.cpp
+    ${algo_dir}/number_theory/primes_test.cpp
+    ${algo_dir}/number_theory/residue_test.cpp
     ${algo_dir}/polynomial/polynomial_test.cpp
     ${algo_dir}/polynomial/fast_fourier_transform_test.cpp
     ${algo_dir}/strings/trie_test.cpp
     ${algo_dir}/strings/find_occurences_test.cpp
-    ${algo_dir}/strings/KnuttMorrisPrattTest.cpp
+    ${algo_dir}/strings/knutt_morris_pratt_test.cpp
     ${algo_dir}/strings/suffix_automaton_test.cpp
-    ${algo_dir}/query/MoQueryProcessorTest.cpp
+    ${algo_dir}/query/mo_query_processor_test.cpp
     ${algo_dir}/borrower_test.cpp
-    ${algo_dir}/BinaryCubePrefixTest.cpp
-    ${algo_dir}/BinarySearchTest.cpp
-    ${algo_dir}/DisjointSetTest.cpp
-    ${algo_dir}/DPProcessorTest.cpp
-    ${algo_dir}/FunctorIteratorTest.cpp
-    ${algo_dir}/IndicatorTest.cpp
-    ${algo_dir}/MaximalIncreasingSubsequenceTest.cpp
+    ${algo_dir}/binary_cube_prefix_test.cpp
+    ${algo_dir}/binary_search_test.cpp
+    ${algo_dir}/disjoint_set_test.cpp
+    ${algo_dir}/dynamic_programming_processor_test.cpp
+    ${algo_dir}/functor_iterator_test.cpp
+    ${algo_dir}/indicator_test.cpp
+    ${algo_dir}/maximal_increasing_subsequence_test.cpp
     ${algo_dir}/ordered_set_test.cpp
     ${algo_dir}/segment_tree/segment_tree_test.cpp
-    ${algo_dir}/SlidingWindowMinFinderTest.cpp
+    ${algo_dir}/sliding_window_min_finder_test.cpp
 )
 
 if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")

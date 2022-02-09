@@ -1,7 +1,7 @@
 #include <Solvers/pch.h>
-#include "algo/io/baseio.hpp"
+#include "algo/io/baseio.h"
 #include "iter/range.h"
-#include "algo/io/readvector.hpp"
+#include "algo/io/readvector.h"
 using namespace std;
 
 // Solution for Codeforces problem http://codeforces.com/contest/670/problem/B

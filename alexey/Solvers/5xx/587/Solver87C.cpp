@@ -1,6 +1,6 @@
 #include "Solvers/pch.h"
 #include "graph/graph.h"
-#include "algo/graph/TreePreprocessor.hpp"
+#include "algo/graph/tree_preprocessor.h"
 
 // Solution for Codeforces problem http://codeforces.com/contest/587/problem/C
 class Solver587C

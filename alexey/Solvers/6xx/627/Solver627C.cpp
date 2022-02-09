@@ -1,7 +1,7 @@
 #include <Solvers/pch.h>
 
 #include "algo/segment_tree/binary_functors/min.h"
-#include "algo/io/baseio.hpp"
+#include "algo/io/baseio.h"
 #include "algo/segment_tree/segment_tree.h"
 #include "algo/segment_tree/update_appliers/id_applier.h"
 #include "algo/segment_tree/update_types/id.h"

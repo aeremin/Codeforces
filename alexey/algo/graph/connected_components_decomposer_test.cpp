@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
-#include "algo/graph/connected_components_decomposer.hpp"
-#include "GraphHelper.h"
+#include "algo/graph/connected_components_decomposer.h"
+#include "graph_helper.h"
 
 using testing::UnorderedElementsAre;
 

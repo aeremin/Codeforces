@@ -1,7 +1,7 @@
 #include <Solvers/pch.h>
-#include "algo/io/baseio.hpp"
+#include "algo/io/baseio.h"
 #include "iter/range.h"
-#include "algo/numbertheory/Divisors.hpp"
+#include "algo/number_theory/divisors.h"
 using namespace std;
 
 // Solution for Codeforces problem http://codeforces.com/contest/1091/problem/C

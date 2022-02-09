@@ -1,6 +1,6 @@
 #include <Solvers/pch.h>
-#include "algo/geometry/geomvector.hpp"
-#include "algo/FunctorIterator.hpp"
+#include "algo/geometry/geomvector.h"
+#include "algo/functor_iterator.h"
 
 using namespace std;
 

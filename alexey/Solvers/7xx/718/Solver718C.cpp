@@ -1,7 +1,7 @@
 #include <Solvers/pch.h>
 
-#include "algo/io/baseio.hpp"
-#include "algo/numbertheory/Residue.hpp"
+#include "algo/io/baseio.h"
+#include "algo/number_theory/residue.h"
 #include "algo/segment_tree/segment_tree.h"
 #include "algo/segment_tree/update_appliers/multiply_by_applier.h"
 #include "algo/segment_tree/update_types/multiply_by.h"

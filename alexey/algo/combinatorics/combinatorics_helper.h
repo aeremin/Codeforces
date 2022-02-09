@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 
-#include "algo/numbertheory/Residue.hpp"
+#include "algo/number_theory/residue.h"
 #include "iter/range.h"
 
 template <typename UnderlyingInt, UnderlyingInt MOD>

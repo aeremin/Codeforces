@@ -1,8 +1,8 @@
 #include <Solvers/pch.h>
-#include "algo/DisjointSet.hpp"
+#include "algo/disjoint_set.h"
 #include "graph/graph.h"
-#include "algo/numbertheory/Residue.hpp"
-#include "algo/graph/BipartitionChecker.hpp"
+#include "algo/number_theory/residue.h"
+#include "algo/graph/bipartition_checker.h"
 
 using namespace std;
 

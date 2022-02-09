@@ -1,6 +1,6 @@
 #include <Solvers/pch.h>
-#include "algo/numbertheory/Residue.hpp"
-#include "algo/BinaryCubePrefix.h"
+#include "algo/number_theory/residue.h"
+#include "algo/binary_cube_prefix.h"
 
 using namespace std;
 

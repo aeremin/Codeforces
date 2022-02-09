@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 #include "algo/algebra/cyclic_convolution.h"
-#include "algo/numbertheory/Residue.hpp"
+#include "algo/number_theory/residue.h"
 
 TEST(CyclicConvolutionTest, WorksForDoubles) {
     std::vector<double> a = { 1.0, 2.0, 3.0, 4.0 };

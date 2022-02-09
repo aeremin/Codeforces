@@ -1,8 +1,8 @@
 #include <Solvers/pch.h>
-#include "algo/SortWithMapping.hpp"
-#include "algo/FunctorIterator.hpp"
+#include "algo/sort_with_mapping.h"
+#include "algo/functor_iterator.h"
 #include "util/relax.h"
-#include "algo/Indicator.hpp"
+#include "algo/indicator.h"
 
 using namespace std;
 

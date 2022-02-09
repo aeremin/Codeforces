@@ -1,7 +1,7 @@
 #include <Solvers/pch.h>
-#include "algo/io/baseio.hpp"
+#include "algo/io/baseio.h"
 #include "iter/range.h"
-#include "algo/numbertheory/Residue.hpp"
+#include "algo/number_theory/residue.h"
 #include "algo/combinatorics/combinatorics_helper.h"
 using namespace std;
 

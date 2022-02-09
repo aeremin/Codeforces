@@ -1,8 +1,8 @@
 #include <Solvers/pch.h>
 
 #include "algo/segment_tree/binary_functors/max.h"
-#include "algo/geometry/geomvector.hpp"
-#include "algo/io/baseio.hpp"
+#include "algo/geometry/geomvector.h"
+#include "algo/io/baseio.h"
 #include "algo/segment_tree/segment_tree.h"
 #include "algo/segment_tree/update_appliers/increase_by_idempotent.h"
 #include "algo/segment_tree/update_types/increase_by.h"

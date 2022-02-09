@@ -1,10 +1,10 @@
 
 #include <Solvers/pch.h>
-#include "algo/io/baseio.hpp"
+#include "algo/io/baseio.h"
 #include "iter/range.h"
-#include "algo/io/readvector.hpp"
+#include "algo/io/readvector.h"
 #include "util/relax.h"
-#include "algo/geometry/geomvector.hpp"
+#include "algo/geometry/geomvector.h"
 using namespace std;
 
 // Solution for Codeforces problem http://codeforces.com/contest/1129/problem/A

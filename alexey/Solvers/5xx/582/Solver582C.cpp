@@ -1,7 +1,7 @@
 #include <Solvers/pch.h>
 #include "util/relax.h"
-#include "algo/numbertheory/GreatestCommonDivisor.hpp"
-#include "algo/numbertheory/Divisors.hpp"
+#include "algo/number_theory/greatest_common_divisor.h"
+#include "algo/number_theory/divisors.h"
 
 using namespace std;
 

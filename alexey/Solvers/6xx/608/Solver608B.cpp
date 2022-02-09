@@ -1,5 +1,5 @@
 #include <Solvers/pch.h>
-#include "algo/Indicator.hpp"
+#include "algo/indicator.h"
 
 using namespace std;
 

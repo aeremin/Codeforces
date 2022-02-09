@@ -1,7 +1,7 @@
 #include <Solvers/pch.h>
-#include "algo/io/baseio.hpp"
+#include "algo/io/baseio.h"
 #include "iter/range.h"
-#include "algo/io/readvector.hpp"
+#include "algo/io/readvector.h"
 #include "algo/polynomial/polynomial.h"
 #include "math/quick_power.h"
 #include "algo/polynomial/fast_fourier_transform.h"

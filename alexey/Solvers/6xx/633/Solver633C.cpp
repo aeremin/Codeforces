@@ -1,8 +1,8 @@
 #include <Solvers/pch.h>
-#include "algo/io/baseio.hpp"
+#include "algo/io/baseio.h"
 #include "iter/range.h"
 #include "algo/strings/knutt_morris_pratt.h"
-#include "algo/io/readvector.hpp"
+#include "algo/io/readvector.h"
 #include "algo/strings/trie.h"
 
 using namespace std;
