@@ -58,21 +58,10 @@ std::string GetProblemNameFromGtestFilter(std::string arg)
         return piecesMatch[1].str();
     }
 
-    std::regex fbhcRegex(R"(--gtest_filter=\*(FBHC[1-9][A-Z])\*)");
-    std::smatch piecesMatchFbhc;
-    if (std::regex_match(arg, piecesMatchFbhc, fbhcRegex)) {
-        return piecesMatchFbhc[1].str();
-    }
-
     return "";
 }
 
 std::string GetSolverFileNameByProblemName(std::string problemName) {
-    if (problemName.substr(0, 4) == "FBHC") {
-        string roundName = string("Round") + problemName[4];
-        return "Solvers/FBHC/" + roundName + "/Solver" + problemName + ".cpp";
-    }
-
     string problemSetName = problemName.substr(0, problemName.length() - 1);
     string problemSetPrefix = problemSetName.substr(0, problemSetName.length() - 2);
     return "Solvers/" + problemSetPrefix + "xx/" + problemSetName + "/Solver" + problemName + ".cpp";
