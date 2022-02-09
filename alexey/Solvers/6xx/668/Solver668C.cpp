@@ -29,7 +29,7 @@ void Solver668C::run() {
         auto alpha = distFunctionMax[i];
         auto beta = 1.0 - distFunctionMin[i];
 
-        auto roots = solveQuadraticEquation(1.0, beta - alpha - 1.0, alpha);
+        auto roots = solve_quadratic_equation(1.0, beta - alpha - 1.0, alpha);
         distFunctionFirst[i] = roots.first;
         distFunctionSecond[i] = roots.second;
     }

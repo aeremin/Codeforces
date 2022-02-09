@@ -1,11 +1,12 @@
 #include <Solvers/pch.h>
+
 #include "algo/io/baseio.hpp"
-#include "iter/range.h"
 #include "algo/numbertheory/Residue.hpp"
+#include "algo/segment_tree/segment_tree.h"
+#include "algo/segment_tree/update_appliers/multiply_by_applier.h"
+#include "algo/segment_tree/update_types/multiply_by.h"
+#include "iter/range.h"
 #include "math/quick_power.h"
-#include "algo/updatetypes/MultiplyBy.hpp"
-#include "algo/updateappliers/MultiplyByApplier.h"
-#include "algo/SegmentTree.hpp"
 
 using namespace std;
 
@@ -44,7 +45,7 @@ void Solver718C::run() {
     const Matrix2x2 mult = { 1, 1, 1, 0 };
     const Matrix2x2 one;
     vector<Matrix2x2> data(n, start);
-    auto st = makeSegmentTree(data, std::plus<Matrix2x2>(), updateTypes::MultiplyBy<Matrix2x2>(one));
+    auto st = makeSegmentTree(data, std::plus<Matrix2x2>(), update_types::MultiplyBy<Matrix2x2>(one));
 
     for (int i = 0; i < n; ++i) {
         int64_t a;
