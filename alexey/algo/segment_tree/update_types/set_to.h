@@ -1,6 +1,6 @@
 #pragma once
 
-namespace updateTypes {
+namespace update_types {
 
 template <typename T>
 struct SetTo {
@@ -17,4 +17,4 @@ struct SetTo {
     T value_;
 };
 
-}  // namespace updateTypes
+}  // namespace update_types

@@ -20,9 +20,9 @@ target_sources(algo_lib INTERFACE
     ${algo_dir}/algebra/cyclic_convolution.h
     ${algo_dir}/algebra/quadratic/solve_quadratic_real.h
     ${algo_dir}/BinaryCubePrefix.h
-    ${algo_dir}/binaryfunctors/FirstArgument.hpp
-    ${algo_dir}/binaryfunctors/Max.hpp
-    ${algo_dir}/binaryfunctors/Min.hpp
+    ${algo_dir}/segment_tree/binary_functors/first_argument.h
+    ${algo_dir}/segment_tree/binary_functors/max.h
+    ${algo_dir}/segment_tree/binary_functors/min.h
     ${algo_dir}/BinarySearch.hpp
     ${algo_dir}/bits/FullBinaryTrie.hpp
     ${algo_dir}/borrower.h
@@ -64,7 +64,7 @@ target_sources(algo_lib INTERFACE
     ${algo_dir}/polynomial/polynomial.h
     ${algo_dir}/query/MoQueryProcessor.hpp
     ${algo_dir}/query/OrderIndependentSlider.hpp
-    ${algo_dir}/SegmentTree.hpp
+    ${algo_dir}/segment_tree/segment_tree.h
     ${algo_dir}/SlidingWindowMinFinder.h
     ${algo_dir}/SortBy.hpp
     ${algo_dir}/SortWithMapping.hpp
@@ -72,19 +72,19 @@ target_sources(algo_lib INTERFACE
     ${algo_dir}/strings/knutt_morris_pratt.h
     ${algo_dir}/strings/suffix_automaton.h
     ${algo_dir}/strings/trie.h
-    ${algo_dir}/updateappliers/IdApplier.hpp
-    ${algo_dir}/updateappliers/IncreaseByIdempotent.h
-    ${algo_dir}/updateappliers/IncreaseBySum.h
-    ${algo_dir}/updateappliers/LinearTransformIdempotent.h
-    ${algo_dir}/updateappliers/MultiplyByApplier.h
-    ${algo_dir}/updateappliers/SetToIdempotent.h
-    ${algo_dir}/updateappliers/SetToPlus.hpp
-    ${algo_dir}/updateappliers/UpdateApplier.hpp
-    ${algo_dir}/updatetypes/Id.hpp
-    ${algo_dir}/updatetypes/IncreaseBy.hpp
-    ${algo_dir}/updatetypes/LinearTransform.hpp
-    ${algo_dir}/updatetypes/MultiplyBy.hpp
-    ${algo_dir}/updatetypes/SetTo.hpp
+    ${algo_dir}/segment_tree/update_appliers/id_applier.h
+    ${algo_dir}/segment_tree/update_appliers/increase_by_idempotent.h
+    ${algo_dir}/segment_tree/update_appliers/increase_by_sum.h
+    ${algo_dir}/segment_tree/update_appliers/linear_transform_idempotent.h
+    ${algo_dir}/segment_tree/update_appliers/multiply_by_applier.h
+    ${algo_dir}/segment_tree/update_appliers/set_to_idempotent.h
+    ${algo_dir}/segment_tree/update_appliers/set_to_plus.h
+    ${algo_dir}/segment_tree/update_appliers/update_applier.h
+    ${algo_dir}/segment_tree/update_types/id.h
+    ${algo_dir}/segment_tree/update_types/increase_by.h
+    ${algo_dir}/segment_tree/update_types/linear_transform.h
+    ${algo_dir}/segment_tree/update_types/multiply_by.h
+    ${algo_dir}/segment_tree/update_types/set_to.h
 )
 
 set(tests_exe codeforces)
@@ -527,7 +527,7 @@ set(tests_srcs
     ${algo_dir}/IndicatorTest.cpp
     ${algo_dir}/MaximalIncreasingSubsequenceTest.cpp
     ${algo_dir}/ordered_set_test.cpp
-    ${algo_dir}/SegmentTreeTest.cpp
+    ${algo_dir}/segment_tree/segment_tree_test.cpp
     ${algo_dir}/SlidingWindowMinFinderTest.cpp
 )
 

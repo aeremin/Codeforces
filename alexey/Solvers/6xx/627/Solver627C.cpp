@@ -1,10 +1,11 @@
 #include <Solvers/pch.h>
+
+#include "algo/segment_tree/binary_functors/min.h"
 #include "algo/io/baseio.hpp"
+#include "algo/segment_tree/segment_tree.h"
+#include "algo/segment_tree/update_appliers/id_applier.h"
+#include "algo/segment_tree/update_types/id.h"
 #include "iter/range.h"
-#include "algo/binaryfunctors/Min.hpp"
-#include "algo/updatetypes/Id.hpp"
-#include "algo/updateappliers/IdApplier.hpp"
-#include "algo/SegmentTree.hpp"
 
 using namespace std;
 
@@ -33,7 +34,7 @@ void Solver627C::run() {
     for (int i : range(nFuelStations))
         minPriceData[i] = make_pair(fuelStations[i].second, i);
 
-    auto stree = makeSegmentTree(minPriceData, binaryFunctors::Min<pair<int64_t, int>>(), updateTypes::Id());
+    auto stree = makeSegmentTree(minPriceData, binary_functors::Min<pair<int64_t, int>>(), update_types::Id());
 
     std::function<int64_t(int, int)> getMinPrice = [&](int l, int r) -> int64_t {
         if (r - l == 1)

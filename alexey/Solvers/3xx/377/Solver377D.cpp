@@ -1,11 +1,12 @@
 #include <Solvers/pch.h>
-#include "algo/io/baseio.hpp"
-#include "iter/range.h"
-#include "algo/updatetypes/IncreaseBy.hpp"
-#include "algo/binaryfunctors/Max.hpp"
-#include "algo/updateappliers/IncreaseByIdempotent.h"
-#include "algo/SegmentTree.hpp"
+
+#include "algo/segment_tree/binary_functors/max.h"
 #include "algo/geometry/geomvector.hpp"
+#include "algo/io/baseio.hpp"
+#include "algo/segment_tree/segment_tree.h"
+#include "algo/segment_tree/update_appliers/increase_by_idempotent.h"
+#include "algo/segment_tree/update_types/increase_by.h"
+#include "iter/range.h"
 
 using namespace std;
 
@@ -37,12 +38,12 @@ void Solver377D::run()
     for (int i : range(maxCoordinate + 1))
         data[i] = GeomVector2I({ 0, i });
 
-    auto st = makeSegmentTree(data, binaryFunctors::Max<GeomVector2I>(), updateTypes::IncreaseBy<GeomVector2I>());
+    auto st = makeSegmentTree(data, binary_functors::Max<GeomVector2I>(), update_types::IncreaseBy<GeomVector2I>());
     int ans = 0;
     int bestL = -1;
     int bestR = -1;
     for (auto& d : devsRectangles) {
-        st.updateRange(get<2>(d), get<3>(d), updateTypes::IncreaseBy<GeomVector2I>({ get<1>(d), 0 }));
+        st.updateRange(get<2>(d), get<3>(d), update_types::IncreaseBy<GeomVector2I>({ get<1>(d), 0 }));
         auto ansCand = st.getValueOnSegment(0, maxCoordinate + 1);
         if (ansCand[0] > ans) {
             ans = ansCand[0];

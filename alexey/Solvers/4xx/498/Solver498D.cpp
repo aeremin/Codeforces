@@ -1,7 +1,8 @@
 #include <Solvers/pch.h>
-#include "algo/updatetypes/SetTo.hpp"
-#include "algo/updateappliers/SetToIdempotent.h"
-#include "algo/SegmentTree.hpp"
+
+#include "algo/segment_tree/segment_tree.h"
+#include "algo/segment_tree/update_appliers/set_to_idempotent.h"
+#include "algo/segment_tree/update_types/set_to.h"
 
 using namespace std;
 
@@ -49,7 +50,7 @@ void Solver498D::run()
         return result;
     };
 
-    auto timeTree = makeSegmentTree(singleRoadTimes, concatFunctor, updateTypes::SetTo<TimeToMove>());
+    auto timeTree = makeSegmentTree(singleRoadTimes, concatFunctor, update_types::SetTo<TimeToMove>());
 
     int nQueries;
     cin >> nQueries;
@@ -64,7 +65,7 @@ void Solver498D::run()
         }
         else
         {
-            timeTree.updateElement(a - 1, updateTypes::SetTo<TimeToMove>(constructFromPeriod(b)));
+            timeTree.updateElement(a - 1, update_types::SetTo<TimeToMove>(constructFromPeriod(b)));
         }
     }
 }

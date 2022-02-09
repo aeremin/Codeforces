@@ -1,10 +1,11 @@
 #include <Solvers/pch.h>
+
 #include "algo/io/baseio.hpp"
-#include "algo/updatetypes/IncreaseBy.hpp"
-#include "algo/updateappliers/IncreaseBySum.h"
-#include "algo/SegmentTree.hpp"
-#include "iter/range.h"
 #include "algo/io/printvector.h"
+#include "algo/segment_tree/segment_tree.h"
+#include "algo/segment_tree/update_appliers/increase_by_sum.h"
+#include "algo/segment_tree/update_types/increase_by.h"
+#include "iter/range.h"
 
 using namespace std;
 
@@ -21,8 +22,8 @@ void Solver627B::run()
     cin >> nDays >> repairLen >> produceAfterRepair >> produceBeforeRepair >> nQueries;
     vector<int> result;
     vector<int> nRequests(nDays, 0);
-    auto streeBefore = makeSegmentTree(nRequests, plus<int>(), updateTypes::IncreaseBy<int>());
-    auto streeAfter = makeSegmentTree(nRequests, plus<int>(), updateTypes::IncreaseBy<int>());
+    auto streeBefore = makeSegmentTree(nRequests, plus<int>(), update_types::IncreaseBy<int>());
+    auto streeAfter = makeSegmentTree(nRequests, plus<int>(), update_types::IncreaseBy<int>());
     for (int i : range(nQueries))
     {
         int t;
@@ -34,11 +35,11 @@ void Solver627B::run()
             --d;
             auto currBefore = streeBefore.getValueOnSegment(d, d + 1);
             auto incrBefore = min(a, produceBeforeRepair - currBefore);
-            streeBefore.updateElement(d, updateTypes::IncreaseBy<int>(incrBefore));
+            streeBefore.updateElement(d, update_types::IncreaseBy<int>(incrBefore));
          
             auto currAfter = streeAfter.getValueOnSegment(d, d + 1);
             auto incrAfter = min(a, produceAfterRepair - currAfter);
-            streeAfter.updateElement(d, updateTypes::IncreaseBy<int>(incrAfter));
+            streeAfter.updateElement(d, update_types::IncreaseBy<int>(incrAfter));
         }
         else
         {

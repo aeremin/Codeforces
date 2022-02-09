@@ -1,7 +1,6 @@
 #pragma once
-#include <algorithm>
 
-namespace binaryFunctors {
+namespace binary_functors {
 
 template <typename T>
 struct FirstArgument {
@@ -9,4 +8,4 @@ struct FirstArgument {
 };
 
 
-}  // namespace binaryFunctors
+}  // namespace binary_functors

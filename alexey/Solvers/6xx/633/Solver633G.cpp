@@ -1,14 +1,16 @@
-#include <Solvers/pch.h>
 #include <bitset>
+
+#include <Solvers/pch.h>
+
 #include "algo/io/baseio.hpp"
-#include "graph/graph.h"
-#include "algo/updateappliers/UpdateApplier.hpp"
-#include "algo/updatetypes/IncreaseBy.hpp"
-#include "algo/io/readvector.hpp"
-#include "iter/range.h"
-#include "algo/SegmentTree.hpp"
-#include "algo/numbertheory/Primes.hpp"
 #include "algo/io/printvector.h"
+#include "algo/io/readvector.hpp"
+#include "algo/numbertheory/Primes.hpp"
+#include "algo/segment_tree/segment_tree.h"
+#include "algo/segment_tree/update_appliers/update_applier.h"
+#include "algo/segment_tree/update_types/increase_by.h"
+#include "graph/graph.h"
+#include "iter/range.h"
 
 using namespace std;
 
@@ -50,10 +52,10 @@ public:
 };
 
 template<>
-class UpdateApplier<updateTypes::IncreaseBy<int64_t>, BitSetConcat>
+class UpdateApplier<update_types::IncreaseBy<int64_t>, BitSetConcat>
 {
 public:
-    static bitset<cMaxM> apply(bitset<cMaxM> bs, const updateTypes::IncreaseBy<int64_t>& updmod, size_t)
+    static bitset<cMaxM> apply(bitset<cMaxM> bs, const update_types::IncreaseBy<int64_t>& updmod, size_t)
     {
         auto upd = updmod.value_ % m;
         auto res = ((bs << (cMaxM - (m - upd))) >> (cMaxM - m)) | (bs >> (m - upd));
@@ -81,7 +83,7 @@ void Solver633G::run()
     for (int i : range(n))
         data[subtreeRange[i].first].set(vals[i] % m);
 
-    auto stree = makeSegmentTree(data, BitSetConcat(), updateTypes::IncreaseBy<int64_t>());
+    auto stree = makeSegmentTree(data, BitSetConcat(), update_types::IncreaseBy<int64_t>());
 
     vector<int> results;
     int q;
@@ -101,7 +103,7 @@ void Solver633G::run()
             int v, x;
             cin >> v >> x;
             --v;
-            stree.updateRange(subtreeRange[v].first, subtreeRange[v].second, updateTypes::IncreaseBy<int64_t>(x));
+            stree.updateRange(subtreeRange[v].first, subtreeRange[v].second, update_types::IncreaseBy<int64_t>(x));
         }
         else
         {

@@ -1,7 +1,8 @@
 #include <Solvers/pch.h>
-#include "algo/updatetypes/Id.hpp"
-#include "algo/updateappliers/IdApplier.hpp"
-#include "algo/SegmentTree.hpp"
+
+#include "algo/segment_tree/segment_tree.h"
+#include "algo/segment_tree/update_appliers/id_applier.h"
+#include "algo/segment_tree/update_types/id.h"
 
 using namespace std;
 
@@ -45,7 +46,7 @@ void Solver622C::run()
         return res;
     };
 
-    auto stree = makeSegmentTree(data, concat, updateTypes::Id());
+    auto stree = makeSegmentTree(data, concat, update_types::Id());
 
     for (int i = 0; i < m; ++i)
     {

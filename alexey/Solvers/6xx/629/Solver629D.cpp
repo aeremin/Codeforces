@@ -1,12 +1,13 @@
 #include <Solvers/pch.h>
-#include "algo/io/baseio.hpp"
+
 #include "algo/SortWithMapping.hpp"
-#include "math/pi.h"
+#include "algo/segment_tree/binary_functors/max.h"
+#include "algo/io/baseio.hpp"
+#include "algo/segment_tree/segment_tree.h"
+#include "algo/segment_tree/update_appliers/set_to_idempotent.h"
+#include "algo/segment_tree/update_types/set_to.h"
 #include "iter/range.h"
-#include "algo/binaryfunctors/Max.hpp"
-#include "algo/updatetypes/SetTo.hpp"
-#include "algo/updateappliers/SetToIdempotent.h"
-#include "algo/SegmentTree.hpp"
+#include "math/pi.h"
 using namespace std;
 
 // Solution for Codeforces problem http://codeforces.com/contest/629/problem/D
@@ -34,7 +35,7 @@ void Solver629D::run()
     
     vector<int64_t> data(n + 1, std::numeric_limits<int64_t>::min());
     data[0] = 0;
-    auto segmentTree = makeSegmentTree(data, binaryFunctors::Max<int64_t>(), updateTypes::SetTo<int64_t>());
+    auto segmentTree = makeSegmentTree(data, binary_functors::Max<int64_t>(), update_types::SetTo<int64_t>());
     for (int i : range(1, n + 1))
     {
         auto currOrder = forwardMap[i];

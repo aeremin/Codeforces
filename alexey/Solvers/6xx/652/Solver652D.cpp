@@ -1,12 +1,13 @@
 #include <Solvers/pch.h>
-#include "algo/io/baseio.hpp"
-#include "iter/range.h"
-#include "algo/updatetypes/IncreaseBy.hpp"
-#include "algo/updateappliers/IncreaseBySum.h"
-#include "algo/SegmentTree.hpp"
-#include "algo/io/readvector.hpp"
+
 #include "algo/SortWithMapping.hpp"
+#include "algo/io/baseio.hpp"
 #include "algo/io/printvector.h"
+#include "algo/io/readvector.hpp"
+#include "algo/segment_tree/segment_tree.h"
+#include "algo/segment_tree/update_appliers/increase_by_sum.h"
+#include "algo/segment_tree/update_types/increase_by.h"
+#include "iter/range.h"
 using namespace std;
 
 // Solution for Codeforces problem http://codeforces.com/contest/652/problem/D
@@ -26,7 +27,7 @@ void Solver652D::run()
     sortWithMappings( allEndsCopy, &forwardMap, &backwardMap );
 
     std::vector<int> data( 2 * n );
-    auto st = makeSegmentTree( data, plus<int>(), updateTypes::IncreaseBy<int>() );
+    auto st = makeSegmentTree( data, plus<int>(), update_types::IncreaseBy<int>() );
 
     vector<int> res( n );
     for ( int i : range( 2 * n ) )
@@ -37,7 +38,7 @@ void Solver652D::run()
             auto segmentStart = forwardMap[backwardMap[i] - 1];
             auto segmentInd = backwardMap[i] / 2;
             res[segmentInd] = st.getValueOnSegment( segmentStart, segmentEnd );
-            st.updateElement( segmentStart, updateTypes::IncreaseBy<int>( 1 ) );
+            st.updateElement( segmentStart, update_types::IncreaseBy<int>( 1 ) );
         }
     }
 

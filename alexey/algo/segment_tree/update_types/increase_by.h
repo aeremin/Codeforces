@@ -1,6 +1,6 @@
 #pragma once
 
-namespace updateTypes {
+namespace update_types {
 
 template <typename T>
 struct IncreaseBy {
@@ -11,4 +11,4 @@ struct IncreaseBy {
     T value_;
 };
 
-}  // namespace updateTypes
+}  // namespace update_types

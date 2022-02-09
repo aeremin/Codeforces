@@ -1,6 +1,6 @@
 #pragma once
 
-namespace updateTypes {
+namespace update_types {
 
 template <typename T>
 struct LinearTransform {
@@ -14,4 +14,4 @@ struct LinearTransform {
     T a_, b_;
 };
 
-}  // namespace updateTypes
+}  // namespace update_types

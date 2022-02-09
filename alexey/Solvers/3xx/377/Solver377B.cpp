@@ -1,14 +1,15 @@
 #include <Solvers/pch.h>
-#include "algo/io/baseio.hpp"
-#include "iter/range.h"
-#include "algo/io/readvector.hpp"
-#include "algo/SortWithMapping.hpp"
-#include "algo/updatetypes/SetTo.hpp"
-#include "algo/updateappliers/SetToIdempotent.h"
-#include "algo/SegmentTree.hpp"
-#include "algo/binaryfunctors/Min.hpp"
+
 #include "algo/FunctorIterator.hpp"
+#include "algo/SortWithMapping.hpp"
+#include "algo/segment_tree/binary_functors/min.h"
+#include "algo/io/baseio.hpp"
 #include "algo/io/printvector.h"
+#include "algo/io/readvector.hpp"
+#include "algo/segment_tree/segment_tree.h"
+#include "algo/segment_tree/update_appliers/set_to_idempotent.h"
+#include "algo/segment_tree/update_types/set_to.h"
+#include "iter/range.h"
 
 using namespace std;
 
@@ -38,7 +39,7 @@ void Solver377B::run()
     sortWithMappings(difficulties, nullptr, &bugsBackwM);
 
     auto tryToFitIn = [&](int days) -> int {
-        auto st = makeSegmentTree(pricesPermuted, binaryFunctors::Min<pair<int64_t, int>>(), updateTypes::SetTo<pair<int64_t, int>>());
+        auto st = makeSegmentTree(pricesPermuted, binary_functors::Min<pair<int64_t, int>>(), update_types::SetTo<pair<int64_t, int>>());
         int64_t totalPrice = 0;
         for (int i = nBugs - 1; i >= 0; i -= days) {
             auto d = difficulties[i];
@@ -48,7 +49,7 @@ void Solver377B::run()
 
             auto minPriceData = st.getValueOnSegment(skillInd, nStudents);
             totalPrice += minPriceData.first;
-            st.updateElement(minPriceData.second, updateTypes::SetTo<pair<int64_t, int>>(make_pair(numeric_limits<int>::max(), 0)));
+            st.updateElement(minPriceData.second, update_types::SetTo<pair<int64_t, int>>(make_pair(numeric_limits<int>::max(), 0)));
             if (totalPrice > maxPrice)
                 return 0;
         }
@@ -66,12 +67,12 @@ void Solver377B::run()
     else {
         vector<int> fixer(nBugs);
         auto days = it.getParameter();
-        auto st = makeSegmentTree(pricesPermuted, binaryFunctors::Min<pair<int64_t, int>>(), updateTypes::SetTo<pair<int64_t, int>>());
+        auto st = makeSegmentTree(pricesPermuted, binary_functors::Min<pair<int64_t, int>>(), update_types::SetTo<pair<int64_t, int>>());
         for (int i = nBugs - 1; i >= 0; i -= days) {
             auto d = difficulties[i];
             auto skillInd = lower_bound(begin(skills), end(skills), d) - begin(skills);
             auto minPriceData = st.getValueOnSegment(skillInd, nStudents);
-            st.updateElement(minPriceData.second, updateTypes::SetTo<pair<int64_t, int>>(make_pair(numeric_limits<int>::max(), 0)));
+            st.updateElement(minPriceData.second, update_types::SetTo<pair<int64_t, int>>(make_pair(numeric_limits<int>::max(), 0)));
             for (int j : range(max(0, i - days + 1), i + 1))
                 fixer[bugsBackwM[j]] = studBackwM[minPriceData.second] + 1;
         }

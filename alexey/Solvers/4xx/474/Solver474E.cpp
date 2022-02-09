@@ -1,10 +1,11 @@
 #include <Solvers/pch.h>
+
 #include "algo/SortWithMapping.hpp"
+#include "algo/segment_tree/binary_functors/max.h"
+#include "algo/segment_tree/segment_tree.h"
+#include "algo/segment_tree/update_appliers/set_to_idempotent.h"
+#include "algo/segment_tree/update_types/set_to.h"
 #include "util/relax.h"
-#include "algo/updatetypes/SetTo.hpp"
-#include "algo/binaryfunctors/Max.hpp"
-#include "algo/updateappliers/SetToIdempotent.h"
-#include "algo/SegmentTree.hpp"
 
 using namespace std;
 
@@ -35,8 +36,8 @@ void Solver474E::run()
 
     vector<int> predecessors(heights.size());
     vector<pair<int, int>> maxJumpCountAndPredecessor(heights.size(), make_pair(0, -1));
-    auto segmentTree = makeSegmentTree(maxJumpCountAndPredecessor, binaryFunctors::Max<pair<int, int>>(), 
-                                       updateTypes::SetTo<pair<int, int>>());
+    auto segmentTree = makeSegmentTree(maxJumpCountAndPredecessor, binary_functors::Max<pair<int, int>>(),
+                                       update_types::SetTo<pair<int, int>>());
     auto segmentTreeBegin = begin(maxJumpCountAndPredecessor);
     for (size_t i = 0; i < heights.size(); ++i)
     {
@@ -58,7 +59,7 @@ void Solver474E::run()
         }
         predecessors[i] = currMax.second;
         maxJumpCountAndPredecessor[forwardMapping[i]] = { currMax.first, i };
-        auto upd = updateTypes::SetTo<pair<int, int>>(make_pair(currMax.first, int(i)));
+        auto upd = update_types::SetTo<pair<int, int>>(make_pair(currMax.first, int(i)));
         segmentTree.updateElement(forwardMapping[i], upd);
     }
 

@@ -1,6 +1,6 @@
 #pragma once
 
-namespace updateTypes {
+namespace update_types {
 
 template <typename T>
 struct MultiplyBy {
@@ -11,4 +11,4 @@ struct MultiplyBy {
     T value_;
 };
 
-}  // namespace updateTypes
+}  // namespace update_types

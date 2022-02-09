@@ -1,9 +1,10 @@
 #include <Solvers/pch.h>
+
+#include "algo/segment_tree/binary_functors/first_argument.h"
+#include "algo/segment_tree/segment_tree.h"
+#include "algo/segment_tree/update_appliers/linear_transform_idempotent.h"
+#include "algo/segment_tree/update_types/linear_transform.h"
 #include "math/pi.h"
-#include "algo/binaryfunctors/FirstArgument.hpp"
-#include "algo/updatetypes/LinearTransform.hpp"
-#include "algo/updateappliers/LinearTransformIdempotent.h"
-#include "algo/SegmentTree.hpp"
 
 using namespace std;
 
@@ -23,10 +24,10 @@ void Solver618E::run()
         points[i] = { i + 0.0, 0.0 };
 
     
-    typedef updateTypes::LinearTransform<complex<double>> TransformType;
+    typedef update_types::LinearTransform<complex<double>> TransformType;
 
     cout << setprecision(10) << fixed;
-    auto segmentTree = makeSegmentTree(points, binaryFunctors::FirstArgument<complex<double>>(), TransformType());
+    auto segmentTree = makeSegmentTree(points, binary_functors::FirstArgument<complex<double>>(), TransformType());
     for (int i = 0; i < m; ++i)
     {
         int x, y, z;

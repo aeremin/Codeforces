@@ -1,11 +1,11 @@
 #pragma once
 #include <algorithm>
 
-namespace binaryFunctors {
+namespace binary_functors {
 
 template <typename T>
 struct Min {
     T operator()(const T& t, const T& u) const { return std::min(t, u); }
 };
 
-}  // namespace binaryFunctors
+}  // namespace binary_functors

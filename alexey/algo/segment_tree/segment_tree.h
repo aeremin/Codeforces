@@ -2,6 +2,7 @@
 #include <cassert>
 #include <iterator>
 #include <vector>
+#include "algo/segment_tree/update_appliers/update_applier.h"
 
 using std::vector;
 

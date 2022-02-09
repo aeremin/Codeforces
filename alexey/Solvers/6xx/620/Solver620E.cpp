@@ -1,8 +1,9 @@
 #include <Solvers/pch.h>
+
+#include "algo/segment_tree/segment_tree.h"
+#include "algo/segment_tree/update_appliers/set_to_idempotent.h"
+#include "algo/segment_tree/update_types/set_to.h"
 #include "graph/graph.h"
-#include "algo/updatetypes/SetTo.hpp"
-#include "algo/updateappliers/SetToIdempotent.h"
-#include "algo/SegmentTree.hpp"
 
 using namespace std;
 
@@ -57,7 +58,7 @@ void Solver620E::run()
 
     dfs(0, 0);
 
-    auto segTree = makeSegmentTree(orderedColors, bit_or<uint64_t>(), updateTypes::SetTo<uint64_t>());
+    auto segTree = makeSegmentTree(orderedColors, bit_or<uint64_t>(), update_types::SetTo<uint64_t>());
     for (int i = 0; i < nQueries; ++i)
     {
         int queryType;
@@ -66,7 +67,7 @@ void Solver620E::run()
         {
             int vInd, color;
             cin >> vInd >> color;
-            segTree.updateRange(vertexToInterval[vInd - 1].first, vertexToInterval[vInd - 1].second, updateTypes::SetTo<uint64_t>(uint64_t(1) << color));
+            segTree.updateRange(vertexToInterval[vInd - 1].first, vertexToInterval[vInd - 1].second, update_types::SetTo<uint64_t>(uint64_t(1) << color));
         }
         else
         {
