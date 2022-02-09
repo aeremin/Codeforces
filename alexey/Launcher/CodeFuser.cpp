@@ -73,7 +73,7 @@ CodeFuser::CodeFuser(std::string problemName) : problemName_(move(problemName))
 
 void CodeFuser::fuse()
 {
-    ofstream out( "Fused/main.cpp" );
+    ofstream out( "fused/main.cpp" );
     out << filePrefix;
    
     string problemSolverPath = GetSolverFileNameByProblemName(problemName_);

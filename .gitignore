@@ -7,6 +7,6 @@ build*
 *.kdev*
 *.user
 *.user.*
-alexey/Fused/main.cpp
+alexey/fused/main.cpp
 .vs/
 alexey/cmake-build-*
