@@ -28,7 +28,6 @@ target_sources(algo_lib INTERFACE
     ${algo_dir}/borrower.h
     ${algo_dir}/DisjointSet.hpp
     ${algo_dir}/DPProcessor.hpp
-    ${algo_dir}/FibonacciHeap.hpp
     ${algo_dir}/FunctorIterator.hpp
     ${algo_dir}/combinatorics/combinatorics_helper.h
     ${algo_dir}/geometry/AngleSort.hpp
@@ -44,13 +43,11 @@ target_sources(algo_lib INTERFACE
     ${algo_dir}/graph/max_flow_push_relabel.h
     ${algo_dir}/graph/rooted_graph.h
     ${algo_dir}/graph/TreePreprocessor.hpp
-    ${algo_dir}/Heap.hpp
     ${algo_dir}/Indicator.hpp
     ${algo_dir}/io/baseio.hpp
     ${algo_dir}/io/printvector.h
     ${algo_dir}/io/readvector.hpp
     ${algo_dir}/MaximaIncreasingSubsequence.hpp
-    ${algo_dir}/MergeSort.hpp
     ${algo_dir}/numbertheory/big_integer.h
     ${algo_dir}/numbertheory/Coprimes.hpp
     ${algo_dir}/numbertheory/Divisors.hpp
@@ -67,9 +64,7 @@ target_sources(algo_lib INTERFACE
     ${algo_dir}/polynomial/polynomial.h
     ${algo_dir}/query/MoQueryProcessor.hpp
     ${algo_dir}/query/OrderIndependentSlider.hpp
-    ${algo_dir}/QuickSort.hpp
     ${algo_dir}/SegmentTree.hpp
-    ${algo_dir}/SingleLinkedList.hpp
     ${algo_dir}/SlidingWindowMinFinder.h
     ${algo_dir}/SortBy.hpp
     ${algo_dir}/SortWithMapping.hpp
@@ -528,15 +523,11 @@ set(tests_srcs
     ${algo_dir}/BinarySearchTest.cpp
     ${algo_dir}/DisjointSetTest.cpp
     ${algo_dir}/DPProcessorTest.cpp
-    ${algo_dir}/FibonacciHeapTest.cpp
     ${algo_dir}/FunctorIteratorTest.cpp
-    ${algo_dir}/HeapTest.cpp
     ${algo_dir}/IndicatorTest.cpp
     ${algo_dir}/MaximalIncreasingSubsequenceTest.cpp
-    ${algo_dir}/MergeSortTest.cpp
     ${algo_dir}/ordered_set_test.cpp
     ${algo_dir}/SegmentTreeTest.cpp
-    ${algo_dir}/SingleLinkedListTest.cpp
     ${algo_dir}/SlidingWindowMinFinderTest.cpp
 )
 
