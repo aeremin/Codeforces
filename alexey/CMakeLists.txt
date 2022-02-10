@@ -150,6 +150,10 @@ set(tests_srcs
     ${solvers_dir}/11xx/1111/Solver1111C.cpp
     ${solvers_dir}/11xx/1129/Solver1129A.cpp
     ${solvers_dir}/11xx/1129/Solver1129B.cpp
+    ${solvers_dir}/13xx/1363/Solver1363A.cpp
+    ${solvers_dir}/13xx/1363/Solver1363B.cpp
+    ${solvers_dir}/13xx/1363/Solver1363C.cpp
+    ${solvers_dir}/13xx/1363/Solver1363E.cpp
     ${solvers_dir}/1xx/107/Solver107B.cpp
     ${solvers_dir}/1xx/132/Solver132C.cpp
     ${solvers_dir}/1xx/158/Solver158E.cpp
