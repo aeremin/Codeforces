@@ -87,16 +87,74 @@ target_sources(algo_lib INTERFACE
     ${algo_dir}/segment_tree/update_types/linear_transform.h
     ${algo_dir}/segment_tree/update_types/multiply_by.h
     ${algo_dir}/segment_tree/update_types/set_to.h
+    )
+
+set(algo_tests_srcs
+    ${algo_dir}/gtest_main.cpp
+    ${algo_dir}/algebra/cyclic_convolution_test.cpp
+    ${algo_dir}/algebra/quadratic/solve_quadratic_test.cpp
+    ${algo_dir}/bits/full_binary_trie_test.cpp
+    ${algo_dir}/combinatorics/combinatorics_helper_test.cpp
+    ${algo_dir}/geometry/angle_sort_test.cpp
+    ${algo_dir}/geometry/convex_hull_test.cpp
+    ${algo_dir}/geometry/geomvector_test.cpp
+    ${algo_dir}/geometry/linear_functions_max_test.cpp
+    ${algo_dir}/graph/bipartition_checker_test.cpp
+    ${algo_dir}/graph/complement_test.cpp
+    ${algo_dir}/graph/connected_components_decomposer_test.cpp
+    ${algo_dir}/graph/graph_helper.cpp
+    ${algo_dir}/graph/has_cycle_test.cpp
+    ${algo_dir}/graph/max_flow_push_relabel_test.cpp
+    ${algo_dir}/graph/max_clique_test.cpp
+    ${algo_dir}/graph/rooted_graph_test.cpp
+    ${algo_dir}/graph/tree_preprocessor_test.cpp
+    ${algo_dir}/number_theory/big_integer_test.cpp
+    ${algo_dir}/number_theory/coprime_test.cpp
+    ${algo_dir}/number_theory/divisors_test.cpp
+    ${algo_dir}/number_theory/greatest_common_divisor_test.cpp
+    ${algo_dir}/number_theory/primary_root_test.cpp
+    ${algo_dir}/number_theory/primes_test.cpp
+    ${algo_dir}/number_theory/residue_test.cpp
+    ${algo_dir}/polynomial/polynomial_test.cpp
+    ${algo_dir}/polynomial/fast_fourier_transform_test.cpp
+    ${algo_dir}/strings/trie_test.cpp
+    ${algo_dir}/strings/find_occurences_test.cpp
+    ${algo_dir}/strings/knutt_morris_pratt_test.cpp
+    ${algo_dir}/strings/suffix_automaton_test.cpp
+    ${algo_dir}/query/mo_query_processor_test.cpp
+    ${algo_dir}/borrower_test.cpp
+    ${algo_dir}/binary_cube_prefix_test.cpp
+    ${algo_dir}/binary_search_test.cpp
+    ${algo_dir}/disjoint_set_test.cpp
+    ${algo_dir}/dynamic_programming_processor_test.cpp
+    ${algo_dir}/functor_iterator_test.cpp
+    ${algo_dir}/indicator_test.cpp
+    ${algo_dir}/maximal_increasing_subsequence_test.cpp
+    ${algo_dir}/ordered_set_test.cpp
+    ${algo_dir}/segment_tree/segment_tree_test.cpp
+    ${algo_dir}/sliding_window_min_finder_test.cpp
 )
 
-set(tests_exe codeforces)
-set(tests_srcs
+add_executable(algo_tests ${algo_tests_srcs})
+target_link_libraries(algo_tests gtest gmock algo_lib)
+
+add_test(algo_tests algo_tests)
+
+add_library(solver_testing_utils INTERFACE)
+target_sources(solver_testing_utils INTERFACE
     ${common_dir}/tools/fuser/fuser.cpp
     ${common_dir}/tools/fuser/file_parser.cpp
     ${launcher_dir}/main.cpp
     ${launcher_dir}/CodeFuser.h
     ${launcher_dir}/CodeFuser.cpp
     ${launcher_dir}/CodeFuserTest.cpp
+    ${solvers_dir}/pch.cpp
+    ${solvers_dir}/SolverStub.cpp
+    ${solvers_dir}/testutils/ProblemTest.cpp    
+)
+
+set(tests_exe codeforces)
+set(tests_srcs
     ${solvers_dir}/0xx/014/Solver014D.cpp
     ${solvers_dir}/0xx/022/Solver022B.cpp
     ${solvers_dir}/0xx/067/Solver067A.cpp
@@ -243,7 +301,7 @@ set(tests_srcs
     ${solvers_dir}/5xx/509/Solver509C.cpp
     ${solvers_dir}/5xx/510/Solver510E.cpp
     ${solvers_dir}/5xx/524/Solver524B.cpp
-	${solvers_dir}/5xx/546/Solver546E.cpp
+    ${solvers_dir}/5xx/546/Solver546E.cpp
     ${solvers_dir}/5xx/533/Solver533E.cpp
     ${solvers_dir}/5xx/538/Solver538E.cpp
     ${solvers_dir}/5xx/552/Solver552E.cpp
@@ -349,7 +407,7 @@ set(tests_srcs
     ${solvers_dir}/6xx/617/Solver617B.cpp
     ${solvers_dir}/6xx/617/Solver617C.cpp
     ${solvers_dir}/6xx/617/Solver617D.cpp
-	${solvers_dir}/6xx/617/Solver617E.cpp
+    ${solvers_dir}/6xx/617/Solver617E.cpp
     ${solvers_dir}/6xx/618/Solver618A.cpp
     ${solvers_dir}/6xx/618/Solver618B.cpp
     ${solvers_dir}/6xx/618/Solver618C.cpp
@@ -446,7 +504,7 @@ set(tests_srcs
     ${solvers_dir}/6xx/650/Solver650C.cpp
     ${solvers_dir}/6xx/651/Solver651A.cpp
     ${solvers_dir}/6xx/651/Solver651B.cpp
-	${solvers_dir}/6xx/652/Solver652A.cpp
+    ${solvers_dir}/6xx/652/Solver652A.cpp
     ${solvers_dir}/6xx/652/Solver652B.cpp
     ${solvers_dir}/6xx/652/Solver652C.cpp
     ${solvers_dir}/6xx/652/Solver652D.cpp
@@ -457,18 +515,18 @@ set(tests_srcs
     ${solvers_dir}/6xx/653/Solver653D.cpp
     ${solvers_dir}/6xx/653/Solver653E.cpp
     ${solvers_dir}/6xx/659/Solver659A.cpp
-	${solvers_dir}/6xx/659/Solver659B.cpp
-	${solvers_dir}/6xx/659/Solver659C.cpp
-	${solvers_dir}/6xx/659/Solver659D.cpp
-	${solvers_dir}/6xx/659/Solver659E.cpp
-	${solvers_dir}/6xx/659/Solver659F.cpp
-	${solvers_dir}/6xx/659/Solver659G.cpp
+    ${solvers_dir}/6xx/659/Solver659B.cpp
+    ${solvers_dir}/6xx/659/Solver659C.cpp
+    ${solvers_dir}/6xx/659/Solver659D.cpp
+    ${solvers_dir}/6xx/659/Solver659E.cpp
+    ${solvers_dir}/6xx/659/Solver659F.cpp
+    ${solvers_dir}/6xx/659/Solver659G.cpp
     ${solvers_dir}/6xx/660/Solver660A.cpp
-	${solvers_dir}/6xx/660/Solver660B.cpp
-	${solvers_dir}/6xx/660/Solver660C.cpp
-	${solvers_dir}/6xx/660/Solver660D.cpp
-	${solvers_dir}/6xx/660/Solver660E.cpp
-	${solvers_dir}/6xx/660/Solver660F.cpp
+    ${solvers_dir}/6xx/660/Solver660B.cpp
+    ${solvers_dir}/6xx/660/Solver660C.cpp
+    ${solvers_dir}/6xx/660/Solver660D.cpp
+    ${solvers_dir}/6xx/660/Solver660E.cpp
+    ${solvers_dir}/6xx/660/Solver660F.cpp
     ${solvers_dir}/6xx/657/Solver657A.cpp
     ${solvers_dir}/6xx/657/Solver657B.cpp
     ${solvers_dir}/6xx/657/Solver657C.cpp
@@ -503,59 +561,14 @@ set(tests_srcs
     ${solvers_dir}/6xx/676/Solver676D.cpp
     ${solvers_dir}/6xx/676/Solver676E.cpp
     ${solvers_dir}/7xx/718/Solver718C.cpp
-    ${solvers_dir}/pch.cpp
-    ${solvers_dir}/SolverStub.cpp
-    ${solvers_dir}/testutils/ProblemTest.cpp
-    ${algo_dir}/algebra/cyclic_convolution_test.cpp
-    ${algo_dir}/algebra/quadratic/solve_quadratic_test.cpp
-    ${algo_dir}/bits/full_binary_trie_test.cpp
-    ${algo_dir}/combinatorics/combinatorics_helper_test.cpp
-    ${algo_dir}/geometry/angle_sort_test.cpp
-    ${algo_dir}/geometry/convex_hull_test.cpp
-    ${algo_dir}/geometry/geomvector_test.cpp
-	${algo_dir}/geometry/linear_functions_max_test.cpp
-    ${algo_dir}/graph/bipartition_checker_test.cpp
-    ${algo_dir}/graph/complement_test.cpp
-    ${algo_dir}/graph/connected_components_decomposer_test.cpp
-    ${algo_dir}/graph/graph_helper.cpp
-    ${algo_dir}/graph/has_cycle_test.cpp
-    ${algo_dir}/graph/max_flow_push_relabel_test.cpp
-    ${algo_dir}/graph/max_clique_test.cpp
-    ${algo_dir}/graph/rooted_graph_test.cpp
-    ${algo_dir}/graph/tree_preprocessor_test.cpp
-    ${algo_dir}/number_theory/big_integer_test.cpp
-    ${algo_dir}/number_theory/coprime_test.cpp
-    ${algo_dir}/number_theory/divisors_test.cpp
-    ${algo_dir}/number_theory/greatest_common_divisor_test.cpp
-    ${algo_dir}/number_theory/primary_root_test.cpp
-    ${algo_dir}/number_theory/primes_test.cpp
-    ${algo_dir}/number_theory/residue_test.cpp
-    ${algo_dir}/polynomial/polynomial_test.cpp
-    ${algo_dir}/polynomial/fast_fourier_transform_test.cpp
-    ${algo_dir}/strings/trie_test.cpp
-    ${algo_dir}/strings/find_occurences_test.cpp
-    ${algo_dir}/strings/knutt_morris_pratt_test.cpp
-    ${algo_dir}/strings/suffix_automaton_test.cpp
-    ${algo_dir}/query/mo_query_processor_test.cpp
-    ${algo_dir}/borrower_test.cpp
-    ${algo_dir}/binary_cube_prefix_test.cpp
-    ${algo_dir}/binary_search_test.cpp
-    ${algo_dir}/disjoint_set_test.cpp
-    ${algo_dir}/dynamic_programming_processor_test.cpp
-    ${algo_dir}/functor_iterator_test.cpp
-    ${algo_dir}/indicator_test.cpp
-    ${algo_dir}/maximal_increasing_subsequence_test.cpp
-    ${algo_dir}/ordered_set_test.cpp
-    ${algo_dir}/segment_tree/segment_tree_test.cpp
-    ${algo_dir}/sliding_window_min_finder_test.cpp
-)
+    )
 
-if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
-	set(tests_srcs  ${tests_srcs} ${common_lib_dir}/solution_tests/increase_stack_size_in_linux.cpp)
-endif()
+if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+  set(tests_srcs ${tests_srcs} ${common_lib_dir}/solution_tests/increase_stack_size_in_linux.cpp)
+endif ()
 
-add_executable(${tests_exe}  ${tests_srcs})
-target_link_libraries(${tests_exe} "gtest" "gmock" "algo_lib")
+add_executable(codeforces ${tests_srcs})
+target_link_libraries(codeforces solver_testing_utils gtest gmock algo_lib)
 
 add_test(all_tests codeforces)
 
