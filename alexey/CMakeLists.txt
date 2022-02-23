@@ -161,6 +161,8 @@ set(tests_srcs
     ${solvers_dir}/16xx/1637/Solver1637C.cpp
     ${solvers_dir}/16xx/1637/Solver1637D.cpp
     ${solvers_dir}/16xx/1637/Solver1637E.cpp
+    ${solvers_dir}/16xx/1641/Solver1641A.cpp
+    ${solvers_dir}/16xx/1641/Solver1641B.cpp
     ${solvers_dir}/16xx/1644/Solver1644A.cpp
     ${solvers_dir}/16xx/1644/Solver1644B.cpp
     ${solvers_dir}/16xx/1644/Solver1644C.cpp
