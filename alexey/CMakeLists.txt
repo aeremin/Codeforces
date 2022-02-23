@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.9)
 project(codeforces)
 
+enable_testing()
+
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
@@ -554,6 +556,8 @@ endif()
 
 add_executable(${tests_exe}  ${tests_srcs})
 target_link_libraries(${tests_exe} "gtest" "gmock" "algo_lib")
+
+add_test(all_tests codeforces)
 
 include_directories(${common_dir})
 include_directories(${common_lib_dir})
