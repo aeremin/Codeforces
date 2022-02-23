@@ -1,5 +1,5 @@
 #pragma once
-#include "update_applier.h"
+#include "algo/segment_tree/update_appliers/update_applier.h"
 #include "algo/segment_tree/update_types/increase_by.h"
 
 template <typename T>
