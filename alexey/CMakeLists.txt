@@ -153,7 +153,6 @@ target_sources(solver_testing_utils INTERFACE
     ${solvers_dir}/testutils/ProblemTest.cpp    
 )
 
-set(tests_exe codeforces)
 set(tests_srcs
     ${solvers_dir}/0xx/014/Solver014D.cpp
     ${solvers_dir}/0xx/022/Solver022B.cpp
@@ -221,8 +220,6 @@ set(tests_srcs
     ${solvers_dir}/16xx/1637/Solver1637C.cpp
     ${solvers_dir}/16xx/1637/Solver1637D.cpp
     ${solvers_dir}/16xx/1637/Solver1637E.cpp
-    ${solvers_dir}/16xx/1641/Solver1641A.cpp
-    ${solvers_dir}/16xx/1641/Solver1641B.cpp
     ${solvers_dir}/16xx/1644/Solver1644A.cpp
     ${solvers_dir}/16xx/1644/Solver1644B.cpp
     ${solvers_dir}/16xx/1644/Solver1644C.cpp
@@ -569,8 +566,9 @@ endif ()
 
 add_executable(codeforces ${tests_srcs})
 target_link_libraries(codeforces solver_testing_utils gtest gmock algo_lib)
-
 add_test(all_tests codeforces)
+
+include(${solvers_dir}/16xx/1641/CMakeLists.txt)
 
 include_directories(${common_dir})
 include_directories(${common_lib_dir})
