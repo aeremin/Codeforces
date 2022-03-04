@@ -569,6 +569,7 @@ target_link_libraries(codeforces solver_testing_utils gtest gmock algo_lib)
 add_test(all_tests codeforces)
 
 include(${solvers_dir}/16xx/1641/CMakeLists.txt)
+include(${solvers_dir}/16xx/1646/CMakeLists.txt)
 
 include_directories(${common_dir})
 include_directories(${common_lib_dir})
