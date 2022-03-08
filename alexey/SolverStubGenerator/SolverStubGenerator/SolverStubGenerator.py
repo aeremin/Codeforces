@@ -174,7 +174,3 @@ class %sTest : public ProblemTest {};
             break
         if cmakeLines[i] == 'set(tests_srcs\n':
             foundFileList = True
-
-    cmakeFile = open(cmakeFileName, 'w')
-    cmakeFile.writelines(cmakeLines)
-    cmakeFile.close()
