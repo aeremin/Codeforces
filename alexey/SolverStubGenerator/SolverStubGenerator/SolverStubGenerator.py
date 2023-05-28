@@ -84,7 +84,7 @@ while True:
 using namespace std;
 
 // Solution for Codeforces problem http://codeforces.com/contest/%s/problem/%s
-    ''' % (problemNumber, problemLetter)
+''' % (problemNumber, problemLetter)
 
     runImplementation = ''
     interactiveSolverPart = ''
