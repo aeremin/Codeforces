@@ -571,6 +571,7 @@ add_test(all_tests codeforces)
 include(${solvers_dir}/16xx/1641/CMakeLists.txt)
 include(${solvers_dir}/16xx/1646/CMakeLists.txt)
 include(${solvers_dir}/16xx/1648/CMakeLists.txt)
+include(${solvers_dir}/18xx/1830/CMakeLists.txt)
 include(${solvers_dir}/18xx/1837/CMakeLists.txt)
 
 include_directories(${common_dir})
