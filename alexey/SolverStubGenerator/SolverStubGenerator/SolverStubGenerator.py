@@ -1,4 +1,4 @@
-import urllib.request
+import requests
 from html.parser import HTMLParser
 import os.path
 
@@ -15,8 +15,10 @@ class CodeforcesParser(HTMLParser):
             self.openedDivs.append(attrs)
             if len(self.openedDivs) >= 2 and self.openedDivs[-2] == [('class', 'sample-test')]:
                 if self.openedDivs[-1] == [('class', 'input')]:
+                    print("Added input")
                     self.inputs.append([])
                 if self.openedDivs[-1] == [('class', 'output')]:
+                    print("Added output")
                     self.outputs.append([])
 
     def handle_endtag(self, tag):
@@ -26,10 +28,16 @@ class CodeforcesParser(HTMLParser):
     def handle_data(self, data):
         if len(self.openedDivs) >= 2 and self.openedDivs[-2] == [('class', 'sample-test')]:
             data = data.replace(r'\n', '\n')
-            if self.openedDivs[-1] == [('class', 'input')]:
-                self.inputs[-1].append(data)
             if self.openedDivs[-1] == [('class', 'output')]:
+                print("Added output data")
                 self.outputs[-1].append(data)
+
+        if len(self.openedDivs) >= 3 and self.openedDivs[-3] == [('class', 'sample-test')]:
+            data = data.replace(r'\n', '\n')
+            if self.openedDivs[-2] == [('class', 'input')] and data != 'Input':
+                print("Added input data")
+                self.inputs[-1].append(data)
+
         if len(self.openedDivs) >= 2 and self.openedDivs[-2] == [('class', 'problem-statement')]:
             data = data.replace(r'\n', '\n')
             if 'This is an interactive problem' in data:
@@ -39,7 +47,8 @@ while True:
     problemUrl = input()
     if (problemUrl == ''):
         break
-    pageContent=str(urllib.request.urlopen(problemUrl + '?locale=en').read())
+
+    pageContent=str(requests.get(problemUrl).content)
 
     parser = CodeforcesParser()
     parser.feed(pageContent)
