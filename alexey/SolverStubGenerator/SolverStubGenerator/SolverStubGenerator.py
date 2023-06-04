@@ -43,8 +43,9 @@ class CodeforcesParser(HTMLParser):
             if 'This is an interactive problem' in data:
                 self.isInteractive = True
 
+
 while True:
-    problemUrl = input()
+    problemUrl = input().strip()
     if (problemUrl == ''):
         break
 
