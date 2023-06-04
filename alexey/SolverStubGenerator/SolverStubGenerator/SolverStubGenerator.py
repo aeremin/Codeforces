@@ -1,6 +1,7 @@
+import os.path
 import requests
 from html.parser import HTMLParser
-import os.path
+
 
 class CodeforcesParser(HTMLParser):
     def __init__(self):
@@ -49,14 +50,14 @@ while True:
     if (problemUrl == ''):
         break
 
-    pageContent=str(requests.get(problemUrl).content)
+    pageContent = str(requests.get(problemUrl).content)
 
     parser = CodeforcesParser()
     parser.feed(pageContent)
 
     print(parser.inputs)
     print(parser.outputs)
-    
+
     # Links supported
     # http://codeforces.com/contest/665/problem/C
     # http://codeforces.com/problemset/problem/663/A
@@ -75,7 +76,7 @@ while True:
 
     os.makedirs(solverFilePath, exist_ok=True)
     stubFile = open(os.path.join(solverFilePath, solverName + ".cpp"), "w")
-    
+
     isInteractive = parser.isInteractive
     interactiveSolverName = 'Interactive' + solverName
     solutionHeader = '''
@@ -112,7 +113,7 @@ void %s::Run() {
 
 }
         ''' % (interactiveSolverName, interactiveSolverName, interactiveSolverName, interactiveSolverName)
-        
+
         interactiveSolverForTestName = interactiveSolverName + 'ForTest'
         interactiveTestPart = '''
 class %s : public %s {
@@ -134,8 +135,8 @@ void %s::PrintAnswer(/* TODO */) {
 TEST(%sTest, Example1) {
     %s().Run();
 }
-        ''' % (interactiveSolverForTestName, interactiveSolverName, 
-               interactiveSolverForTestName, interactiveSolverForTestName, 
+        ''' % (interactiveSolverForTestName, interactiveSolverName,
+               interactiveSolverForTestName, interactiveSolverForTestName,
                interactiveSolverForTestName, interactiveSolverName, interactiveSolverForTestName)
 
     solutionRunner = '''
@@ -150,23 +151,23 @@ void %s::run() {
 
 
 class %sTest : public ProblemTest {};
-    ''' % (solverName, solverName, runImplementation ,solverName)
+    ''' % (solverName, solverName, runImplementation, solverName)
 
     print(solutionHeader, interactiveSolverPart, solutionRunner, file=stubFile)
 
     samplesCount = len(parser.inputs)
     for i in range(samplesCount):
         print('TEST_F(%sTest, Example%d) {' % (solverName, i + 1),
-              '    setInput(R"(' +  '\n'.join(parser.inputs[i]),
+              '    setInput(R"(' + '\n'.join(parser.inputs[i]),
               ')");',
               '    string output = R"(' + '\n'.join(parser.outputs[i]),
               ')";',
               '    %s().run();' % solverName,
               '    EXPECT_EQ_FUZZY(getOutput(), output);',
               '}',
-			  '',
-              file=stubFile, sep = '\n')
-    
+              '',
+              file=stubFile, sep='\n')
+
     print(interactiveTestPart, file=stubFile)
 
     cmakeLineToInsert = '    ${solvers_dir}/%s/%s/%s.cpp\n' % (problemNumber[:-2] + 'xx', problemNumber, solverName)
