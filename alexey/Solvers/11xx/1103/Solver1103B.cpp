@@ -1,5 +1,6 @@
-#include <Solvers/pch.h>
 #include <optional>
+
+#include <Solvers/pch.h>
 
 #include "algo/io/baseio.h"
 #include "iter/range.h"
@@ -105,7 +106,7 @@ TEST(InteractiveSolver1103BTest, SmallNumbers) {
         InteractiveSolver1103BForTest s(a);
         s.Run();
         EXPECT_TRUE(s.answer_printed);
-    };
+    }
 }
 
 TEST(InteractiveSolver1103BTest, LargeNumbers) {
@@ -113,5 +114,5 @@ TEST(InteractiveSolver1103BTest, LargeNumbers) {
         InteractiveSolver1103BForTest s(a);
         s.Run();
         EXPECT_TRUE(s.answer_printed);
-    };
+    }
 }

@@ -32,7 +32,7 @@ class FullBinaryTrie {
 
     template <class Traversor>
     std::pair<bool, uint64_t> traverse(Traversor& traversor) const {
-        auto currentPowerOfTwo = uint64_t(1) << NBits - 1;
+        auto currentPowerOfTwo = uint64_t(1) << (NBits - 1);
         uint64_t currentValue = 0;
 
         size_t node = 0;

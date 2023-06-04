@@ -9,7 +9,7 @@
 template <bool Directed, class PerEdgeData, class PerVertexData>
 class MaxFlowPushRelabel {
   public:
-    MaxFlowPushRelabel(const Graph<Directed, PerEdgeData, PerVertexData>& graph)
+    explicit MaxFlowPushRelabel(const Graph<Directed, PerEdgeData, PerVertexData>& graph)
         : graph_(graph),
           currentPreflow_(graph.num_vertices(), std::vector<PerEdgeData>(graph.num_vertices())),
           capacity_(graph.num_vertices(), std::vector<PerEdgeData>(graph.num_vertices())),
@@ -79,11 +79,13 @@ class MaxFlowPushRelabel {
             if (excess_[v] <= 0)
                 break;
         }
-        if (excess_[v] > 0)
-            if (heightCounts_[height_[v]] == 1)
+        if (excess_[v] > 0) {
+            if (heightCounts_[height_[v]] == 1) {
                 GapOptimization(height_[v]);
-            else
+            } else {
                 Relabel(v);
+            }
+        }
     }
 
     void try_push(int from, int to) {

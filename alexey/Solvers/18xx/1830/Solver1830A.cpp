@@ -1,14 +1,14 @@
 
 #include <Solvers/pch.h>
 
-#include "graph/graph.h"
-#include "util/relax.h"
 #include "algo/io/baseio.h"
+#include "graph/graph.h"
 #include "iter/range.h"
+#include "util/relax.h"
 using namespace std;
 
 // Solution for Codeforces problem http://codeforces.com/contest/1830/problem/A
-  
+
 class Solver1830A {
   public:
     void run();
@@ -16,18 +16,18 @@ class Solver1830A {
 
 
 void Solver1830A::run() {
-    for (int inp: range(read<int>())) {
+    for (int inp : range(read<int>())) {
         auto n = read<int>();
         UndirectedGraph<int, pair<int, int>> g(n);
         for (int i : range(n - 1)) {
-          auto from = read<int>() - 1;
-          auto to = read<int>() - 1;
-          g.add_edge(to, from, i + 1);
+            auto from = read<int>() - 1;
+            auto to = read<int>() - 1;
+            g.add_edge(from, to, i + 1);
         }
 
         g.get_vertex_data(0) = {1, 0};
         for (int i : range(1, n)) {
-          g.get_vertex_data(i) = {0, -1};
+            g.get_vertex_data(i) = {0, -1};
         }
 
         stack<int> to_visit;
@@ -38,12 +38,13 @@ void Solver1830A::run() {
             auto current = to_visit.top();
             to_visit.pop();
 
-            for (auto& [nei, ord]  : g.out_nbrs(current)) {
-                if (g.get_vertex_data(nei).second >= 0) continue;
+            for (auto& [nei, ord] : g.out_nbrs(current)) {
+                if (g.get_vertex_data(nei).second >= 0)
+                    continue;
 
                 auto ord_parent = g.get_vertex_data(current).second;
                 auto iter = g.get_vertex_data(current).first + (ord_parent > ord ? 1 : 0);
-                g.get_vertex_data(nei) = {iter , ord};
+                g.get_vertex_data(nei) = {iter, ord};
 
                 relax_max(answer, iter);
 
@@ -57,7 +58,7 @@ void Solver1830A::run() {
 
 
 class Solver1830ATest : public ProblemTest {};
-    
+
 TEST_F(Solver1830ATest, Example1) {
     setInput(R"(2
 6
@@ -81,5 +82,3 @@ TEST_F(Solver1830ATest, Example1) {
     Solver1830A().run();
     EXPECT_EQ_FUZZY(getOutput(), output);
 }
-
-

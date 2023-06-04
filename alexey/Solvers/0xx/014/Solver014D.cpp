@@ -1,26 +1,26 @@
+#include <memory>
+
 #include <Solvers/pch.h>
+
 #include "graph/graph.h"
 
 using namespace std;
 
 // Solution for Codeforces problem http://codeforces.com/contest/014/problem/D
-class Solver014D
-{
-public:
+class Solver014D {
+  public:
     void run();
 
     unique_ptr<UndirectedGraph<>> graph;
 
     vector<int> vertexDepths;
     vector<int> halfTreeDiameters;
-    int currentHalfTree;
+    int currentHalfTree = 0;
 
-    void dfs(int vInd, int parentInd)
-    {
-        vector<int> childDepth = { -1 };
-        
-        for (auto p : graph->out_nbrs(vInd))
-        {
+    void dfs(int vInd, int parentInd) {
+        vector<int> childDepth = {-1};
+
+        for (auto p : graph->out_nbrs(vInd)) {
             int nei = p.first;
             if (nei == parentInd)
                 continue;
@@ -40,23 +40,20 @@ public:
     }
 };
 
-void Solver014D::run()
-{
+void Solver014D::run() {
     int nCities;
     cin >> nCities;
-    graph.reset(new UndirectedGraph<>(nCities));
-    for (int i = 0; i < nCities - 1; ++i)
-    {
+    graph = std::make_unique<UndirectedGraph<>>(nCities);
+    for (int i = 0; i < nCities - 1; ++i) {
         int a, b;
         cin >> a >> b;
         graph->add_edge(a - 1, b - 1);
     }
 
     int ans = 0;
-    
+
     for (int firstVertex = 0; firstVertex < nCities; ++firstVertex)
-        for (auto p : graph->out_nbrs(firstVertex))
-        {
+        for (auto p : graph->out_nbrs(firstVertex)) {
             int secondVertex = p.first;
             if (secondVertex < firstVertex)
                 continue;
@@ -69,30 +66,25 @@ void Solver014D::run()
             dfs(secondVertex, firstVertex);
             ans = max(ans, halfTreeDiameters[0] * halfTreeDiameters[1]);
         }
-    
+
     cout << ans;
 }
 
-class Solver014DTest : public ProblemTest
-{
-};
+class Solver014DTest : public ProblemTest {};
 
-TEST_F( Solver014DTest, Example1 )
-{
+TEST_F(Solver014DTest, Example1) {
     setInput("4        1 2        2 3        3 4");
     Solver014D().run();
     EXPECT_EQ("1", getOutput());
 }
 
-TEST_F( Solver014DTest, Example2 )
-{
+TEST_F(Solver014DTest, Example2) {
     setInput("7        1 2        1 3        1 4        1 5        1 6        1 7");
     Solver014D().run();
     EXPECT_EQ("0", getOutput());
 }
 
-TEST_F(Solver014DTest, Example3)
-{
+TEST_F(Solver014DTest, Example3) {
     setInput("6        1 2        2 3        2 4        5 4        6 4");
     Solver014D().run();
     EXPECT_EQ("4", getOutput());
