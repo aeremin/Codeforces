@@ -133,7 +133,7 @@ set(algo_tests_srcs
     ${algo_dir}/ordered_set_test.cpp
     ${algo_dir}/segment_tree/segment_tree_test.cpp
     ${algo_dir}/sliding_window_min_finder_test.cpp
-)
+    )
 
 add_executable(algo_tests ${algo_tests_srcs})
 target_link_libraries(algo_tests gtest gmock algo_lib)
@@ -150,8 +150,8 @@ target_sources(solver_testing_utils INTERFACE
     ${launcher_dir}/CodeFuserTest.cpp
     ${solvers_dir}/pch.cpp
     ${solvers_dir}/SolverStub.cpp
-    ${solvers_dir}/testutils/ProblemTest.cpp    
-)
+    ${solvers_dir}/testutils/ProblemTest.cpp
+    )
 
 set(tests_srcs
     ${solvers_dir}/0xx/014/Solver014D.cpp
