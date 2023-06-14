@@ -574,6 +574,7 @@ include(${solvers_dir}/16xx/1648/CMakeLists.txt)
 include(${solvers_dir}/18xx/1830/CMakeLists.txt)
 include(${solvers_dir}/18xx/1837/CMakeLists.txt)
 include(${solvers_dir}/18xx/1838/CMakeLists.txt)
+include(${solvers_dir}/18xx/1841/CMakeLists.txt)
 
 include_directories(${common_dir})
 include_directories(${common_lib_dir})
